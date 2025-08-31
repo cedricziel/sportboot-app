@@ -1,0 +1,965 @@
+$schema: ./schema.json
+course: SBF-See
+version: '2024'
+source: ELWIS
+questions:
+- id: sbf-see-bas-001
+  number: 1
+  question: ELWIS
+  options:
+  - text: Sportschifffahrt
+    isCorrect: true
+  - text: Sportbootführerscheine
+    isCorrect: false
+  - text: Fragenkatalog See
+    isCorrect: false
+  - text: Basisfragen
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-002
+  number: 2
+  question: Der verantwortliche Schiffsführer muss bestimmt werden.
+  options:
+  - text: Der verantwortliche Schiffsführer muss gewählt werden.
+    isCorrect: true
+  - text: Ein Inhaber eines Sportbootführerscheins muss die Fahrzeugführung übernehmen.
+    isCorrect: false
+  - text: Ein Inhaber eines Sportbootführerscheins muss die Verantwortung übernehmen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-003
+  number: 3
+  question: Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses
+    alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung
+    behindert ist oder wenn eine Blutalkoholkonzentration von 0,5 ‰ oder mehr im Körper
+    vorhanden ist.
+  options:
+  - text: Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses
+      alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung
+      behindert ist oder wenn eine Blutalkoholkonzentration von 0,8 ‰ oder mehr im
+      Körper vorhanden ist.
+    isCorrect: true
+  - text: Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses
+      alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung
+      behindert ist oder wenn eine Blutalkoholkonzentration von 1,0 ‰ oder mehr im
+      Körper vorhanden ist.
+    isCorrect: false
+  - text: Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses
+      alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung
+      behindert ist oder wenn eine Blutalkoholkonzentration von 0,3 ‰ oder mehr im
+      Körper vorhanden ist.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-004
+  number: 4
+  question: Wenn es weder vor Anker liegt noch an Land festgemacht ist noch auf Grund
+    sitzt.
+  options:
+  - text: Wenn es weder vor Anker liegt noch an Land festgemacht ist noch Fahrt über
+      Grund macht.
+    isCorrect: true
+  - text: Wenn es weder auf Grund sitzt noch vor Anker liegt noch manövrierbehindert
+      oder manövrierunfähig ist.
+    isCorrect: false
+  - text: Wenn es weder an Land festgemacht ist noch vor Anker liegt noch Fahrt durchs
+      Wasser macht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-005
+  number: 5
+  question: Etwa 1 Sekunde.
+  options:
+  - text: Etwa 2 Sekunden.
+    isCorrect: true
+  - text: Weniger als 1 Sekunde.
+    isCorrect: false
+  - text: Weniger als 4 Sekunden.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-006
+  number: 6
+  question: Etwa 4 - 6 Sekunden.
+  options:
+  - text: Etwa 2 - 6 Sekunden.
+    isCorrect: true
+  - text: Etwa 1 - 2 Sekunden.
+    isCorrect: false
+  - text: Etwa 6 - 8 Sekunden.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-007
+  number: 7
+  question: Wenn es gleichzeitig mit Maschinenkraft fährt.
+  options:
+  - text: Wenn es mit einer Antriebsmaschine ausgerüstet ist.
+    isCorrect: true
+  - text: Wenn es durch das Segeln keine Fahrt durchs Wasser macht.
+    isCorrect: false
+  - text: Wenn es durch das Segeln keine Fahrt über Grund macht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-008
+  number: 8
+  question: Einen schwarzen Kegel, Spitze unten.
+  options:
+  - text: Einen schwarzen Kegel, Spitze oben.
+    isCorrect: true
+  - text: Einen schwarzen Rhombus.
+    isCorrect: false
+  - text: Zwei schwarze Bälle senkrecht übereinander.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-009
+  number: 9
+  question: Die dem Wind zugekehrte Seite.
+  options:
+  - text: Die dem Wind abgewandte Seite.
+    isCorrect: true
+  - text: Die Seite in Fahrtrichtung rechts.
+    isCorrect: false
+  - text: Die Seite in Fahrtrichtung links.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-010
+  number: 10
+  question: Die dem Wind abgewandte Seite.
+  options:
+  - text: Die dem Wind zugekehrte Seite.
+    isCorrect: true
+  - text: Die Seite in Fahrtrichtung rechts.
+    isCorrect: false
+  - text: Die Seite in Fahrtrichtung links.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-011
+  number: 11
+  question: Von Sonnenuntergang bis Sonnenaufgang und bei verminderter Sicht.
+  options:
+  - text: Von Sonnenaufgang bis Sonnenuntergang und bei verminderter Sicht.
+    isCorrect: true
+  - text: Von abends 18:00 Uhr bis morgens 06:00 Uhr und bei verminderter Sicht.
+    isCorrect: false
+  - text: Bei Dunkelheit, schlechtem Wetter und verminderter Sicht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-012
+  number: 12
+  question: Sie zeigt Fahrtrichtung und Lage eines Fahrzeugs an.
+  options:
+  - text: Sie zeigt Kurs und Geschwindigkeit eines Fahrzeugs an.
+    isCorrect: true
+  - text: Sie zeigt Fahrtrichtung und Position eines Fahrzeugs an.
+    isCorrect: false
+  - text: Sie zeigt Fahrtrichtung und Kurs eines Fahrzeugs an.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-013
+  number: 13
+  question: Eine Dreifarbenlaterne an oder nahe der Mastspitze.
+  options:
+  - text: Eine Zweifarbenlaterne an gut sichtbarer Stelle.
+    isCorrect: true
+  - text: Eine Dreifarbenlaterne an gut sichtbarer Stelle.
+    isCorrect: false
+  - text: Eine Zweifarbenlaterne an oder nahe der Mastspitze.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-014
+  number: 14
+  question: Die für ein Maschinenfahrzeug vorgeschriebenen Lichter.
+  options:
+  - text: Die für ein Segelfahrzeug vorgeschriebenen Lichter.
+    isCorrect: true
+  - text: Zwei rote Rundumlichter senkrecht übereinander.
+    isCorrect: false
+  - text: Seitenlichter rot und grün und ein rotes Rundumlicht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-015
+  number: 15
+  question: Jedes Fahrzeug muss seinen Kurs nach Steuerbord ändern.
+  options:
+  - text: Jedes Fahrzeug muss seinen Kurs nach Backbord ändern.
+    isCorrect: true
+  - text: Es muss das luvwärtige Fahrzeug dem leewärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  - text: Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-016
+  number: 16
+  question: Dasjenige Fahrzeug muss ausweichen, welches das Andere an seiner Steuerbordseite
+    hat.
+  options:
+  - text: Dasjenige Fahrzeug muss ausweichen, welches das Andere an seiner Backbordseite
+      hat.
+    isCorrect: true
+  - text: Es muss das luvwärtige Fahrzeug dem leewärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  - text: Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-017
+  number: 17
+  question: Bleib-weg-Signal, Gefahrenbereich sofort verlassen.
+  options:
+  - text: Allgemeines Gefahr- und Warnsignal.
+    isCorrect: true
+  - text: Ankerlieger über 100 m Länge.
+    isCorrect: false
+  - text: Manövrierbehinderter Schleppverband über 200 m Länge.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-018
+  number: 18
+  question: Überholverbot.
+  options:
+  - text: Begegnungsverbot.
+    isCorrect: true
+  - text: Überholverbot für Fahrzeuge unter 20 m Länge.
+    isCorrect: false
+  - text: Begegnungsverbot für Fahrzeuge über 20 m Länge.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-019
+  number: 19
+  question: Begegnungsverbot an einer Engstelle.
+  options:
+  - text: Begegnungsverbot für Fahrzeuge über 12 m Länge.
+    isCorrect: true
+  - text: Überholverbot; mit Gegenverkehr muss gerechnet werden.
+    isCorrect: false
+  - text: Überholverbot für alle Fahrzeuge.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-020
+  number: 20
+  question: Sog und Wellenschlag vermeiden.
+  options:
+  - text: Gefährdeter Strandbereich, Überspülungsgefahr; Mindestpassierabstand 100
+      m.
+    isCorrect: true
+  - text: Wasserstraße, die jederzeit sicher befahren werden kann; keine Gefahr durch
+      Seegang.
+    isCorrect: false
+  - text: Wasserstraße, die nicht jederzeit sicher befahren werden kann; Gefahr durch
+      Seegang.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-021
+  number: 21
+  question: Mindestabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort
+    der Tafel an eingehalten werden muss.
+  options:
+  - text: Maximalgeschwindigkeit in km/h, die auf der in Fahrtrichtung rechten Fahrwasserseite
+      nicht überschritten werden darf.
+    isCorrect: true
+  - text: Maximalabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort
+      der Tafel an eingehalten werden muss.
+    isCorrect: false
+  - text: Verengung des Fahrwassers auf 40 m.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-022
+  number: 22
+  question: Haltegebot vor beweglichen Brücken, Sperrwerken und Schleusen.
+  options:
+  - text: Dauernde Sperrung einer Teilstrecke der Wasserstraße.
+    isCorrect: true
+  - text: Gebot zur Abgabe eines langen Signaltons.
+    isCorrect: false
+  - text: Weiterfahrt für Sportfahrzeuge verboten.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-023
+  number: 23
+  question: Ankern verboten für alle Fahrzeuge.
+  options:
+  - text: Ankern verboten für Kleinfahrzeuge unter 12 m Länge.
+    isCorrect: true
+  - text: Ankern verboten für Kleinfahrzeuge ab 12 m Länge.
+    isCorrect: false
+  - text: Ankern und Festmachen verboten.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-024
+  number: 24
+  question: Festmache- und Liegeverbot.
+  options:
+  - text: Festmache- und Liegeverbot für Sportboote.
+    isCorrect: true
+  - text: Festmache- und Liegeverbot für Sportboote über 12 m Länge.
+    isCorrect: false
+  - text: Festmache- und Liegeverbot für gewerbliche Schiffe.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-025
+  number: 25
+  question: Abgabe eines langen Tons.
+  options:
+  - text: Abgabe eines kurzen Tons.
+    isCorrect: true
+  - text: Abgabe von zwei langen Tönen.
+    isCorrect: false
+  - text: Abgabe eines kurzen und eines langen Tons.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-026
+  number: 26
+  question: Wasserflächen, auf denen mit Wasserski oder Wassermotorrädern gefahren
+    werden darf.
+  options:
+  - text: Genehmigungspflichtige Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern.
+    isCorrect: true
+  - text: Fahren mit Wasserski oder Wassermotorrädern erlaubt. Wasserskiläufer und
+      Wassermotorräder haben Vorfahrt.
+    isCorrect: false
+  - text: Genehmigungsfreie Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-027
+  number: 27
+  question: Ende einer Gebots- oder Verbotsstrecke.
+  options:
+  - text: Streckenabschnitt für eine nicht frei fahrende Fähre.
+    isCorrect: true
+  - text: Queren des Fahrwassers ist gestattet.
+    isCorrect: false
+  - text: Wechseln der Fahrwasserseite ist gestattet.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-028
+  number: 28
+  question: Verbot der Durchfahrt und Sperrung der Schifffahrt.
+  options:
+  - text: Verbot der Durchfahrt und Sperrung für Kleinfahrzeuge.
+    isCorrect: true
+  - text: Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne laufende Antriebsmaschine
+      befahrbar.
+    isCorrect: false
+  - text: Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne Antriebsmaschine befahrbar.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-029
+  number: 29
+  question: Brücke, Sperrwerk oder Schleuse geschlossen.
+  options:
+  - text: Anlage dauerhaft gesperrt.
+    isCorrect: true
+  - text: Stoppsignal für alle Fahrzeuge.
+    isCorrect: false
+  - text: Außergewöhnliche Schifffahrtsbehinderung.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-030
+  number: 30
+  question: Anlage dauerhaft gesperrt.
+  options:
+  - text: Brücke, Sperrwerk oder Schleuse geschlossen.
+    isCorrect: true
+  - text: Stoppsignal für alle Fahrzeuge.
+    isCorrect: false
+  - text: Außergewöhnliche Schifffahrtsbehinderung.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-031
+  number: 31
+  question: Einfahrt frei, Gegenverkehr gesperrt.
+  options:
+  - text: Einfahrt frei, Schleusentor öffnet.
+    isCorrect: true
+  - text: Schleuse in Betrieb, auf Einfahrtsignal gemäß Reihenfolge warten.
+    isCorrect: false
+  - text: Schleuse in Betrieb, auf Ausfahrtsignal gemäß Reihenfolge warten.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-032
+  number: 32
+  question: Die 10 goldenen Regeln für Wassersportler.
+  options:
+  - text: Die 15 goldenen Regeln für Wassersportler.
+    isCorrect: true
+  - text: Die 10 Grundregeln für Wassersportler.
+    isCorrect: false
+  - text: Die 15 Verhaltensregeln für Wassersportler.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-033
+  number: 33
+  question: Durch umweltbewusstes Verhalten und Beachtung der "Zehn goldenen Regeln
+    für das Verhalten von Wassersportlern in der Natur".
+  options:
+  - text: Durch umweltbewusstes Verhalten und Beachtung der "Zehn Grundregeln für
+      den Wassersport".
+    isCorrect: true
+  - text: Durch umsichtiges Verhalten und Beachtung der Verkehrsvorschriften.
+    isCorrect: false
+  - text: Durch vorausschauendes Fahren und Ausweichen entsprechend der Verkehrsvorschriften.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-034
+  number: 34
+  question: Weil diese Zonen vielfach Rast- und Brutplätze besonders schutzwürdiger
+    Vögel oder Fischlaichplätze sind.
+  options:
+  - text: Weil in diesen Zonen die Gefahr von Grundberührungen besteht.
+    isCorrect: true
+  - text: Weil durch die Pflanzen der Propeller blockiert werden könnte.
+    isCorrect: false
+  - text: Weil in diesen Zonen badende Personen schwer zu erkennen sind.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-035
+  number: 35
+  question: Es kann durch dessen Bug- oder Heckwelle kentern oder durch den Sog mit
+    dem Fahrzeug kollidieren.
+  options:
+  - text: Dichtes Heranfahren ist ein Verstoß gegen die Grundregeln für das Verhalten
+      im Verkehr.
+    isCorrect: true
+  - text: Da es dem großen in Fahrt befindlichen Fahrzeug sonst nicht ausweichen kann.
+    isCorrect: false
+  - text: Es kann durch dessen Bug- oder Heckwelle Seeschlag erleiden.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-036
+  number: 36
+  question: Weil sich das Fahrzeug dabei sicherer manövrieren lässt.
+  options:
+  - text: Weil dadurch Sog und Wellenschlag vermieden wird.
+    isCorrect: true
+  - text: Weil dadurch Einflüsse von Wellen und Wassertiefe ausgeglichen werden.
+    isCorrect: false
+  - text: Weil dies die Steuerwirkung der Schraube erhöht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-037
+  number: 37
+  question: Geschwindigkeit herabsetzen und ausreichenden Passierabstand halten.
+  options:
+  - text: Geschwindigkeit erhöhen, um das Begegnungsmanöver zügig durchzuführen.
+    isCorrect: true
+  - text: Das gegen den Strom fahrende Fahrzeug ist ausweichpflichtig.
+    isCorrect: false
+  - text: Das mit dem Strom fahrende Fahrzeug hat aufzustoppen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-038
+  number: 38
+  question: Das kleinere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen
+    und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen.
+  options:
+  - text: Das größere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen
+      und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen.
+    isCorrect: true
+  - text: Das kleinere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen
+      und kollidieren oder kentern, in flachen Gewässern extrem versetzt werden.
+    isCorrect: false
+  - text: Das größere Fahrzeug kann durch Wellenbildung aus dem Kurs laufen und kollidieren
+      oder querschlagen, in flachen Gewässern auf Grund laufen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-039
+  number: 39
+  question: Beim Umweltbundesamt.
+  options:
+  - text: Beim Bundesministerium für Digitales und Verkehr.
+    isCorrect: true
+  - text: In der Sportbootführerscheinverordnung.
+    isCorrect: false
+  - text: In der Sportbootvermietungsverordnung.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-040
+  number: 40
+  question: Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren
+    ist und sich die Ankerpeilung nicht ändert.
+  options:
+  - text: Wenn Ankerkette oder -leine nicht vibrieren und sich der anliegende Magnetkompasskurs
+      nicht verändert.
+    isCorrect: true
+  - text: Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren
+      ist und das Fahrzeug nicht schwojt.
+    isCorrect: false
+  - text: Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren
+      ist und sich die Ankerpeilung ändert.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-041
+  number: 41
+  question: Ein möglichst spitzer Winkel.
+  options:
+  - text: Ein Winkel von 90° bis 100°.
+    isCorrect: true
+  - text: Ein möglichst stumpfer Winkel.
+    isCorrect: false
+  - text: Ein Winkel von 60° bis 70°.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-042
+  number: 42
+  question: Das Heck dreht nach Backbord.
+  options:
+  - text: Das Heck dreht nach Steuerbord.
+    isCorrect: true
+  - text: Der Kurs des Schiffes ändert sich nicht.
+    isCorrect: false
+  - text: Der Bug dreht nach Backbord.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-043
+  number: 43
+  question: Unterbrechung von Zündkontakt bzw. Kraftstoffzufuhr.
+  options:
+  - text: Automatisches Anlassen des Motors.
+    isCorrect: true
+  - text: Kurze Unterbrechung des Motorlaufs.
+    isCorrect: false
+  - text: Automatische Schubumkehr.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-044
+  number: 44
+  question: Mit Lappen aufnehmen und umweltgerecht entsorgen.
+  options:
+  - text: Räume lüften und abwarten.
+    isCorrect: true
+  - text: Gleichmäßig verteilen.
+    isCorrect: false
+  - text: Mit entsprechendem Mittel neutralisieren.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-045
+  number: 45
+  question: Von achtern gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn.
+  options:
+  - text: Von vorne gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn.
+    isCorrect: true
+  - text: Von achtern gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn.
+    isCorrect: false
+  - text: Von vorne gesehen in Rückwärtsfahrt Drehung des Propellers gegen den Uhrzeigersinn.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-046
+  number: 46
+  question: Von achtern gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn.
+  options:
+  - text: Von vorne gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn.
+    isCorrect: true
+  - text: Von achtern gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn.
+    isCorrect: false
+  - text: Von vorne gesehen in Rückwärtsfahrt Drehung des Propellers im Uhrzeigersinn.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-047
+  number: 47
+  question: Das seitliche Versetzen des Hecks.
+  options:
+  - text: Das Versetzen nach vorne.
+    isCorrect: true
+  - text: Das Versetzen nach hinten.
+    isCorrect: false
+  - text: Das seitliche Versetzen des Bugs.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-048
+  number: 48
+  question: Sie hilft beim Manövrieren.
+  options:
+  - text: Sie hilft beim Kurshalten.
+    isCorrect: true
+  - text: Sie hilft beim Überholen.
+    isCorrect: false
+  - text: Sie hilft beim Begegnen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-049
+  number: 49
+  question: Die Backbordseite - der Radeffekt zieht das Fahrzeug an die Pier.
+  options:
+  - text: Die Steuerbordseite - der Radeffekt zieht das Fahrzeug an die Pier.
+    isCorrect: true
+  - text: Die Steuerbord- oder Backbordseite je nach Ruderlage.
+    isCorrect: false
+  - text: Es gibt keine empfehlenswerte Anlegeseite.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-050
+  number: 50
+  question: Motor abstellen, keine elektrischen Schalter betätigen, Vorbereitung gegen
+    das Überlaufen von Kraftstoff treffen, kein offenes Feuer.
+  options:
+  - text: Motor in Leerlaufstellung, keine elektrischen Schalter betätigen, Vorbereitung
+      gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer.
+    isCorrect: true
+  - text: Fenster schließen, keine elektrischen Schalter betätigen, Vorbereitung gegen
+      das Überlaufen von Kraftstoff treffen, kein offenes Feuer.
+    isCorrect: false
+  - text: Motor abstellen, Feuerlöscher bereithalten, Vorbereitung gegen das Überlaufen
+      von Kraftstoff treffen, kein offenes Feuer.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-051
+  number: 51
+  question: Durch Schraubenstrom und Richtung des Propellers.
+  options:
+  - text: Durch Schraubenstrom und Anstellwinkel des Propellers.
+    isCorrect: true
+  - text: Durch den Schraubenwiderstand und Anstellwinkel des Propellers.
+    isCorrect: false
+  - text: Durch den Schraubenwiderstand und Richtung des Propellers.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-052
+  number: 52
+  question: Weil sie erst mit Anströmung des Ruderblattes einsetzt.
+  options:
+  - text: Weil sich durch den Radeffekt ein Unterdruck am Propeller entwickelt.
+    isCorrect: true
+  - text: Durch den Abstand von Propeller und Ruderblatt.
+    isCorrect: false
+  - text: Weil sich durch den Radeffekt ein Unterdruck am Ruder entwickelt.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-053
+  number: 53
+  question: Motortemperatur, Öldruck, Ladekontrolle.
+  options:
+  - text: Kühlwasseraustritt, Drehzahlmesser, Keilriemenspannung.
+    isCorrect: true
+  - text: Schraubendrehzahl, Getriebeöltemperatur, Öldruck.
+    isCorrect: false
+  - text: Druck der Einspritzpumpe, Impellerpumpe, Ölpumpe.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-054
+  number: 54
+  question: Defektes Thermostat, defekte Impellerpumpe, geschlossenes Seeventil, zu
+    niedriger Kühlwasserstand.
+  options:
+  - text: Zu viel Motoröl, defekte Impellerpumpe, geschlossenes Seeventil, zu niedriger
+      Kühlwasserstand.
+    isCorrect: true
+  - text: Defektes Thermostat, defekte Impellerpumpe, geschlossenes Seeventil, zu
+      hohe Batteriespannung.
+    isCorrect: false
+  - text: Defektes Thermostat, defekte Kupplung, geschlossenes Seeventil, zu niedriger
+      Kühlwasserstand.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-055
+  number: 55
+  question: Lichtmaschine bzw. Regler der Lichtmaschine defekt.
+  options:
+  - text: Zu hohe Motordrehzahl.
+    isCorrect: true
+  - text: Keilriemen gerissen und hoher Stromverbrauch.
+    isCorrect: false
+  - text: Anlasser ist nach dem Starten ausgefallen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-056
+  number: 56
+  question: Druckschalter bzw. Öldruckpumpe defekt.
+  options:
+  - text: Zu viel Motoröl im Motor.
+    isCorrect: true
+  - text: FI-Schalter defekt.
+    isCorrect: false
+  - text: Zu hohe Motordrehzahl.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-057
+  number: 57
+  question: Blockierter Propeller.
+  options:
+  - text: Blockierte Kraftstoffzufuhr.
+    isCorrect: true
+  - text: Verschmutzter Ölfilter.
+    isCorrect: false
+  - text: Verschmutzter Luftfilter.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-058
+  number: 58
+  question: Belüftungsschraube geschlossen; verstopfte Kraftstoffleitung.
+  options:
+  - text: Ansaugdüsen zu groß bzw. zu klein.
+    isCorrect: true
+  - text: Tankdeckel ist offen.
+    isCorrect: false
+  - text: Schraube an der Welle lose.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-059
+  number: 59
+  question: Nautische Publikationen wie „Sicherheit auf dem Wasser“ und „Sicher auf
+    See".
+  options:
+  - text: Verordnung über die Sicherung der Seefahrt und nautische Publikationen wie
+      „Sicher auf See".
+    isCorrect: true
+  - text: Nautische Publikation wie „Sicherheit auf dem Wasser“ und Internationales
+      Signalbuch.
+    isCorrect: false
+  - text: Internationales Signalbuch und Verordnung über die Sicherung der Seefahrt.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-060
+  number: 60
+  question: Die Antriebsleistung beträgt höchstens 7,5 Kilowatt Betriebsart S1 (Dauerbetrieb).
+  options:
+  - text: Es darf immer ohne Fahrerlaubnis geführt werden, unabhängig von der Antriebsleistung.
+    isCorrect: true
+  - text: Bis zu einer Antriebsleistung von 11,03 Kilowatt Betriebsart S1 (Dauerbetrieb).
+    isCorrect: false
+  - text: Es darf nie ohne Fahrerlaubnis geführt werden, unabhängig von der Antriebsleistung.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-061
+  number: 61
+  question: Alle Seeventile schließen und den Hauptschalter des Bordnetzes ausschalten.
+  options:
+  - text: Kraftstoff- und Wassertank auffüllen und das Bordnetz aufladen.
+    isCorrect: true
+  - text: Tagestank schließen und Kraftstofffilter entwässern.
+    isCorrect: false
+  - text: Fahrzeug seefest hinterlassen und den Hafenmeister verständigen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-062
+  number: 62
+  question: Verringerung der Geschwindigkeit, um schädlichen Sog und Wellenschlag
+    zu vermeiden.
+  options:
+  - text: Beibehaltung der Geschwindigkeit, um durch Gleitfahrt schädlichen Sog und
+      Wellenschlag auszuschließen.
+    isCorrect: true
+  - text: Verringerung der Geschwindigkeit und nötigenfalls vom Rechtsfahrgebot abweichen.
+    isCorrect: false
+  - text: Auf Höhe der festgemachten Fahrzeuge aufstoppen und überprüfen, dass kein
+      Dritter behindert oder geschädigt wird.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-063
+  number: 63
+  question: Möglichst an Deck, geschützt vor Sonneneinstrahlung, sonst in einem besonders
+    abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung nach außenbords
+    hat.
+  options:
+  - text: Möglichst unten im Schiff, geschützt vor Sonneneinstrahlung, sonst in einem
+      besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung
+      nach außenbords hat.
+    isCorrect: true
+  - text: Möglichst auf dem Vorschiff, geschützt vor Sonneneinstrahlung, sonst in
+      einem besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine
+      Öffnung nach außenbords hat.
+    isCorrect: false
+  - text: Möglichst an Deck, geschützt vor Sonneneinstrahlung, sonst in einem besonders
+      abgeschlossenen Raum für Gasbehälter, der oben belüftet ist.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-064
+  number: 64
+  question: Beide Gase sind schwerer als Luft und bilden mit Luft ein explosives Gemisch.
+  options:
+  - text: Beide Gase sind leichter als Luft und bilden mit Luft ein explosives Gemisch.
+    isCorrect: true
+  - text: Beide Gase sind schwerer als Wasser und bilden mit Wasser ein explosives
+      Gemisch.
+    isCorrect: false
+  - text: Beide Gase sind schwerer als Luft und bilden mit Wasser ein explosives Gemisch.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-065
+  number: 65
+  question: Gaszuführung absperren und für Lüftung sorgen. Außerdem keine elektrischen
+    Schalter betätigen und keinen Funk und keine Mobiltelefone benutzen.
+  options:
+  - text: Gasleitung entleeren und für Lüftung sorgen. Außerdem keine elektrischen
+      Schalter betätigen und keine Telefone benutzen.
+    isCorrect: true
+  - text: Gaszuführung absperren und für Lüftung sorgen. Außerdem keine elektrischen
+      Schalter betätigen und per Telefon Hilfe holen.
+    isCorrect: false
+  - text: Gasleitung entleeren und die Gasfreiheit mit dem Feuerzeug prüfen sowie
+      über Funk oder Mobiltelefon Hilfe anfordern.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-066
+  number: 66
+  question: Die Anlage muss abgenommen sein, Leitungen und Anschlüsse müssen dicht
+    sein. Haupthahn und andere Absperrventile sind zu öffnen.
+  options:
+  - text: Die Anlage muss abgenommen sein, die Inbetriebnahme darf nur durch eine
+      besonders geprüfte Person erfolgen.
+    isCorrect: true
+  - text: Die Anlage muss abgenommen sein und jährlich überprüft werden. Die Inbetriebnahme
+      darf nur durch eine besonders geprüfte Person erfolgen.
+    isCorrect: false
+  - text: Die Abnahme der Anlage darf nicht länger als drei Jahre zurückliegen. Haupthahn
+      und andere Absperrventile sind zu öffnen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-067
+  number: 67
+  question: Haupthahn und Absperrventile sind zu schließen.
+  options:
+  - text: Die Anlage ist gasfrei zu machen.
+    isCorrect: true
+  - text: Gasflasche fachgerecht entsorgen.
+    isCorrect: false
+  - text: Der Flüssiggasbehälter ist vollständig zu entleeren.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-068
+  number: 68
+  question: Entsprechend der Herstellerangabe, mindestens alle 2 Jahre.
+  options:
+  - text: Jährlich und nach jedem Einsatz oder Übungsgebrauch.
+    isCorrect: true
+  - text: Entsprechend der Herstellerangabe, mindestens alle 3 Jahre.
+    isCorrect: false
+  - text: Jährlich, jeweils vor Beginn der Wassersportsaison.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-069
+  number: 69
+  question: ABC-Pulver- und Schaumlöscher, mindestens alle 2 Jahre.
+  options:
+  - text: Feuerlöscher mit Löschschaum, mindestens einmal pro Jahr.
+    isCorrect: true
+  - text: CO2-Feuerlöscher, mindestens alle 2 Jahre.
+    isCorrect: false
+  - text: ABC-Pulverlöscher, mindestens einmal pro Jahr.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-070
+  number: 70
+  question: Luftzufuhr verhindern, Feuerlöscher erst am Brandherd einsetzen und das
+    Feuer möglichst von unten bekämpfen.
+  options:
+  - text: Rauchabzug sicherstellen und Feuerlöscher rechtzeitig einsetzen, dabei den
+      Löschstrahl möglichst in die lodernden Flammen halten.
+    isCorrect: true
+  - text: Luftzufuhr verhindern und den Feuerlöscher mit sparsamen Löschstrahlstößen
+      einsetzen, dabei das Feuer möglichst von oben bekämpfen.
+    isCorrect: false
+  - text: Handhabungshinweise durchlesen und den Feuerlöscher sofort einsetzen, dabei
+      das Feuer möglichst von unten bekämpfen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-071
+  number: 71
+  question: Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand
+    nicht mehr erforderlich ist; alle erforderlichen Daten austauschen.
+  options:
+  - text: Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand
+      nicht mehr erforderlich ist; die Wasserschutzpolizei benachrichtigen.
+    isCorrect: true
+  - text: Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand
+      nicht mehr erforderlich ist; Notsignal geben.
+    isCorrect: false
+  - text: Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand
+      nicht mehr erforderlich ist; Verschlusszustand herstellen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-072
+  number: 72
+  question: Luftdruckänderung, Luftfeuchtigkeit und Temperatur.
+  options:
+  - text: Luftdruckänderung, Sonneneinstrahlung und Höhenlage.
+    isCorrect: true
+  - text: Luftdruckänderung, Luftfeuchtigkeit und Jahreszeit.
+    isCorrect: false
+  - text: Luftdruckänderung, Tageszeit und Temperatur.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-073
+  number: 73
+  question: Wenn Gefahr für Leib oder Leben von Personen besteht und daher Hilfe benötigt
+    wird.
+  options:
+  - text: Wenn Gefahr für Leib oder Leben von Personen besteht oder das Schiff nicht
+      mehr sicher manövriert werden kann.
+    isCorrect: true
+  - text: Wenn Gefahr für Leib oder Leben von Personen oder erhebliche Sachwerte besteht
+      und daher Hilfe benötigt wird.
+    isCorrect: false
+  - text: Wenn Gefahr für Leib oder Leben von Personen, erhebliche Sachwerte oder
+      die maritime Umwelt besteht.
+    isCorrect: false
+  category: basisfragen
+  assets: []

@@ -1,0 +1,4022 @@
+$schema: ./schema.json
+course: SBF-See
+version: '2024'
+source: ELWIS
+questions:
+- id: sbf-see-bas-001
+  number: 1
+  question: ELWIS
+  options:
+  - text: Sportschifffahrt
+    isCorrect: true
+  - text: Sportbootführerscheine
+    isCorrect: false
+  - text: Fragenkatalog See
+    isCorrect: false
+  - text: Basisfragen
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-002
+  number: 2
+  question: Der verantwortliche Schiffsführer muss bestimmt werden.
+  options:
+  - text: Der verantwortliche Schiffsführer muss gewählt werden.
+    isCorrect: true
+  - text: Ein Inhaber eines Sportbootführerscheins muss die Fahrzeugführung übernehmen.
+    isCorrect: false
+  - text: Ein Inhaber eines Sportbootführerscheins muss die Verantwortung übernehmen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-003
+  number: 3
+  question: Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses
+    alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung
+    behindert ist oder wenn eine Blutalkoholkonzentration von 0,5 ‰ oder mehr im Körper
+    vorhanden ist.
+  options:
+  - text: Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses
+      alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung
+      behindert ist oder wenn eine Blutalkoholkonzentration von 0,8 ‰ oder mehr im
+      Körper vorhanden ist.
+    isCorrect: true
+  - text: Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses
+      alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung
+      behindert ist oder wenn eine Blutalkoholkonzentration von 1,0 ‰ oder mehr im
+      Körper vorhanden ist.
+    isCorrect: false
+  - text: Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses
+      alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung
+      behindert ist oder wenn eine Blutalkoholkonzentration von 0,3 ‰ oder mehr im
+      Körper vorhanden ist.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-004
+  number: 4
+  question: Wenn es weder vor Anker liegt noch an Land festgemacht ist noch auf Grund
+    sitzt.
+  options:
+  - text: Wenn es weder vor Anker liegt noch an Land festgemacht ist noch Fahrt über
+      Grund macht.
+    isCorrect: true
+  - text: Wenn es weder auf Grund sitzt noch vor Anker liegt noch manövrierbehindert
+      oder manövrierunfähig ist.
+    isCorrect: false
+  - text: Wenn es weder an Land festgemacht ist noch vor Anker liegt noch Fahrt durchs
+      Wasser macht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-005
+  number: 5
+  question: Etwa 1 Sekunde.
+  options:
+  - text: Etwa 2 Sekunden.
+    isCorrect: true
+  - text: Weniger als 1 Sekunde.
+    isCorrect: false
+  - text: Weniger als 4 Sekunden.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-006
+  number: 6
+  question: Etwa 4 - 6 Sekunden.
+  options:
+  - text: Etwa 2 - 6 Sekunden.
+    isCorrect: true
+  - text: Etwa 1 - 2 Sekunden.
+    isCorrect: false
+  - text: Etwa 6 - 8 Sekunden.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-007
+  number: 7
+  question: Wenn es gleichzeitig mit Maschinenkraft fährt.
+  options:
+  - text: Wenn es mit einer Antriebsmaschine ausgerüstet ist.
+    isCorrect: true
+  - text: Wenn es durch das Segeln keine Fahrt durchs Wasser macht.
+    isCorrect: false
+  - text: Wenn es durch das Segeln keine Fahrt über Grund macht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-008
+  number: 8
+  question: Einen schwarzen Kegel, Spitze unten.
+  options:
+  - text: Einen schwarzen Kegel, Spitze oben.
+    isCorrect: true
+  - text: Einen schwarzen Rhombus.
+    isCorrect: false
+  - text: Zwei schwarze Bälle senkrecht übereinander.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-009
+  number: 9
+  question: Die dem Wind zugekehrte Seite.
+  options:
+  - text: Die dem Wind abgewandte Seite.
+    isCorrect: true
+  - text: Die Seite in Fahrtrichtung rechts.
+    isCorrect: false
+  - text: Die Seite in Fahrtrichtung links.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-010
+  number: 10
+  question: Die dem Wind abgewandte Seite.
+  options:
+  - text: Die dem Wind zugekehrte Seite.
+    isCorrect: true
+  - text: Die Seite in Fahrtrichtung rechts.
+    isCorrect: false
+  - text: Die Seite in Fahrtrichtung links.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-011
+  number: 11
+  question: Von Sonnenuntergang bis Sonnenaufgang und bei verminderter Sicht.
+  options:
+  - text: Von Sonnenaufgang bis Sonnenuntergang und bei verminderter Sicht.
+    isCorrect: true
+  - text: Von abends 18:00 Uhr bis morgens 06:00 Uhr und bei verminderter Sicht.
+    isCorrect: false
+  - text: Bei Dunkelheit, schlechtem Wetter und verminderter Sicht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-012
+  number: 12
+  question: Sie zeigt Fahrtrichtung und Lage eines Fahrzeugs an.
+  options:
+  - text: Sie zeigt Kurs und Geschwindigkeit eines Fahrzeugs an.
+    isCorrect: true
+  - text: Sie zeigt Fahrtrichtung und Position eines Fahrzeugs an.
+    isCorrect: false
+  - text: Sie zeigt Fahrtrichtung und Kurs eines Fahrzeugs an.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-013
+  number: 13
+  question: Eine Dreifarbenlaterne an oder nahe der Mastspitze.
+  options:
+  - text: Eine Zweifarbenlaterne an gut sichtbarer Stelle.
+    isCorrect: true
+  - text: Eine Dreifarbenlaterne an gut sichtbarer Stelle.
+    isCorrect: false
+  - text: Eine Zweifarbenlaterne an oder nahe der Mastspitze.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-014
+  number: 14
+  question: Die für ein Maschinenfahrzeug vorgeschriebenen Lichter.
+  options:
+  - text: Die für ein Segelfahrzeug vorgeschriebenen Lichter.
+    isCorrect: true
+  - text: Zwei rote Rundumlichter senkrecht übereinander.
+    isCorrect: false
+  - text: Seitenlichter rot und grün und ein rotes Rundumlicht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-015
+  number: 15
+  question: Jedes Fahrzeug muss seinen Kurs nach Steuerbord ändern.
+  options:
+  - text: Jedes Fahrzeug muss seinen Kurs nach Backbord ändern.
+    isCorrect: true
+  - text: Es muss das luvwärtige Fahrzeug dem leewärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  - text: Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-016
+  number: 16
+  question: Dasjenige Fahrzeug muss ausweichen, welches das Andere an seiner Steuerbordseite
+    hat.
+  options:
+  - text: Dasjenige Fahrzeug muss ausweichen, welches das Andere an seiner Backbordseite
+      hat.
+    isCorrect: true
+  - text: Es muss das luvwärtige Fahrzeug dem leewärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  - text: Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-017
+  number: 17
+  question: Bleib-weg-Signal, Gefahrenbereich sofort verlassen.
+  options:
+  - text: Allgemeines Gefahr- und Warnsignal.
+    isCorrect: true
+  - text: Ankerlieger über 100 m Länge.
+    isCorrect: false
+  - text: Manövrierbehinderter Schleppverband über 200 m Länge.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-018
+  number: 18
+  question: Überholverbot.
+  options:
+  - text: Begegnungsverbot.
+    isCorrect: true
+  - text: Überholverbot für Fahrzeuge unter 20 m Länge.
+    isCorrect: false
+  - text: Begegnungsverbot für Fahrzeuge über 20 m Länge.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-019
+  number: 19
+  question: Begegnungsverbot an einer Engstelle.
+  options:
+  - text: Begegnungsverbot für Fahrzeuge über 12 m Länge.
+    isCorrect: true
+  - text: Überholverbot; mit Gegenverkehr muss gerechnet werden.
+    isCorrect: false
+  - text: Überholverbot für alle Fahrzeuge.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-020
+  number: 20
+  question: Sog und Wellenschlag vermeiden.
+  options:
+  - text: Gefährdeter Strandbereich, Überspülungsgefahr; Mindestpassierabstand 100
+      m.
+    isCorrect: true
+  - text: Wasserstraße, die jederzeit sicher befahren werden kann; keine Gefahr durch
+      Seegang.
+    isCorrect: false
+  - text: Wasserstraße, die nicht jederzeit sicher befahren werden kann; Gefahr durch
+      Seegang.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-021
+  number: 21
+  question: Mindestabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort
+    der Tafel an eingehalten werden muss.
+  options:
+  - text: Maximalgeschwindigkeit in km/h, die auf der in Fahrtrichtung rechten Fahrwasserseite
+      nicht überschritten werden darf.
+    isCorrect: true
+  - text: Maximalabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort
+      der Tafel an eingehalten werden muss.
+    isCorrect: false
+  - text: Verengung des Fahrwassers auf 40 m.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-022
+  number: 22
+  question: Haltegebot vor beweglichen Brücken, Sperrwerken und Schleusen.
+  options:
+  - text: Dauernde Sperrung einer Teilstrecke der Wasserstraße.
+    isCorrect: true
+  - text: Gebot zur Abgabe eines langen Signaltons.
+    isCorrect: false
+  - text: Weiterfahrt für Sportfahrzeuge verboten.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-023
+  number: 23
+  question: Ankern verboten für alle Fahrzeuge.
+  options:
+  - text: Ankern verboten für Kleinfahrzeuge unter 12 m Länge.
+    isCorrect: true
+  - text: Ankern verboten für Kleinfahrzeuge ab 12 m Länge.
+    isCorrect: false
+  - text: Ankern und Festmachen verboten.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-024
+  number: 24
+  question: Festmache- und Liegeverbot.
+  options:
+  - text: Festmache- und Liegeverbot für Sportboote.
+    isCorrect: true
+  - text: Festmache- und Liegeverbot für Sportboote über 12 m Länge.
+    isCorrect: false
+  - text: Festmache- und Liegeverbot für gewerbliche Schiffe.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-025
+  number: 25
+  question: Abgabe eines langen Tons.
+  options:
+  - text: Abgabe eines kurzen Tons.
+    isCorrect: true
+  - text: Abgabe von zwei langen Tönen.
+    isCorrect: false
+  - text: Abgabe eines kurzen und eines langen Tons.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-026
+  number: 26
+  question: Wasserflächen, auf denen mit Wasserski oder Wassermotorrädern gefahren
+    werden darf.
+  options:
+  - text: Genehmigungspflichtige Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern.
+    isCorrect: true
+  - text: Fahren mit Wasserski oder Wassermotorrädern erlaubt. Wasserskiläufer und
+      Wassermotorräder haben Vorfahrt.
+    isCorrect: false
+  - text: Genehmigungsfreie Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-027
+  number: 27
+  question: Ende einer Gebots- oder Verbotsstrecke.
+  options:
+  - text: Streckenabschnitt für eine nicht frei fahrende Fähre.
+    isCorrect: true
+  - text: Queren des Fahrwassers ist gestattet.
+    isCorrect: false
+  - text: Wechseln der Fahrwasserseite ist gestattet.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-028
+  number: 28
+  question: Verbot der Durchfahrt und Sperrung der Schifffahrt.
+  options:
+  - text: Verbot der Durchfahrt und Sperrung für Kleinfahrzeuge.
+    isCorrect: true
+  - text: Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne laufende Antriebsmaschine
+      befahrbar.
+    isCorrect: false
+  - text: Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne Antriebsmaschine befahrbar.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-029
+  number: 29
+  question: Brücke, Sperrwerk oder Schleuse geschlossen.
+  options:
+  - text: Anlage dauerhaft gesperrt.
+    isCorrect: true
+  - text: Stoppsignal für alle Fahrzeuge.
+    isCorrect: false
+  - text: Außergewöhnliche Schifffahrtsbehinderung.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-030
+  number: 30
+  question: Anlage dauerhaft gesperrt.
+  options:
+  - text: Brücke, Sperrwerk oder Schleuse geschlossen.
+    isCorrect: true
+  - text: Stoppsignal für alle Fahrzeuge.
+    isCorrect: false
+  - text: Außergewöhnliche Schifffahrtsbehinderung.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-031
+  number: 31
+  question: Einfahrt frei, Gegenverkehr gesperrt.
+  options:
+  - text: Einfahrt frei, Schleusentor öffnet.
+    isCorrect: true
+  - text: Schleuse in Betrieb, auf Einfahrtsignal gemäß Reihenfolge warten.
+    isCorrect: false
+  - text: Schleuse in Betrieb, auf Ausfahrtsignal gemäß Reihenfolge warten.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-032
+  number: 32
+  question: Die 10 goldenen Regeln für Wassersportler.
+  options:
+  - text: Die 15 goldenen Regeln für Wassersportler.
+    isCorrect: true
+  - text: Die 10 Grundregeln für Wassersportler.
+    isCorrect: false
+  - text: Die 15 Verhaltensregeln für Wassersportler.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-033
+  number: 33
+  question: Durch umweltbewusstes Verhalten und Beachtung der "Zehn goldenen Regeln
+    für das Verhalten von Wassersportlern in der Natur".
+  options:
+  - text: Durch umweltbewusstes Verhalten und Beachtung der "Zehn Grundregeln für
+      den Wassersport".
+    isCorrect: true
+  - text: Durch umsichtiges Verhalten und Beachtung der Verkehrsvorschriften.
+    isCorrect: false
+  - text: Durch vorausschauendes Fahren und Ausweichen entsprechend der Verkehrsvorschriften.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-034
+  number: 34
+  question: Weil diese Zonen vielfach Rast- und Brutplätze besonders schutzwürdiger
+    Vögel oder Fischlaichplätze sind.
+  options:
+  - text: Weil in diesen Zonen die Gefahr von Grundberührungen besteht.
+    isCorrect: true
+  - text: Weil durch die Pflanzen der Propeller blockiert werden könnte.
+    isCorrect: false
+  - text: Weil in diesen Zonen badende Personen schwer zu erkennen sind.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-035
+  number: 35
+  question: Es kann durch dessen Bug- oder Heckwelle kentern oder durch den Sog mit
+    dem Fahrzeug kollidieren.
+  options:
+  - text: Dichtes Heranfahren ist ein Verstoß gegen die Grundregeln für das Verhalten
+      im Verkehr.
+    isCorrect: true
+  - text: Da es dem großen in Fahrt befindlichen Fahrzeug sonst nicht ausweichen kann.
+    isCorrect: false
+  - text: Es kann durch dessen Bug- oder Heckwelle Seeschlag erleiden.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-036
+  number: 36
+  question: Weil sich das Fahrzeug dabei sicherer manövrieren lässt.
+  options:
+  - text: Weil dadurch Sog und Wellenschlag vermieden wird.
+    isCorrect: true
+  - text: Weil dadurch Einflüsse von Wellen und Wassertiefe ausgeglichen werden.
+    isCorrect: false
+  - text: Weil dies die Steuerwirkung der Schraube erhöht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-037
+  number: 37
+  question: Geschwindigkeit herabsetzen und ausreichenden Passierabstand halten.
+  options:
+  - text: Geschwindigkeit erhöhen, um das Begegnungsmanöver zügig durchzuführen.
+    isCorrect: true
+  - text: Das gegen den Strom fahrende Fahrzeug ist ausweichpflichtig.
+    isCorrect: false
+  - text: Das mit dem Strom fahrende Fahrzeug hat aufzustoppen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-038
+  number: 38
+  question: Das kleinere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen
+    und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen.
+  options:
+  - text: Das größere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen
+      und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen.
+    isCorrect: true
+  - text: Das kleinere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen
+      und kollidieren oder kentern, in flachen Gewässern extrem versetzt werden.
+    isCorrect: false
+  - text: Das größere Fahrzeug kann durch Wellenbildung aus dem Kurs laufen und kollidieren
+      oder querschlagen, in flachen Gewässern auf Grund laufen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-039
+  number: 39
+  question: Beim Umweltbundesamt.
+  options:
+  - text: Beim Bundesministerium für Digitales und Verkehr.
+    isCorrect: true
+  - text: In der Sportbootführerscheinverordnung.
+    isCorrect: false
+  - text: In der Sportbootvermietungsverordnung.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-040
+  number: 40
+  question: Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren
+    ist und sich die Ankerpeilung nicht ändert.
+  options:
+  - text: Wenn Ankerkette oder -leine nicht vibrieren und sich der anliegende Magnetkompasskurs
+      nicht verändert.
+    isCorrect: true
+  - text: Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren
+      ist und das Fahrzeug nicht schwojt.
+    isCorrect: false
+  - text: Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren
+      ist und sich die Ankerpeilung ändert.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-041
+  number: 41
+  question: Ein möglichst spitzer Winkel.
+  options:
+  - text: Ein Winkel von 90° bis 100°.
+    isCorrect: true
+  - text: Ein möglichst stumpfer Winkel.
+    isCorrect: false
+  - text: Ein Winkel von 60° bis 70°.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-042
+  number: 42
+  question: Das Heck dreht nach Backbord.
+  options:
+  - text: Das Heck dreht nach Steuerbord.
+    isCorrect: true
+  - text: Der Kurs des Schiffes ändert sich nicht.
+    isCorrect: false
+  - text: Der Bug dreht nach Backbord.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-043
+  number: 43
+  question: Unterbrechung von Zündkontakt bzw. Kraftstoffzufuhr.
+  options:
+  - text: Automatisches Anlassen des Motors.
+    isCorrect: true
+  - text: Kurze Unterbrechung des Motorlaufs.
+    isCorrect: false
+  - text: Automatische Schubumkehr.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-044
+  number: 44
+  question: Mit Lappen aufnehmen und umweltgerecht entsorgen.
+  options:
+  - text: Räume lüften und abwarten.
+    isCorrect: true
+  - text: Gleichmäßig verteilen.
+    isCorrect: false
+  - text: Mit entsprechendem Mittel neutralisieren.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-045
+  number: 45
+  question: Von achtern gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn.
+  options:
+  - text: Von vorne gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn.
+    isCorrect: true
+  - text: Von achtern gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn.
+    isCorrect: false
+  - text: Von vorne gesehen in Rückwärtsfahrt Drehung des Propellers gegen den Uhrzeigersinn.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-046
+  number: 46
+  question: Von achtern gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn.
+  options:
+  - text: Von vorne gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn.
+    isCorrect: true
+  - text: Von achtern gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn.
+    isCorrect: false
+  - text: Von vorne gesehen in Rückwärtsfahrt Drehung des Propellers im Uhrzeigersinn.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-047
+  number: 47
+  question: Das seitliche Versetzen des Hecks.
+  options:
+  - text: Das Versetzen nach vorne.
+    isCorrect: true
+  - text: Das Versetzen nach hinten.
+    isCorrect: false
+  - text: Das seitliche Versetzen des Bugs.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-048
+  number: 48
+  question: Sie hilft beim Manövrieren.
+  options:
+  - text: Sie hilft beim Kurshalten.
+    isCorrect: true
+  - text: Sie hilft beim Überholen.
+    isCorrect: false
+  - text: Sie hilft beim Begegnen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-049
+  number: 49
+  question: Die Backbordseite - der Radeffekt zieht das Fahrzeug an die Pier.
+  options:
+  - text: Die Steuerbordseite - der Radeffekt zieht das Fahrzeug an die Pier.
+    isCorrect: true
+  - text: Die Steuerbord- oder Backbordseite je nach Ruderlage.
+    isCorrect: false
+  - text: Es gibt keine empfehlenswerte Anlegeseite.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-050
+  number: 50
+  question: Motor abstellen, keine elektrischen Schalter betätigen, Vorbereitung gegen
+    das Überlaufen von Kraftstoff treffen, kein offenes Feuer.
+  options:
+  - text: Motor in Leerlaufstellung, keine elektrischen Schalter betätigen, Vorbereitung
+      gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer.
+    isCorrect: true
+  - text: Fenster schließen, keine elektrischen Schalter betätigen, Vorbereitung gegen
+      das Überlaufen von Kraftstoff treffen, kein offenes Feuer.
+    isCorrect: false
+  - text: Motor abstellen, Feuerlöscher bereithalten, Vorbereitung gegen das Überlaufen
+      von Kraftstoff treffen, kein offenes Feuer.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-051
+  number: 51
+  question: Durch Schraubenstrom und Richtung des Propellers.
+  options:
+  - text: Durch Schraubenstrom und Anstellwinkel des Propellers.
+    isCorrect: true
+  - text: Durch den Schraubenwiderstand und Anstellwinkel des Propellers.
+    isCorrect: false
+  - text: Durch den Schraubenwiderstand und Richtung des Propellers.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-052
+  number: 52
+  question: Weil sie erst mit Anströmung des Ruderblattes einsetzt.
+  options:
+  - text: Weil sich durch den Radeffekt ein Unterdruck am Propeller entwickelt.
+    isCorrect: true
+  - text: Durch den Abstand von Propeller und Ruderblatt.
+    isCorrect: false
+  - text: Weil sich durch den Radeffekt ein Unterdruck am Ruder entwickelt.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-053
+  number: 53
+  question: Motortemperatur, Öldruck, Ladekontrolle.
+  options:
+  - text: Kühlwasseraustritt, Drehzahlmesser, Keilriemenspannung.
+    isCorrect: true
+  - text: Schraubendrehzahl, Getriebeöltemperatur, Öldruck.
+    isCorrect: false
+  - text: Druck der Einspritzpumpe, Impellerpumpe, Ölpumpe.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-054
+  number: 54
+  question: Defektes Thermostat, defekte Impellerpumpe, geschlossenes Seeventil, zu
+    niedriger Kühlwasserstand.
+  options:
+  - text: Zu viel Motoröl, defekte Impellerpumpe, geschlossenes Seeventil, zu niedriger
+      Kühlwasserstand.
+    isCorrect: true
+  - text: Defektes Thermostat, defekte Impellerpumpe, geschlossenes Seeventil, zu
+      hohe Batteriespannung.
+    isCorrect: false
+  - text: Defektes Thermostat, defekte Kupplung, geschlossenes Seeventil, zu niedriger
+      Kühlwasserstand.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-055
+  number: 55
+  question: Lichtmaschine bzw. Regler der Lichtmaschine defekt.
+  options:
+  - text: Zu hohe Motordrehzahl.
+    isCorrect: true
+  - text: Keilriemen gerissen und hoher Stromverbrauch.
+    isCorrect: false
+  - text: Anlasser ist nach dem Starten ausgefallen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-056
+  number: 56
+  question: Druckschalter bzw. Öldruckpumpe defekt.
+  options:
+  - text: Zu viel Motoröl im Motor.
+    isCorrect: true
+  - text: FI-Schalter defekt.
+    isCorrect: false
+  - text: Zu hohe Motordrehzahl.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-057
+  number: 57
+  question: Blockierter Propeller.
+  options:
+  - text: Blockierte Kraftstoffzufuhr.
+    isCorrect: true
+  - text: Verschmutzter Ölfilter.
+    isCorrect: false
+  - text: Verschmutzter Luftfilter.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-058
+  number: 58
+  question: Belüftungsschraube geschlossen; verstopfte Kraftstoffleitung.
+  options:
+  - text: Ansaugdüsen zu groß bzw. zu klein.
+    isCorrect: true
+  - text: Tankdeckel ist offen.
+    isCorrect: false
+  - text: Schraube an der Welle lose.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-059
+  number: 59
+  question: Nautische Publikationen wie „Sicherheit auf dem Wasser“ und „Sicher auf
+    See".
+  options:
+  - text: Verordnung über die Sicherung der Seefahrt und nautische Publikationen wie
+      „Sicher auf See".
+    isCorrect: true
+  - text: Nautische Publikation wie „Sicherheit auf dem Wasser“ und Internationales
+      Signalbuch.
+    isCorrect: false
+  - text: Internationales Signalbuch und Verordnung über die Sicherung der Seefahrt.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-060
+  number: 60
+  question: Die Antriebsleistung beträgt höchstens 7,5 Kilowatt Betriebsart S1 (Dauerbetrieb).
+  options:
+  - text: Es darf immer ohne Fahrerlaubnis geführt werden, unabhängig von der Antriebsleistung.
+    isCorrect: true
+  - text: Bis zu einer Antriebsleistung von 11,03 Kilowatt Betriebsart S1 (Dauerbetrieb).
+    isCorrect: false
+  - text: Es darf nie ohne Fahrerlaubnis geführt werden, unabhängig von der Antriebsleistung.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-061
+  number: 61
+  question: Alle Seeventile schließen und den Hauptschalter des Bordnetzes ausschalten.
+  options:
+  - text: Kraftstoff- und Wassertank auffüllen und das Bordnetz aufladen.
+    isCorrect: true
+  - text: Tagestank schließen und Kraftstofffilter entwässern.
+    isCorrect: false
+  - text: Fahrzeug seefest hinterlassen und den Hafenmeister verständigen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-062
+  number: 62
+  question: Verringerung der Geschwindigkeit, um schädlichen Sog und Wellenschlag
+    zu vermeiden.
+  options:
+  - text: Beibehaltung der Geschwindigkeit, um durch Gleitfahrt schädlichen Sog und
+      Wellenschlag auszuschließen.
+    isCorrect: true
+  - text: Verringerung der Geschwindigkeit und nötigenfalls vom Rechtsfahrgebot abweichen.
+    isCorrect: false
+  - text: Auf Höhe der festgemachten Fahrzeuge aufstoppen und überprüfen, dass kein
+      Dritter behindert oder geschädigt wird.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-063
+  number: 63
+  question: Möglichst an Deck, geschützt vor Sonneneinstrahlung, sonst in einem besonders
+    abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung nach außenbords
+    hat.
+  options:
+  - text: Möglichst unten im Schiff, geschützt vor Sonneneinstrahlung, sonst in einem
+      besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung
+      nach außenbords hat.
+    isCorrect: true
+  - text: Möglichst auf dem Vorschiff, geschützt vor Sonneneinstrahlung, sonst in
+      einem besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine
+      Öffnung nach außenbords hat.
+    isCorrect: false
+  - text: Möglichst an Deck, geschützt vor Sonneneinstrahlung, sonst in einem besonders
+      abgeschlossenen Raum für Gasbehälter, der oben belüftet ist.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-064
+  number: 64
+  question: Beide Gase sind schwerer als Luft und bilden mit Luft ein explosives Gemisch.
+  options:
+  - text: Beide Gase sind leichter als Luft und bilden mit Luft ein explosives Gemisch.
+    isCorrect: true
+  - text: Beide Gase sind schwerer als Wasser und bilden mit Wasser ein explosives
+      Gemisch.
+    isCorrect: false
+  - text: Beide Gase sind schwerer als Luft und bilden mit Wasser ein explosives Gemisch.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-065
+  number: 65
+  question: Gaszuführung absperren und für Lüftung sorgen. Außerdem keine elektrischen
+    Schalter betätigen und keinen Funk und keine Mobiltelefone benutzen.
+  options:
+  - text: Gasleitung entleeren und für Lüftung sorgen. Außerdem keine elektrischen
+      Schalter betätigen und keine Telefone benutzen.
+    isCorrect: true
+  - text: Gaszuführung absperren und für Lüftung sorgen. Außerdem keine elektrischen
+      Schalter betätigen und per Telefon Hilfe holen.
+    isCorrect: false
+  - text: Gasleitung entleeren und die Gasfreiheit mit dem Feuerzeug prüfen sowie
+      über Funk oder Mobiltelefon Hilfe anfordern.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-066
+  number: 66
+  question: Die Anlage muss abgenommen sein, Leitungen und Anschlüsse müssen dicht
+    sein. Haupthahn und andere Absperrventile sind zu öffnen.
+  options:
+  - text: Die Anlage muss abgenommen sein, die Inbetriebnahme darf nur durch eine
+      besonders geprüfte Person erfolgen.
+    isCorrect: true
+  - text: Die Anlage muss abgenommen sein und jährlich überprüft werden. Die Inbetriebnahme
+      darf nur durch eine besonders geprüfte Person erfolgen.
+    isCorrect: false
+  - text: Die Abnahme der Anlage darf nicht länger als drei Jahre zurückliegen. Haupthahn
+      und andere Absperrventile sind zu öffnen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-067
+  number: 67
+  question: Haupthahn und Absperrventile sind zu schließen.
+  options:
+  - text: Die Anlage ist gasfrei zu machen.
+    isCorrect: true
+  - text: Gasflasche fachgerecht entsorgen.
+    isCorrect: false
+  - text: Der Flüssiggasbehälter ist vollständig zu entleeren.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-068
+  number: 68
+  question: Entsprechend der Herstellerangabe, mindestens alle 2 Jahre.
+  options:
+  - text: Jährlich und nach jedem Einsatz oder Übungsgebrauch.
+    isCorrect: true
+  - text: Entsprechend der Herstellerangabe, mindestens alle 3 Jahre.
+    isCorrect: false
+  - text: Jährlich, jeweils vor Beginn der Wassersportsaison.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-069
+  number: 69
+  question: ABC-Pulver- und Schaumlöscher, mindestens alle 2 Jahre.
+  options:
+  - text: Feuerlöscher mit Löschschaum, mindestens einmal pro Jahr.
+    isCorrect: true
+  - text: CO2-Feuerlöscher, mindestens alle 2 Jahre.
+    isCorrect: false
+  - text: ABC-Pulverlöscher, mindestens einmal pro Jahr.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-070
+  number: 70
+  question: Luftzufuhr verhindern, Feuerlöscher erst am Brandherd einsetzen und das
+    Feuer möglichst von unten bekämpfen.
+  options:
+  - text: Rauchabzug sicherstellen und Feuerlöscher rechtzeitig einsetzen, dabei den
+      Löschstrahl möglichst in die lodernden Flammen halten.
+    isCorrect: true
+  - text: Luftzufuhr verhindern und den Feuerlöscher mit sparsamen Löschstrahlstößen
+      einsetzen, dabei das Feuer möglichst von oben bekämpfen.
+    isCorrect: false
+  - text: Handhabungshinweise durchlesen und den Feuerlöscher sofort einsetzen, dabei
+      das Feuer möglichst von unten bekämpfen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-071
+  number: 71
+  question: Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand
+    nicht mehr erforderlich ist; alle erforderlichen Daten austauschen.
+  options:
+  - text: Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand
+      nicht mehr erforderlich ist; die Wasserschutzpolizei benachrichtigen.
+    isCorrect: true
+  - text: Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand
+      nicht mehr erforderlich ist; Notsignal geben.
+    isCorrect: false
+  - text: Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand
+      nicht mehr erforderlich ist; Verschlusszustand herstellen.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-072
+  number: 72
+  question: Luftdruckänderung, Luftfeuchtigkeit und Temperatur.
+  options:
+  - text: Luftdruckänderung, Sonneneinstrahlung und Höhenlage.
+    isCorrect: true
+  - text: Luftdruckänderung, Luftfeuchtigkeit und Jahreszeit.
+    isCorrect: false
+  - text: Luftdruckänderung, Tageszeit und Temperatur.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-bas-073
+  number: 73
+  question: Wenn Gefahr für Leib oder Leben von Personen besteht und daher Hilfe benötigt
+    wird.
+  options:
+  - text: Wenn Gefahr für Leib oder Leben von Personen besteht oder das Schiff nicht
+      mehr sicher manövriert werden kann.
+    isCorrect: true
+  - text: Wenn Gefahr für Leib oder Leben von Personen oder erhebliche Sachwerte besteht
+      und daher Hilfe benötigt wird.
+    isCorrect: false
+  - text: Wenn Gefahr für Leib oder Leben von Personen, erhebliche Sachwerte oder
+      die maritime Umwelt besteht.
+    isCorrect: false
+  category: basisfragen
+  assets: []
+- id: sbf-see-spe-001
+  number: 1
+  question: ELWIS
+  options:
+  - text: Sportschifffahrt
+    isCorrect: true
+  - text: Sportbootführerscheine
+    isCorrect: false
+  - text: Fragenkatalog See
+    isCorrect: false
+  - text: Spezifische Fragen See
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-002
+  number: 2
+  question: Auf der Hohen See und auf den mit dieser zusammenhängenden, von Seeschiffen
+    befahrbaren Gewässern.
+  options:
+  - text: Auf der Hohen See und den deutschen Seeschifffahrtsstraßen, die von Seeschiffen
+      befahren werden.
+    isCorrect: true
+  - text: Auf den Seeschifffahrtsstraßen und den küstennahen deutschen Seegewässern,
+      die von Seeschiffen befahren werden.
+    isCorrect: false
+  - text: Auf der Hohen See und den von Seeschiffen befahrbaren Randmeeren, mit Ausnahme
+      der Verkehrstrennungsgebiete.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-003
+  number: 3
+  question: Die Vorschrift der Seeschifffahrtsstraßen-Ordnung.
+  options:
+  - text: Die Vorschrift der Kollisionsverhütungsregeln (KVR).
+    isCorrect: true
+  - text: Die Grundregeln für das Verhalten im Verkehr.
+    isCorrect: false
+  - text: Die Vorschrift der Schifffahrtsordnung Emsmündung.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-004
+  number: 4
+  question: Sportboote ohne Antriebsmaschine oder solche mit einer größten, nicht
+    überschreitbaren Nutzleistung von 11,03 Kilowatt (15 PS) bei Verwendung eines
+    Verbrennungsmotors bzw. 7,5 Kilowatt bei Verwendung eines Elektromotors Betriebsart
+    S1 (Dauerbetrieb) oder weniger.
+  options:
+  - text: Sportboote unter Segel mit einer Rumpflänge unter 20 m und solche deren
+      Antriebsmaschine nicht benutzt wird.
+    isCorrect: true
+  - text: Sportboote mit Antriebsmaschine mit einer größeren Nutzleistung als 11,03
+      Kilowatt (15 PS) bei Verwendung eines Verbrennungsmotors bzw. 7,5 Kilowatt bei
+      Verwendung eines Elektromotors Betriebsart S1 (Dauerbetrieb).
+    isCorrect: false
+  - text: Sportboote, die entweder vor Anker liegen oder an Land festgemacht sind
+      oder auf Grund sitzen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-005
+  number: 5
+  question: Der Fahrzeugführer oder sein Stellvertreter.
+  options:
+  - text: Der Fahrzeugführer und sein Stellvertreter.
+    isCorrect: true
+  - text: Der Fahrzeugführer und jeder sonst Verantwortliche.
+    isCorrect: false
+  - text: Der Fahrzeugführer oder jeder sonst Verantwortliche.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-006
+  number: 6
+  question: Die Verpflichtung zur Beachtung von Vorsichtsmaßregeln über die Verkehrsvorschriften
+    hinaus, die Seemannsbrauch oder besondere Umstände des Falles erfordern.
+  options:
+  - text: Die Verpflichtung zur Beachtung der Seeschifffahrtsstraßen-Ordnung (SeeSchStrO),
+      der Kollisionsverhütungsregeln (KVR), der Grundregeln für das Verhalten im Verkehr
+      und der Ausweichregeln mit dem Manöver des letzten Augenblicks.
+    isCorrect: true
+  - text: Die Verpflichtung zur Beachtung der Vorsichtsmaßregeln und Sicherheitsregeln
+      der Verkehrsvorschriften und der Grundregeln für das Verhalten im Verkehr.
+    isCorrect: false
+  - text: Die Verpflichtung zur Beachtung von Vorsichtsmaßregeln der Kollisionsverhütungsregeln
+      (KVR), der Grundregeln für das Verhalten im Verkehr und der Ausweichregeln mit
+      dem Manöver des letzten Augenblicks.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-007
+  number: 7
+  question: Der Fahrzeugführer hat die Besatzungsmitglieder und Gäste über die Sicherheitsvorkehrungen
+    an Bord zu unterrichten, in die Handhabung der Rettungs- und Feuerlöschmittel
+    einzuweisen und auf geeignete Maßnahmen gegen das Überbordfallen hinzuweisen,
+    zudem darauf, dass ständig angelegte Rettungswesten die Überlebenschancen im Wasser
+    erhöhen.
+  options:
+  - text: Der Fahrzeugführer muss die Besatzungsmitglieder und Gäste anweisen, dass
+      sie sich über die Sicherheitsvorkehrungen an Bord informieren, sich die Gebrauchsanweisungen
+      der Rettungs- und Feuerlöschmittel ansehen und auf geeignete Maßnahmen gegen
+      das Überbordfallen achten, zudem darauf, dass ständig angelegte Rettungswesten
+      die Überlebenschancen im Wasser erhöhen.
+    isCorrect: true
+  - text: Der Fahrzeugführer hat die verantwortlichen Besatzungsmitglieder über die
+      Sicherheitsvorkehrungen an Bord zu unterrichten, in die Handhabung der Rettungs-
+      und Feuerlöschmittel einzuweisen und auf geeignete Maßnahmen gegen das Überbordfallen
+      hinzuweisen, zudem darauf, dass ständig angelegte Rettungswesten die Überlebenschancen
+      im Wasser erhöhen.
+    isCorrect: false
+  - text: Der Fahrzeugführer hat die Gäste an Bord über die Sicherheitsvorkehrungen
+      an Bord zu unterrichten, in die Handhabung der Rettungs- und Feuerlöschmittel
+      einzuweisen und auf geeignete Maßnahmen gegen das Überbordfallen hinzuweisen,
+      zudem darauf, dass ständig angelegte Rettungswesten die Überlebenschancen im
+      Wasser erhöhen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-008
+  number: 8
+  question: Ausweichmanöver des Kurshalters.
+  options:
+  - text: Ausweichmanöver des Ausweichpflichtigen.
+    isCorrect: true
+  - text: Ausweichmanöver des Kurshalters und des Ausweichpflichtigen.
+    isCorrect: false
+  - text: Ausweichmanöver des Kurshalters oder des Ausweichpflichtigen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-009
+  number: 9
+  question: Es muss durchgeführt werden, wenn ein Zusammenstoß durch Manöver des Ausweichpflichtigen
+    allein nicht mehr vermieden werden kann.
+  options:
+  - text: Es muss durchgeführt werden, wenn ein Zusammenstoß durch Manöver des Kurshalters
+      allein nicht mehr vermieden werden kann.
+    isCorrect: true
+  - text: Es muss im letzten Augenblick von jedem durchgeführt werden, wenn ein Zusammenstoß
+      sonst nicht mehr vermieden werden kann.
+    isCorrect: false
+  - text: Es muss kurz vor der Kollision durchgeführt werden, wenn sonst ein Zusammenstoß
+      durch Manöver des Kurshalters allein nicht mehr vermieden werden kann.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-010
+  number: 10
+  question: Wenn es sich einem anderen Fahrzeug aus einer Richtung von mehr als 22,5°
+    achterlicher als querab (Bereich des Hecklichtes) nähert.
+  options:
+  - text: Wenn es sich einem anderen Fahrzeug aus einer Richtung von mehr als 112,5°
+      achterlicher als querab (Bereich der Seitenlichter) nähert.
+    isCorrect: true
+  - text: Wenn es sich einem anderen Fahrzeug gegenüber in einer Richtung von mehr
+      als 22,5° achterlicher als querab (Bereich des Hecklichtes) befindet.
+    isCorrect: false
+  - text: Wenn es an einem anderen Fahrzeug aus einer achterlichen Richtung von mehr
+      als 22,5° querab kommend (Bereich des Topplichtes) vorbeifährt.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-011
+  number: 11
+  question: Wenn es wegen außergewöhnlicher Umstände, z. B. Ausfall der Ruder- oder
+    Maschinenanlage, nicht so wie vorgeschrieben manövrieren und daher einem anderen
+    Fahrzeug nicht ausweichen kann.
+  options:
+  - text: Wenn es wegen der Art seines Einsatzes behindert ist und deshalb nicht so
+      wie vorgeschrieben manövrieren und daher einem anderen Fahrzeug nicht ausweichen
+      kann.
+    isCorrect: true
+  - text: Wenn es wegen seines Tiefgangs im Verhältnis zu der vorhandenen Tiefe und
+      Breite des befahrbaren Gewässers erheblich behindert ist, von seinem zu verfolgenden
+      Kurs abzuweichen.
+    isCorrect: false
+  - text: Wenn es mit Netzen, Leinen, Schleppnetzen oder anderen Fanggeräten fischt,
+      welche die Manövrierfähigkeit einschränken.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-012
+  number: 12
+  question: Wenn es wegen der Art seines Einsatzes behindert ist und deshalb nicht
+    so wie vorgeschrieben manövrieren und daher einem anderen Fahrzeug nicht ausweichen
+    kann.
+  options:
+  - text: Wenn es wegen außergewöhnlicher Umstände, z. B. Ausfall der Ruder- oder
+      Maschinenanlage, nicht so wie vorgeschrieben manövrieren und daher einem anderen
+      Fahrzeug nicht ausweichen kann.
+    isCorrect: true
+  - text: Wenn es wegen seines Tiefgangs im Verhältnis zu der vorhandenen Tiefe und
+      Breite des befahrbaren Gewässers erheblich behindert ist, von seinem zu verfolgenden
+      Kurs abzuweichen.
+    isCorrect: false
+  - text: Wenn es mit Netzen, Leinen, Schleppnetzen oder anderen Fanggeräten fischt,
+      welche die Manövrierfähigkeit einschränken.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-013
+  number: 13
+  question: Es muss mit sicherer, den verminderten Sichtverhältnissen angepasster
+    Geschwindigkeit gefahren werden, es müssen Schallsignale gegeben werden, es müssen
+    Positionslichter eingeschaltet werden und es muss gehörig Ausguck gegangen werden.
+  options:
+  - text: Es muss mit sicherer, den verminderten Sichtverhältnissen angepasster Geschwindigkeit
+      gefahren werden, es müssen Schallsignale gegeben werden, das Radargerät muss
+      eingeschaltet werden und es muss Ausguck gegangen werden.
+    isCorrect: true
+  - text: Es muss mit sicherer, den verminderten Sichtverhältnissen angepasster Geschwindigkeit
+      gefahren werden, es müssen Schallsinale gegeben werden, es müssen Positionslichter
+      eingeschaltet werden und es muss der Radarreflektor eingesetzt werden.
+    isCorrect: false
+  - text: Es muss mit verminderter Geschwindigkeit gefahren werden, es müssen Schallsignale
+      gegeben werden, es müssen Positionslichter eingeschaltet werden und es muss
+      das AIS (Automatic Identifikation System) eingeschaltet werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-014
+  number: 14
+  question: Die Kollisionsverhütungsregeln (KVR), die Seeschifffahrtsstraßen-Ordnung
+    (SeeSchStrO) und die Schifffahrtsordnung Emsmündung (EmsSchO).
+  options:
+  - text: Die Kollisionsverhütungsregeln (KVR), die Seeschifffahrtsstraßen-Ordnung
+      (SeeSchStrO) und die Sportbootführerscheinverordnung.
+    isCorrect: true
+  - text: Die Kollisionsverhütungsregeln (KVR), die Seeschifffahrtsstraßen-Ordnung
+      (SeeSchStrO) und die Schiffssicherheitsverordnung.
+    isCorrect: false
+  - text: Die Kollisionsverhütungsregeln (KVR), die Seeschifffahrtsstraßen-Ordnung
+      (SeeSchStrO) und die Verordnung zur Sicherung der Seefahrt.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-015
+  number: 15
+  question: Solche, deren Baumuster vom Bundesamt für Seeschifffahrt und Hydrographie
+    (BSH) zur Verwendung zugelassen sind oder eine als gleichwertig anerkannte Zulassung
+    eines EU-Staates besitzen.
+  options:
+  - text: Solche, die die vorgeschriebene Mindesttragweite von drei Seemeilen, die
+      Größe und Farbgebung bzw. Lautstärke erreichen und mit einer Bescheinigung einer
+      Klassifikationsgesellschaft versehen sind.
+    isCorrect: true
+  - text: Solche, die gemäß der Kollisionsverhütungsregeln (KVR), der Seeschifffahrtsstraßen-Ordnung
+      (SeeSchStrO) und der Schifffahrtsordnung Emsmündung (EmsSchO) vorgeschrieben
+      sind und ein CE-Zeichen haben.
+    isCorrect: false
+  - text: Solche, die vom Technischen Überwachungsverein (TÜV) geprüft und mit dem
+      Zeichen für geprüfte Sicherheit (GS) versehen sind.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-016
+  number: 16
+  question: Es sind bekannt gemachte Schifffahrtswege, die durch Trennlinien oder
+    Trennzonen in Einbahnwege geteilt sind.
+  options:
+  - text: Es sind bekannt gemachte Fahrwasser, die durch Trennlinien oder Trennzonen
+      in Einbahnwege geteilt sind.
+    isCorrect: true
+  - text: Es sind bekannt gemachte Seeschifffahrtsstraßen, die durch Trennlinien oder
+      Trennzonen in Einbahnwege geteilt sind.
+    isCorrect: false
+  - text: Es sind bekannt gemachte Bundeswasserstraßen, die durch Trennlinien oder
+      Trennzonen in Einbahnwege geteilt sind.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-017
+  number: 17
+  question: Sie dürfen jeweils nur in der allgemeinen Verkehrsrichtung rechts der
+    Trennlinie oder Trennzone befahren werden.
+  options:
+  - text: Sie dürfen jeweils nur in Fahrtrichtung links der Trennlinie oder Trennzone
+      befahren werden.
+    isCorrect: true
+  - text: Sie dürfen innerhalb der äußeren Trennlinien nur in einer Fahrtrichtung
+      befahren werden.
+    isCorrect: false
+  - text: Sie dürfen nur vom Anfang bis zum Ende und jeweils nur in Fahrtrichtung
+      rechts der Trennzone befahren werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-018
+  number: 18
+  question: Wenn jedes Fahrzeug vom anderen optisch wahrgenommen werden kann.
+  options:
+  - text: Wenn jeder Fahrzeugführer vom anderen optisch wahrgenommen werden kann.
+    isCorrect: true
+  - text: Wenn beide Fahrzeuge optisch wahrgenommen werden können.
+    isCorrect: false
+  - text: Wenn jedes Fahrzeug auch bei unsichtigem Wetter optisch wahrgenommen werden
+      kann.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-019
+  number: 19
+  question: Die Geschwindigkeit muss der Verkehrslage, den Sicht- und Witterungsverhältnissen
+    angepasst sein und es muss jederzeit aufgestoppt werden können.
+  options:
+  - text: Die Geschwindigkeit muss der Verkehrslage, den Sicht- und Witterungsverhältnissen
+      angepasst sein und der Verkehr darf nicht behindert werden.
+    isCorrect: true
+  - text: Die Geschwindigkeit muss der Verkehrslage, den Sicht- und Witterungsverhältnissen
+      und dem Treibstoffverbrauch angepasst sein.
+    isCorrect: false
+  - text: Die Geschwindigkeit muss der Verkehrslage, dem Verkehrsaufkommen, den Seegangs-
+      und Windverhältnissen angepasst sein, so dass kein Sog und Wellenschlag entsteht.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-020
+  number: 20
+  question: Maschinenfahrzeug in Fahrt von weniger als 50 m Länge.
+  options:
+  - text: Maschinenfahrzeug in Fahrt von 50 und mehr Meter Länge.
+    isCorrect: true
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser von 50 und mehr
+      Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-021
+  number: 21
+  question: Maschinenfahrzeug in Fahrt von 50 und mehr Meter Länge.
+  options:
+  - text: Maschinenfahrzeug in Fahrt von weniger als 50 m Länge.
+    isCorrect: true
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser von 50 und mehr
+      Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-022
+  number: 22
+  question: Manövrierbehinderter Schleppverband in Fahrt von 200 m Länge oder weniger.
+  options:
+  - text: Manövrierbehinderter Schleppverband in Fahrt von mehr als 200 m Länge.
+    isCorrect: true
+  - text: Manövrierbehinderter Schleppverband in Fahrt von 200 m Länge oder weniger,
+      ohne Fahrt durchs Wasser.
+    isCorrect: false
+  - text: Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser von 50 und mehr
+      Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-023
+  number: 23
+  question: Manövrierbehinderter Schleppverband in Fahrt von mehr als 200 m Länge.
+  options:
+  - text: Manövrierbehinderter Schleppverband in Fahrt von 200 m Länge oder weniger.
+    isCorrect: true
+  - text: Manövrierbehinderter Schleppverband in Fahrt von mehr als 200 m Länge, ohne
+      Fahrt durch das Wasser.
+    isCorrect: false
+  - text: Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten
+      ausführt und dabei die Schifffahrt behindert.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-024
+  number: 24
+  question: Seitenlichter rot und grün und ein weißes Hecklicht.
+  options:
+  - text: Seitenlichter rot und grün und ein weißes Rundumlicht.
+    isCorrect: true
+  - text: Seitenlichter rot und grün und zwei rote Rundumlichter senkrecht übereinander.
+    isCorrect: false
+  - text: Seitenlichter rot und grün und ein rotes Rundumlicht senkrecht über einem
+      weißen Rundumlicht.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-025
+  number: 25
+  question: Schleppverband von mehr als 200 m Länge.
+  options:
+  - text: Schleppverband von mehr als 100 m Länge.
+    isCorrect: true
+  - text: Schleppverband von mehr als 50 m Länge.
+    isCorrect: false
+  - text: Schleppverband von weniger als 50 m Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-026
+  number: 26
+  question: Ein manövrierunfähiges Fahrzeug in Fahrt.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug in Fahrt.
+    isCorrect: true
+  - text: Ein tiefgangbehindertes Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein Grundsitzer von 50 und mehr Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-027
+  number: 27
+  question: Ein manövrierunfähiges Fahrzeug mit Fahrt durch das Wasser.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug mit Fahrt durch das Wasser von 50 und
+      mehr Meter Länge.
+    isCorrect: true
+  - text: Ein manövrierbehindertes Fahrzeug mit Fahrt durch das Wasser.
+    isCorrect: false
+  - text: Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durch das Wasser von
+      50 und mehr Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-028
+  number: 28
+  question: Ein manövrierunfähiges Fahrzeug.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug in Fahrt.
+    isCorrect: true
+  - text: Ein fischendes Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein Grundsitzer von 50 und mehr Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-029
+  number: 29
+  question: Zwei rote Rundumlichter senkrecht übereinander.
+  options:
+  - text: Zwei rote Rundumlichter senkrecht übereinander und zusätzlich die Seitenlichter
+      und das Hecklicht.
+    isCorrect: true
+  - text: Drei rote Rundumlichter senkrecht übereinander.
+    isCorrect: false
+  - text: Drei rote Rundumlichter senkrecht übereinander und zusätzlich die Seitenlichter
+      und das Hecklicht.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-030
+  number: 30
+  question: Zwei rote Rundumlichter senkrecht übereinander und zusätzlich die Seitenlichter
+    und das Hecklicht.
+  options:
+  - text: Zwei rote Rundumlichter senkrecht übereinander.
+    isCorrect: true
+  - text: Drei rote Rundumlichter senkrecht übereinander.
+    isCorrect: false
+  - text: Drei rote Rundumlichter senkrecht übereinander und zusätzlich die Seitenlichter
+      und das Hecklicht.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-031
+  number: 31
+  question: Ein manövrierbehindertes Fahrzeug in Fahrt.
+  options:
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt.
+    isCorrect: true
+  - text: Ein fischendes Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein Grundsitzer von weniger als 50 m Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-032
+  number: 32
+  question: Ein manövrierbehindertes Fahrzeug mit Fahrt durch das Wasser von 50 und
+    mehr Meter Länge.
+  options:
+  - text: Ein manövrierunfähiges Fahrzeug mit Fahrt durch das Wasser von 50 und mehr
+      Meter Länge.
+    isCorrect: true
+  - text: Ein manövrierbehindertes Fahrzeug ohne Fahrt durch das Wasser von 50 und
+      mehr Meter Länge.
+    isCorrect: false
+  - text: Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durch das Wasser von
+      50 und mehr Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-033
+  number: 33
+  question: Ein manövrierbehindertes Fahrzeug.
+  options:
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt.
+    isCorrect: true
+  - text: Ein fischendes Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein Grundsitzer von weniger als 50 m Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-034
+  number: 34
+  question: Ein Grundsitzer von weniger als 50 m Länge.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug.
+    isCorrect: true
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein Grundsitzer von 50 m und mehr Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-035
+  number: 35
+  question: Ein Grundsitzer.
+  options:
+  - text: Ein manövrierunfähiges Fahrzeug.
+    isCorrect: true
+  - text: Ein manövrierbehindertes Fahrzeug.
+    isCorrect: false
+  - text: Ein fischendes Fahrzeug.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-036
+  number: 36
+  question: Ein Grundsitzer von 50 und mehr Meter Länge.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug.
+    isCorrect: true
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein Grundsitzer von weniger als 50 m Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-037
+  number: 37
+  question: Ein tiefgangbehindertes Fahrzeug von 50 und mehr Meter Länge in Fahrt.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug.
+    isCorrect: true
+  - text: Ein manövrierunfähiges Fahrzeug.
+    isCorrect: false
+  - text: Ein Grundsitzer von weniger als 50 m Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-038
+  number: 38
+  question: Ein tiefgangbehindertes Fahrzeug in Fahrt.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug in Fahrt.
+    isCorrect: true
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein Grundsitzer von weniger als 50 Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-039
+  number: 39
+  question: Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durch das Wasser
+    von 50 und mehr Meter Länge.
+  options:
+  - text: Ein fischendes Fahrzeug in Fahrt, das nicht trawlt, z. B. Treibnetzfischer.
+    isCorrect: true
+  - text: Ein Behördenfahrzeug im Einsatz.
+    isCorrect: false
+  - text: Ein manövrierbehindertes Fahrzeug in Fahrt.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-040
+  number: 40
+  question: Ein fischendes Fahrzeug in Fahrt oder vor Anker, das nicht trawlt, z.
+    B. Treibnetzfischer.
+  options:
+  - text: Ein Lotsenfahrzeug im Einsatz.
+    isCorrect: true
+  - text: Ein manövrierbehindertes Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durchs Wasser von 50
+      und mehr Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-041
+  number: 41
+  question: Ein fischendes Fahrzeug in Fahrt oder vor Anker.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug.
+    isCorrect: true
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt.
+    isCorrect: false
+  - text: Ein Grundsitzer von weniger als 50 m Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-042
+  number: 42
+  question: Segelfahrzeuge, Ruderboote und geschleppte Fahrzeuge.
+  options:
+  - text: Segelfahrzeuge, Ruderboote und Maschinenfahrzeuge in Fahrt von weniger als
+      50 m Länge.
+    isCorrect: true
+  - text: Segelfahrzeuge, fischende Fahrzeuge und geschleppte Fahrzeuge.
+    isCorrect: false
+  - text: Segelfahrzeuge, Grundsitzer und geschleppte Fahrzeuge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-043
+  number: 43
+  question: Ein weißes Rundumlicht an gut sichtbarer Stelle.
+  options:
+  - text: Ein rotes Rundumlicht an gut sichtbarer Stelle.
+    isCorrect: true
+  - text: Zwei weiße Rundumlichter an gut sichtbarer Stelle.
+    isCorrect: false
+  - text: Zwei rote Rundumlichter an gut sichtbarer Stelle.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-044
+  number: 44
+  question: Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge.
+  options:
+  - text: Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durchs Wasser von 50
+      und mehr Meter Länge.
+    isCorrect: true
+  - text: Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten
+      ausführt und dabei die Schifffahrt behindert.
+    isCorrect: false
+  - text: Ein Grundsitzer von 200 und mehr Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-045
+  number: 45
+  question: Ein Maschinenfahrzeug, das Fahrt durchs Wasser macht.
+  options:
+  - text: Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes
+      in Fahrt.
+    isCorrect: true
+  - text: Ein Fahrzeug mit gefährlicher Ladung vor Anker von weniger als 100 m Länge.
+    isCorrect: false
+  - text: Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-046
+  number: 46
+  question: Ein Maschinenfahrzeug in Fahrt, das seine Maschine gestoppt hat und keine
+    Fahrt durchs Wasser macht.
+  options:
+  - text: Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes
+      in Fahrt.
+    isCorrect: true
+  - text: Ein Fahrzeug mit gefährlicher Ladung vor Anker von weniger als 100 m Länge.
+    isCorrect: false
+  - text: Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-047
+  number: 47
+  question: Ein manövrierunfähiges Fahrzeug in Fahrt, ein manövrierbehindertes Fahrzeug
+    in Fahrt oder vor Anker, ein tiefgangbehindertes Fahrzeug in Fahrt, ein Segelfahrzeug
+    in Fahrt, ein schleppendes oder schiebendes Fahrzeug in Fahrt, ein fischendes
+    Fahrzeug in Fahrt oder vor Anker.
+  options:
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt, ein manövrierbehindertes Fahrzeug
+      in Fahrt oder vor Anker, ein tiefgangbehindertes Fahrzeug in Fahrt, ein Maschinenfahrzeug
+      in Fahrt, das Fahrt durchs Wasser macht, ein schleppendes oder schiebendes Fahrzeug
+      in Fahrt, ein fischendes Fahrzeug in Fahrt oder vor Anker.
+    isCorrect: true
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt, ein manövrierbehindertes Fahrzeug
+      in Fahrt oder vor Anker, ein tiefgangbehindertes Fahrzeug in Fahrt, ein Segelfahrzeug
+      in Fahrt, ein schleppendes oder schiebendes Fahrzeug in Fahrt, ein fischendes
+      Fahrzeug in Fahrt oder vor Anker, ein Maschinenfahrzeug in Fahrt, das seine
+      Maschine gestoppt hat und keine Fahrt durchs Wasser macht.
+    isCorrect: false
+  - text: Ein manövrierunfähiges Fahrzeug in Fahrt, ein manövrierbehindertes Fahrzeug
+      in Fahrt oder vor Anker, ein tiefgangbehindertes Fahrzeug in Fahrt, ein Segelfahrzeug
+      in Fahrt, ein schleppendes oder schiebendes Fahrzeug in Fahrt, ein geschlepptes
+      Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes in Fahrt,
+      ein fischendes Fahrzeug in Fahrt oder vor Anker.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-048
+  number: 48
+  question: Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes
+    in Fahrt.
+  options:
+  - text: Ein Maschinenfahrzeug in Fahrt, das seine Maschine gestoppt hat und keine
+      Fahrt durchs Wasser macht.
+    isCorrect: true
+  - text: Ein Fahrzeug mit gefährlicher Ladung vor Anker von weniger als 100 m Länge.
+    isCorrect: false
+  - text: Ein manövrierunfähiges Fahrzeug von weniger als 100 m Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-049
+  number: 49
+  question: Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife,
+    und zwar lang, kurz, kurz
+  options:
+  - text: Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife,
+      und zwar lang, lang, kurz
+    isCorrect: true
+  - text: Mindestens alle zwei Minuten ein kräftiges Schallsignal, das mit den vorgeschriebenen
+      nicht verwechselt werden kann.
+    isCorrect: false
+  - text: Mit der Pfeife kurz, lang, kurz
+    isCorrect: false
+  category: spezifische-see
+  assets:
+  - assets/Schallsignal-Frage-118-gif.gif
+- id: sbf-see-spe-050
+  number: 50
+  question: Mindestens alle zwei Minuten ein kräftiges Schallsignal, das mit den vorgeschriebenen
+    nicht verwechselt werden kann.
+  options:
+  - text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife,\
+      \ und zwar lang, kurz, kurz \n\n \n."
+    isCorrect: true
+  - text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife,\
+      \ und zwar lang, lang, kurz \n\n \n."
+    isCorrect: false
+  - text: "Mit der Pfeife kurz, lang, kurz \n\n \n."
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-051
+  number: 51
+  question: Ein Fahrzeug vor Anker von weniger als 100 m Länge.
+  options:
+  - text: Ein Fahrzeug vor Anker von 100 und mehr Meter Länge.
+    isCorrect: true
+  - text: Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes
+      in Fahrt.
+    isCorrect: false
+  - text: Ein Maschinenfahrzeug in Fahrt, das seine Maschine gestoppt hat und keine
+      Fahrt durchs Wasser macht.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-052
+  number: 52
+  question: Ein Fahrzeug vor Anker von 100 und mehr Meter Länge.
+  options:
+  - text: Ein Fahrzeug vor Anker von weniger als 100 m Länge.
+    isCorrect: true
+  - text: Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes
+      in Fahrt.
+    isCorrect: false
+  - text: Ein Maschinenfahrzeug in Fahrt, das seine Maschine gestoppt hat und keine
+      Fahrt durchs Wasser macht.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-053
+  number: 53
+  question: "Mit der Pfeife kurz, lang, kurz \n\n \n."
+  options:
+  - text: Mindestens alle zwei Minuten ein kräftiges Schallsignal, das mit den vorgeschriebenen
+      nicht verwechselt werden kann.
+    isCorrect: true
+  - text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife,\
+      \ und zwar lang, kurz, kurz \n\n \n."
+    isCorrect: false
+  - text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife,\
+      \ und zwar lang, lang, kurz \n\n \n."
+    isCorrect: false
+  category: spezifische-see
+  assets:
+  - assets/Schallsignal-d-Frage-120-gif.gif
+- id: sbf-see-spe-054
+  number: 54
+  question: Wenn sich der Abstand zum anderen Fahrzeug verringert und sich die Peilung
+    nicht oder nicht merklich ändert.
+  options:
+  - text: Wenn sich der Abstand zum anderen Fahrzeug verringert und sich der Kurs
+      nicht oder nicht merklich ändert.
+    isCorrect: true
+  - text: Wenn sich der Abstand zum anderen Fahrzeug verringert und sich die Kompasspeilung
+      ändert.
+    isCorrect: false
+  - text: Wenn sich der Abstand zum anderen Fahrzeug verringert und sich der Kurs
+      ändert.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-055
+  number: 55
+  question: Das luvwärtige Fahrzeug dem leewärtigen Fahrzeug.
+  options:
+  - text: Das leewärtige Fahrzeug dem luvwärtigen Fahrzeug.
+    isCorrect: true
+  - text: Dasjenige Fahrzeug, das den Wind von Backbord hat.
+    isCorrect: false
+  - text: Dasjenige Fahrzeug, das den Wind von Steuerbord hat.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-056
+  number: 56
+  question: Jedes Fahrzeug muss seinen Kurs nach Steuerbord ändern.
+  options:
+  - text: Jedes Fahrzeug muss seinen Kurs nach Backbord ändern.
+    isCorrect: true
+  - text: Es muss das luvwärtige Fahrzeug dem leewärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  - text: Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-057
+  number: 57
+  question: Das Maschinenfahrzeug muss ausweichen.
+  options:
+  - text: Das Maschinenfahrzeug muss Kurs und Geschwindigkeit beibehalten.
+    isCorrect: true
+  - text: Das Maschinenfahrzeug muss seine Fahrt verringern.
+    isCorrect: false
+  - text: Das Maschinenfahrzeug muss vorsichtig manövrieren bis die Gefahr vorüber
+      ist.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-058
+  number: 58
+  question: Das Maschinenfahrzeug muss ausweichen.
+  options:
+  - text: Das Maschinenfahrzeug muss Kurs und Geschwindigkeit beibehalten.
+    isCorrect: true
+  - text: Das Maschinenfahrzeug muss seinen Kurs nach Steuerbord ändern.
+    isCorrect: false
+  - text: Das Maschinenfahrzeug muss seine Fahrt verringern.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-059
+  number: 59
+  question: Das Maschinenfahrzeug muss ausweichen.
+  options:
+  - text: Das Maschinenfahrzeug muss Kurs und Geschwindigkeit beibehalten.
+    isCorrect: true
+  - text: Das Maschinenfahrzeug muss seinen Kurs nach Steuerbord ändern.
+    isCorrect: false
+  - text: Das Maschinenfahrzeug muss seine Fahrt verringern.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-060
+  number: 60
+  question: Das Maschinenfahrzeug muss ausweichen.
+  options:
+  - text: Das Maschinenfahrzeug muss Kurs und Geschwindigkeit beibehalten.
+    isCorrect: true
+  - text: Das Maschinenfahrzeug muss seinen Kurs nach Steuerbord ändern.
+    isCorrect: false
+  - text: Das Maschinenfahrzeug muss vorsichtig manövrieren, bis die Gefahr vorüber
+      ist.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-061
+  number: 61
+  question: Das Segelfahrzeug muss ausweichen.
+  options:
+  - text: Das Segelfahrzeug muss seinen Kurs nach Steuerbord ändern.
+    isCorrect: true
+  - text: Das Segelfahrzeug darf die sichere Durchfahrt nicht behindern.
+    isCorrect: false
+  - text: Das Segelfahrzeug muss Kurs und Geschwindigkeit zunächst beibehalten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-062
+  number: 62
+  question: Die sichere Durchfahrt des Fahrzeugs darf nicht behindert werden.
+  options:
+  - text: Das Fahrzeug muss an Steuerbord passiert werden.
+    isCorrect: true
+  - text: Sog und Wellenschlag vermeiden.
+    isCorrect: false
+  - text: Kurs und Geschwindigkeit beibehalten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-063
+  number: 63
+  question: Die sichere Durchfahrt des Fahrzeugs darf nicht behindert werden.
+  options:
+  - text: Das Fahrzeug muss an Steuerbord passiert werden.
+    isCorrect: true
+  - text: Sog und Wellenschlag vermeiden.
+    isCorrect: false
+  - text: Kurs und Geschwindigkeit beibehalten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-064
+  number: 64
+  question: Kurs und Geschwindigkeit zunächst beibehalten und dem Ausweichpflichtigen
+    besondere Aufmerksamkeit widmen.
+  options:
+  - text: Kurs oder Geschwindigkeit anpassen und dem Ausweichpflichtigen besondere
+      Aufmerksamkeit widmen.
+    isCorrect: true
+  - text: Kurs nach Steuerbord ändern. Geschwindigkeit verringern und dem Ausweichpflichtigen
+      besondere Aufmerksamkeit widmen.
+    isCorrect: false
+  - text: Kurs nach Steuerbord ändern, Geschwindigkeit zunächst beibehalten und dem
+      Ausweichpflichtigen besondere Aufmerksamkeit widmen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-065
+  number: 65
+  question: Das Ausweichmanöver muss frühzeitig, durchgreifend und klar erkennbar
+    durchgeführt werden.
+  options:
+  - text: Der Kurs muss bei Annäherung an den Kurshalter Schritt für Schritt so angepasst
+      werden, dass das Heck des Anderen sicher umfahren wird.
+    isCorrect: true
+  - text: Das Manöver des letzten Augenblicks ist durchzuführen. Es muss so ausgewichen
+      werden, wie es zur Vermeidung eines Zusammenstoßes am dienlichsten ist.
+    isCorrect: false
+  - text: Die Fahrt ist auf das für die Steuerfähigkeit erforderliche Mindestmaß zu
+      reduzieren; im Zweifelsfall muss ganz aufgestoppt werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-066
+  number: 66
+  question: Es hat dem zu überholenden Fahrzeug auszuweichen.
+  options:
+  - text: Es muss den größtmöglichen Abstand zum überholten Fahrzeug einhalten und
+      Sog und Wellenschlag vermeiden.
+    isCorrect: true
+  - text: Es darf die sichere Durchfahrt des zu überholenden Fahrzeugs nicht behindern.
+    isCorrect: false
+  - text: Es muss vor dem Überholen ein Schallsignal abgeben, um die Zustimmung des
+      zu überholenden Fahrzeugs einzuholen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-067
+  number: 67
+  question: Es ist ebenfalls ein Schallsignal abzugeben und die Fahrt soweit zu verlangsamen,
+    dass die Steuerfähigkeit noch erhalten bleibt. Erforderlichenfalls ist ganz aufzustoppen.
+    In jedem Fall ist vorsichtig zu manövrieren, bis die Gefahr eines Zusammenstoßes
+    vorüber ist.
+  options:
+  - text: Es ist ebenfalls ein Schallsignal abzugeben und frühzeitig, durchgreifend
+      und klar erkennbar auszuweichen.
+    isCorrect: true
+  - text: Es sind mindestens fünf kurze Töne mit der Pfeife abzugeben und das Manöver
+      des letzten Augenblicks durchzuführen. Dabei ist so zu manövrieren, wie es zur
+      Vermeidung eines Zusammenstoßes am dienlichsten ist.
+    isCorrect: false
+  - text: Es ist ebenfalls ein Schallsignal abzugeben. Kurs und Geschwindigkeit sind
+      so lange beizubehalten, bis das andere Fahrzeug in Sicht kommt. Dann ist die
+      Ausweichsituation nach KVR zu prüfen und man muss sich entsprechend verhalten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-068
+  number: 68
+  question: Man gibt mindestens fünf kurze Töne mit der Pfeife ab und führt das "Manöver
+    des letzten Augenblicks" durch. Dabei ist so zu manövrieren, wie es zur Vermeidung
+    eines Zusammenstoßes am dienlichsten ist.
+  options:
+  - text: Man gibt ein Schallsignal (vier kurze Töne) ab und verlangsamt die Fahrt
+      soweit, dass die Steuerfähigkeit noch erhalten bleibt. Erforderlichenfalls ist
+      ganz aufzustoppen. In jedem Fall ist vorsichtig zu manövrieren, bis die Gefahr
+      eines Zusammenstoßes vorüber ist.
+    isCorrect: true
+  - text: Man gibt mindestens fünf kurze Töne mit der Pfeife ab und reduziert die
+      Geschwindigkeit, um Sog und Wellenschlag zu vermeiden.
+    isCorrect: false
+  - text: Man behält Kurs und Geschwindigkeit zunächst bei und widmet dem Ausweichpflichtigen
+      besondere Aufmerksamkeit.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-069
+  number: 69
+  question: Ein ausweichpflichtiges Fahrzeug wird auf seine Ausweichpflicht aufmerksam
+    gemacht.
+  options:
+  - text: Allgemeines Gefahren- und Warnsignal.
+    isCorrect: true
+  - text: Bleib-Weg-Signal, Explosionsgefahr durch gefährliche Güter. Sofort den Gefahrenbereich
+      verlassen. Feuer und Zündfunken vermeiden.
+    isCorrect: false
+  - text: Seeschifffahrtsstraße gesperrt. Weiterfahrt verboten, sofort aufstoppen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-070
+  number: 70
+  question: Ein Ankerlieger macht ein sich näherndes Fahrzeug auf eine gefährliche
+    Annäherung aufmerksam.
+  options:
+  - text: Die Maschine des Fahrzeugs läuft rückwärts.
+    isCorrect: true
+  - text: Schutzbedürftige Anlage; Geschwindigkeit reduzieren, Sog und Wellenschlag
+      vermeiden.
+    isCorrect: false
+  - text: Maschinenfahrzeug, das seine Maschinen gestoppt hat und keine Fahrt durchs
+      Wasser macht.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-071
+  number: 71
+  question: Auf dem entsprechenden Einbahnweg in der allgemeinen Verkehrsrichtung
+    fahren, soweit wie möglich von der Trennzone/Trennlinie klar halten, in der Regel
+    an den Enden des Einbahnweges ein- oder auslaufen, seitliches Ein- oder Auslaufen
+    in möglichst kleinem Winkel zur allgemeinen Verkehrsrichtung.
+  options:
+  - text: Auf dem entsprechenden Einbahnweg in Verkehrsrichtung links von der Trennzone
+      fahren, so nah wie möglich an der Trennzone/Trennlinie fahren, in der Regel
+      an den Enden des Einbahnweges ein- oder auslaufen, seitliches Ein- oder Auslaufen
+      in möglichst rechtem Winkel zur allgemeinen Verkehrsrichtung.
+    isCorrect: true
+  - text: Die Benutzung von Verkehrstrennungsgebieten ist für Segelfahrzeuge sowie
+      für Maschinenfahrzeuge unter 20 m Länge nicht gestattet. Diese Fahrzeuge haben
+      sich soweit wie möglich von Verkehrstrennungsgebieten klar zu halten und müssen
+      durch ihren Kurs klar zu erkennen geben, dass sie ein Verkehrstrennungsgebiet
+      nicht benutzen.
+    isCorrect: false
+  - text: Auf den entsprechenden Einbahnwegen in der allgemeinen Verkehrsrichtung
+      fahrende Fahrzeuge müssen sich soweit wie möglich von der Trennzone/Trennlinie
+      klar halten und haben Vorfahrt gegenüber allen Fahrzeugen, die in ein Verkehrstrennungsgebiet
+      einlaufen oder ein solches queren.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-072
+  number: 72
+  question: Das Queren ist möglichst zu vermeiden. Falls gequert werden muss, hat
+    dies möglichst mit der Kielrichtung im rechten Winkel zur allgemeinen Verkehrsrichtung
+    zu erfolgen. Die Kielrichtung des querenden Fahrzeugs muss auch dann einen rechten
+    Winkel zur allgemeinen Verkehrsrichtung bilden, wenn das Fahrzeug durch Wind oder
+    Strom versetzt wird.
+  options:
+  - text: Das Queren ist möglichst zu vermeiden. Falls gequert werden muss, hat dies
+      möglichst mit einem rechtweisenden Kurs zur allgemeinen Verkehrsrichtung zu
+      erfolgen. Der rechtweisende Kurs des querenden Fahrzeugs muss auch dann einen
+      rechten Winkel zur allgemeinen Verkehrsrichtung bilden, wenn das Fahrzeug durch
+      Wind oder Strom versetzt wird.
+    isCorrect: true
+  - text: Das Queren von Verkehrstrennungsgebieten ist für Segelfahrzeuge sowie für
+      Maschinenfahrzeuge unter 20 m Länge verboten. Diese Fahrzeuge haben sich soweit
+      wie möglich von den Enden der Verkehrstrennungsgebiete klar zu halten und müssen
+      durch ihren Kurs zu erkennen geben, dass sie ein Verkehrstrennungsgebiet nicht
+      queren.
+    isCorrect: false
+  - text: Das Queren ist möglichst zu vermeiden. Falls gequert werden muss, hat dies
+      mit der Kielrichtung in einem möglichst spitzen Winkel zur allgemeinen Verkehrsrichtung
+      zu erfolgen. Die Kielrichtung des querenden Fahrzeugs muss auch dann einen möglichst
+      spitzen Winkel zur allgemeinen Verkehrsrichtung bilden, wenn das Fahrzeug durch
+      Wind oder Strom versetzt wird.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-073
+  number: 73
+  question: In den Kollisionsverhütungsregeln.
+  options:
+  - text: In der Seeschifffahrtsstraßen-Ordnung.
+    isCorrect: true
+  - text: In den Kollisionsverhütungsregeln und der Seeschifffahrtsstraßen-Ordnung.
+    isCorrect: false
+  - text: In den "Bekanntmachungen der Generaldirektion Wasserstraßen und Schifffahrt
+      (GDWS)".
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-074
+  number: 74
+  question: Es muss dem anderen Fahrzeug ausweichen.
+  options:
+  - text: Es darf die sichere Durchfahrt des Maschinenfahrzeugs nicht behindern.
+    isCorrect: true
+  - text: Dem querenden Fahrzeug hat es besondere Aufmerksamkeit zu widmen.
+    isCorrect: false
+  - text: Es muss das Manöver des letzten Augenblicks durchführen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-075
+  number: 75
+  question: Es darf die sichere Durchfahrt des Maschinenfahrzeugs nicht behindern.
+  options:
+  - text: Es unterliegt der Kurshaltepflicht. Kurs und Geschwindigkeit sind beizubehalten.
+    isCorrect: true
+  - text: Es muss warten. Alle dem Einbahnweg folgenden Fahrzeuge haben Vorfahrt.
+    isCorrect: false
+  - text: Es hat Vorfahrt. Alle dem Einbahnweg folgenden Fahrzeuge müssen warten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-076
+  number: 76
+  question: Sie dürfen die sichere Durchfahrt eines dem Einbahnweg folgenden Maschinenfahrzeugs
+    nicht behindern.
+  options:
+  - text: Sie gelten als Kleinfahrzeuge und dürfen Verkehrstrennungsgebiete nicht
+      befahren.
+    isCorrect: true
+  - text: Sie gelten als Kleinfahrzeuge und dürfen Verkehrstrennungsgebiete nur am
+      Tage und bei guter Sicht befahren.
+    isCorrect: false
+  - text: Sie dürfen die Trennzone befahren, damit der durchgehende Verkehr nicht
+      behindert wird.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-077
+  number: 77
+  question: Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten
+    ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren,
+    an der zwei schwarze Rhomben senkrecht übereinander angeordnet sind.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug, das die Schifffahrt behindert. Es ist
+      an der Seite zu passieren, an der zwei schwarze Bälle senkrecht übereinander
+      angeordnet sind.
+    isCorrect: true
+  - text: Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten
+      ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren,
+      die in meiner Fahrtrichtung rechts liegt.
+    isCorrect: false
+  - text: Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten
+      ausführt und dabei die Schifffahrt behindert. Es darf an keiner Seite passiert
+      werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-078
+  number: 78
+  question: Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser, das baggert
+    oder Unterwasserarbeiten ausführt und dabei die Schifffahrt nicht behindert. Es
+    ist an der Seite zu passieren, die in Fahrtrichtung rechts liegt.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser, das baggert oder
+      Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an
+      der Seite zu passieren, die in Fahrtrichtung links liegt.
+    isCorrect: true
+  - text: Ein manövrierunfähiges Fahrzeug mit Fahrt durchs Wasser, das baggert oder
+      Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an
+      der Seite zu passieren, die in Fahrtrichtung rechts liegt.
+    isCorrect: false
+  - text: Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser, das baggert oder
+      Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es darf an
+      beiden Seiten passiert werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-079
+  number: 79
+  question: Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das baggert
+    oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist
+    an der Seite zu passieren, an der zwei grüne Rundumlichter senkrecht übereinander
+    angeordnet sind.
+  options:
+  - text: Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das die Schifffahrt
+      behindert. Es ist an der Seite zu passieren, an der zwei rote Rundumlichter
+      senkrecht übereinander angeordnet sind.
+    isCorrect: true
+  - text: Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das baggert
+      oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist
+      an der Seite zu passieren, die in Fahrtrichtung links liegt.
+    isCorrect: false
+  - text: Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das baggert
+      oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist
+      an der Steuerbordseite des Fahrwassers (Rechtsfahrgebot) zu passieren.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-080
+  number: 80
+  question: Fahrzeug mit gefährlichen Gütern, Abstand halten, Rauchen und offenes
+    Feuer verboten.
+  options:
+  - text: Fahrzeug des öffentlichen Dienstes. Es darf von den Verkehrsregeln abweichen.
+    isCorrect: true
+  - text: Fahrzeug in Seenot. Hilfe leisten bzw. weitere Hilfe anfordern.
+    isCorrect: false
+  - text: Fahrzeug mit Taucher im Einsatz. Großen Abstand halten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-081
+  number: 81
+  question: Seeschifffahrtsstraßen-Ordnung und Schifffahrtsordnung Emsmündung.
+  options:
+  - text: Seeschifffahrtsstraßen-Ordnung und Kollisionsverhütungsregeln.
+    isCorrect: true
+  - text: Kollisionsverhütungsregeln und Schifffahrtsordnung Emsmündung.
+    isCorrect: false
+  - text: Kollisionsverhütungsregeln und Seeaufgabengesetz.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-082
+  number: 82
+  question: Die Bekanntmachungen der Generaldirektion Wasserstraßen und Schifffahrt
+    (GDWS), die besondere örtliche Regelungen enthalten und Hinweise für die einzelnen
+    Seeschifffahrtsstraßen geben.
+  options:
+  - text: Die Nachrichten für Seefahrer (NfS), herausgegeben vom Bundesamt für Seeschifffahrt
+      und Hydrographie, sowie die Bekanntmachungen für Seefahrer (BfS) der örtlich
+      zuständigen Wasserstraßen- und Schifffahrtsämter, die auf alle Veränderungen
+      hinsichtlich Betonnung, Befeuerung, Wracks und Untiefen sowie auf die Schifffahrt
+      betreffende Maßnahmen und Ereignisse hinweisen.
+    isCorrect: true
+  - text: Die Bekanntmachung der Generaldirektion Wasserstraßen und Schifffahrt (GDWS)
+      sowie die nautische Veröffentlichung "Sicherheit auf dem Wasser", herausgegeben
+      durch das Bundesministerium für Digitales und Verkehr (BMDV), mit wichtigen
+      Regeln und Tipps für Wassersportler.
+    isCorrect: false
+  - text: Das Seesicherheitsuntersuchungsgesetz sowie die Verordnung über die Sicherung
+      der Seefahrt, die jeweils wichtige Vorschriften über das Verhalten nach einem
+      Zusammenstoß auf den jeweiligen Seeschifffahrtsstraßen enthalten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-083
+  number: 83
+  question: Fahrzeug des öffentlichen Dienstes im Einsatz. Es darf von den Verkehrsvorschriften
+    abweichen.
+  options:
+  - text: Fahrzeug der Bundesmarine im Einsatz. Es hat Munition oder andere Gefahrgüter
+      an Bord.
+    isCorrect: true
+  - text: Lotsenfahrzeug mit Sonderrechten im Einsatz. Es darf vom Rechtsfahrgebot
+      abweichen.
+    isCorrect: false
+  - text: Tiefgangbehindertes Fahrzeug. Es darf nicht behindert werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-084
+  number: 84
+  question: Fahrzeug der Bundeswehr, der Bundespolizei oder Maschinenfahrzeug, das
+    Schießscheiben schleppt bei Übungen. Man hält sich frei.
+  options:
+  - text: Fahrzeug, das mit Netzen, Leinen, Schleppnetzen oder anderen Fanggeräten
+      fischt und auf sich aufmerksam macht. Ausreichenden Abstand halten.
+    isCorrect: true
+  - text: Fahrzeug in Seenot, das auf sich aufmerksam macht. Hilfe leisten, ggf. weitere
+      Hilfe anfordern.
+    isCorrect: false
+  - text: Maschinenfahrzeug über 50 m Länge bei der Anforderung eines Lotsen. Man
+      behält Kurs und Geschwindigkeit bei.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-085
+  number: 85
+  question: Es sind Wasserflächen, die durchgehend durch Fahrwasserseitenbezeichnung
+    begrenzt oder gekennzeichnet sind, binnenwärts der Flussmündungen auch nicht gekennzeichnete
+    Wasserflächen, die für die durchgehende Schifffahrt bestimmt sind.
+  options:
+  - text: Es sind Wasserflächen, die für Seeschiffe zugelassen sind; binnenwärts der
+      Flussmündungen sind auch Binnenschiffe und Sportboote zugelassen.
+    isCorrect: true
+  - text: Es sind Wasserflächen, die durchgehend durch Fahrwasserseitenbezeichnung
+      begrenzt oder gekennzeichnet sind und auf denen das Wasserskifahren sowie das
+      Fahren mit Wassermotorrädern erlaubt ist, sofern die durchgehende Schifffahrt
+      nicht behindert wird.
+    isCorrect: false
+  - text: Es sind Wasserflächen, die durchgehend durch Fahrwasserseitenbezeichnung
+      begrenzt oder gekennzeichnet sind und auf denen die Sportbootführerscheinverordnung
+      Gültigkeit hat.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-086
+  number: 86
+  question: Es ist die Seite, die ein von See kommendes Schiff an seiner Steuerbordseite
+    hat.
+  options:
+  - text: Es ist die Seite, die ein von See kommendes Schiff an seiner Backbordseite
+      hat.
+    isCorrect: true
+  - text: Es ist die Seite, die von See kommend mit roten Tonnen bezeichnet ist.
+    isCorrect: false
+  - text: Es ist die Seite, auf der die Tonnen mit fortlaufenden geraden Zahlen gekennzeichnet
+      sind.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-087
+  number: 87
+  question: Er ist verpflichtet, die von der Verkehrszentrale gegebenen Verkehrsinformationen
+    und -unterstützungen abzuhören und zu berücksichtigen.
+  options:
+  - text: Er ist verpflichtet, bei der Nutzung einer UKW-Funkanlage im Besitz des
+      entsprechenden Funkzeugnisses zu sein.
+    isCorrect: true
+  - text: Er ist verpflichtet, bei verminderter Sicht regelmäßig seinen Schiffsnamen
+      und seine Position der Verkehrszentrale mitzuteilen.
+    isCorrect: false
+  - text: Er ist verpflichtet, die Funkanlage während der Fahrt in Betrieb zu halten
+      und alle sein Fahrzeug betreffenden Mitteilungen im Schiffslogbuch festzuhalten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-088
+  number: 88
+  question: Ein weißes Rundumlicht.
+  options:
+  - text: Ein rotes Rundumlicht.
+    isCorrect: true
+  - text: Ein weißes Topplicht.
+    isCorrect: false
+  - text: Eine Dreifarbenlaterne.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-089
+  number: 89
+  question: Es darf in der Zeit, in der die Lichterführung vorgeschrieben ist, nicht
+    fahren, es sei denn, dass ein Notstand vorliegt.
+  options:
+  - text: Es darf in der Zeit zwischen Sonnenaufgang und Sonnenuntergang nicht fahren.
+    isCorrect: true
+  - text: Es darf in der Zeit, in der die Lichterführung vorgeschrieben ist, nur dann
+      fahren, wenn ein betriebsbedingtes Signalhorn an Bord ist.
+    isCorrect: false
+  - text: Es darf in der Zeit zwischen Sonnenuntergang und Sonnenaufgang nicht fahren.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-090
+  number: 90
+  question: Ein langer Ton.
+  options:
+  - text: Ein kurzer Ton.
+    isCorrect: true
+  - text: Ein kurzer und ein langer Ton.
+    isCorrect: false
+  - text: Ein langer und ein kurzer Ton.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-091
+  number: 91
+  question: Allgemeines "Gefahr- und Warnsignal".
+  options:
+  - text: Sperrung der Seeschifffahrtsstraße.
+    isCorrect: true
+  - text: Sofort anhalten (Fahrzeug des öffentlichen Dienstes).
+    isCorrect: false
+  - text: Brücke/Schleuse kann vorübergehend nicht geöffnet werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-092
+  number: 92
+  question: Zwei Gruppen von je einem langen und vier kurzen Tönen.
+  options:
+  - text: Zwei Gruppen von je drei langen Tönen.
+    isCorrect: true
+  - text: Zwei Gruppen von je vier kurzen Tönen.
+    isCorrect: false
+  - text: Zwei Gruppen von je einem kurzen und vier langen Tönen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-093
+  number: 93
+  question: Wenn ein Fahrzeug ein anderes Fahrzeug gefährdet oder durch dieses selbst
+    gefährdet wird.
+  options:
+  - text: Wenn ein Fahrzeug ein anderes Fahrzeug im Fahrwasser an Steuerbord überholen
+      will.
+    isCorrect: true
+  - text: Wenn ein Fahrzeug einem anderen Fahrzeug nicht ausweichen kann.
+    isCorrect: false
+  - text: Wenn ein Fahrzeug ein anderes Fahrzeug zur Hilfeleistung auffordert.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-094
+  number: 94
+  question: Sie haben die Vorfahrt der dem Fahrwasserverlauf folgenden Fahrzeuge zu
+    beachten.
+  options:
+  - text: Sie haben die Vorfahrt vor den Fahrzeugen im Fahrwasser.
+    isCorrect: true
+  - text: Sie haben einen kurzen Ton als Achtungssignal abzugeben.
+    isCorrect: false
+  - text: Sie haben ihr Manöver so durchzuführen, dass andere Fahrzeuge nicht behindert
+      werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-095
+  number: 95
+  question: Sie haben untereinander nach den Regeln der KVR auszuweichen, wenn sie
+    dadurch vorfahrtberechtigte Fahrzeuge nicht gefährden oder behindern.
+  options:
+  - text: Sie haben untereinander nach den Regeln der Seeschifffahrtsstraßen-Ordnung
+      auszuweichen, wenn sie dadurch vorfahrtberechtigte Fahrzeuge nicht gefährden
+      oder behindern.
+    isCorrect: true
+  - text: Sie haben untereinander nach den Regeln der Schifffahrtsordnung Emsmündung
+      auszuweichen, wenn sie dadurch vorfahrtberechtigte Fahrzeuge nicht gefährden
+      oder behindern.
+    isCorrect: false
+  - text: Sie haben untereinander nach den Regeln der Binnenschifffahrtsstraßen-Ordnung
+      auszuweichen, wenn sie dadurch vorfahrtberechtigte Fahrzeuge nicht gefährden
+      oder behindern.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-096
+  number: 96
+  question: Die Regeln der KVR.
+  options:
+  - text: Die Regeln der Seeschifffahrtsstraßen-Ordnung.
+    isCorrect: true
+  - text: Die Regeln der Schifffahrtsordnung Emsmündung.
+    isCorrect: false
+  - text: Die Regeln der Binnenschifffahrtsstraßen-Ordnung.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-097
+  number: 97
+  question: An Engstellen, unübersichtlichen Krümmungen, in Schleusenbereichen, innerhalb
+    durch Überholverbotszeichen gekennzeichneter Strecken, in der Nähe nicht frei
+    fahrender Fähren in Fahrt.
+  options:
+  - text: An Engstellen, unübersichtlichen Krümmungen, in Schleusenbereichen, innerhalb
+      durch Überholverbotszeichen gekennzeichneter Strecken, in der Nähe nicht frei
+      fahrender Fähren in Fahrt und außerhalb des Fahrwassers.
+    isCorrect: true
+  - text: An Engstellen, unübersichtlichen Krümmungen, in Schleusenbereichen, innerhalb
+      durch Überholverbotszeichen gekennzeichneter Strecken, in der Nähe nicht frei
+      fahrender Fähren in Fahrt, und in Verkehrstrennungsgebieten.
+    isCorrect: false
+  - text: An Engstellen, unübersichtlichen Krümmungen, innerhalb durch Überholverbotszeichen
+      gekennzeichneter Strecken und in Nationalparks und besonders ausgewiesenen Naturschutzgebieten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-098
+  number: 98
+  question: Außerhalb des Fahrwassers, wenn es nicht von der Generaldirektion Wasserstraßen
+    und Schifffahrt (GDWS) durch Bekanntmachung verboten ist. Im Fahrwasser auf Abschnitten,
+    die durch die GDWS bekanntgemacht oder durch blaue Tafeln mit dem weißen Symbol
+    eines Wasserskiläufers, eines Wassermotorrades oder eines Segelsurfers bezeichnet
+    sind.
+  options:
+  - text: Außerhalb der Seeschifffahrtsstraße, wenn es nicht von der Generaldirektion
+      Wasserstraßen und Schifffahrt (GDWS) durch Bekanntmachung verboten ist. Innerhalb
+      der Seeschifffahrtsstraße auf Abschnitten, die durch die GDWS bekanntgemacht
+      oder durch blaue Tafeln mit dem weißen Symbol eines Wasserskiläufers, eines
+      Wassermotorrades oder eines Segelsurfers bezeichnet sind.
+    isCorrect: true
+  - text: Auf der hohen See und auf den mit dieser zusammenhängenden, von Seeschiffen
+      befahrbaren Gewässern, sofern dabei ein Abstand von mindestens 100 m zum Ufer
+      eingehalten wird.
+    isCorrect: false
+  - text: Im Fahrwasser, wenn es nicht von der Generaldirektion Wasserstraßen und
+      Schifffahrt (GDWS) durch Bekanntmachung verboten ist. Außerhalb des Fahrwassers
+      auf Abschnitten, die durch die GDWS bekanntgemacht oder durch blaue Tafeln mit
+      dem weißen Symbol eines Wasserskiläufers, eines Wassermotorrades oder eines
+      Segelsurfers bezeichnet sind.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-099
+  number: 99
+  question: Sie haben auszuweichen.
+  options:
+  - text: Sie haben bei Annäherung an andere Fahrzeuge aufzustoppen und Sog und Wellenschlag
+      zu vermeiden.
+    isCorrect: true
+  - text: Sie haben Vorfahrt und müssen vor dem Bug des anderen Fahrzeugs kreuzen.
+    isCorrect: false
+  - text: Sie müssen Kurs und Geschwindigkeit beibehalten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-100
+  number: 100
+  question: Im Fahrwasser, an Engstellen und in unübersichtlichen Krümmungen; im Umkreis
+    von 300 m von schwimmenden Geräten, Wracks und sonstigen Schifffahrtshindernissen,
+    Kabeltonnen und sonstigen Stellen für militärische und zivile Zwecke; vor Hafeneinfahrten,
+    Schleusen, Anlegestellen und Sielen sowie in den Zufahrten des Nord-Ostsee-Kanals;
+    innerhalb von Fähr- und Brückenstrecken; 300 m vor und hinter Ankerverbotszeichen.
+  options:
+  - text: Im Fahrwasser, auf Seeschifffahrtsstraßen, an Engstellen und in unübersichtlichen
+      Krümmungen; im Umkreis von 300 m von schwimmenden Geräten, Wracks und sonstigen
+      Schifffahrtshindernissen, Kabeltonnen und sonstigen Stellen für militärische
+      und zivile Zwecke; vor Hafeneinfahrten, Schleusen, Anlegestellen und Sielen
+      sowie in den Zufahrten des Nord-Ostsee-Kanals; innerhalb von Fähr- und Brückenstrecken;
+      300 m vor und hinter Ankerverbotszeichen.
+    isCorrect: true
+  - text: Im Fahrwasser, an Engstellen und in unübersichtlichen Krümmungen; im Umkreis
+      von 300 m von schwimmenden Geräten, Kabeltonnen und sonstigen Stellen für militärische
+      und zivile Zwecke; vor Hafeneinfahrten, Schleusen, Anlegestellen und Sielen
+      sowie in den Zufahrten des Nord-Ostsee-Kanals und in Vogelschutz- und Naturschutzgebieten
+      sowie generell innerhalb von Nationalparks.
+    isCorrect: false
+  - text: Im Fahrwasser, wenn es durch die Generaldirektion Wasserstraßen und Schifffahrt
+      (GDWS) bekanntgemacht worden ist. Außerhalb des Fahrwassers auf Abschnitten,
+      die durch die GDWS bekanntgemacht oder durch entsprechende Sichtzeichen bezeichnet
+      sind.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-101
+  number: 101
+  question: Man informiert die Schifffahrtspolizeibehörde und gibt nach Möglichkeit
+    die Position an.
+  options:
+  - text: Man informiert die Deutsche Gesellschaft zur Rettung Schiffbrüchiger, damit
+      das Hindernis gekennzeichnet werden kann.
+    isCorrect: true
+  - text: Man gibt ein Seenotsignal ab.
+    isCorrect: false
+  - text: Man informiert das Bundesamt für Seeschifffahrt und Hydrographie und gibt
+      nach Möglichkeit die Position an.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-102
+  number: 102
+  question: Wenn ein weißes unterbrochenes Licht gezeigt wird.
+  options:
+  - text: Wenn ein weißes Funkellicht gezeigt wird.
+    isCorrect: true
+  - text: Wenn zwei grüne Lichter nebeneinander gezeigt werden.
+    isCorrect: false
+  - text: Wenn ein grünes Gleichtaktlicht gezeigt wird.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-103
+  number: 103
+  question: Ergänzende Vorschriften für den NOK in der Seeschifffahrtsstraßen-Ordnung
+    sowie in den Bekanntmachungen der Generaldirektion Wasserstraßen und Schifffahrt
+    (GDWS).
+  options:
+  - text: Ergänzende Vorschriften für den NOK in der Seeschifffahrtsstraßen-Ordnung
+      sowie in den Kollisionsverhütungsregeln.
+    isCorrect: true
+  - text: Ergänzende Vorschriften für den NOK in der Seeschifffahrtsstraßen-Ordnung
+      sowie in der Sportbootführerscheinverordnung.
+    isCorrect: false
+  - text: Ergänzende Vorschriften für den NOK in der Seeschifffahrtsstraßen-Ordnung
+      sowie im Seeaufgabengesetz.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-104
+  number: 104
+  question: Ausfahren für alle Fahrzeuge verboten; Aufhebung des Signals abwarten.
+  options:
+  - text: Schutzbedürftige Anlage; Geschwindigkeit reduzieren, Sog und Wellenschlag
+      vermeiden.
+    isCorrect: true
+  - text: Dauernde Sperrung der Seeschifffahrtsstraße; Weiterfahrt verboten.
+    isCorrect: false
+  - text: Dauernde Sperrung einer Teilstrecke der Seeschifffahrtsstraße; Weiterfahrt
+      in der Teilstrecke verboten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-105
+  number: 105
+  question: Die Geschwindigkeit durch das Wasser in km/h, auf dem Nord-Ostsee-Kanal
+    (NOK) über Grund in km/h, die nicht überschritten werden darf.
+  options:
+  - text: Mindestabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort
+      der Tafel an eingehalten werden muss.
+    isCorrect: true
+  - text: Die Geschwindigkeit durch das Wasser in sm/h (Knoten) auf dem Nord-Ostsee-Kanal
+      (NOK) über Grund in sm/h, die nicht überschritten werden darf.
+    isCorrect: false
+  - text: Mindestabstand zu anderen Fahrzeugen in Metern, der im bekanntgemachten
+      Streckenabschnitt nicht unterschritten werden darf.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-106
+  number: 106
+  question: Schutzbedürftige Anlage.
+  options:
+  - text: Dauernde Sperrung einer Teilstrecke der Seeschifffahrtsstraße.
+    isCorrect: true
+  - text: Dauernde Sperrung der Seeschifffahrtsstraße.
+    isCorrect: false
+  - text: Außergewöhnliche Schifffahrtsbehinderung.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-107
+  number: 107
+  question: Brücke, Sperrwerk, Schleuse kann vorübergehend nicht geöffnet werden;
+    Fahrt unterbrechen, Freigabe abwarten.
+  options:
+  - text: Ein Ausweichpflichtiger wird vom Vorfahrtberechtigten auf seine Ausweichpflicht
+      hingewiesen; sofort Ausweichmanöver einleiten.
+    isCorrect: true
+  - text: Bleib-weg-Signal, Gefahr durch gefährliche Ladung; sofort den Gefahrenbereich
+      verlassen. Offenes Feuer vermeiden (Explosionsgefahr).
+    isCorrect: false
+  - text: Brücke, Sperrwerk, Schleuse wird zur Öffnung vorbereitet; Fahrt fortsetzen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-108
+  number: 108
+  question: Geschwindigkeit von 8 km/h Fahrt durch das Wasser, die innerhalb eines
+    Bereiches von 500 m von der jeweiligen Uferlinie wegen Badebetriebs nicht überschritten
+    werden darf.
+  options:
+  - text: Kennzeichnung besonderer Gebiete und Stellen, z. B. Warngebiete; die Bedeutung
+      kann der Seekarte entnommen und aus der Beschriftung des Schifffahrtszeichens
+      erkannt werden.
+    isCorrect: true
+  - text: Geschwindigkeit von 8 sm/h Fahrt durch das Wasser, die innerhalb eines Mindestabstandes
+      von 500 m von der jeweiligen Uferlinie wegen Badebetriebs nicht überschritten
+      werden darf.
+    isCorrect: false
+  - text: Buhnenbauwerk, Gefahr durch Sog und Wellenschlag. Insbesondere auf Badebetrieb
+      und Schwimmer achten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-109
+  number: 109
+  question: Gesperrt für alle Maschinenfahrzeuge und Wassermotorräder wegen Badebetriebs.
+  options:
+  - text: Höchstgeschwindigkeit von 4,3 Knoten Fahrt durch das Wasser, die innerhalb
+      von 500 m von der jeweiligen Uferlinie wegen Badebetriebs nicht überschritten
+      werden darf.
+    isCorrect: true
+  - text: Einzelgefahrenstelle, erkennbar an ihrer Farbgebung, die an allen Seiten
+      mit einer maximalen Geschwindigkeit von 4,3 Knoten passiert werden kann.
+    isCorrect: false
+  - text: Kennzeichnung besonderer Gebiete und Stellen, z. B. Warngebiet.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-110
+  number: 110
+  question: 4,3 Knoten.
+  options:
+  - text: 3,4 Knoten.
+    isCorrect: true
+  - text: 4,8 Knoten.
+    isCorrect: false
+  - text: 3,8 Knoten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-111
+  number: 111
+  question: Kennzeichnung von besonderen Gebieten und Stellen.
+  options:
+  - text: Kennzeichnung von Sperrgebieten.
+    isCorrect: true
+  - text: Kennzeichnung von Schießgebieten.
+    isCorrect: false
+  - text: Kennzeichnung von Badegebieten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-112
+  number: 112
+  question: An bestimmten Tag- und Nachtsignalen, die nach der Sperr- und Warngebietsverordnung
+    der Generaldirektion Wasserstraßen und Schifffahrt (GDWS) für militärische Sperr-
+    und Warngebiete an entsprechenden Signalstellen und auf Sicherungsfahrzeugen gezeigt
+    werden.
+  options:
+  - text: An bestimmten Tag- und Nachtsignalen, die nach der Rheinpolizeiverordnung
+      der Generaldirektion Wasserstraßen und Schifffahrt (GDWS) für militärische Sperr-
+      und Warngebiete an entsprechenden Signalstellen am Ufer und auf Sicherungsfahrzeugen
+      gezeigt werden.
+    isCorrect: true
+  - text: An bestimmten Tag- und Nachtsignalen, die nach der zuständigen Polizeiverordnung
+      des Wasserwirtschaftsamtes für Übungs-, Sperr- und Warngebiete an entsprechenden
+      Signalstellen am Ufer und auf Sicherungsfahrzeugen gezeigt werden.
+    isCorrect: false
+  - text: An bestimmten Tag- und Nachtsignalen, die nach der Schifffahrtsordnung der
+      Generaldirektion Wasserstraßen und Schifffahrt (GDWS) für militärische Sperr-
+      und Warngebiete an entsprechenden Signalstellen am Ufer und auf Sicherungsfahrzeugen
+      gezeigt werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-113
+  number: 113
+  question: Sperrgebiet.
+  options:
+  - text: Sperrgebiet und Badezone.
+    isCorrect: true
+  - text: Sperrgebiet wegen Aquakulturen und Muschelzuchtanlagen.
+    isCorrect: false
+  - text: Schießgebiet.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-114
+  number: 114
+  question: Anhalten.
+  options:
+  - text: Seenotsignal.
+    isCorrect: true
+  - text: Anker behindert Schifffahrt.
+    isCorrect: false
+  - text: Schleppverband, länger als 200 m
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-115
+  number: 115
+  question: Polizeifahrzeug fordert zum Anhalten auf.
+  options:
+  - text: Ankerlieger macht auf gefährliche Annäherung aufmerksam.
+    isCorrect: true
+  - text: Letzter bemannter Anhang eines Schleppverbandes.
+    isCorrect: false
+  - text: Manövrierbehindertes Fahrzeug blockiert das Fahrwasser.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-116
+  number: 116
+  question: Dauernde Sperrung der Seeschifffahrtsstraße. Weiterfahrt verboten.
+  options:
+  - text: Schutzbedürftige Anlage. Sog und Wellenschlag vermeiden.
+    isCorrect: true
+  - text: Außergewöhnliche Schifffahrtsbehinderung. Vorsichtig passieren.
+    isCorrect: false
+  - text: Ende einer Gebots- oder Verbotsstrecke. Freie Weiterfahrt.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-117
+  number: 117
+  question: Sperrung der Seeschifffahrtsstraße, Weiterfahrt verboten.
+  options:
+  - text: Einfahrt in Schleuse oder Anlage gesperrt, auf Freigabe warten.
+    isCorrect: true
+  - text: Ein Ankerlieger bei schlechter Sicht, vorsichtig weiter navigieren.
+    isCorrect: false
+  - text: Fahrzeug des öffentlichen Dienstes, anhalten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-118
+  number: 118
+  question: Außergewöhnliche Schifffahrtsbehinderung.
+  options:
+  - text: Dauernde Sperrung der Seeschifffahrtsstraße.
+    isCorrect: true
+  - text: Schutzbedürftige Anlage.
+    isCorrect: false
+  - text: Zeitweilige Sperrung der Seeschifffahrtsstraße.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-119
+  number: 119
+  question: Kennzeichnung der Mitte von Schifffahrtswegen.
+  options:
+  - text: Kennzeichnung von Einzelgefahrenstellen.
+    isCorrect: true
+  - text: Kennzeichnung einer Reede.
+    isCorrect: false
+  - text: Kennzeichnung der Backbordseite eines Fahrwassers.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-120
+  number: 120
+  question: Die Steuerbordseite des Fahrwassers.
+  options:
+  - text: Die Backbordseite des Fahrwassers.
+    isCorrect: true
+  - text: Die Mitte eines Schifffahrtsweges.
+    isCorrect: false
+  - text: Die Kennzeichnung von Hindernissen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-121
+  number: 121
+  question: Die Backbordseite des Fahrwassers.
+  options:
+  - text: Die Steuerbordseite des Fahrwassers.
+    isCorrect: true
+  - text: Die Mitte eines Wattfahrwassers.
+    isCorrect: false
+  - text: Die Kennzeichnung eines Hindernisses im Wattfahrwasser.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-122
+  number: 122
+  question: Die Steuerbordseite des Fahrwassers.
+  options:
+  - text: Die Backbordseite des Fahrwassers.
+    isCorrect: true
+  - text: Die Mitte eines Schifffahrtsweges.
+    isCorrect: false
+  - text: Die Kennzeichnung von Hindernissen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-123
+  number: 123
+  question: Die Backbordseite des Fahrwassers.
+  options:
+  - text: Die Steuerbordseite des Fahrwassers.
+    isCorrect: true
+  - text: Die Mitte eines Wattfahrwassers.
+    isCorrect: false
+  - text: Die Kennzeichnung eines Hindernisses im Wattfahrwasser.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-124
+  number: 124
+  question: Steuerbordseite des durchgehenden Fahrwassers/Backbordseite des abzweigenden
+    oder einmündenden Fahrwassers.
+  options:
+  - text: Backbordseite des durchgehenden Fahrwassers/Steuerbordseite des abzweigenden
+      oder einmündenden Fahrwassers.
+    isCorrect: true
+  - text: Steuerbordseite des durchgehenden Fahrwassers.
+    isCorrect: false
+  - text: Backbordseite des durchgehenden Fahrwassers.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-125
+  number: 125
+  question: Backbordseite des durchgehenden Fahrwassers, Steuerbordseite des abzweigenden
+    oder einmündenden Fahrwassers.
+  options:
+  - text: Steuerbordseite des durchgehenden Fahrwassers, Backbordseite des abzweigenden
+      oder einmündenden Fahrwassers.
+    isCorrect: true
+  - text: Steuerbordseite des durchgehenden Fahrwassers.
+    isCorrect: false
+  - text: Backbordseite des durchgehenden Fahrwassers.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-126
+  number: 126
+  question: Unterbrochen (2) rot, Heultonne.
+  options:
+  - text: Blitz (2) rot, Glockentonne.
+    isCorrect: true
+  - text: Blink (2) rot, Glockentonne.
+    isCorrect: false
+  - text: Leitfeuer rot, zwei Warnsektoren.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-127
+  number: 127
+  question: Grünes Blitzfeuer, Funkelfeuer oder unterbrochenes Feuer in Gruppen.
+  options:
+  - text: Grünes Blitzfeuer, Funkelfeuer oder Festfeuer.
+    isCorrect: true
+  - text: Grünes Blitzfeuer, Funkelfeuer oder schnelles Funkelfeuer.
+    isCorrect: false
+  - text: Grünes Blitzfeuer, Funkelfeuer oder Blinkfeuer.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-128
+  number: 128
+  question: Rotes Blitzfeuer, Funkelfeuer oder unterbrochenes Feuer in Gruppen.
+  options:
+  - text: Rotes Blitzfeuer, Funkelfeuer oder Festfeuer.
+    isCorrect: true
+  - text: Rotes Blitzfeuer, Funkelfeuer oder schnelles Funkelfeuer.
+    isCorrect: false
+  - text: Rotes Blitzfeuer, Funkelfeuer oder Blinkfeuer.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-129
+  number: 129
+  question: Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant.
+  options:
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant.
+    isCorrect: true
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant.
+    isCorrect: false
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-130
+  number: 130
+  question: Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant.
+  options:
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant.
+    isCorrect: true
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant.
+    isCorrect: false
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-131
+  number: 131
+  question: Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant.
+  options:
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant.
+    isCorrect: true
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant.
+    isCorrect: false
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-132
+  number: 132
+  question: Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant.
+  options:
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant.
+    isCorrect: true
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant.
+    isCorrect: false
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-133
+  number: 133
+  question: Kennzeichnung einer allgemeinen Gefahrenstelle, die nördlich zu passieren
+    ist.
+  options:
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, die südlich zu passieren
+      ist.
+    isCorrect: true
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, die östlich zu passieren
+      ist.
+    isCorrect: false
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, die westlich zu passieren
+      ist.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-134
+  number: 134
+  question: Kennzeichnung einer allgemeinen Gefahrenstelle, die östlich zu passieren
+    ist.
+  options:
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, die nördlich zu passieren
+      ist.
+    isCorrect: true
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, die südlich zu passieren
+      ist.
+    isCorrect: false
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, die westlich zu passieren
+      ist.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-135
+  number: 135
+  question: Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant.
+  options:
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant.
+    isCorrect: true
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant.
+    isCorrect: false
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-136
+  number: 136
+  question: Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant. Sie ist
+    westlich zu passieren.
+  options:
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant. Sie ist südlich
+      zu passieren.
+    isCorrect: true
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant. Sie ist östlich
+      zu passieren.
+    isCorrect: false
+  - text: Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant. Sie ist nördlich
+      zu passieren.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-137
+  number: 137
+  question: Eine Einzelgefahrenstelle, die an allen Seiten passiert werden kann.
+  options:
+  - text: Den nördlichen Quadranten einer allgemeinen Gefahrenstelle, die nördlich
+      passiert werden muss.
+    isCorrect: true
+  - text: Den südlichen Quadranten einer allgemeinen Gefahrenstelle, die südlich passiert
+      werden muss.
+    isCorrect: false
+  - text: Den westlichen Quadranten einer allgemeinen Gefahrenstelle, die westlich
+      passiert werden muss.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-138
+  number: 138
+  question: Eine Einzelgefahrenstelle, die an allen Seiten passiert werden kann.
+  options:
+  - text: Nördlicher Quadrant einer allgemeinen Gefahrenstelle, die nördlich passiert
+      werden muss.
+    isCorrect: true
+  - text: Südlicher Quadrant einer allgemeinen Gefahrenstelle, die südlich passiert
+      werden muss.
+    isCorrect: false
+  - text: Westlicher Quadrant einer allgemeinen Gefahrenstelle, die westlich passiert
+      werden muss.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-139
+  number: 139
+  question: Sektorenfeuer, das ein Fahrwasser bezeichnet.
+  options:
+  - text: Sektorenfeuer, das auf eine Kursänderung im Fahrwasser hinweist.
+    isCorrect: true
+  - text: Ober- und Unterfeuer, die in Deckung zu bringen sind.
+    isCorrect: false
+  - text: Ober- und Unterfeuer mit unterschiedlichen Farbsektoren.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-140
+  number: 140
+  question: In Fahrtrichtung an der rechten Seite des weißen Leitsektors halten.
+  options:
+  - text: In Fahrtrichtung an der linken Seite des weißen Leitsektors halten.
+    isCorrect: true
+  - text: In Fahrtrichtung in der Mitte des weißen Leitsektors halten.
+    isCorrect: false
+  - text: In Fahrtrichtung Ober- und Unterfeuer in Deckung halten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-141
+  number: 141
+  question: Ober- und Unterfeuer, die in Deckung zu bringen sind.
+  options:
+  - text: Sektorenfeuer, das ein Fahrwasser bezeichnet.
+    isCorrect: true
+  - text: Sektorenfeuer, das auf eine Kursänderung im Fahrwasser hinweist.
+    isCorrect: false
+  - text: Ober- und Unterfeuer mit unterschiedlichen Farbsektoren.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-142
+  number: 142
+  question: Sektorenfeuer, das auf eine Kursänderung im Fahrwasser hinweist.
+  options:
+  - text: Sektorenfeuer, das ein Fahrwasser bezeichnet.
+    isCorrect: true
+  - text: Ober- und Unterfeuer, die in Deckung zu bringen sind.
+    isCorrect: false
+  - text: Ober- und Unterfeuer mit unterschiedlichen Farbsektoren.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-143
+  number: 143
+  question: Beim Übergang vom Ankündigungssektor in den Kursänderungssektor die Kursänderung
+    vornehmen.
+  options:
+  - text: Beim Erreichen des Ankündigungssektors die Kursänderung vornehmen.
+    isCorrect: true
+  - text: Beim Erreichen des Kursänderungssektors den Kurs beibehalten.
+    isCorrect: false
+  - text: Beim Erreichen des Ankündigungssektors Ober- und Unterfeuer in Deckung halten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-144
+  number: 144
+  question: Die Lichterscheinung ist stets länger als die Verdunkelung.
+  options:
+  - text: Die Lichterscheinung ist stets kürzer als die Verdunkelung.
+    isCorrect: true
+  - text: Die Lichterscheinung ist stets gleich lang wie die Verdunkelung.
+    isCorrect: false
+  - text: Die Lichterscheinung ist stets kürzer als 2 Sekunden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-145
+  number: 145
+  question: In Seekarten und Sportschifffahrtskarten des Bundesamtes für Seeschifffahrt
+    und Hydrographie.
+  options:
+  - text: Im Bundesnaturschutzgesetz.
+    isCorrect: true
+  - text: In der Seeschifffahrtsstraßen-Ordnung.
+    isCorrect: false
+  - text: In den Kollisionsverhütungsregeln.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-146
+  number: 146
+  question: In Seekarten und Sportschifffahrtskarten des Bundesamtes für Seeschifffahrt
+    und Hydrographie.
+  options:
+  - text: Im Bundesnaturschutzgesetz.
+    isCorrect: true
+  - text: In der Seeschifffahrtsstraßen-Ordnung.
+    isCorrect: false
+  - text: In den Kollisionsverhütungsregeln.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-147
+  number: 147
+  question: Die Tiere sollen nicht gestört oder vertrieben werden.
+  options:
+  - text: Im Bereich von Seehundbänken ist mit Untiefen zu rechnen.
+    isCorrect: true
+  - text: Tiefenangaben zu Seehundbänken sind im Kartenwerk nicht verzeichnet.
+    isCorrect: false
+  - text: Seehundbänke sind gesperrte Wasserflächen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-148
+  number: 148
+  question: 300 m bis 500 m.
+  options:
+  - text: 150 m bis 200 m.
+    isCorrect: true
+  - text: 100 m bis 300 m.
+    isCorrect: false
+  - text: 200 m bis 300 m.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-149
+  number: 149
+  question: Lichterscheinung kürzer als Verdunkelung, Blink mindestens 2 s lang.
+  options:
+  - text: Lichterscheinung kürzer als Verdunkelung, Blink weniger als 2 s lang.
+    isCorrect: true
+  - text: Lichterscheinung länger als Verdunkelung, Blink mindestens 2 s lang.
+    isCorrect: false
+  - text: Lichterscheinung länger als Verdunkelung, Blink weniger als 2 s lang.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-150
+  number: 150
+  question: Lichterscheinung kürzer als Verdunkelung, Blitz weniger als 2 s lang.
+  options:
+  - text: Lichterscheinung kürzer als Verdunkelung, Blitz länger als 2 s lang.
+    isCorrect: true
+  - text: Lichterscheinung länger als Verdunkelung, Blitz mindestens 2 s lang.
+    isCorrect: false
+  - text: Lichterscheinung länger als Verdunkelung, Blitz weniger als 2 s lang.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-151
+  number: 151
+  question: 50 bis 60 aufeinanderfolgende Lichterscheinungen pro Minute.
+  options:
+  - text: 100 bis 120 aufeinanderfolgende Lichterscheinungen pro Minute.
+    isCorrect: true
+  - text: 130 bis 150 aufeinanderfolgende Lichterscheinungen pro Minute.
+    isCorrect: false
+  - text: 30 bis 40 aufeinanderfolgende Lichterscheinungen pro Minute.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-152
+  number: 152
+  question: Lichterscheinung und Verdunkelung von gleicher Länge.
+  options:
+  - text: Lichterscheinung kürzer als Verdunkelung.
+    isCorrect: true
+  - text: Lichterscheinung länger als Verdunkelung.
+    isCorrect: false
+  - text: Lichterscheinung zweifach länger als Verdunkelung.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-153
+  number: 153
+  question: Zeitraum vom Einsetzen der Taktkennung bis zum Einsetzen der nächsten
+    gleichen Taktkennung.
+  options:
+  - text: Zeitraum vom Ende der Taktkennung bis zum Einsetzen der nächsten gleichen
+      Taktkennung.
+    isCorrect: true
+  - text: Zeitraum vom Einsetzen der Taktkennung bis zum Ende der nächsten gleichen
+      Taktkennung.
+    isCorrect: false
+  - text: Zeitraum vom Einsetzen der Taktkennung bis zum Ende der Taktkennung.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-154
+  number: 154
+  question: Befahrensregelungen beachten.
+  options:
+  - text: Befahrensregelungen beachten und sich bei der Nationalparkverwaltung anmelden.
+    isCorrect: true
+  - text: Befahrensregelungen beachten sowie Wasserschutzpolizei und Wasserstraßen-
+      und Schifffahrtsamt informieren.
+    isCorrect: false
+  - text: Befahrensregelungen sowie Festlegungen der Ordnungsämter beachten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-155
+  number: 155
+  question: Befahrensverbote, Befahrensbeschränkungen, Geschwindigkeitsbeschränkungen,
+    besondere Regelungen für das Wasserskilaufen, das Fahren mit Wassermotorrädern
+    und das Segelsurfen.
+  options:
+  - text: Befahrensverbote, Schifffahrtssperrungen, Geschwindigkeitsbeschränkungen,
+      besondere Regelungen für das Befahren von Windparks.
+    isCorrect: true
+  - text: Befahrensverbote, Befahrensbeschränkungen, Mindestgeschwindigkeiten, besondere
+      Regelungen für das Befahren von Verkehrstrennungsgebieten.
+    isCorrect: false
+  - text: Befahrensverbote, meteorologische Beschränkungen, besondere Regelungen für
+      das Befahren der Tiefwasserzonen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-156
+  number: 156
+  question: Bestimmte Wassersportgeräte.
+  options:
+  - text: Bestimmte Fischereifahrzeuge.
+    isCorrect: true
+  - text: Bestimmte Bodeneffekt- und Luftkissenfahrzeuge.
+    isCorrect: false
+  - text: Bestimmte Arbeitsgeräte für die Erkundung fossiler Brennstoffe.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-157
+  number: 157
+  question: Ausgewiesene Wasserflächen für den gewerblichen Verkehr.
+  options:
+  - text: Ausgewiesene Wasserflächen für bestimmte Sportbootverkehre.
+    isCorrect: true
+  - text: Wasserflächen zum Starten und Landen von Wasserflugzeugen.
+    isCorrect: false
+  - text: Wasserflächen, von denen Taucher 500 m Abstand halten müssen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-158
+  number: 158
+  question: 12 Knoten über Grund.
+  options:
+  - text: 12 Knoten Fahrt durchs Wasser.
+    isCorrect: true
+  - text: 10 Knoten Fahrt über Grund.
+    isCorrect: false
+  - text: 10 Knoten Fahrt durchs Wasser.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-159
+  number: 159
+  question: Sämtliche Abfälle einschließlich Öle und Betriebsstoffe an Bord in geeigneten
+    Behältern sammeln und an Land vorschriftsmäßig entsorgen.
+  options:
+  - text: Abfälle und Öle nur auf offener See entsorgen.
+    isCorrect: true
+  - text: Nur Bioabfälle und restentleerte Behälter auf See entsorgen.
+    isCorrect: false
+  - text: Abwässer in Ufer- und Strandnähe sowie in Häfen einleiten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-160
+  number: 160
+  question: Seekarten, Leuchtfeuerverzeichnis, Seehandbücher, Gezeitentafeln oder
+    -kalender, Funkdienst für die Klein- und Sportschifffahrt, Nachrichten für Seefahrer
+    (NfS), Bekanntmachungen für Seefahrer (BfS).
+  options:
+  - text: Seekarten, Verordnung über die Sicherung der Seefahrt, Seehandbücher, Gezeitentafeln
+      oder -kalender, Funkdienst für die Klein- und Sportschifffahrt, Nachrichten
+      für Seefahrer (NfS).
+    isCorrect: true
+  - text: Seeschifffahrtsstraßen-Ordnung, Leuchtfeuerverzeichnis, Seehandbücher, Verordnung
+      über die Sicherung der Seefahrt, Gezeitentafeln oder -kalender, Bekanntmachungen
+      der Generaldirektion Wasserstraßen und Schifffahrt (GDWS).
+    isCorrect: false
+  - text: Schifffahrtspolizeiliche Anordnungen, Gezeitentafeln oder Funkdienst für
+      die Klein- und Sportschifffahrt, Nachrichten für Seefahrer (NfS), Bekanntmachungen
+      für Seefahrer (BfS).
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-161
+  number: 161
+  question: Sie enthalten alle Veränderungen hinsichtlich Betonnung, Befeuerung, Wracks,
+    Untiefen sowie andere die Schifffahrt betreffende Maßnahmen und Ereignisse.
+  options:
+  - text: Sie enthalten alle Veränderungen hinsichtlich Betonnung, Befeuerung, Wracks,
+      Untiefen sowie andere Änderungen der Seeschifffahrtsstraßen-Ordnung.
+    isCorrect: true
+  - text: Sie enthalten alle Veränderungen hinsichtlich Betonnung, Befeuerung, Wracks
+      sowie die aktuellen Wasserstände.
+    isCorrect: false
+  - text: Sie enthalten alle Veränderungen hinsichtlich Betonnung, Befeuerung, Wracks,
+      Untiefen sowie andere die Schifffahrt betreffende meteorologische Hinweise.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-162
+  number: 162
+  question: Steile und aufbäumende Seen (Brecher).
+  options:
+  - text: Der Tidenstrom wird durch den Wind verstärkt.
+    isCorrect: true
+  - text: Keinen.
+    isCorrect: false
+  - text: Der Tidenstrom glättet die Windsee.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-163
+  number: 163
+  question: In den See- und Hafenhandbüchern.
+  options:
+  - text: In den Bekanntmachungen und Nachrichten für Seefahrer.
+    isCorrect: true
+  - text: Im Nautischen Revierfunkdienst.
+    isCorrect: false
+  - text: In der Seekarte INT1.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-164
+  number: 164
+  question: Dass die Karte auf den neuesten Stand berichtigt ist.
+  options:
+  - text: Dass die Nummerierung mit dem Katalog übereinstimmt.
+    isCorrect: true
+  - text: Dass die Seekarte auf mittleres Tidehochwasser bezogen ist.
+    isCorrect: false
+  - text: Dass die obere Kante in Nordrichtung weist.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-165
+  number: 165
+  question: In Meter und Dezimeter.
+  options:
+  - text: In Meter und Zentimeter.
+    isCorrect: true
+  - text: In Fuß und Inch.
+    isCorrect: false
+  - text: In Dezimeter und Zentimeter.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-166
+  number: 166
+  question: In der INT1/Karte 1.
+  options:
+  - text: In den Seehandbüchern.
+    isCorrect: true
+  - text: In den Leuchtfeuerverzeichnissen.
+    isCorrect: false
+  - text: In allen Seekarten unten links.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-167
+  number: 167
+  question: Leuchtfeuerverzeichnis, Seehandbuch, Seekarten.
+  options:
+  - text: Leuchtfeuerverzeichnis, Seehandbuch, Handbuch für Brücke und Kartenhaus.
+    isCorrect: true
+  - text: Leuchtfeuerverzeichnis, Seehandbuch, Kollisionsverhütungsregeln.
+    isCorrect: false
+  - text: Leuchtfeuerverzeichnis, Seehandbuch, Gezeitenatlas.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-168
+  number: 168
+  question: Am rechten oder linken Kartenrand in Höhe des Standortes.
+  options:
+  - text: Am oberen oder unteren Kartenrand in Höhe des Standortes.
+    isCorrect: true
+  - text: An der in der Seekarte abgebildeten Kompassrose.
+    isCorrect: false
+  - text: Aus der in der Seekarte abgebildeten Entfernungstabelle.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-169
+  number: 169
+  question: Die Länge einer Bogenminute auf einem größten Kreis der Erdkugel, 1.852
+    m.
+  options:
+  - text: Die Länge einer Bogenminute auf einem Breitenparallel, 1.652 m.
+    isCorrect: true
+  - text: Die Länge einer Bogenminute auf dem Nullmeridian, 18,52 km.
+    isCorrect: false
+  - text: Sie entspricht der in einer Stunde zurückgelegten Distanz in Meter, 16,52
+      km.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-170
+  number: 170
+  question: Das sind die in einer Stunde zurückgelegten Seemeilen.
+  options:
+  - text: Das sind die in einer Stunde zurückgelegten Kilometer.
+    isCorrect: true
+  - text: Das sind die an einem Tag zurückgelegten Seemeilen.
+    isCorrect: false
+  - text: Das sind die von Mittag bis Mittag zurückgelegten Seemeilen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-171
+  number: 171
+  question: Aus der für das betreffende Schiff aufgestellten Deviationstabelle.
+  options:
+  - text: Aus dem Nautischen Handbuch für Kompassfehlweisung.
+    isCorrect: true
+  - text: Aus dem Betriebshandbuch des Kompassherstellers.
+    isCorrect: false
+  - text: Aus der Kompassrose der aktuellen Seekarte.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-172
+  number: 172
+  question: Das Feststellen der Richtung eines bekannten feststehenden Objektes durch
+    Winkelmessung.
+  options:
+  - text: Das Feststellen der Abweichung des Steuerkompasses vom Peilkompass.
+    isCorrect: true
+  - text: Das Feststellen des Koppelortes durch Winkelmessung.
+    isCorrect: false
+  - text: Das Feststellen der Entfernung zu einem bekannten feststehenden Objekt.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-173
+  number: 173
+  question: Durch die Peilung eines bekannten feststehenden Objektes und Eintragung
+    der rechtweisenden Peilung in die Seekarte.
+  options:
+  - text: Durch Eintragen des rechtweisenden Kurses in die Seekarte.
+    isCorrect: true
+  - text: Durch mehrmaliges Peilen eines anderen Fahrzeugs.
+    isCorrect: false
+  - text: Durch Eintragung der Peilung in die Seekarte ohne Berücksichtigung der Fehlweisung.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-174
+  number: 174
+  question: Die Versetzung des Schiffes über Grund in Richtung und Distanz.
+  options:
+  - text: Die Versetzung des Schiffes vom Magnetkompasskurs.
+    isCorrect: true
+  - text: Die Versetzung des Schiffes durch das Wasser in Richtung und Distanz.
+    isCorrect: false
+  - text: Die Richtung und Stärke der Meeresströmung.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-175
+  number: 175
+  question: Die Versetzung des Schiffes über Grund in Richtung und Distanz.
+  options:
+  - text: Die Versetzung des Schiffes vom Magnetkompasskurs.
+    isCorrect: true
+  - text: Die Versetzung des Schiffes durch das Wasser in Richtung und Distanz.
+    isCorrect: false
+  - text: Die Richtung und Stärke des Windes und der Windsee.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-176
+  number: 176
+  question: Schiffsort, der unter Berücksichtigung der gesteuerten Kurse und zurückgelegten
+    Distanzen und aller vorhersehbaren Einflüsse rechnerisch und zeichnerisch ermittelt
+    wird.
+  options:
+  - text: Schiffsort, der ermittelt wird durch Peilung zweier feststehender und bekannter
+      Objekte, die in einem möglichst rechten Winkel (90 Grad) zueinander stehen.
+    isCorrect: true
+  - text: Schiffsort, der durch Eintragung der rechtweisenden Peilungen zweier feststehender
+      und bekannter Objekte als Standlinien in die Seekarte ermittelt wird; ihr Schnittpunkt
+      ist der Standort.
+    isCorrect: false
+  - text: Schiffsort, der unter Berücksichtigung der gesteuerten Kurse und zurückgelegten
+      Distanzen infolge mehrerer Peilungen ermittelt wird.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-177
+  number: 177
+  question: Der Steuerstrich muss parallel zur Kiellinie verlaufen. Der Kompass muss
+    gut ablesbar sein und darf nicht in der Nähe von Eisenteilen aufgestellt werden.
+  options:
+  - text: Der Kompass muss parallel zur Kiellinie verlaufen. Der Kompass muss gut
+      ablesbar sein und darf nicht in der Nähe von Eisenteilen aufgestellt werden.
+    isCorrect: true
+  - text: Der Steuerstrich muss parallel zur Kiellinie verlaufen. Der Kompass muss
+      gut ablesbare Zahlen aufweisen und darf nicht in der Nähe von Eisenteilen aufgestellt
+      werden.
+    isCorrect: false
+  - text: Der Kompass muss parallel zur Kiellinie verlaufen. Der Kompass muss gut
+      ablesbare Zahlen aufweisen und darf nicht in der Nähe von Eisenteilen aufgestellt
+      werden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-178
+  number: 178
+  question: Das Fallen des Wassers vom Hochwasser zum folgenden Niedrigwasser.
+  options:
+  - text: Den Zeitraum vom Hochwasser zum folgenden Niedrigwasser.
+    isCorrect: true
+  - text: Der niedrigste Wasserstand einer Tide.
+    isCorrect: false
+  - text: Die Differenz zwischen Hoch- und Niedrigwasser.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-179
+  number: 179
+  question: Das Steigen des Wassers vom Niedrigwasser zum folgenden Hochwasser.
+  options:
+  - text: Den Zeitraum vom Niedrigwasser zum folgenden Hochwasser.
+    isCorrect: true
+  - text: Der höchste Wasserstand einer Tide.
+    isCorrect: false
+  - text: Die Differenz zwischen Hoch- und Niedrigwasser.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-180
+  number: 180
+  question: Der Zeitraum zwischen einem Niedrigwasser und dem nächstfolgenden Niedrigwasser.
+  options:
+  - text: Der Zeitraum zwischen einem Hochwasser und dem nächstfolgenden Niedrigwasser.
+    isCorrect: true
+  - text: Der Zeitraum zwischen einem Hochwasser und dem nächstfolgenden Hochwasser.
+    isCorrect: false
+  - text: Der Zeitraum zwischen einem Niedrigwasser und dem nächstfolgenden Hochwasser.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-181
+  number: 181
+  question: Eintritt des niedrigsten Wasserstands beim Übergang vom Fallen zum Steigen.
+  options:
+  - text: Fallen des Wassers nach Eintritt des höchsten Wasserstands.
+    isCorrect: true
+  - text: Eintritt des höchsten Wasserstands beim Übergang vom Steigen zum Fallen.
+    isCorrect: false
+  - text: Steigen des Wassers nach Eintritt des niedrigsten Wasserstands.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-182
+  number: 182
+  question: Eintritt des höchsten Wasserstands beim Übergang vom Steigen zum Fallen.
+  options:
+  - text: Steigen des Wassers nach Eintritt des niedrigsten Wasserstands.
+    isCorrect: true
+  - text: Eintritt des niedrigsten Wasserstands beim Übergang vom Fallen zum Steigen.
+    isCorrect: false
+  - text: Fallen des Wassers nach Eintritt des höchsten Wasserstands.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-183
+  number: 183
+  question: Unterschied zwischen den Höhen des Hoch- und des Niedrigwassers.
+  options:
+  - text: Unterschied zwischen den Höhen zweier aufeinanderfolgender Hochwasser.
+    isCorrect: true
+  - text: Der Zeitraum zwischen einem Niedrigwasser und dem nächstfolgenden Hochwasser.
+    isCorrect: false
+  - text: Der Zeitraum zwischen einem Niedrigwasser und dem nächstfolgenden Niedrigwasser.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-184
+  number: 184
+  question: In den Gezeitentafeln oder dem Gezeitenkalender des Bundesamtes für Seeschifffahrt
+    und Hydrographie.
+  options:
+  - text: In der Flutvorhersage des Bundesamtes für Seeschifffahrt und Hydrographie.
+    isCorrect: true
+  - text: Im Gezeitenatlas des Bundesamtes für Seeschifffahrt und Hydrographie.
+    isCorrect: false
+  - text: Im Mondphasenkalender der Bundesanstalt für Gewässerkunde.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-185
+  number: 185
+  question: Mindestens zwei- oder dreifache Wellenlänge.
+  options:
+  - text: Mindestens zwei- oder dreifache Wellenhöhe.
+    isCorrect: true
+  - text: Mindestens zwei- oder dreifache Schiffslänge.
+    isCorrect: false
+  - text: Mindestens zwei- oder dreifache Wassertiefe.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-186
+  number: 186
+  question: Die Schleppleine ist den Seegangsverhältnissen anzupassen. Die Schleppgeschwindigkeit
+    darf nicht größer sein als die Geschwindigkeit, die der Anhang frei fahrend bei
+    Verdrängerfahrt erreichen kann. Ein ruckartiges Steifkommen der Schleppleine ist
+    zu vermeiden.
+  options:
+  - text: Die Schleppleine ist den Seegangsverhältnissen anzupassen. Die Schleppgeschwindigkeit
+      darf nicht größer sein als die Geschwindigkeit, die das schleppende Fahrzeug
+      frei fahrend bei Verdrängerfahrt erreichen kann. Ein ruckartiges Steifkommen
+      der Schleppleine ist zu vermeiden.
+    isCorrect: true
+  - text: Die Schleppleine ist den Wetterverhältnissen anzupassen. Die Schleppgeschwindigkeit
+      darf nicht größer sein als die Geschwindigkeit, die der Anhang frei fahrend
+      bei Gleitfahrt erreichen kann. Ein ruckartiges Steifkommen der Schleppleine
+      ist zu vermeiden.
+    isCorrect: false
+  - text: Die Schleppleine ist den Wetterverhältnissen anzupassen. Die Schleppgeschwindigkeit
+      darf nicht größer sein als die Geschwindigkeit, die das schleppende Fahrzeug
+      frei fahrend bei Gleitfahrt erreichen kann. Ein ruckartiges Steifkommen der
+      Schleppleine ist zu vermeiden.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-187
+  number: 187
+  question: Mit dem Treibanker oder anderen geeigneten schwimmfähigen Gegenständen.
+  options:
+  - text: Durch wiederholtes kurzes Ein- und Auskuppeln der Antriebsmaschine.
+    isCorrect: true
+  - text: Mit achteraus ausgebrachtem Treibanker oder ähnlichen schwimmfähigen Gegenständen.
+    isCorrect: false
+  - text: Mit vorn und achtern ausgebrachten Treibankern oder anderen geeigneten schwimmfähigen
+      Gegenständen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-188
+  number: 188
+  question: Um Schäden durch Seeschlag zu vermeiden.
+  options:
+  - text: Um das Austauchen der Schraube zu vermeiden und Kraftstoff zu sparen.
+    isCorrect: true
+  - text: Um die Schlinger- und Rollbewegungen zu minimieren.
+    isCorrect: false
+  - text: Um Schiffs- und Wellenlänge nicht in Resonanz zu bringen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-189
+  number: 189
+  question: 'Wind aus Richtung Nordwest; Stärke: Bft. 3; wolkenlos.'
+  options:
+  - text: 'Wind in Richtung Nordwest; Stärke: Bft. 3; wolkenlos.'
+    isCorrect: true
+  - text: 'Strom aus Richtung Nordwest; Stärke: 3 Knoten; Tidegebiet.'
+    isCorrect: false
+  - text: 'Strom in Richtung Nordwest; Stärke: 3 Knoten; Tidegebiet.'
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-190
+  number: 190
+  question: Windstärken von 0 bis 12 und die Auswirkungen auf die See.
+  options:
+  - text: Windstärken von 0 bis 12 und die Auswirkungen auf die Küste.
+    isCorrect: true
+  - text: Den Tidenhub an der Küste bei Vollmond und bei Neumond.
+    isCorrect: false
+  - text: Die Wellenhöhe und die Windgeschwindigkeit bei Sturmstärke.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-191
+  number: 191
+  question: Durch Isobaren und in Hektopascal.
+  options:
+  - text: Durch Isobaren und in Millipascal.
+    isCorrect: true
+  - text: Durch Isoklinen und in Hektopascal.
+    isCorrect: false
+  - text: Durch Isoklinen und in Dezipascal.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-192
+  number: 192
+  question: Mit Starkwind oder Sturm.
+  options:
+  - text: Mit Schwachwind oder Windstille.
+    isCorrect: true
+  - text: Mit einer Wetterbesserung.
+    isCorrect: false
+  - text: Mit einer Wetterverschlechterung.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-193
+  number: 193
+  question: Orte gleichen Luftdrucks.
+  options:
+  - text: Orte gleicher Windstärke.
+    isCorrect: true
+  - text: Orte gleicher Wolkenbildung.
+    isCorrect: false
+  - text: Orte gleicher Luftfeuchtigkeit.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-194
+  number: 194
+  question: Abbildung eines Hochdruckgebietes auf der Nordhalbkugel, Isobaren mit
+    Angabe des Luftdrucks in hPa.
+  options:
+  - text: Abbildung eines Hochdruckgebietes auf der Südhalbkugel, Isobaren mit Angabe
+      des Luftdrucks in hPa.
+    isCorrect: true
+  - text: Abbildung eines Hochdruckgebietes auf der Nordhalbkugel, Isobaren mit Angabe
+      des Luftdrucks in hPa, Zugrichtung Nordwest.
+    isCorrect: false
+  - text: Abbildung eines Hochdruckgebietes auf der Südhalbkugel, Isobaren mit Angabe
+      des Luftdrucks in hPa, Zugrichtung Südwest.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-195
+  number: 195
+  question: Abbildung eines Tiefdruckgebietes auf der Nordhalbkugel mit Warm- und
+    Kaltfront, Isobaren mit Angabe des Luftdrucks in hPa, warme und kalte Luftströmung.
+  options:
+  - text: Abbildung eines Tiefdruckgebietes auf der Südhalbkugel mit Kalt- und Warmfront,
+      Isobaren mit Angabe des Luftdrucks in hPa, kalte und warme Luftströmung.
+    isCorrect: true
+  - text: Abbildung eines Tiefdruckgebietes auf der Nordhalbkugel mit Kaltfront vor
+      der Warmfront, Angabe des Luftdrucks in hPa, Warmfront südlich, Kaltfront nördlich
+      des Zentrums.
+    isCorrect: false
+  - text: Abbildung eines Tiefdruckgebietes auf der Südhalbkugel mit Warmfront vor
+      der Kaltfront, Angabe des Luftdrucks in hPa, Darstellung des Kalt- und Warmluftstroms.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-196
+  number: 196
+  question: Windstärke 6 und 7 der Beaufortskala.
+  options:
+  - text: Windstärke 5 und 6 der Beaufortskala.
+    isCorrect: true
+  - text: Windstärke 4 bis 5 der Beaufortskala.
+    isCorrect: false
+  - text: Windstärke 7 bis 8 der Beaufortskala.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-197
+  number: 197
+  question: Windstärke 8 und mehr der Beaufortskala.
+  options:
+  - text: Windstärke 6 und mehr der Beaufortskala.
+    isCorrect: true
+  - text: Windstärke 9 und mehr der Beaufortskala.
+    isCorrect: false
+  - text: Windstärke 7 und mehr der Beaufortskala.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-198
+  number: 198
+  question: Windstärke 5 der Beaufortskala.
+  options:
+  - text: Windstärke 4 der Beaufortskala.
+    isCorrect: true
+  - text: Windstärke 6 der Beaufortskala.
+    isCorrect: false
+  - text: Windstärke 7 der Beaufortskala.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-199
+  number: 199
+  question: Windstärken 10, 11 und 12 der Beaufortskala.
+  options:
+  - text: Windstärken 9, 10 und 11 der Beaufortskala.
+    isCorrect: true
+  - text: Windstärken 11, 12 und 13 der Beaufortskala.
+    isCorrect: false
+  - text: Windstärken 8, 9 und 10 der Beaufortskala.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-200
+  number: 200
+  question: Das Fahrwasser verlassen und wenn möglich, Flachwassergebiet aufsuchen
+    und ankern. Wenn dies nicht möglich ist, im Fahrwasser äußerst rechts halten.
+  options:
+  - text: Unverzüglich die Fahrt einstellen und ankern, wenn dies nicht möglich ist,
+      vorsichtig weiterfahren und möglichst im Kielwasser eines vorausfahrenden Fahrzeugs
+      halten.
+    isCorrect: true
+  - text: Umsichtig, aber zügig weiterfahren, um den übrigen Verkehr nicht zu behindern.
+      Beim Hören fremder Nebelsignale aufstoppen und abwarten, dabei fortlaufend die
+      Wassertiefe loten.
+    isCorrect: false
+  - text: Im Fahrwasser äußerst rechts halten und den nächstgelegenen Hafen oder Liegeplatz
+      anlaufen. Im Zweifel andere Fahrzeuge nach Position und richtigem Kurs fragen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-201
+  number: 201
+  question: Der Kollisionsverhütung.
+  options:
+  - text: Dem Empfang von Wetterdaten.
+    isCorrect: true
+  - text: Der Positionsbestimmung.
+    isCorrect: false
+  - text: Dem Senden nautischer Warnnachrichten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-202
+  number: 202
+  question: Schiffsdaten (statisch und dynamisch), reisebezogene Daten.
+  options:
+  - text: Schiffsdaten (statisch und dynamisch), Wetterdaten.
+    isCorrect: true
+  - text: Schiffsdaten (statisch), reisebezogene Daten.
+    isCorrect: false
+  - text: Schiffsdaten (dynamisch), Wetterdaten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-203
+  number: 203
+  question: Insbesondere alle Navigationsanlagen sorgfältig gebrauchen, die Sichtbarkeit
+    des eigenen Fahrzeugs erhöhen (z. B. Radarreflektor, AIS) und in einem Revier
+    mit Landradarberatung die Radarberatung über UKW-Sprechfunk mithören.
+  options:
+  - text: Insbesondere alle technischen Anlagen, z. B. Radar, AIS, Echolot, Selbststeueranlage
+      einschalten und in einem Revier mit Landradarberatung die Radarberatung über
+      UKW-Sprechfunk anfordern.
+    isCorrect: true
+  - text: Insbesondere alle Navigationsanlagen sorgfältig gebrauchen, die Sichtbarkeit
+      des eigenen Fahrzeugs erhöhen (z. B. Radarreflektor, AIS) und die Verkehrszentrale
+      ständig über Kurs und Geschwindigkeit informieren.
+    isCorrect: false
+  - text: Insbesondere alle technischen Anlagen, z. B. Radar, Echolot, AIS, Selbststeueranlage,
+      einschalten und die Verkehrszentrale ständig über Kurs und Geschwindigkeit informieren.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-204
+  number: 204
+  question: Verschlusszustand herbeiführen, lose Gegenstände festzurren, Rettungsweste
+    anlegen und andere Rettungsmittel bereithalten; wenn erforderlich und möglich
+    Schutzhafen anlaufen.
+  options:
+  - text: Verschlusszustand herbeiführen, lose Gegenstände festzurren, Rettungsweste
+      und andere Rettungsmittel bereithalten, Seenotsignalmittel zum Einsatz vorbereiten.
+    isCorrect: true
+  - text: Türen schließen, lose Gegenstände festzurren, Rettungsweste und andere Rettungsmittel
+      bereithalten, Radar, Ruder und UKW besetzen.
+    isCorrect: false
+  - text: Türen schließen, lose Gegenstände festzurren, Rettungsweste und andere Rettungsmittel
+      bereithalten, Seenotsignalmittel zum Einsatz vorbereiten.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-205
+  number: 205
+  question: Leinenverbindung, Rettungsschlaufe, Bergenetz, Talje, Badeleiter, Großbaum.
+  options:
+  - text: Leinenverbindung, Badeleiter, Treibanker, Rettungsschlaufe, Bergenetz, Talje.
+    isCorrect: true
+  - text: Leinenverbindung, Großbaum, Ankerkette, Talje, Badeleiter, Rettungsschlaufe.
+    isCorrect: false
+  - text: Leinenverbindung, Badeleiter, Rettungsboje, Bergenetz, Großbaum, Talje.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-206
+  number: 206
+  question: Möglichst am Fahrzeug bleiben und die Besatzung zusammenhalten; unnötigen
+    Kräfteverschleiß vermeiden und Aufmerksamkeit zur Hilfeleistung erregen.
+  options:
+  - text: Möglichst am Fahrzeug bleiben und Seenotsignale geben. Die Besatzung zusammenhalten
+      und unnötigen Kräfteverschleiß vermeiden.
+    isCorrect: true
+  - text: Möglichst am Fahrzeug bleiben und Unfallstelle kennzeichnen; unnötigen Kräfteverschleiß
+      vermeiden und Aufmerksamkeit zur Hilfeleistung erregen.
+    isCorrect: false
+  - text: Möglichst am Fahrzeug bleiben und die Besatzung zusammenhalten; Wertgegenstände
+      und Seetagebuch bergen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-207
+  number: 207
+  question: Sicherheitsleinen bzw. -gurte spannen, Sicherheitsgurt anlegen und an
+    den dafür vorgesehenen Stellen einpicken.
+  options:
+  - text: Sicherheitsleinen bzw. -gurte spannen, Besatzung an Deck sammeln. Rettungswesten
+      anlegen.
+    isCorrect: true
+  - text: Sicherheitsleinen bzw. -gurte aufschießen, Sicherheitsgurt anlegen und in
+      die Reling einpicken.
+    isCorrect: false
+  - text: Besatzung in der Plicht versammeln, Rettungswesten anlegen, Sicherheitsleinen
+      bzw. -gurte spannen.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-208
+  number: 208
+  question: "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes\
+    \ Ertönen eines Nebelsignalgerätes, dreimaliges Geben \n\n \n per Licht oder Ton,\
+    \ dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme,\
+    \ Flaggensignal NC, EPIRB, DSC, Radartransponder."
+  options:
+  - text: "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes\
+      \ Ertönen eines Nebelsignalgerätes, dreimaliges Geben \n\n \n per Licht oder\
+      \ Ton, Seewasserfärber, seitliches Heben und Senken der Arme, Ball über oder\
+      \ unter Flaggensignal NC, EPIRB, DSC, Radartransponder."
+    isCorrect: true
+  - text: "Leuchtrakete mit orangem Leuchtstern oder orange brennende Handfackel,\
+      \ rotes Rauchsignal, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges\
+      \ Geben \n\n \n per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk,\
+      \ seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder."
+    isCorrect: false
+  - text: "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes\
+      \ Ertönen eines Nebelsignalgerätes, dreimaliges Geben \n\n \n per Licht oder\
+      \ Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken\
+      \ der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder."
+    isCorrect: false
+  category: spezifische-see
+  assets:
+  - assets/Notsignal-Frage-279-gif.gif
+- id: sbf-see-spe-209
+  number: 209
+  question: Fahrzeug in Seenot.
+  options:
+  - text: Fahrzeug des öffentlichen Dienstes.
+    isCorrect: true
+  - text: Fahrzeug mit gefährlichen Gütern.
+    isCorrect: false
+  - text: Fahrzeug verlässt Liegeplatz.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-210
+  number: 210
+  question: Fahrzeug in Seenot.
+  options:
+  - text: Fahrzeug mit gefährlichen Gütern.
+    isCorrect: true
+  - text: Bleib-weg-Signal.
+    isCorrect: false
+  - text: Achtungssignal.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-211
+  number: 211
+  question: Seenotsignal.
+  options:
+  - text: Nebelsignal.
+    isCorrect: true
+  - text: Bleib-weg-Signal.
+    isCorrect: false
+  - text: Überholsignal.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-212
+  number: 212
+  question: Seenotfall.
+  options:
+  - text: Aufforderung zum Aufstoppen.
+    isCorrect: true
+  - text: Schießübung.
+    isCorrect: false
+  - text: Aufforderung zur Kursänderung.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-213
+  number: 213
+  question: Fahrzeug in Seenot.
+  options:
+  - text: Fahrzeug des öffentlichen Dienstes.
+    isCorrect: true
+  - text: Fahrzeug mit gefährlichen Gütern.
+    isCorrect: false
+  - text: Fahrzeug verlässt Liegeplatz.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
+- id: sbf-see-spe-214
+  number: 214
+  question: Fahrzeug in Seenot.
+  options:
+  - text: Fahrzeug ist manövrierbehindert.
+    isCorrect: true
+  - text: Fahrzeug mit gefährlichen Gütern.
+    isCorrect: false
+  - text: Fahrzeug vor Anker mit mehr als 100 m Länge.
+    isCorrect: false
+  category: spezifische-see
+  assets: []
