@@ -1,0 +1,62 @@
+---
+# Dependabot configuration for automatic dependency updates
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  # Flutter/Dart dependencies (pub)
+  - package-ecosystem: "pub"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
+  # Android Gradle dependencies
+  - package-ecosystem: "gradle"
+    directory: "/android"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+    groups:
+      android-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
+  # Android App Gradle dependencies
+  - package-ecosystem: "gradle"
+    directory: "/android/app"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+    groups:
+      android-app-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+      include: "scope"
