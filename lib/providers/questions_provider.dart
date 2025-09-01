@@ -73,6 +73,33 @@ class QuestionsProvider extends ChangeNotifier {
     }
   }
 
+  // Load random questions for quick quiz
+  Future<void> loadRandomQuestions(int count) async {
+    _isLoading = true;
+    _error = null;
+    notifyListeners();
+
+    try {
+      // Load all questions first
+      _currentCourse = await DataLoader.loadCourse('all_questions.yaml');
+      
+      // Get a shuffled list of all questions
+      final allQuestions = List<Question>.from(_currentCourse!.questions);
+      allQuestions.shuffle();
+      
+      // Take only the requested number of questions
+      _currentQuestions = allQuestions.take(count).toList();
+      _currentQuestionIndex = 0;
+      
+      _error = null;
+    } catch (e) {
+      _error = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
   // Start a new study session
   void startSession(String mode, String category) {
     _currentSession = StudySession(

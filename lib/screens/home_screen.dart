@@ -87,6 +87,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: ListView(
                 children: [
+                  _buildQuickQuizCard(context),
+                  const SizedBox(height: 12),
                   _buildCategoryCard(
                     context,
                     'Alle Fragen',
@@ -135,6 +137,90 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildQuickQuizCard(BuildContext context) {
+    return Card(
+      elevation: 4,
+      color: Colors.blue.shade50,
+      child: InkWell(
+        onTap: () async {
+          await _loadQuestionsAndNavigate(
+            context,
+            'quick_quiz',
+            'quiz',
+            const QuizScreen(),
+          );
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.bolt,
+                  color: Colors.blue,
+                  size: 32,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Schnell-Quiz',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      '14 zufällige Fragen',
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 14,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      'Teste dein Wissen in 5 Minuten',
+                      style: TextStyle(
+                        color: Colors.blue[700],
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Text(
+                  'NEU',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -283,6 +369,8 @@ class _HomeScreenState extends State<HomeScreen> {
       } else if (category == 'incorrect') {
         await provider.loadAllQuestions();
         provider.filterByIncorrect();
+      } else if (category == 'quick_quiz') {
+        await provider.loadRandomQuestions(14);
       }
 
       provider.startSession(mode, category);
