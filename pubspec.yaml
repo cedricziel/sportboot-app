@@ -62,6 +62,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
   
+  # Testing dependencies
+  mockito: ^5.4.3
+  build_runner: ^2.4.7
+  
   # For build scripts
   http: ^1.1.0
   html: ^0.15.4
@@ -80,7 +84,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/data/manifest.yaml
     - assets/data/courses/sbf-see/
+    - assets/data/courses/sbf-binnen/
+    - assets/data/courses/sbf-binnen-segeln/
     - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see

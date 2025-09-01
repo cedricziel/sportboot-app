@@ -1,0 +1,46 @@
+# Test manifest for unit testing
+catalogs:
+  test-basics:
+    name: "Test Basics"
+    description: "Basic test questions"
+    url: "https://example.com/basics"
+    questionCount: 10
+
+  test-advanced:
+    name: "Test Advanced"
+    description: "Advanced test questions"
+    url: "https://example.com/advanced"
+    alternateUrl: "https://example.com/alt/advanced"
+    questionCount: 20
+
+courses:
+  test-course:
+    name: "Test Course"
+    shortName: "TC"
+    description: "A test course for unit testing"
+    icon: "🧪"
+    catalogs:
+      - id: test-basics
+        startNumber: 1
+        endNumber: 10
+      - id: test-advanced
+        startNumber: 11
+        endNumber: 30
+    totalQuestions: 30
+    categories:
+      - id: all
+        name: "All Questions"
+        description: "Complete test catalog"
+        catalogRefs: ["test-basics", "test-advanced"]
+      - id: basics
+        name: "Basics Only"
+        description: "Basic questions"
+        catalogRefs: ["test-basics"]
+    exam:
+      questionCount: 15
+      passingScore: 0.7
+      timeLimit: 30
+
+metadata:
+  version: "test-1.0"
+  source: "Test Data"

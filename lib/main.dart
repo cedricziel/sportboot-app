@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/questions_provider.dart';
+import 'screens/course_selection_screen.dart';
 import 'screens/home_screen.dart';
 import 'services/storage_service.dart';
 
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const HomeScreen(),
+        home: const CourseSelectionScreen(),
       ),
     );
   }

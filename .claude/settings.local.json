@@ -14,7 +14,8 @@
       "Bash(git commit:*)",
       "Bash(flutter pub:*)",
       "Bash(dart run:*)",
-      "Bash(make:*)"
+      "Bash(make:*)",
+      "Bash(flutter test:*)"
     ],
     "deny": [],
     "ask": []

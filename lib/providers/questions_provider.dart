@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../models/course.dart';
+import '../models/course_manifest.dart';
 import '../models/question.dart';
 import '../models/study_session.dart';
 import '../services/data_loader.dart';
@@ -11,6 +12,11 @@ class QuestionsProvider extends ChangeNotifier {
   int _currentQuestionIndex = 0;
   StudySession? _currentSession;
   final StorageService _storage = StorageService();
+  
+  // Course management
+  String? _selectedCourseId;
+  CourseManifest? _selectedCourseManifest;
+  Manifest? _manifest;
 
   bool _isLoading = false;
   String? _error;
@@ -28,13 +34,68 @@ class QuestionsProvider extends ChangeNotifier {
   String? get error => _error;
   bool get hasNext => _currentQuestionIndex < _currentQuestions.length - 1;
   bool get hasPrevious => _currentQuestionIndex > 0;
+  
+  // Course management getters
+  String? get selectedCourseId => _selectedCourseId;
+  CourseManifest? get selectedCourseManifest => _selectedCourseManifest;
+  Manifest? get manifest => _manifest;
 
-  // Initialize storage
+  // Initialize storage and load manifest
   Future<void> init() async {
     await _storage.init();
+    await loadManifest();
+  }
+  
+  // Load manifest
+  Future<void> loadManifest() async {
+    try {
+      _manifest = await DataLoader.loadManifest();
+      notifyListeners();
+    } catch (e) {
+      _error = 'Failed to load manifest: $e';
+      notifyListeners();
+    }
+  }
+  
+  // Set selected course
+  void setSelectedCourse(String courseId, CourseManifest courseManifest) {
+    _selectedCourseId = courseId;
+    _selectedCourseManifest = courseManifest;
+    _storage.setSetting('selectedCourseId', courseId);
+    notifyListeners();
+  }
+  
+  // Get selected course from storage
+  String? getStoredCourseId() {
+    return _storage.getSetting('selectedCourseId') as String?;
   }
 
-  // Load course data
+  // Load course data by course ID
+  Future<void> loadCourseById(String courseId) async {
+    _isLoading = true;
+    _error = null;
+    notifyListeners();
+
+    try {
+      _currentCourse = await DataLoader.loadCourseById(courseId);
+      _currentQuestions = List.from(_currentCourse!.questions);
+      _currentQuestionIndex = 0;
+
+      // Apply shuffle if enabled
+      if (_storage.getSetting('shuffleQuestions', defaultValue: false)) {
+        _currentQuestions.shuffle();
+      }
+
+      _error = null;
+    } catch (e) {
+      _error = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+  
+  // Legacy method for backward compatibility
   Future<void> loadCourse(String filename) async {
     _isLoading = true;
     _error = null;
@@ -59,17 +120,46 @@ class QuestionsProvider extends ChangeNotifier {
     }
   }
 
-  // Load all questions
+  // Load all questions for selected course
   Future<void> loadAllQuestions() async {
-    await loadCourse('all_questions.yaml');
+    if (_selectedCourseId != null) {
+      await loadCourseById(_selectedCourseId!);
+    } else {
+      // Fallback to SBF-See for backward compatibility
+      await loadCourse('all_questions.yaml');
+    }
   }
 
-  // Load questions by category
-  Future<void> loadCategory(String category) async {
-    if (category == 'basisfragen') {
-      await loadCourse('basisfragen.yaml');
-    } else if (category == 'spezifische-see') {
-      await loadCourse('spezifische-see.yaml');
+  // Load questions by category for selected course
+  Future<void> loadCategory(String categoryId) async {
+    if (_selectedCourseId == null || _selectedCourseManifest == null) {
+      // Fallback to old behavior for backward compatibility
+      if (categoryId == 'basisfragen') {
+        await loadCourse('basisfragen.yaml');
+      } else if (categoryId == 'spezifische-see') {
+        await loadCourse('spezifische-see.yaml');
+      }
+      return;
+    }
+    
+    // Load full course first
+    await loadCourseById(_selectedCourseId!);
+    
+    // Filter by category
+    final category = _selectedCourseManifest!.categories
+        .firstWhere((c) => c.id == categoryId, orElse: () => _selectedCourseManifest!.categories.first);
+    
+    if (category.type == 'bookmarks') {
+      filterByBookmarks();
+    } else if (category.type == 'incorrect') {
+      filterByIncorrect();
+    } else {
+      // Filter by catalog refs
+      _currentQuestions = _currentCourse!.questions
+          .where((q) => category.catalogRefs.contains(q.category))
+          .toList();
+      _currentQuestionIndex = 0;
+      notifyListeners();
     }
   }
 
@@ -80,8 +170,13 @@ class QuestionsProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      // Load all questions first
-      _currentCourse = await DataLoader.loadCourse('all_questions.yaml');
+      // Load all questions for selected course
+      if (_selectedCourseId != null) {
+        _currentCourse = await DataLoader.loadCourseById(_selectedCourseId!);
+      } else {
+        // Fallback
+        _currentCourse = await DataLoader.loadCourse('all_questions.yaml');
+      }
 
       // Get a shuffled list of all questions
       final allQuestions = List<Question>.from(_currentCourse!.questions);

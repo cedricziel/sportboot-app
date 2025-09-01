@@ -89,6 +89,12 @@ class StorageService {
     final settings = getSettings();
     return settings[key] ?? defaultValue;
   }
+  
+  Future<void> setSetting(String key, dynamic value) async {
+    final settings = getSettings();
+    settings[key] = value;
+    await _prefs.setString(_settingsKey, jsonEncode(settings));
+  }
 
   // Statistics
   Future<void> incrementStatistic(String key) async {
