@@ -48,20 +48,36 @@ def download_asset(url: str, filename: str) -> str:
         print(f"Error downloading asset {url}: {e}")
         return ""
 
-def parse_question_from_ol(ol_element, question_num: int, category: str) -> Optional[Dict]:
-    """Parse a single question from an ordered list element"""
+def parse_question_and_answers(p_element, ol_element, question_num: int, category: str) -> Optional[Dict]:
+    """Parse a question from a paragraph and its answers from the following ordered list"""
     try:
-        # Get all list items
-        lis = ol_element.find_all('li', recursive=False)
-        if len(lis) < 2:  # Need at least question and one answer
+        # Extract question text from the paragraph
+        # Need to handle nested elements like images
+        question_parts = []
+        
+        # Get direct text content
+        for child in p_element.children:
+            if isinstance(child, str):
+                text = child.strip()
+                if text:
+                    question_parts.append(text)
+            elif child.name == 'p' and 'picture' in child.get('class', []):
+                # This is an embedded image - add placeholder or description
+                img = child.find('img')
+                if img and img.get('alt'):
+                    question_parts.append(f"[{img.get('alt')}]")
+        
+        question_text = ' '.join(question_parts)
+        
+        # Remove the question number from the beginning
+        question_text = re.sub(r'^\d+\.\s*', '', question_text).strip()
+        
+        if not question_text:
             return None
         
-        # First li is the question
-        question_text = lis[0].get_text().strip()
-        
-        # Check for associated images in the question
+        # Check for associated images
         assets = []
-        imgs = lis[0].find_all('img')
+        imgs = p_element.find_all('img')
         for img in imgs:
             src = img.get('src', '')
             if src:
@@ -70,31 +86,24 @@ def parse_question_from_ol(ol_element, question_num: int, category: str) -> Opti
                 if filename:
                     assets.append(f"assets/{filename}")
         
-        # Rest are answer options - get the nested ol
-        answer_ol = lis[1].find('ol')
-        if not answer_ol:
-            # Sometimes answers are directly in li elements
-            options = []
-            for i in range(1, len(lis)):
-                option_text = lis[i].get_text().strip()
-                if option_text:
-                    options.append(option_text)
-        else:
-            # Parse nested ol for answer options
-            answer_lis = answer_ol.find_all('li', recursive=False)
-            options = [li.get_text().strip() for li in answer_lis if li.get_text().strip()]
-        
-        if not options:
+        # Parse answer options from the ordered list
+        answer_lis = ol_element.find_all('li', recursive=False)
+        if not answer_lis:
             return None
         
         # Convert options to objects with isCorrect flag
-        # First option is correct (option 'a' in the original format)
+        # First option (a) is always correct according to the note on the page
         answer_objects = []
-        for idx, option_text in enumerate(options):
-            answer_objects.append({
-                "text": option_text,
-                "isCorrect": idx == 0  # First option is always correct
-            })
+        for idx, li in enumerate(answer_lis):
+            option_text = li.get_text().strip()
+            if option_text:
+                answer_objects.append({
+                    "text": option_text,
+                    "isCorrect": idx == 0  # First option is always correct
+                })
+        
+        if not answer_objects:
+            return None
         
         return {
             "id": f"sbf-see-{category[:3]}-{question_num:03d}",
@@ -119,25 +128,42 @@ def scrape_questions_page(url: str, category: str) -> List[Dict]:
         
         questions = []
         
-        # Find all ordered lists - these contain the questions
-        all_ols = soup.find_all('ol')
+        # Find the main content area
+        content = soup.find('div', id='content')
+        if not content:
+            content = soup
         
-        # Filter to find the main question lists
-        # The main pattern is that questions are in numbered OLs
-        question_num = 1
+        # Find all paragraphs that contain questions
+        # Questions are in <p> tags and start with a number
+        all_paragraphs = content.find_all('p')
         
-        for ol in all_ols:
-            # Skip nested OLs (answer options)
-            parent = ol.parent
-            if parent and parent.name == 'li':
+        question_num = 0
+        for i, p in enumerate(all_paragraphs):
+            # Get the text content to check if it's a question
+            text = p.get_text().strip()
+            
+            # Skip empty paragraphs and separator lines
+            if not text or p.get('class') == ['line'] or p.get('class') == ['wsv-red']:
                 continue
+            
+            # Check if this paragraph starts with a question number
+            if re.match(r'^\d+\.\s+\w', text):
+                # This is likely a question
+                # Find the next ordered list with answer options
+                next_sibling = p.find_next_sibling()
                 
-            # Try to parse as a question
-            question_data = parse_question_from_ol(ol, question_num, category)
-            if question_data:
-                questions.append(question_data)
-                print(f"  Parsed question {question_data['number']}: {question_data['question'][:50]}...")
-                question_num += 1
+                # Handle cases where there might be embedded images
+                while next_sibling and next_sibling.name == 'p' and 'picture' in next_sibling.get('class', []):
+                    # This is an embedded image, skip to next
+                    next_sibling = next_sibling.find_next_sibling()
+                
+                if next_sibling and next_sibling.name == 'ol' and 'elwisOL-lowerLiteral' in next_sibling.get('class', []):
+                    # Found the answer list
+                    question_num += 1
+                    question_data = parse_question_and_answers(p, next_sibling, question_num, category)
+                    if question_data:
+                        questions.append(question_data)
+                        print(f"  Parsed question {question_data['number']}: {question_data['question'][:50]}...")
         
         # Download any images found
         images = soup.find_all('img')
@@ -149,7 +175,8 @@ def scrape_questions_page(url: str, category: str) -> List[Dict]:
             if src:
                 # Clean filename - remove query parameters
                 filename = os.path.basename(urlparse(src).path)
-                if filename and filename not in downloaded_assets:
+                # Skip non-question related images (logos, icons, etc.)
+                if filename and filename not in downloaded_assets and 'Schallsignal' in src:
                     local_path = download_asset(src, filename)
                     if local_path:
                         downloaded_assets.add(filename)

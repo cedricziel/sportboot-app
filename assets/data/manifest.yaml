@@ -1,0 +1,124 @@
+# Manifest for SBF Question Catalogs and Courses
+# This file defines all available question catalogs and how they combine into courses
+
+catalogs:
+  basisfragen:
+    name: "Basisfragen"
+    description: "Grundlegende Fragen für alle Sportbootführerscheine"
+    url: "https://www.elwis.de/DE/Sportschifffahrt/Sportbootfuehrerscheine/Fragenkatalog-See/Basisfragen/Basisfragen-node.html"
+    alternateUrl: "https://www.elwis.de/DE/Sportschifffahrt/Sportbootfuehrerscheine/Fragenkatalog-Binnen/Basisfragen/Basisfragen-node.html"
+    questionCount: 72
+
+  spezifische-see:
+    name: "Spezifische Fragen See"
+    description: "Spezifische Fragen für Seeschifffahrtsstraßen"
+    url: "https://www.elwis.de/DE/Sportschifffahrt/Sportbootfuehrerscheine/Fragenkatalog-See/Spezifische-Fragen-See/Spezifische-Fragen-See-node.html"
+    questionCount: 212
+
+  spezifische-binnen:
+    name: "Spezifische Fragen Binnen"
+    description: "Spezifische Fragen für Binnenschifffahrtsstraßen"
+    url: "https://www.elwis.de/DE/Sportschifffahrt/Sportbootfuehrerscheine/Fragenkatalog-Binnen/Spezifische-Fragen-Binnen/Spezifische-Fragen-Binnen-node.html"
+    questionCount: 181
+
+  spezifische-segeln:
+    name: "Spezifische Fragen Segeln"
+    description: "Zusätzliche Fragen für Segelboote auf Binnenschifffahrtsstraßen"
+    url: "https://www.elwis.de/DE/Sportschifffahrt/Sportbootfuehrerscheine/Fragenkatalog-Binnen/Spezifische-Fragen-Segeln/Spezifische-Fragen-Segeln-node.html"
+    questionCount: 47
+
+courses:
+  sbf-see:
+    name: "Sportbootführerschein See"
+    shortName: "SBF-See"
+    description: "Amtlicher Sportbootführerschein mit dem Geltungsbereich Seeschifffahrtsstraßen"
+    icon: "🌊"
+    catalogs:
+      - id: basisfragen
+        startNumber: 1
+        endNumber: 72
+      - id: spezifische-see
+        startNumber: 73
+        endNumber: 284
+    totalQuestions: 284
+    categories:
+      - id: all
+        name: "Alle Fragen"
+        description: "Kompletter Fragenkatalog mit 284 Fragen"
+        catalogRefs: ["basisfragen", "spezifische-see"]
+      - id: basics
+        name: "Basisfragen"
+        description: "72 grundlegende Fragen"
+        catalogRefs: ["basisfragen"]
+      - id: specific
+        name: "Spezifische See"
+        description: "212 spezifische Fragen für See"
+        catalogRefs: ["spezifische-see"]
+
+  sbf-binnen:
+    name: "Sportbootführerschein Binnen"
+    shortName: "SBF-Binnen"
+    description: "Amtlicher Sportbootführerschein mit dem Geltungsbereich Binnenschifffahrtsstraßen (Motor)"
+    icon: "🚤"
+    catalogs:
+      - id: basisfragen
+        startNumber: 1
+        endNumber: 72
+      - id: spezifische-binnen
+        startNumber: 73
+        endNumber: 253
+    totalQuestions: 253
+    categories:
+      - id: all
+        name: "Alle Fragen"
+        description: "Kompletter Fragenkatalog mit 253 Fragen"
+        catalogRefs: ["basisfragen", "spezifische-binnen"]
+      - id: basics
+        name: "Basisfragen"
+        description: "72 grundlegende Fragen"
+        catalogRefs: ["basisfragen"]
+      - id: specific
+        name: "Spezifische Binnen"
+        description: "181 spezifische Fragen für Binnen"
+        catalogRefs: ["spezifische-binnen"]
+
+  sbf-binnen-segeln:
+    name: "Sportbootführerschein Binnen unter Segeln"
+    shortName: "SBF-Binnen Segeln"
+    description: "Amtlicher Sportbootführerschein mit dem Geltungsbereich Binnenschifffahrtsstraßen (Motor + Segeln)"
+    icon: "⛵"
+    catalogs:
+      - id: basisfragen
+        startNumber: 1
+        endNumber: 72
+      - id: spezifische-binnen
+        startNumber: 73
+        endNumber: 253
+      - id: spezifische-segeln
+        startNumber: 254
+        endNumber: 300
+    totalQuestions: 300
+    categories:
+      - id: all
+        name: "Alle Fragen"
+        description: "Kompletter Fragenkatalog mit 300 Fragen"
+        catalogRefs: ["basisfragen", "spezifische-binnen", "spezifische-segeln"]
+      - id: basics
+        name: "Basisfragen"
+        description: "72 grundlegende Fragen"
+        catalogRefs: ["basisfragen"]
+      - id: specific-motor
+        name: "Spezifische Binnen"
+        description: "181 spezifische Fragen für Binnen"
+        catalogRefs: ["spezifische-binnen"]
+      - id: specific-sail
+        name: "Spezifische Segeln"
+        description: "47 spezifische Fragen für Segeln"
+        catalogRefs: ["spezifische-segeln"]
+
+# Metadata
+metadata:
+  version: "2024.01"
+  source: "ELWIS - Elektronischer Wasserstraßen-Informationsservice"
+  lastUpdated: "2024-01-01"
+  note: "Bei allen Fragen ist immer Antwort a) die richtige Antwort"

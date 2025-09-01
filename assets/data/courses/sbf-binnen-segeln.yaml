@@ -1,0 +1,61 @@
+# Course definition for Sportbootführerschein Binnen unter Segeln
+# This file references catalogs from the manifest
+
+id: sbf-binnen-segeln
+name: "Sportbootführerschein Binnen unter Segeln"
+shortName: "SBF-Binnen Segeln"
+description: "Amtlicher Sportbootführerschein mit dem Geltungsbereich Binnenschifffahrtsstraßen (Motor + Segeln)"
+icon: "⛵"
+
+# Catalogs that make up this course
+catalogs:
+  - basisfragen
+  - spezifische-binnen
+  - spezifische-segeln
+
+# Study categories for the app
+categories:
+  - id: all
+    name: "Alle Fragen"
+    description: "Kompletter Fragenkatalog mit 300 Fragen"
+    includeAll: true
+    
+  - id: basics
+    name: "Basisfragen"
+    description: "72 grundlegende Fragen"
+    catalogs: ["basisfragen"]
+    
+  - id: specific-motor
+    name: "Spezifische Binnen"
+    description: "181 spezifische Fragen für Binnenschifffahrtsstraßen"
+    catalogs: ["spezifische-binnen"]
+    
+  - id: specific-sail
+    name: "Spezifische Segeln"
+    description: "47 spezifische Fragen für das Segeln"
+    catalogs: ["spezifische-segeln"]
+    
+  - id: bookmarks
+    name: "Lesezeichen"
+    description: "Markierte Fragen zum späteren Lernen"
+    type: bookmarks
+    
+  - id: incorrect
+    name: "Falsch beantwortet"
+    description: "Fragen, die falsch beantwortet wurden"
+    type: incorrect
+
+# Exam configuration
+exam:
+  questionCount: 30
+  basicsCount: 7
+  specificMotorCount: 18
+  specificSailCount: 5
+  passingScore: 0.8  # 80% correct needed to pass
+  timeLimit: 60      # minutes
+
+# Learning settings
+settings:
+  shuffleQuestions: true
+  showCorrectAnswer: true
+  enableStatistics: true

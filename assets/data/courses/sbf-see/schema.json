@@ -1,0 +1,186 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/sbf-questions.schema.json",
+  "title": "SBF Questions Schema",
+  "description": "Schema for validating SBF (Sportbootführerschein) question catalog YAML files",
+  "type": "object",
+  "required": ["course", "version", "source", "questions"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Reference to the JSON schema for validation"
+    },
+    "course": {
+      "type": "string",
+      "description": "The course identifier (e.g., SBF-See, SBF-Binnen)",
+      "enum": ["SBF-See", "SBF-Binnen", "SBF-See-Binnen"],
+      "examples": ["SBF-See"]
+    },
+    "version": {
+      "type": "string",
+      "description": "Version or year of the question catalog",
+      "pattern": "^[0-9]{4}$",
+      "examples": ["2024"]
+    },
+    "source": {
+      "type": "string",
+      "description": "Source of the questions",
+      "examples": ["ELWIS"]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional metadata about the question catalog",
+      "properties": {
+        "last_updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of last update"
+        },
+        "total_questions": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Total number of questions in the catalog"
+        },
+        "language": {
+          "type": "string",
+          "description": "Language code (ISO 639-1)",
+          "pattern": "^[a-z]{2}$",
+          "default": "de"
+        },
+        "exam_duration_minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Duration of the exam in minutes"
+        },
+        "passing_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Minimum percentage score to pass"
+        }
+      },
+      "additionalProperties": false
+    },
+    "questions": {
+      "type": "array",
+      "description": "Array of question objects",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "number", "question", "options", "category"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the question",
+            "pattern": "^sbf-[a-z-]+-[0-9]{3}$",
+            "examples": ["sbf-see-bas-001", "sbf-see-spe-042"]
+          },
+          "number": {
+            "type": "integer",
+            "description": "Question number in the catalog",
+            "minimum": 1
+          },
+          "question": {
+            "type": "string",
+            "description": "The question text",
+            "minLength": 1
+          },
+          "options": {
+            "type": "array",
+            "description": "Multiple choice answer options with correctness indicator",
+            "minItems": 2,
+            "maxItems": 6,
+            "items": {
+              "type": "object",
+              "required": ["text", "isCorrect"],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "description": "The answer text",
+                  "minLength": 1
+                },
+                "isCorrect": {
+                  "type": "boolean",
+                  "description": "Whether this is the correct answer"
+                },
+                "explanation": {
+                  "type": "string",
+                  "description": "Optional explanation for why this answer is correct or incorrect"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "category": {
+            "type": "string",
+            "description": "Question category",
+            "enum": ["basisfragen", "spezifische-see", "spezifische-binnen"],
+            "examples": ["basisfragen", "spezifische-see"]
+          },
+          "subcategory": {
+            "type": "string",
+            "description": "Optional subcategory for further classification",
+            "examples": ["navigation", "safety", "regulations", "weather", "signals"]
+          },
+          "assets": {
+            "type": "array",
+            "description": "Associated media assets (images, diagrams)",
+            "items": {
+              "type": "string",
+              "description": "Relative path to asset file",
+              "pattern": "^assets/[a-zA-Z0-9_.-]+\\.(gif|jpg|jpeg|png|svg)$"
+            }
+          },
+          "difficulty": {
+            "type": "string",
+            "description": "Difficulty level of the question",
+            "enum": ["easy", "medium", "hard"]
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags for categorizing questions",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "explanation": {
+            "type": "string",
+            "description": "Optional explanation for the correct answer"
+          },
+          "references": {
+            "type": "array",
+            "description": "References to regulations or source materials",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["regulation", "book", "chart", "manual"],
+                  "description": "Type of reference"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of the reference"
+                },
+                "section": {
+                  "type": "string",
+                  "description": "Specific section or paragraph"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Optional URL to the reference"
+                }
+              },
+              "required": ["type", "name"]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
