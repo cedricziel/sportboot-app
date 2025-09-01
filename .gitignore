@@ -51,3 +51,6 @@ __pycache__/
 
 # Intermediate data directory (scraped data before processing)
 .data/
+
+# Scraper cache
+.cache/
