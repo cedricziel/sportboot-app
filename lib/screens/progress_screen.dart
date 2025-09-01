@@ -58,10 +58,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Lernserie',
-                          style: TextStyle(fontSize: 16),
-                        ),
+                        const Text('Lernserie', style: TextStyle(fontSize: 16)),
                         Text(
                           '$_studyStreak Tage',
                           style: const TextStyle(
@@ -76,7 +73,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            
+
             // Accuracy Card
             Card(
               child: Padding(
@@ -161,7 +158,12 @@ class _ProgressScreenState extends State<ProgressScreen> {
     );
   }
 
-  Widget _buildStatCard(String label, String value, IconData icon, Color color) {
+  Widget _buildStatCard(
+    String label,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -172,17 +174,11 @@ class _ProgressScreenState extends State<ProgressScreen> {
             const SizedBox(height: 8),
             Text(
               value,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
               label,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
             ),
           ],
         ),

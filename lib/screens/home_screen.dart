@@ -70,10 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(height: 4),
-                    Text(
-                      '287 Fragen',
-                      style: TextStyle(color: Colors.grey),
-                    ),
+                    Text('287 Fragen', style: TextStyle(color: Colors.grey)),
                   ],
                 ),
               ),
@@ -166,11 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.blue.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(
-                  Icons.bolt,
-                  color: Colors.blue,
-                  size: 32,
-                ),
+                child: const Icon(Icons.bolt, color: Colors.blue, size: 32),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -187,10 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 4),
                     Text(
                       '14 zufällige Fragen',
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 14,
-                      ),
+                      style: TextStyle(color: Colors.grey[600], fontSize: 14),
                     ),
                     const SizedBox(height: 2),
                     Text(
@@ -205,7 +195,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(20),
@@ -265,10 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 4),
                     Text(
                       subtitle,
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 14,
-                      ),
+                      style: TextStyle(color: Colors.grey[600], fontSize: 14),
                     ),
                   ],
                 ),
@@ -340,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget screen,
   ) async {
     final provider = context.read<QuestionsProvider>();
-    
+
     // Show loading dialog
     showDialog(
       context: context,
@@ -377,17 +367,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
       if (context.mounted) {
         Navigator.pop(context); // Close loading dialog
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => screen),
-        );
+        Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
       }
     } catch (e) {
       if (context.mounted) {
         Navigator.pop(context); // Close loading dialog
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler beim Laden: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Fehler beim Laden: $e')));
       }
     }
   }

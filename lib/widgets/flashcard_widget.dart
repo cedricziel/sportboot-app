@@ -6,11 +6,7 @@ class FlashcardWidget extends StatelessWidget {
   final Question question;
   final VoidCallback? onFlip;
 
-  const FlashcardWidget({
-    super.key,
-    required this.question,
-    this.onFlip,
-  });
+  const FlashcardWidget({super.key, required this.question, this.onFlip});
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +29,7 @@ class FlashcardWidget extends StatelessWidget {
   Widget _buildCard(BuildContext context, Widget content, Color color) {
     return Card(
       elevation: 8,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
         decoration: BoxDecoration(
           color: color,
@@ -54,11 +48,7 @@ class FlashcardWidget extends StatelessWidget {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              const Icon(
-                Icons.help_outline,
-                size: 48,
-                color: Colors.blue,
-              ),
+              const Icon(Icons.help_outline, size: 48, color: Colors.blue),
               const SizedBox(height: 24),
               Text(
                 question.question,
@@ -70,8 +60,8 @@ class FlashcardWidget extends StatelessWidget {
               ),
               if (question.assets.isNotEmpty) ...[
                 const SizedBox(height: 16),
-                ...question.assets.map((asset) => 
-                  Padding(
+                ...question.assets.map(
+                  (asset) => Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Image.asset(
                       'assets/images/${asset.split('/').last}',
@@ -93,10 +83,7 @@ class FlashcardWidget extends StatelessWidget {
               const SizedBox(height: 32),
               const Text(
                 'Tippe zum Umdrehen',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 14,
-                ),
+                style: TextStyle(color: Colors.grey, fontSize: 14),
               ),
             ],
           ),
@@ -112,25 +99,18 @@ class FlashcardWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.lightbulb_outline,
-              size: 48,
-              color: Colors.green,
-            ),
+            const Icon(Icons.lightbulb_outline, size: 48, color: Colors.green),
             const SizedBox(height: 24),
             const Text(
               'Antwortmöglichkeiten:',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             ...question.options.asMap().entries.map((entry) {
               final index = entry.key;
               final option = entry.value;
               final letter = String.fromCharCode(97 + index); // a, b, c, d
-              
+
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 4),
                 padding: const EdgeInsets.all(12),

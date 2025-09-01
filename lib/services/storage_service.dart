@@ -9,7 +9,7 @@ class StorageService {
   static const String _settingsKey = 'app_settings';
 
   late final SharedPreferences _prefs;
-  
+
   // Singleton pattern
   static final StorageService _instance = StorageService._internal();
   factory StorageService() => _instance;
@@ -20,7 +20,11 @@ class StorageService {
   }
 
   // Study Progress Management
-  Future<void> saveQuestionProgress(String questionId, bool isCorrect, int attempts) async {
+  Future<void> saveQuestionProgress(
+    String questionId,
+    bool isCorrect,
+    int attempts,
+  ) async {
     final progress = getProgress();
     progress[questionId] = {
       'correct': isCorrect,
@@ -110,13 +114,13 @@ class StorageService {
   Future<void> updateStudyStreak() async {
     final lastStudy = _prefs.getString('lastStudyDate');
     final today = DateTime.now().toIso8601String().split('T')[0];
-    
+
     if (lastStudy == null) {
       await _prefs.setInt('studyStreak', 1);
     } else {
       final lastDate = DateTime.parse(lastStudy);
       final difference = DateTime.now().difference(lastDate).inDays;
-      
+
       if (difference == 1) {
         final streak = _prefs.getInt('studyStreak') ?? 0;
         await _prefs.setInt('studyStreak', streak + 1);
@@ -124,7 +128,7 @@ class StorageService {
         await _prefs.setInt('studyStreak', 1);
       }
     }
-    
+
     await _prefs.setString('lastStudyDate', today);
   }
 

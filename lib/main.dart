@@ -6,10 +6,10 @@ import 'services/storage_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize storage service
   await StorageService().init();
-  
+
   runApp(const MyApp());
 }
 
@@ -19,19 +19,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => QuestionsProvider()),
-      ],
+      providers: [ChangeNotifierProvider(create: (_) => QuestionsProvider())],
       child: MaterialApp(
         title: 'SBF-See Lernkarten',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true,
-          appBarTheme: const AppBarTheme(
-            centerTitle: true,
-            elevation: 2,
-          ),
+          appBarTheme: const AppBarTheme(centerTitle: true, elevation: 2),
           cardTheme: CardThemeData(
             elevation: 2,
             shape: RoundedRectangleBorder(

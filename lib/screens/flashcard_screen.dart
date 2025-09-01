@@ -37,16 +37,12 @@ class FlashcardScreen extends StatelessWidget {
           }
 
           if (provider.error != null) {
-            return Center(
-              child: Text('Fehler: ${provider.error}'),
-            );
+            return Center(child: Text('Fehler: ${provider.error}'));
           }
 
           final question = provider.currentQuestion;
           if (question == null) {
-            return const Center(
-              child: Text('Keine Fragen verfügbar'),
-            );
+            return const Center(child: Text('Keine Fragen verfügbar'));
           }
 
           return Column(
@@ -145,10 +141,7 @@ class FlashcardScreen extends StatelessWidget {
             color: color,
           ),
         ),
-        Text(
-          label,
-          style: const TextStyle(fontSize: 14),
-        ),
+        Text(label, style: const TextStyle(fontSize: 14)),
       ],
     );
   }

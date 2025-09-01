@@ -22,22 +22,20 @@ class StudySession {
   });
 
   int get totalQuestions => questionIds.length;
-  
-  int get correctAnswers => 
+
+  int get correctAnswers =>
       answers.values.where((isCorrect) => isCorrect).length;
-  
-  int get incorrectAnswers => 
+
+  int get incorrectAnswers =>
       answers.values.where((isCorrect) => !isCorrect).length;
-  
-  int get unanswered => 
-      totalQuestions - answers.length;
-  
-  double get accuracy => 
+
+  int get unanswered => totalQuestions - answers.length;
+
+  double get accuracy =>
       answers.isEmpty ? 0 : (correctAnswers / answers.length) * 100;
-  
-  int get totalTimeSpent => 
-      timeSpent.values.fold(0, (sum, time) => sum + time);
-  
+
+  int get totalTimeSpent => timeSpent.values.fold(0, (sum, time) => sum + time);
+
   Duration get sessionDuration {
     if (endTime == null) {
       return DateTime.now().difference(startTime);

@@ -1,12 +1,10 @@
-import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:yaml/yaml.dart';
 import '../models/course.dart';
-import '../models/question.dart';
 
 class DataLoader {
   static const String _basePath = 'assets/data/courses/sbf-see/';
-  
+
   static final Map<String, Course> _courseCache = {};
 
   static Future<Course> loadCourse(String filename) async {
@@ -16,15 +14,17 @@ class DataLoader {
     }
 
     try {
-      final String yamlString = await rootBundle.loadString('$_basePath$filename');
+      final String yamlString = await rootBundle.loadString(
+        '$_basePath$filename',
+      );
       final dynamic yamlData = loadYaml(yamlString);
-      
+
       // Convert YamlMap to regular Map
       final Map<String, dynamic> jsonData = _convertYamlToJson(yamlData);
-      
+
       final Course course = Course.fromMap(jsonData);
       _courseCache[filename] = course;
-      
+
       return course;
     } catch (e) {
       throw Exception('Failed to load course from $filename: $e');
@@ -44,11 +44,8 @@ class DataLoader {
   }
 
   static Future<List<Course>> loadAllCourses() async {
-    final futures = [
-      loadBasisfragen(),
-      loadSpezifischeSee(),
-    ];
-    
+    final futures = [loadBasisfragen(), loadSpezifischeSee()];
+
     return Future.wait(futures);
   }
 

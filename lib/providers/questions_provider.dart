@@ -11,17 +11,17 @@ class QuestionsProvider extends ChangeNotifier {
   int _currentQuestionIndex = 0;
   StudySession? _currentSession;
   final StorageService _storage = StorageService();
-  
+
   bool _isLoading = false;
   String? _error;
 
   // Getters
   Course? get currentCourse => _currentCourse;
   List<Question> get currentQuestions => _currentQuestions;
-  Question? get currentQuestion => 
-      _currentQuestionIndex < _currentQuestions.length 
-          ? _currentQuestions[_currentQuestionIndex] 
-          : null;
+  Question? get currentQuestion =>
+      _currentQuestionIndex < _currentQuestions.length
+      ? _currentQuestions[_currentQuestionIndex]
+      : null;
   int get currentQuestionIndex => _currentQuestionIndex;
   StudySession? get currentSession => _currentSession;
   bool get isLoading => _isLoading;
@@ -44,12 +44,12 @@ class QuestionsProvider extends ChangeNotifier {
       _currentCourse = await DataLoader.loadCourse(filename);
       _currentQuestions = List.from(_currentCourse!.questions);
       _currentQuestionIndex = 0;
-      
+
       // Apply shuffle if enabled
       if (_storage.getSetting('shuffleQuestions', defaultValue: false)) {
         _currentQuestions.shuffle();
       }
-      
+
       _error = null;
     } catch (e) {
       _error = e.toString();
@@ -82,15 +82,15 @@ class QuestionsProvider extends ChangeNotifier {
     try {
       // Load all questions first
       _currentCourse = await DataLoader.loadCourse('all_questions.yaml');
-      
+
       // Get a shuffled list of all questions
       final allQuestions = List<Question>.from(_currentCourse!.questions);
       allQuestions.shuffle();
-      
+
       // Take only the requested number of questions
       _currentQuestions = allQuestions.take(count).toList();
       _currentQuestionIndex = 0;
-      
+
       _error = null;
     } catch (e) {
       _error = e.toString();
@@ -117,9 +117,7 @@ class QuestionsProvider extends ChangeNotifier {
   // End current session
   void endSession() {
     if (_currentSession != null) {
-      _currentSession = _currentSession!.copyWith(
-        endTime: DateTime.now(),
-      );
+      _currentSession = _currentSession!.copyWith(endTime: DateTime.now());
       _storage.incrementStatistic('studySessions');
       _storage.updateStudyStreak();
     }
@@ -129,19 +127,19 @@ class QuestionsProvider extends ChangeNotifier {
   // Answer current question
   void answerQuestion(int selectedIndex) {
     if (currentQuestion == null || _currentSession == null) return;
-    
+
     final isCorrect = currentQuestion!.isAnswerCorrect(selectedIndex);
-    
+
     // Update session
     _currentSession!.answers[currentQuestion!.id] = isCorrect;
-    
+
     // Update storage
     _storage.saveQuestionProgress(
       currentQuestion!.id,
       isCorrect,
       (_storage.getProgress()[currentQuestion!.id]?['attempts'] ?? 0) + 1,
     );
-    
+
     // Update statistics
     _storage.incrementStatistic('totalQuestions');
     if (isCorrect) {
@@ -149,7 +147,7 @@ class QuestionsProvider extends ChangeNotifier {
     } else {
       _storage.incrementStatistic('incorrectAnswers');
     }
-    
+
     notifyListeners();
   }
 
@@ -191,7 +189,7 @@ class QuestionsProvider extends ChangeNotifier {
   // Filter questions
   void filterByBookmarks() {
     if (_currentCourse == null) return;
-    
+
     final bookmarks = _storage.getBookmarks();
     _currentQuestions = _currentCourse!.questions
         .where((q) => bookmarks.contains(q.id))
@@ -202,7 +200,7 @@ class QuestionsProvider extends ChangeNotifier {
 
   void filterByIncorrect() {
     if (_currentCourse == null) return;
-    
+
     final progress = _storage.getProgress();
     _currentQuestions = _currentCourse!.questions
         .where((q) => progress[q.id]?['correct'] == false)
@@ -226,8 +224,9 @@ class QuestionsProvider extends ChangeNotifier {
   }
 
   Map<String, int> getSessionStats() {
-    if (_currentSession == null) return {'correct': 0, 'incorrect': 0, 'unanswered': 0};
-    
+    if (_currentSession == null)
+      return {'correct': 0, 'incorrect': 0, 'unanswered': 0};
+
     return {
       'correct': _currentSession!.correctAnswers,
       'incorrect': _currentSession!.incorrectAnswers,

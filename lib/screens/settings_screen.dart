@@ -38,10 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             padding: EdgeInsets.all(16.0),
             child: Text(
               'Lerneinstellungen',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           SwitchListTile(
@@ -67,10 +64,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             padding: EdgeInsets.all(16.0),
             child: Text(
               'Lernziele',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           ListTile(
@@ -84,23 +78,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
             padding: EdgeInsets.all(16.0),
             child: Text(
               'App-Info',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
-          const ListTile(
-            title: Text('Version'),
-            subtitle: Text('1.0.0'),
-          ),
+          const ListTile(title: Text('Version'), subtitle: Text('1.0.0')),
           const ListTile(
             title: Text('Fragen'),
             subtitle: Text('287 Fragen (SBF-See 2024)'),
           ),
           const ListTile(
             title: Text('Quelle'),
-            subtitle: Text('ELWIS - Elektronisches Wasserstraßen-Informationssystem'),
+            subtitle: Text(
+              'ELWIS - Elektronisches Wasserstraßen-Informationssystem',
+            ),
           ),
           const Divider(),
           Padding(

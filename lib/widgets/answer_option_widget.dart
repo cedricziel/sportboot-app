@@ -20,11 +20,11 @@ class AnswerOptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final letter = String.fromCharCode(97 + index); // a, b, c, d
-    
+
     Color? backgroundColor;
     Color? borderColor;
     IconData? icon;
-    
+
     if (showResult) {
       if (option.isCorrect) {
         backgroundColor = Colors.green.shade50;
@@ -86,12 +86,7 @@ class AnswerOptionWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              if (icon != null)
-                Icon(
-                  icon,
-                  color: borderColor,
-                  size: 24,
-                ),
+              if (icon != null) Icon(icon, color: borderColor, size: 24),
             ],
           ),
         ),
