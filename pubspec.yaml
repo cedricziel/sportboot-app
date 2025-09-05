@@ -64,7 +64,7 @@ dev_dependencies:
   
   # Testing dependencies
   mockito: ^5.4.3
-  build_runner: ^2.4.7
+  build_runner: ^2.7.2
   
   # For build scripts
   http: ^1.1.0
