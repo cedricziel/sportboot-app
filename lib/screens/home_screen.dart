@@ -5,6 +5,7 @@ import 'flashcard_screen.dart';
 import 'quiz_screen.dart';
 import 'progress_screen.dart';
 import 'settings_screen.dart';
+import 'course_selection_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,19 +18,43 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialize provider
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<QuestionsProvider>().init();
+    // Initialize provider and load course info
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final provider = context.read<QuestionsProvider>();
+      await provider.init();
+      
+      // Check if a course is selected
+      final storedCourseId = provider.getStoredCourseId();
+      if (storedCourseId == null && mounted) {
+        // No course selected, navigate to course selection
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const CourseSelectionScreen()),
+        );
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<QuestionsProvider>();
+    final courseManifest = provider.selectedCourseManifest;
+    final courseTitle = courseManifest?.shortName ?? 'Lernkarten';
+    
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SBF-See Lernkarten'),
+        title: Text(courseTitle),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.swap_horiz),
+            tooltip: 'Kurs wechseln',
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => const CourseSelectionScreen()),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.bar_chart),
             onPressed: () {
@@ -55,23 +80,41 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Card(
+            Card(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Icon(Icons.sailing, size: 48, color: Colors.blue),
-                    SizedBox(height: 8),
-                    Text(
-                      'Sportbootführerschein See',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text('287 Fragen', style: TextStyle(color: Colors.grey)),
-                  ],
+                padding: const EdgeInsets.all(16.0),
+                child: Consumer<QuestionsProvider>(
+                  builder: (context, provider, _) {
+                    final courseManifest = provider.selectedCourseManifest;
+                    final courseName = courseManifest?.name ?? 'Kein Kurs ausgewählt';
+                    final courseIcon = courseManifest?.icon ?? '📚';
+                    
+                    // Get total question count from manifest if available
+                    final questionCount = courseManifest?.totalQuestions ?? 0;
+                    
+                    return Column(
+                      children: [
+                        Text(
+                          courseIcon,
+                          style: const TextStyle(fontSize: 48),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          courseName,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '$questionCount Fragen',
+                          style: const TextStyle(color: Colors.grey),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
             ),
@@ -82,55 +125,82 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 16),
             Expanded(
-              child: ListView(
-                children: [
-                  _buildQuickQuizCard(context),
-                  const SizedBox(height: 12),
-                  _buildCategoryCard(
-                    context,
-                    'Alle Fragen',
-                    '287 Fragen',
-                    Icons.list_alt,
-                    Colors.purple,
-                    'all_questions',
-                  ),
-                  const SizedBox(height: 12),
-                  _buildCategoryCard(
-                    context,
-                    'Basisfragen',
-                    '73 Fragen',
-                    Icons.foundation,
-                    Colors.blue,
-                    'basisfragen',
-                  ),
-                  const SizedBox(height: 12),
-                  _buildCategoryCard(
-                    context,
-                    'Spezifische Fragen See',
-                    '214 Fragen',
-                    Icons.waves,
-                    Colors.teal,
-                    'spezifische-see',
-                  ),
-                  const SizedBox(height: 12),
-                  _buildCategoryCard(
-                    context,
-                    'Lesezeichen',
-                    'Markierte Fragen',
-                    Icons.bookmark,
-                    Colors.orange,
-                    'bookmarks',
-                  ),
-                  const SizedBox(height: 12),
-                  _buildCategoryCard(
-                    context,
-                    'Falsch beantwortet',
-                    'Zur Wiederholung',
-                    Icons.close_rounded,
-                    Colors.red,
-                    'incorrect',
-                  ),
-                ],
+              child: Consumer<QuestionsProvider>(
+                builder: (context, provider, _) {
+                  final courseManifest = provider.selectedCourseManifest;
+                  
+                  if (courseManifest == null) {
+                    return const Center(
+                      child: Text('Bitte wähle einen Kurs aus'),
+                    );
+                  }
+                  
+                  return ListView(
+                    children: [
+                      _buildQuickQuizCard(context),
+                      const SizedBox(height: 12),
+                      // Build category cards dynamically from course manifest
+                      ...courseManifest.categories.map((category) {
+                        // Map category types to icons and colors
+                        IconData icon;
+                        Color color;
+                        String subtitle;
+                        
+                        switch (category.type ?? category.id) {
+                          case 'all':
+                            icon = Icons.list_alt;
+                            color = Colors.purple;
+                            subtitle = category.description;
+                            break;
+                          case 'basics':
+                          case 'basisfragen':
+                            icon = Icons.foundation;
+                            color = Colors.blue;
+                            subtitle = category.description;
+                            break;
+                          case 'bookmarks':
+                            icon = Icons.bookmark;
+                            color = Colors.orange;
+                            subtitle = 'Markierte Fragen';
+                            break;
+                          case 'incorrect':
+                            icon = Icons.close_rounded;
+                            color = Colors.red;
+                            subtitle = 'Zur Wiederholung';
+                            break;
+                          default:
+                            // For specific categories
+                            if (category.id.contains('segeln') || category.id.contains('sail')) {
+                              icon = Icons.sailing;
+                              color = Colors.teal;
+                            } else if (category.id.contains('see') || category.id.contains('sea')) {
+                              icon = Icons.waves;
+                              color = Colors.cyan;
+                            } else if (category.id.contains('binnen')) {
+                              icon = Icons.water;
+                              color = Colors.lightBlue;
+                            } else {
+                              icon = Icons.quiz;
+                              color = Colors.indigo;
+                            }
+                            subtitle = category.description;
+                        }
+                        
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 12.0),
+                          child: _buildCategoryCard(
+                            context,
+                            category.name,
+                            subtitle,
+                            icon,
+                            color,
+                            category.id,
+                          ),
+                        );
+                      }),
+                    ],
+                  );
+                },
               ),
             ),
           ],
@@ -347,20 +417,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
     try {
       // Load questions based on category
-      if (category == 'all_questions') {
-        await provider.loadAllQuestions();
-      } else if (category == 'basisfragen') {
-        await provider.loadCategory('basisfragen');
-      } else if (category == 'spezifische-see') {
-        await provider.loadCategory('spezifische-see');
+      if (category == 'quick_quiz') {
+        await provider.loadRandomQuestions(14);
       } else if (category == 'bookmarks') {
         await provider.loadAllQuestions();
         provider.filterByBookmarks();
       } else if (category == 'incorrect') {
         await provider.loadAllQuestions();
         provider.filterByIncorrect();
-      } else if (category == 'quick_quiz') {
-        await provider.loadRandomQuestions(14);
+      } else if (category == 'all' || category == 'all_questions') {
+        await provider.loadAllQuestions();
+      } else {
+        // Load category from course manifest
+        await provider.loadCategory(category);
       }
 
       provider.startSession(mode, category);

@@ -1,6 +1,6 @@
 # Questions for Basisfragen
 # Source: https://www.elwis.de/DE/Sportschifffahrt/Sportbootfuehrerscheine/Fragenkatalog-See/Basisfragen/Basisfragen-node.html
-# Generated: 2025-09-01T12:36:34.743832
+# Generated: 2025-09-22T17:16:51.192111
 
 catalog:
   id: basisfragen
@@ -9,579 +9,1227 @@ catalog:
   questionCount: 72
 
 questions:
-  - number: 1
+  - id: q_9f05fd0cd065
+    number: 1
     text: "Was ist zu tun, wenn vor Antritt der Fahrt nicht feststeht, wer Schiffsführer ist?"
-    answers:
-      - "Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung behindert ist oder wenn eine Blutalkoholkonzentration von 0,5 ‰ oder mehr im Körper vorhanden ist."
-      - "Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung behindert ist oder wenn eine Blutalkoholkonzentration von 0,8 ‰ oder mehr im Körper vorhanden ist."
-      - "Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung behindert ist oder wenn eine Blutalkoholkonzentration von 1,0 ‰ oder mehr im Körper vorhanden ist."
-      - "Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung behindert ist oder wenn eine Blutalkoholkonzentration von 0,3 ‰ oder mehr im Körper vorhanden ist."
+    options:
+      - id: a_d0f0086288e5
+        text: "Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung behindert ist oder wenn eine Blutalkoholkonzentration von 0,5 ‰ oder mehr im Körper vorhanden ist."
+        isCorrect: true
+      - id: a_5d2ac2a96331
+        text: "Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung behindert ist oder wenn eine Blutalkoholkonzentration von 0,8 ‰ oder mehr im Körper vorhanden ist."
+        isCorrect: false
+      - id: a_9491fc970b3d
+        text: "Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung behindert ist oder wenn eine Blutalkoholkonzentration von 1,0 ‰ oder mehr im Körper vorhanden ist."
+        isCorrect: false
+      - id: a_6d30a85537d8
+        text: "Wenn man infolge körperlicher oder geistiger Mängel oder infolge des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung behindert ist oder wenn eine Blutalkoholkonzentration von 0,3 ‰ oder mehr im Körper vorhanden ist."
+        isCorrect: false
 
-  - number: 2
+  - id: q_084ad3675802
+    number: 2
     text: "In welchen Fällen darf weder ein Sportboot geführt noch dessen Kurs oder Geschwindigkeit selbstständig bestimmt werden?"
-    answers:
-      - "Wenn es weder vor Anker liegt noch an Land festgemacht ist noch auf Grund sitzt."
-      - "Wenn es weder vor Anker liegt noch an Land festgemacht ist noch Fahrt über Grund macht."
-      - "Wenn es weder auf Grund sitzt noch vor Anker liegt noch manövrierbehindert oder manövrierunfähig ist."
-      - "Wenn es weder an Land festgemacht ist noch vor Anker liegt noch Fahrt durchs Wasser macht."
+    options:
+      - id: a_b50c8d6f3ab8
+        text: "Wenn es weder vor Anker liegt noch an Land festgemacht ist noch auf Grund sitzt."
+        isCorrect: true
+      - id: a_f1d09da5fdd8
+        text: "Wenn es weder vor Anker liegt noch an Land festgemacht ist noch Fahrt über Grund macht."
+        isCorrect: false
+      - id: a_f2dc45d4dc8f
+        text: "Wenn es weder auf Grund sitzt noch vor Anker liegt noch manövrierbehindert oder manövrierunfähig ist."
+        isCorrect: false
+      - id: a_7ca2d28b2272
+        text: "Wenn es weder an Land festgemacht ist noch vor Anker liegt noch Fahrt durchs Wasser macht."
+        isCorrect: false
 
-  - number: 3
+  - id: q_0b9251069ecd
+    number: 3
     text: "Wann ist ein Fahrzeug in Fahrt?"
-    answers:
-      - "Etwa 1 Sekunde."
-      - "Etwa 2 Sekunden."
-      - "Weniger als 1 Sekunde."
-      - "Weniger als 4 Sekunden."
+    options:
+      - id: a_d73ca489f2a0
+        text: "Etwa 1 Sekunde."
+        isCorrect: true
+      - id: a_a8195fe48be2
+        text: "Etwa 2 Sekunden."
+        isCorrect: false
+      - id: a_43b7cf0d99be
+        text: "Weniger als 1 Sekunde."
+        isCorrect: false
+      - id: a_21a1a53ff261
+        text: "Weniger als 4 Sekunden."
+        isCorrect: false
 
-  - number: 4
+  - id: q_5bb32aef5a9e
+    number: 4
     text: "Wie lang ist die Dauer eines kurzen Tons ("
-    answers:
-      - "Etwa 1 Sekunde."
-      - "Etwa 2 Sekunden."
-      - "Weniger als 1 Sekunde."
-      - "Weniger als 4 Sekunden."
+    options:
+      - id: a_40b8381e3fd7
+        text: "Etwa 1 Sekunde."
+        isCorrect: true
+      - id: a_f0aae48e07fe
+        text: "Etwa 2 Sekunden."
+        isCorrect: false
+      - id: a_2c002e3ebd03
+        text: "Weniger als 1 Sekunde."
+        isCorrect: false
+      - id: a_321222fb35dc
+        text: "Weniger als 4 Sekunden."
+        isCorrect: false
 
-  - number: 5
+  - id: q_a013ca5930aa
+    number: 5
     text: "Wie lang ist die Dauer eines langen Tons ("
-    answers:
-      - "Etwa 4 - 6 Sekunden."
-      - "Etwa 2 - 6 Sekunden."
-      - "Etwa 1 - 2 Sekunden."
-      - "Etwa 6 - 8 Sekunden."
+    options:
+      - id: a_c4f8279f2e32
+        text: "Etwa 4 - 6 Sekunden."
+        isCorrect: true
+      - id: a_d0850af54f18
+        text: "Etwa 2 - 6 Sekunden."
+        isCorrect: false
+      - id: a_7cc2ccfbe7f8
+        text: "Etwa 1 - 2 Sekunden."
+        isCorrect: false
+      - id: a_ec16ac3511ec
+        text: "Etwa 6 - 8 Sekunden."
+        isCorrect: false
 
-  - number: 6
+  - id: q_92e078a99400
+    number: 6
     text: "Wann gilt ein Fahrzeug unter Segel als Maschinenfahrzeug?"
-    answers:
-      - "Einen schwarzen Kegel, Spitze unten."
-      - "Einen schwarzen Kegel, Spitze oben."
-      - "Einen schwarzen Rhombus."
-      - "Zwei schwarze Bälle senkrecht übereinander."
+    options:
+      - id: a_1607c8d6d478
+        text: "Einen schwarzen Kegel, Spitze unten."
+        isCorrect: true
+      - id: a_5e4831dfeefa
+        text: "Einen schwarzen Kegel, Spitze oben."
+        isCorrect: false
+      - id: a_25966971ee52
+        text: "Einen schwarzen Rhombus."
+        isCorrect: false
+      - id: a_6eeb17164b13
+        text: "Zwei schwarze Bälle senkrecht übereinander."
+        isCorrect: false
 
-  - number: 7
+  - id: q_11ee3b882638
+    number: 7
     text: "Welches Signal führt ein Fahrzeug unter Segel, das als Maschinenfahrzeug gilt, zusätzlich am Tage?"
-    answers:
-      - "Die dem Wind zugekehrte Seite."
-      - "Die dem Wind abgewandte Seite."
-      - "Die Seite in Fahrtrichtung rechts."
-      - "Die Seite in Fahrtrichtung links."
+    options:
+      - id: a_fc9cd9420bfd
+        text: "Die dem Wind zugekehrte Seite."
+        isCorrect: true
+      - id: a_675063f76b4d
+        text: "Die dem Wind abgewandte Seite."
+        isCorrect: false
+      - id: a_65adf94047e7
+        text: "Die Seite in Fahrtrichtung rechts."
+        isCorrect: false
+      - id: a_10cbcc2c7bfe
+        text: "Die Seite in Fahrtrichtung links."
+        isCorrect: false
 
-  - number: 8
+  - id: q_852dc46a831a
+    number: 8
     text: "Welche Seite wird als Luvseite bezeichnet?"
-    answers:
-      - "Die dem Wind abgewandte Seite."
-      - "Die dem Wind zugekehrte Seite."
-      - "Die Seite in Fahrtrichtung rechts."
-      - "Die Seite in Fahrtrichtung links."
+    options:
+      - id: a_c3721bed1c5f
+        text: "Die dem Wind abgewandte Seite."
+        isCorrect: true
+      - id: a_d425e72b7e25
+        text: "Die dem Wind zugekehrte Seite."
+        isCorrect: false
+      - id: a_b1dccc43a2de
+        text: "Die Seite in Fahrtrichtung rechts."
+        isCorrect: false
+      - id: a_98910509a461
+        text: "Die Seite in Fahrtrichtung links."
+        isCorrect: false
 
-  - number: 9
+  - id: q_cc23c4bb7ce1
+    number: 9
     text: "Welche Seite wird als Leeseite bezeichnet?"
-    answers:
-      - "Von Sonnenuntergang bis Sonnenaufgang und bei verminderter Sicht."
-      - "Von Sonnenaufgang bis Sonnenuntergang und bei verminderter Sicht."
-      - "Von abends 18:00 Uhr bis morgens 06:00 Uhr und bei verminderter Sicht."
-      - "Bei Dunkelheit, schlechtem Wetter und verminderter Sicht."
+    options:
+      - id: a_4f1c307d58d1
+        text: "Von Sonnenuntergang bis Sonnenaufgang und bei verminderter Sicht."
+        isCorrect: true
+      - id: a_81f5499699eb
+        text: "Von Sonnenaufgang bis Sonnenuntergang und bei verminderter Sicht."
+        isCorrect: false
+      - id: a_0eca64243e9b
+        text: "Von abends 18:00 Uhr bis morgens 06:00 Uhr und bei verminderter Sicht."
+        isCorrect: false
+      - id: a_255eaf75ec48
+        text: "Bei Dunkelheit, schlechtem Wetter und verminderter Sicht."
+        isCorrect: false
 
-  - number: 10
+  - id: q_20018ecd1d2c
+    number: 10
     text: "Wann müssen die Lichter von Fahrzeugen geführt oder gezeigt werden?"
-    answers:
-      - "Sie zeigt Fahrtrichtung und Lage eines Fahrzeugs an."
-      - "Sie zeigt Kurs und Geschwindigkeit eines Fahrzeugs an."
-      - "Sie zeigt Fahrtrichtung und Position eines Fahrzeugs an."
-      - "Sie zeigt Fahrtrichtung und Kurs eines Fahrzeugs an."
+    options:
+      - id: a_9421c701b01c
+        text: "Sie zeigt Fahrtrichtung und Lage eines Fahrzeugs an."
+        isCorrect: true
+      - id: a_ab71773f834e
+        text: "Sie zeigt Kurs und Geschwindigkeit eines Fahrzeugs an."
+        isCorrect: false
+      - id: a_0b9d331dd45f
+        text: "Sie zeigt Fahrtrichtung und Position eines Fahrzeugs an."
+        isCorrect: false
+      - id: a_1de6593cd6e9
+        text: "Sie zeigt Fahrtrichtung und Kurs eines Fahrzeugs an."
+        isCorrect: false
 
-  - number: 11
+  - id: q_8459ba43cc2e
+    number: 11
     text: "Wozu dient die Lichterführung?"
-    answers:
-      - "Eine Dreifarbenlaterne an oder nahe der Mastspitze."
-      - "Eine Zweifarbenlaterne an gut sichtbarer Stelle."
-      - "Eine Dreifarbenlaterne an gut sichtbarer Stelle."
-      - "Eine Zweifarbenlaterne an oder nahe der Mastspitze."
+    options:
+      - id: a_7108a4107931
+        text: "Eine Dreifarbenlaterne an oder nahe der Mastspitze."
+        isCorrect: true
+      - id: a_d019941299c1
+        text: "Eine Zweifarbenlaterne an gut sichtbarer Stelle."
+        isCorrect: false
+      - id: a_3ac69cecaa1d
+        text: "Eine Dreifarbenlaterne an gut sichtbarer Stelle."
+        isCorrect: false
+      - id: a_216e71a292a1
+        text: "Eine Zweifarbenlaterne an oder nahe der Mastspitze."
+        isCorrect: false
 
-  - number: 12
+  - id: q_c6b7599a7538
+    number: 12
     text: "Was für eine Laterne kann ein Segelfahrzeug von weniger als 20 m Länge anstelle der Seitenlichter und des Hecklichtes führen?"
-    answers:
-      - "Die für ein Maschinenfahrzeug vorgeschriebenen Lichter."
-      - "Die für ein Segelfahrzeug vorgeschriebenen Lichter."
-      - "Zwei rote Rundumlichter senkrecht übereinander."
-      - "Seitenlichter rot und grün und ein rotes Rundumlicht."
+    options:
+      - id: a_fbbbc2499880
+        text: "Die für ein Maschinenfahrzeug vorgeschriebenen Lichter."
+        isCorrect: true
+      - id: a_935063b96b2d
+        text: "Die für ein Segelfahrzeug vorgeschriebenen Lichter."
+        isCorrect: false
+      - id: a_43d528248d9a
+        text: "Zwei rote Rundumlichter senkrecht übereinander."
+        isCorrect: false
+      - id: a_7cdb273c9aac
+        text: "Seitenlichter rot und grün und ein rotes Rundumlicht."
+        isCorrect: false
 
-  - number: 13
+  - id: q_07effbab8d9e
+    number: 13
     text: "Welche Lichter muss ein Fahrzeug unter Segel, das gleichzeitig mit Maschinenkraft fährt, führen?"
-    answers:
-      - "Jedes Fahrzeug muss seinen Kurs nach Steuerbord ändern."
-      - "Jedes Fahrzeug muss seinen Kurs nach Backbord ändern."
-      - "Es muss das luvwärtige Fahrzeug dem leewärtigen Fahrzeug ausweichen."
-      - "Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen."
+    options:
+      - id: a_35e07f542a9f
+        text: "Jedes Fahrzeug muss seinen Kurs nach Steuerbord ändern."
+        isCorrect: true
+      - id: a_1e09f081ce78
+        text: "Jedes Fahrzeug muss seinen Kurs nach Backbord ändern."
+        isCorrect: false
+      - id: a_e48843a45627
+        text: "Es muss das luvwärtige Fahrzeug dem leewärtigen Fahrzeug ausweichen."
+        isCorrect: false
+      - id: a_d31372261519
+        text: "Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen."
+        isCorrect: false
 
-  - number: 14
+  - id: q_6f7aaf0acbf0
+    number: 14
     text: "Wie weichen zwei Motorboote aus, die sich auf entgegengesetzten Kursen nähern?"
-    answers:
-      - "Dasjenige Fahrzeug muss ausweichen, welches das Andere an seiner Steuerbordseite hat."
-      - "Dasjenige Fahrzeug muss ausweichen, welches das Andere an seiner Backbordseite hat."
-      - "Es muss das luvwärtige Fahrzeug dem leewärtigen Fahrzeug ausweichen."
-      - "Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen."
+    options:
+      - id: a_36a5faf482f2
+        text: "Dasjenige Fahrzeug muss ausweichen, welches das Andere an seiner Steuerbordseite hat."
+        isCorrect: true
+      - id: a_fbcf730eb7b2
+        text: "Dasjenige Fahrzeug muss ausweichen, welches das Andere an seiner Backbordseite hat."
+        isCorrect: false
+      - id: a_5c0f8e9cd552
+        text: "Es muss das luvwärtige Fahrzeug dem leewärtigen Fahrzeug ausweichen."
+        isCorrect: false
+      - id: a_d0b0efa5c333
+        text: "Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen."
+        isCorrect: false
 
-  - number: 15
+  - id: q_c31500dd31ca
+    number: 15
     text: "Zwei Motorboote nähern sich auf kreuzenden Kursen. Es besteht die Gefahr eines Zusammenstoßes. Wer ist ausweichpflichtig?"
-    answers:
-      - "Bleib-weg-Signal, Gefahrenbereich sofort verlassen."
-      - "Allgemeines Gefahr- und Warnsignal."
-      - "Ankerlieger über 100 m Länge."
-      - "Manövrierbehinderter Schleppverband über 200 m Länge."
+    options:
+      - id: a_f0770ac1954a
+        text: "Bleib-weg-Signal, Gefahrenbereich sofort verlassen."
+        isCorrect: true
+      - id: a_cd8acca5e219
+        text: "Allgemeines Gefahr- und Warnsignal."
+        isCorrect: false
+      - id: a_b6518ea27a64
+        text: "Ankerlieger über 100 m Länge."
+        isCorrect: false
+      - id: a_c183515081f5
+        text: "Manövrierbehinderter Schleppverband über 200 m Länge."
+        isCorrect: false
 
-  - number: 16
+  - id: q_cb25eb90fc7b
+    number: 16
     text: "Welche Bedeutung hat folgendes Schallsignal?"
-    answers:
-      - "Bleib-weg-Signal, Gefahrenbereich sofort verlassen."
-      - "Allgemeines Gefahr- und Warnsignal."
-      - "Ankerlieger über 100 m Länge."
-      - "Manövrierbehinderter Schleppverband über 200 m Länge."
+    options:
+      - id: a_aea537870074
+        text: "Bleib-weg-Signal, Gefahrenbereich sofort verlassen."
+        isCorrect: true
+      - id: a_e40808aa1ebb
+        text: "Allgemeines Gefahr- und Warnsignal."
+        isCorrect: false
+      - id: a_ba9cec5a438e
+        text: "Ankerlieger über 100 m Länge."
+        isCorrect: false
+      - id: a_1bb086090ad6
+        text: "Manövrierbehinderter Schleppverband über 200 m Länge."
+        isCorrect: false
 
-  - number: 17
+  - id: q_4036003a0078
+    number: 17
     text: "Welche Bedeutung hat folgendes Tafelzeichen?"
-    answers:
-      - "Überholverbot."
-      - "Begegnungsverbot."
-      - "Überholverbot für Fahrzeuge unter 20 m Länge."
-      - "Begegnungsverbot für Fahrzeuge über 20 m Länge."
+    options:
+      - id: a_14da8f0822c4
+        text: "Überholverbot."
+        isCorrect: true
+      - id: a_b3438fbe4ce4
+        text: "Begegnungsverbot."
+        isCorrect: false
+      - id: a_5b4e0a8c34c3
+        text: "Überholverbot für Fahrzeuge unter 20 m Länge."
+        isCorrect: false
+      - id: a_4adb9138c0c1
+        text: "Begegnungsverbot für Fahrzeuge über 20 m Länge."
+        isCorrect: false
 
-  - number: 18
+  - id: q_9ed5706fb567
+    number: 18
     text: "Welche Bedeutung hat folgendes Tafelzeichen?"
-    answers:
-      - "Begegnungsverbot an einer Engstelle."
-      - "Begegnungsverbot für Fahrzeuge über 12 m Länge."
-      - "Überholverbot; mit Gegenverkehr muss gerechnet werden."
-      - "Überholverbot für alle Fahrzeuge."
+    options:
+      - id: a_00588c5085af
+        text: "Begegnungsverbot an einer Engstelle."
+        isCorrect: true
+      - id: a_873bee0887c0
+        text: "Begegnungsverbot für Fahrzeuge über 12 m Länge."
+        isCorrect: false
+      - id: a_f2da2c57d234
+        text: "Überholverbot; mit Gegenverkehr muss gerechnet werden."
+        isCorrect: false
+      - id: a_b7a957b80e1a
+        text: "Überholverbot für alle Fahrzeuge."
+        isCorrect: false
 
-  - number: 19
+  - id: q_4f194c04ae8d
+    number: 19
     text: "Welche Bedeutung hat folgendes Tafelzeichen?"
-    answers:
-      - "Sog und Wellenschlag vermeiden."
-      - "Gefährdeter Strandbereich, Überspülungsgefahr; Mindestpassierabstand 100 m."
-      - "Wasserstraße, die jederzeit sicher befahren werden kann; keine Gefahr durch Seegang."
-      - "Wasserstraße, die nicht jederzeit sicher befahren werden kann; Gefahr durch Seegang."
+    options:
+      - id: a_5180befa0a52
+        text: "Sog und Wellenschlag vermeiden."
+        isCorrect: true
+      - id: a_6d4fba64a12d
+        text: "Gefährdeter Strandbereich, Überspülungsgefahr; Mindestpassierabstand 100 m."
+        isCorrect: false
+      - id: a_f7dc67c4e828
+        text: "Wasserstraße, die jederzeit sicher befahren werden kann; keine Gefahr durch Seegang."
+        isCorrect: false
+      - id: a_2c366cb0c961
+        text: "Wasserstraße, die nicht jederzeit sicher befahren werden kann; Gefahr durch Seegang."
+        isCorrect: false
 
-  - number: 20
+  - id: q_96f80a5832fc
+    number: 20
     text: "Welche Bedeutung hat folgendes Tafelzeichen?"
-    answers:
-      - "Mindestabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort der Tafel an eingehalten werden muss."
-      - "Maximalgeschwindigkeit in km/h, die auf der in Fahrtrichtung rechten Fahrwasserseite nicht überschritten werden darf."
-      - "Maximalabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort der Tafel an eingehalten werden muss."
-      - "Verengung des Fahrwassers auf 40 m."
+    options:
+      - id: a_b246e626fe2d
+        text: "Mindestabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort der Tafel an eingehalten werden muss."
+        isCorrect: true
+      - id: a_04aa656f24bf
+        text: "Maximalgeschwindigkeit in km/h, die auf der in Fahrtrichtung rechten Fahrwasserseite nicht überschritten werden darf."
+        isCorrect: false
+      - id: a_95b3b5cd866e
+        text: "Maximalabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort der Tafel an eingehalten werden muss."
+        isCorrect: false
+      - id: a_0441b598a19e
+        text: "Verengung des Fahrwassers auf 40 m."
+        isCorrect: false
 
-  - number: 21
+  - id: q_8139ec75c2cd
+    number: 21
     text: "Welche Bedeutung hat folgendes Tafelzeichen?"
-    answers:
-      - "Haltegebot vor beweglichen Brücken, Sperrwerken und Schleusen."
-      - "Dauernde Sperrung einer Teilstrecke der Wasserstraße."
-      - "Gebot zur Abgabe eines langen Signaltons."
-      - "Weiterfahrt für Sportfahrzeuge verboten."
+    options:
+      - id: a_cb0717697f6e
+        text: "Haltegebot vor beweglichen Brücken, Sperrwerken und Schleusen."
+        isCorrect: true
+      - id: a_8e337f0ca7b9
+        text: "Dauernde Sperrung einer Teilstrecke der Wasserstraße."
+        isCorrect: false
+      - id: a_bcfe68ddab51
+        text: "Gebot zur Abgabe eines langen Signaltons."
+        isCorrect: false
+      - id: a_730ec8df788d
+        text: "Weiterfahrt für Sportfahrzeuge verboten."
+        isCorrect: false
 
-  - number: 22
+  - id: q_ff1f8dc21702
+    number: 22
     text: "Welche Bedeutung hat folgendes Tafelzeichen?"
-    answers:
-      - "Ankern verboten für alle Fahrzeuge."
-      - "Ankern verboten für Kleinfahrzeuge unter 12 m Länge."
-      - "Ankern verboten für Kleinfahrzeuge ab 12 m Länge."
-      - "Ankern und Festmachen verboten."
+    options:
+      - id: a_fb4243a3bf2c
+        text: "Ankern verboten für alle Fahrzeuge."
+        isCorrect: true
+      - id: a_249d91fb9837
+        text: "Ankern verboten für Kleinfahrzeuge unter 12 m Länge."
+        isCorrect: false
+      - id: a_961c0239a33e
+        text: "Ankern verboten für Kleinfahrzeuge ab 12 m Länge."
+        isCorrect: false
+      - id: a_700512963d07
+        text: "Ankern und Festmachen verboten."
+        isCorrect: false
 
-  - number: 23
+  - id: q_881a0003d9ae
+    number: 23
     text: "Welche Bedeutung haben folgende Tafelzeichen?"
-    answers:
-      - "Festmache- und Liegeverbot."
-      - "Festmache- und Liegeverbot für Sportboote."
-      - "Festmache- und Liegeverbot für Sportboote über 12 m Länge."
-      - "Festmache- und Liegeverbot für gewerbliche Schiffe."
+    options:
+      - id: a_fced7314292f
+        text: "Festmache- und Liegeverbot."
+        isCorrect: true
+      - id: a_d873553a4a55
+        text: "Festmache- und Liegeverbot für Sportboote."
+        isCorrect: false
+      - id: a_489325bc293f
+        text: "Festmache- und Liegeverbot für Sportboote über 12 m Länge."
+        isCorrect: false
+      - id: a_6b8e2d83b0a9
+        text: "Festmache- und Liegeverbot für gewerbliche Schiffe."
+        isCorrect: false
 
-  - number: 24
+  - id: q_41e55f0da1aa
+    number: 24
     text: "Welche Bedeutung hat folgendes Tafelzeichen?"
-    answers:
-      - "Abgabe eines langen Tons."
-      - "Abgabe eines kurzen Tons."
-      - "Abgabe von zwei langen Tönen."
-      - "Abgabe eines kurzen und eines langen Tons."
+    options:
+      - id: a_691fa4350925
+        text: "Abgabe eines langen Tons."
+        isCorrect: true
+      - id: a_71ce0f192982
+        text: "Abgabe eines kurzen Tons."
+        isCorrect: false
+      - id: a_8ddf7e974488
+        text: "Abgabe von zwei langen Tönen."
+        isCorrect: false
+      - id: a_45fc5a8846af
+        text: "Abgabe eines kurzen und eines langen Tons."
+        isCorrect: false
 
-  - number: 25
+  - id: q_eaa3654047e7
+    number: 25
     text: "Welche Bedeutung haben folgende Tafelzeichen?"
-    answers:
-      - "Wasserflächen, auf denen mit Wasserski oder Wassermotorrädern gefahren werden darf."
-      - "Genehmigungspflichtige Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern."
-      - "Fahren mit Wasserski oder Wassermotorrädern erlaubt. Wasserskiläufer und Wassermotorräder haben Vorfahrt."
-      - "Genehmigungsfreie Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern."
+    options:
+      - id: a_6bbaf2b79147
+        text: "Wasserflächen, auf denen mit Wasserski oder Wassermotorrädern gefahren werden darf."
+        isCorrect: true
+      - id: a_80c42c90c190
+        text: "Genehmigungspflichtige Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern."
+        isCorrect: false
+      - id: a_f5ff16eb6123
+        text: "Fahren mit Wasserski oder Wassermotorrädern erlaubt. Wasserskiläufer und Wassermotorräder haben Vorfahrt."
+        isCorrect: false
+      - id: a_8dc4de0062e0
+        text: "Genehmigungsfreie Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern."
+        isCorrect: false
 
-  - number: 26
+  - id: q_5651e056fa9e
+    number: 26
     text: "Welche Bedeutung hat folgendes Tafelzeichen?"
-    answers:
-      - "Ende einer Gebots- oder Verbotsstrecke."
-      - "Streckenabschnitt für eine nicht frei fahrende Fähre."
-      - "Queren des Fahrwassers ist gestattet."
-      - "Wechseln der Fahrwasserseite ist gestattet."
+    options:
+      - id: a_3c65c572b899
+        text: "Ende einer Gebots- oder Verbotsstrecke."
+        isCorrect: true
+      - id: a_47bab68b556b
+        text: "Streckenabschnitt für eine nicht frei fahrende Fähre."
+        isCorrect: false
+      - id: a_ab11082a7b59
+        text: "Queren des Fahrwassers ist gestattet."
+        isCorrect: false
+      - id: a_b24368249158
+        text: "Wechseln der Fahrwasserseite ist gestattet."
+        isCorrect: false
 
-  - number: 27
+  - id: q_abe176b0eaf4
+    number: 27
     text: "Welche Bedeutung hat folgendes Tafelzeichen?"
-    answers:
-      - "Verbot der Durchfahrt und Sperrung der Schifffahrt."
-      - "Verbot der Durchfahrt und Sperrung für Kleinfahrzeuge."
-      - "Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne laufende Antriebsmaschine befahrbar."
-      - "Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne Antriebsmaschine befahrbar."
+    options:
+      - id: a_fac7f31a42cd
+        text: "Verbot der Durchfahrt und Sperrung der Schifffahrt."
+        isCorrect: true
+      - id: a_3671700220c4
+        text: "Verbot der Durchfahrt und Sperrung für Kleinfahrzeuge."
+        isCorrect: false
+      - id: a_35951de77239
+        text: "Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne laufende Antriebsmaschine befahrbar."
+        isCorrect: false
+      - id: a_4027b081181c
+        text: "Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne Antriebsmaschine befahrbar."
+        isCorrect: false
 
-  - number: 28
+  - id: q_841226ff7bec
+    number: 28
     text: "Welche Bedeutung haben folgende Schifffahrtszeichen?"
-    answers:
-      - "Brücke, Sperrwerk oder Schleuse geschlossen."
-      - "Anlage dauerhaft gesperrt."
-      - "Stoppsignal für alle Fahrzeuge."
-      - "Außergewöhnliche Schifffahrtsbehinderung."
+    options:
+      - id: a_7efb433f0792
+        text: "Brücke, Sperrwerk oder Schleuse geschlossen."
+        isCorrect: true
+      - id: a_6a7d0beef52b
+        text: "Anlage dauerhaft gesperrt."
+        isCorrect: false
+      - id: a_bffe2c7a81a6
+        text: "Stoppsignal für alle Fahrzeuge."
+        isCorrect: false
+      - id: a_615535138335
+        text: "Außergewöhnliche Schifffahrtsbehinderung."
+        isCorrect: false
 
-  - number: 29
+  - id: q_0cd8355a5d4b
+    number: 29
     text: "Welche Bedeutung haben folgende Schifffahrtszeichen?"
-    answers:
-      - "Anlage dauerhaft gesperrt."
-      - "Brücke, Sperrwerk oder Schleuse geschlossen."
-      - "Stoppsignal für alle Fahrzeuge."
-      - "Außergewöhnliche Schifffahrtsbehinderung."
+    options:
+      - id: a_f29e9211fcb4
+        text: "Anlage dauerhaft gesperrt."
+        isCorrect: true
+      - id: a_c44278fa578a
+        text: "Brücke, Sperrwerk oder Schleuse geschlossen."
+        isCorrect: false
+      - id: a_00555fb76394
+        text: "Stoppsignal für alle Fahrzeuge."
+        isCorrect: false
+      - id: a_277c4b1a1ac6
+        text: "Außergewöhnliche Schifffahrtsbehinderung."
+        isCorrect: false
 
-  - number: 30
+  - id: q_35af0ffa6cf6
+    number: 30
     text: "Was bedeuten diese Lichter vor einer Schleuse?"
-    answers:
-      - "Einfahrt frei, Gegenverkehr gesperrt."
-      - "Einfahrt frei, Schleusentor öffnet."
-      - "Schleuse in Betrieb, auf Einfahrtsignal gemäß Reihenfolge warten."
-      - "Schleuse in Betrieb, auf Ausfahrtsignal gemäß Reihenfolge warten."
+    options:
+      - id: a_3d1874d4e33d
+        text: "Einfahrt frei, Gegenverkehr gesperrt."
+        isCorrect: true
+      - id: a_260faf3e0ecb
+        text: "Einfahrt frei, Schleusentor öffnet."
+        isCorrect: false
+      - id: a_11fc7331cb62
+        text: "Schleuse in Betrieb, auf Einfahrtsignal gemäß Reihenfolge warten."
+        isCorrect: false
+      - id: a_435b3b2c4f50
+        text: "Schleuse in Betrieb, auf Ausfahrtsignal gemäß Reihenfolge warten."
+        isCorrect: false
 
-  - number: 31
+  - id: q_fd741ac1c706
+    number: 31
     text: "Welches Merkblatt enthält Hinweise für das Verhalten zum Schutz seltener Tiere und Pflanzen sowie zur Reinhaltung der Gewässer?"
-    answers:
-      - "Durch umweltbewusstes Verhalten und Beachtung der \"Zehn goldenen Regeln für das Verhalten von Wassersportlern in der Natur\"."
-      - "Durch umweltbewusstes Verhalten und Beachtung der \"Zehn Grundregeln für den Wassersport\"."
-      - "Durch umsichtiges Verhalten und Beachtung der Verkehrsvorschriften."
-      - "Durch vorausschauendes Fahren und Ausweichen entsprechend der Verkehrsvorschriften."
+    options:
+      - id: a_387b4b8fb684
+        text: "Durch umweltbewusstes Verhalten und Beachtung der \"Zehn goldenen Regeln für das Verhalten von Wassersportlern in der Natur\"."
+        isCorrect: true
+      - id: a_199755aa51d6
+        text: "Durch umweltbewusstes Verhalten und Beachtung der \"Zehn Grundregeln für den Wassersport\"."
+        isCorrect: false
+      - id: a_2b80ea55c335
+        text: "Durch umsichtiges Verhalten und Beachtung der Verkehrsvorschriften."
+        isCorrect: false
+      - id: a_975a004476bc
+        text: "Durch vorausschauendes Fahren und Ausweichen entsprechend der Verkehrsvorschriften."
+        isCorrect: false
 
-  - number: 32
+  - id: q_650576ad256d
+    number: 32
     text: "Wie kann mitgeholfen werden, die Lebensmöglichkeiten der Pflanzen- und Tierwelt in Gewässern und Feuchtgebieten zu bewahren und zu fördern?"
-    answers:
-      - "Weil diese Zonen vielfach Rast- und Brutplätze besonders schutzwürdiger Vögel oder Fischlaichplätze sind."
-      - "Weil in diesen Zonen die Gefahr von Grundberührungen besteht."
-      - "Weil durch die Pflanzen der Propeller blockiert werden könnte."
-      - "Weil in diesen Zonen badende Personen schwer zu erkennen sind."
+    options:
+      - id: a_17a1eca56586
+        text: "Weil diese Zonen vielfach Rast- und Brutplätze besonders schutzwürdiger Vögel oder Fischlaichplätze sind."
+        isCorrect: true
+      - id: a_b97d9d90e1ac
+        text: "Weil in diesen Zonen die Gefahr von Grundberührungen besteht."
+        isCorrect: false
+      - id: a_e6043ce2b888
+        text: "Weil durch die Pflanzen der Propeller blockiert werden könnte."
+        isCorrect: false
+      - id: a_544592ddac23
+        text: "Weil in diesen Zonen badende Personen schwer zu erkennen sind."
+        isCorrect: false
 
-  - number: 33
+  - id: q_5f4a8258185a
+    number: 33
     text: "Warum sollte man sich von Schilf- und Röhrichtzonen sowie von dicht bewachsenen Uferzonen möglichst weit fernhalten?"
-    answers:
-      - "Es kann durch dessen Bug- oder Heckwelle kentern oder durch den Sog mit dem Fahrzeug kollidieren."
-      - "Dichtes Heranfahren ist ein Verstoß gegen die Grundregeln für das Verhalten im Verkehr."
-      - "Da es dem großen in Fahrt befindlichen Fahrzeug sonst nicht ausweichen kann."
-      - "Es kann durch dessen Bug- oder Heckwelle Seeschlag erleiden."
+    options:
+      - id: a_7f1767af8fb7
+        text: "Es kann durch dessen Bug- oder Heckwelle kentern oder durch den Sog mit dem Fahrzeug kollidieren."
+        isCorrect: true
+      - id: a_a972f07fc5fb
+        text: "Dichtes Heranfahren ist ein Verstoß gegen die Grundregeln für das Verhalten im Verkehr."
+        isCorrect: false
+      - id: a_a45362dabbb2
+        text: "Da es dem großen in Fahrt befindlichen Fahrzeug sonst nicht ausweichen kann."
+        isCorrect: false
+      - id: a_0852c8a3574f
+        text: "Es kann durch dessen Bug- oder Heckwelle Seeschlag erleiden."
+        isCorrect: false
 
-  - number: 34
+  - id: q_e9b1ec878907
+    number: 34
     text: "Warum soll ein kleines Fahrzeug nicht dicht an ein großes in Fahrt befindliches Fahrzeug heranfahren?"
-    answers:
-      - "Weil sich das Fahrzeug dabei sicherer manövrieren lässt."
-      - "Weil dadurch Sog und Wellenschlag vermieden wird."
-      - "Weil dadurch Einflüsse von Wellen und Wassertiefe ausgeglichen werden."
-      - "Weil dies die Steuerwirkung der Schraube erhöht."
+    options:
+      - id: a_4f21e429b9c7
+        text: "Weil sich das Fahrzeug dabei sicherer manövrieren lässt."
+        isCorrect: true
+      - id: a_e61a700c9892
+        text: "Weil dadurch Sog und Wellenschlag vermieden wird."
+        isCorrect: false
+      - id: a_774f6ed91a4e
+        text: "Weil dadurch Einflüsse von Wellen und Wassertiefe ausgeglichen werden."
+        isCorrect: false
+      - id: a_3439e4d7264f
+        text: "Weil dies die Steuerwirkung der Schraube erhöht."
+        isCorrect: false
 
-  - number: 35
+  - id: q_18ae2d7b540b
+    number: 35
     text: "Warum soll man möglichst gegen Strom und Wind anlegen?"
-    answers:
-      - "Geschwindigkeit herabsetzen und ausreichenden Passierabstand halten."
-      - "Geschwindigkeit erhöhen, um das Begegnungsmanöver zügig durchzuführen."
-      - "Das gegen den Strom fahrende Fahrzeug ist ausweichpflichtig."
-      - "Das mit dem Strom fahrende Fahrzeug hat aufzustoppen."
+    options:
+      - id: a_efd0a82c67e9
+        text: "Geschwindigkeit herabsetzen und ausreichenden Passierabstand halten."
+        isCorrect: true
+      - id: a_154b4366422a
+        text: "Geschwindigkeit erhöhen, um das Begegnungsmanöver zügig durchzuführen."
+        isCorrect: false
+      - id: a_01e3643c8164
+        text: "Das gegen den Strom fahrende Fahrzeug ist ausweichpflichtig."
+        isCorrect: false
+      - id: a_ef6d9b4ae2ac
+        text: "Das mit dem Strom fahrende Fahrzeug hat aufzustoppen."
+        isCorrect: false
 
-  - number: 36
+  - id: q_8a369c8ccd51
+    number: 36
     text: "Wie verhält man sich beim Begegnen mit anderen Fahrzeugen in einem engen Fahrwasser?"
-    answers:
-      - "Das kleinere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen."
-      - "Das größere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen."
-      - "Das kleinere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen und kollidieren oder kentern, in flachen Gewässern extrem versetzt werden."
-      - "Das größere Fahrzeug kann durch Wellenbildung aus dem Kurs laufen und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen."
+    options:
+      - id: a_cbd498bd7890
+        text: "Das kleinere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen."
+        isCorrect: true
+      - id: a_33a834562150
+        text: "Das größere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen."
+        isCorrect: false
+      - id: a_a8d72db2ccf8
+        text: "Das kleinere Fahrzeug kann durch Stau, Sog oder Schwell aus dem Kurs laufen und kollidieren oder kentern, in flachen Gewässern extrem versetzt werden."
+        isCorrect: false
+      - id: a_a652cdba9a07
+        text: "Das größere Fahrzeug kann durch Wellenbildung aus dem Kurs laufen und kollidieren oder querschlagen, in flachen Gewässern auf Grund laufen."
+        isCorrect: false
 
-  - number: 37
+  - id: q_da2247f58c4b
+    number: 37
     text: "Welche Gefahren können entstehen, wenn ein kleines von einem größeren Fahrzeug überholt wird?"
-    answers:
-      - "Beim Umweltbundesamt."
-      - "Beim Bundesministerium für Digitales und Verkehr."
-      - "In der Sportbootführerscheinverordnung."
-      - "In der Sportbootvermietungsverordnung."
+    options:
+      - id: a_1cc53b901d24
+        text: "Beim Umweltbundesamt."
+        isCorrect: true
+      - id: a_a4b68b644941
+        text: "Beim Bundesministerium für Digitales und Verkehr."
+        isCorrect: false
+      - id: a_a9084b3862b0
+        text: "In der Sportbootführerscheinverordnung."
+        isCorrect: false
+      - id: a_7b511ae5c35c
+        text: "In der Sportbootvermietungsverordnung."
+        isCorrect: false
 
-  - number: 38
+  - id: q_f82582dfb55b
+    number: 38
     text: "Wo finden Sie Informationen über umweltfreundliche Farben, Lacke und Antifouling-Beschichtungen für Ihr Boot?"
-    answers:
-      - "Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren ist und sich die Ankerpeilung nicht ändert."
-      - "Wenn Ankerkette oder -leine nicht vibrieren und sich der anliegende Magnetkompasskurs nicht verändert."
-      - "Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren ist und das Fahrzeug nicht schwojt."
-      - "Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren ist und sich die Ankerpeilung ändert."
+    options:
+      - id: a_77b3d987ca93
+        text: "Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren ist und sich die Ankerpeilung nicht ändert."
+        isCorrect: true
+      - id: a_a3a3782345ef
+        text: "Wenn Ankerkette oder -leine nicht vibrieren und sich der anliegende Magnetkompasskurs nicht verändert."
+        isCorrect: false
+      - id: a_036cc54b0aec
+        text: "Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren ist und das Fahrzeug nicht schwojt."
+        isCorrect: false
+      - id: a_1ce68298c9d6
+        text: "Wenn beim Handauflegen auf die Ankerkette oder -leine kein Rucken zu verspüren ist und sich die Ankerpeilung ändert."
+        isCorrect: false
 
-  - number: 39
+  - id: q_179036e7d605
+    number: 39
     text: "Woran kann man erkennen, ob der Anker hält?"
-    answers:
-      - "Ein möglichst spitzer Winkel."
-      - "Ein Winkel von 90° bis 100°."
-      - "Ein möglichst stumpfer Winkel."
-      - "Ein Winkel von 60° bis 70°."
+    options:
+      - id: a_d1b582396d68
+        text: "Ein möglichst spitzer Winkel."
+        isCorrect: true
+      - id: a_ec0481fa58d6
+        text: "Ein Winkel von 90° bis 100°."
+        isCorrect: false
+      - id: a_8f1a7135ddce
+        text: "Ein möglichst stumpfer Winkel."
+        isCorrect: false
+      - id: a_2e4dfc7abc18
+        text: "Ein Winkel von 60° bis 70°."
+        isCorrect: false
 
-  - number: 40
+  - id: q_241d0c29b2e4
+    number: 40
     text: "Welches ist der günstigste Anlaufwinkel beim Anlegen?"
-    answers:
-      - "Das Heck dreht nach Backbord."
-      - "Das Heck dreht nach Steuerbord."
-      - "Der Kurs des Schiffes ändert sich nicht."
-      - "Der Bug dreht nach Backbord."
+    options:
+      - id: a_39cc374f6a9d
+        text: "Das Heck dreht nach Backbord."
+        isCorrect: true
+      - id: a_7898d407d706
+        text: "Das Heck dreht nach Steuerbord."
+        isCorrect: false
+      - id: a_549bd6be109e
+        text: "Der Kurs des Schiffes ändert sich nicht."
+        isCorrect: false
+      - id: a_28c2d1b1b676
+        text: "Der Bug dreht nach Backbord."
+        isCorrect: false
 
-  - number: 41
+  - id: q_aa78ca60763e
+    number: 41
     text: "Wie verhält sich im Allgemeinen das Schiff im Rückwärtsgang bei einem rechtsdrehenden Propeller?"
-    answers:
-      - "Unterbrechung von Zündkontakt bzw. Kraftstoffzufuhr."
-      - "Automatisches Anlassen des Motors."
-      - "Kurze Unterbrechung des Motorlaufs."
-      - "Automatische Schubumkehr."
+    options:
+      - id: a_e720edbe2c61
+        text: "Unterbrechung von Zündkontakt bzw. Kraftstoffzufuhr."
+        isCorrect: true
+      - id: a_f20b7ab0e68c
+        text: "Automatisches Anlassen des Motors."
+        isCorrect: false
+      - id: a_b3ea6d652684
+        text: "Kurze Unterbrechung des Motorlaufs."
+        isCorrect: false
+      - id: a_54b321d1dff7
+        text: "Automatische Schubumkehr."
+        isCorrect: false
 
-  - number: 42
+  - id: q_c22ebb18d8e3
+    number: 42
     text: "Was bewirkt der Quickstopp?"
-    answers:
-      - "Mit Lappen aufnehmen und umweltgerecht entsorgen."
-      - "Räume lüften und abwarten."
-      - "Gleichmäßig verteilen."
-      - "Mit entsprechendem Mittel neutralisieren."
+    options:
+      - id: a_34e48ba0d344
+        text: "Mit Lappen aufnehmen und umweltgerecht entsorgen."
+        isCorrect: true
+      - id: a_78edd8b1d13d
+        text: "Räume lüften und abwarten."
+        isCorrect: false
+      - id: a_db9f07a74900
+        text: "Gleichmäßig verteilen."
+        isCorrect: false
+      - id: a_6dc7de2aa1d5
+        text: "Mit entsprechendem Mittel neutralisieren."
+        isCorrect: false
 
-  - number: 43
+  - id: q_ad0c0d93bafe
+    number: 43
     text: "Was ist zu unternehmen, wenn Treibstoff oder Öl in die Bilge gelangt?"
-    answers:
-      - "Von achtern gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn."
-      - "Von vorne gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn."
-      - "Von achtern gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn."
-      - "Von vorne gesehen in Rückwärtsfahrt Drehung des Propellers gegen den Uhrzeigersinn."
+    options:
+      - id: a_a00877ff36bd
+        text: "Von achtern gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn."
+        isCorrect: true
+      - id: a_eaea3f69bd95
+        text: "Von vorne gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn."
+        isCorrect: false
+      - id: a_41ba109dc5b6
+        text: "Von achtern gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn."
+        isCorrect: false
+      - id: a_83d5f2979248
+        text: "Von vorne gesehen in Rückwärtsfahrt Drehung des Propellers gegen den Uhrzeigersinn."
+        isCorrect: false
 
-  - number: 44
+  - id: q_e58f0457d693
+    number: 44
     text: "Was ist unter einem rechtsdrehenden Propeller zu verstehen?"
-    answers:
-      - "Von achtern gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn."
-      - "Von vorne gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn."
-      - "Von achtern gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn."
-      - "Von vorne gesehen in Rückwärtsfahrt Drehung des Propellers im Uhrzeigersinn."
+    options:
+      - id: a_1b382a3ce58b
+        text: "Von achtern gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn."
+        isCorrect: true
+      - id: a_f097796a6098
+        text: "Von vorne gesehen in Vorausfahrt Drehung des Propellers gegen den Uhrzeigersinn."
+        isCorrect: false
+      - id: a_7ea1606e5bc3
+        text: "Von achtern gesehen in Vorausfahrt Drehung des Propellers im Uhrzeigersinn."
+        isCorrect: false
+      - id: a_446ea4bb2ec7
+        text: "Von vorne gesehen in Rückwärtsfahrt Drehung des Propellers im Uhrzeigersinn."
+        isCorrect: false
 
-  - number: 45
+  - id: q_1027aaf42031
+    number: 45
     text: "Was ist unter einem linksdrehenden Propeller zu verstehen?"
-    answers:
-      - "Das seitliche Versetzen des Hecks."
-      - "Das Versetzen nach vorne."
-      - "Das Versetzen nach hinten."
-      - "Das seitliche Versetzen des Bugs."
+    options:
+      - id: a_2384b2c4c3ef
+        text: "Das seitliche Versetzen des Hecks."
+        isCorrect: true
+      - id: a_98a5a885fb42
+        text: "Das Versetzen nach vorne."
+        isCorrect: false
+      - id: a_d8ff5ebaaad5
+        text: "Das Versetzen nach hinten."
+        isCorrect: false
+      - id: a_be1bba5f863b
+        text: "Das seitliche Versetzen des Bugs."
+        isCorrect: false
 
-  - number: 46
+  - id: q_b459b4efd372
+    number: 46
     text: "Was ist unter der indirekten Ruderwirkung (Radeffekt) des Propellers zu verstehen?"
-    answers:
-      - "Sie hilft beim Manövrieren."
-      - "Sie hilft beim Kurshalten."
-      - "Sie hilft beim Überholen."
-      - "Sie hilft beim Begegnen."
+    options:
+      - id: a_997c389270e3
+        text: "Sie hilft beim Manövrieren."
+        isCorrect: true
+      - id: a_24084a34bf41
+        text: "Sie hilft beim Kurshalten."
+        isCorrect: false
+      - id: a_059a2c36ca31
+        text: "Sie hilft beim Überholen."
+        isCorrect: false
+      - id: a_f210eef9d5a8
+        text: "Sie hilft beim Begegnen."
+        isCorrect: false
 
-  - number: 47
+  - id: q_9caf145199fe
+    number: 47
     text: "Weshalb ist die Kenntnis der Propellerdrehrichtung von Bedeutung?"
-    answers:
-      - "Die Backbordseite - der Radeffekt zieht das Fahrzeug an die Pier."
-      - "Die Steuerbordseite - der Radeffekt zieht das Fahrzeug an die Pier."
-      - "Die Steuerbord- oder Backbordseite je nach Ruderlage."
-      - "Es gibt keine empfehlenswerte Anlegeseite."
+    options:
+      - id: a_c9bbee0e701a
+        text: "Die Backbordseite - der Radeffekt zieht das Fahrzeug an die Pier."
+        isCorrect: true
+      - id: a_a1ecdb2e52c7
+        text: "Die Steuerbordseite - der Radeffekt zieht das Fahrzeug an die Pier."
+        isCorrect: false
+      - id: a_d8b93b8f6271
+        text: "Die Steuerbord- oder Backbordseite je nach Ruderlage."
+        isCorrect: false
+      - id: a_31f4a170fcfe
+        text: "Es gibt keine empfehlenswerte Anlegeseite."
+        isCorrect: false
 
-  - number: 48
+  - id: q_7e63b8ca0cd6
+    number: 48
     text: "Welche Anlegeseite ist mit rechtsdrehendem Propeller empfehlenswert und warum?"
-    answers:
-      - "Motor abstellen, keine elektrischen Schalter betätigen, Vorbereitung gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer."
-      - "Motor in Leerlaufstellung, keine elektrischen Schalter betätigen, Vorbereitung gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer."
-      - "Fenster schließen, keine elektrischen Schalter betätigen, Vorbereitung gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer."
-      - "Motor abstellen, Feuerlöscher bereithalten, Vorbereitung gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer."
+    options:
+      - id: a_2b8b6a91e38d
+        text: "Motor abstellen, keine elektrischen Schalter betätigen, Vorbereitung gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer."
+        isCorrect: true
+      - id: a_338e365b3acd
+        text: "Motor in Leerlaufstellung, keine elektrischen Schalter betätigen, Vorbereitung gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer."
+        isCorrect: false
+      - id: a_35aaaef8a4d0
+        text: "Fenster schließen, keine elektrischen Schalter betätigen, Vorbereitung gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer."
+        isCorrect: false
+      - id: a_38b36332b628
+        text: "Motor abstellen, Feuerlöscher bereithalten, Vorbereitung gegen das Überlaufen von Kraftstoff treffen, kein offenes Feuer."
+        isCorrect: false
 
-  - number: 49
+  - id: q_a7e9972a39b8
+    number: 49
     text: "Was muss beim Tanken beachtet werden?"
-    answers:
-      - "Durch Schraubenstrom und Richtung des Propellers."
-      - "Durch Schraubenstrom und Anstellwinkel des Propellers."
-      - "Durch den Schraubenwiderstand und Anstellwinkel des Propellers."
-      - "Durch den Schraubenwiderstand und Richtung des Propellers."
+    options:
+      - id: a_78768d710cab
+        text: "Durch Schraubenstrom und Richtung des Propellers."
+        isCorrect: true
+      - id: a_d326d579cc00
+        text: "Durch Schraubenstrom und Anstellwinkel des Propellers."
+        isCorrect: false
+      - id: a_7000f896407f
+        text: "Durch den Schraubenwiderstand und Anstellwinkel des Propellers."
+        isCorrect: false
+      - id: a_ef3d8296eedb
+        text: "Durch den Schraubenwiderstand und Richtung des Propellers."
+        isCorrect: false
 
-  - number: 50
+  - id: q_61f1422053aa
+    number: 50
     text: "Wodurch wird bei einem Fahrzeug mit Außenbordmotor und ohne Ruderanlage die Ruderwirkung erzielt?"
-    answers:
-      - "Weil sie erst mit Anströmung des Ruderblattes einsetzt."
-      - "Weil sich durch den Radeffekt ein Unterdruck am Propeller entwickelt."
-      - "Durch den Abstand von Propeller und Ruderblatt."
-      - "Weil sich durch den Radeffekt ein Unterdruck am Ruder entwickelt."
+    options:
+      - id: a_33ac9844651d
+        text: "Weil sie erst mit Anströmung des Ruderblattes einsetzt."
+        isCorrect: true
+      - id: a_f913c2366246
+        text: "Weil sich durch den Radeffekt ein Unterdruck am Propeller entwickelt."
+        isCorrect: false
+      - id: a_61392faea82a
+        text: "Durch den Abstand von Propeller und Ruderblatt."
+        isCorrect: false
+      - id: a_880f76fe38c2
+        text: "Weil sich durch den Radeffekt ein Unterdruck am Ruder entwickelt."
+        isCorrect: false
 
-  - number: 51
+  - id: q_c247e22b5f3e
+    number: 51
     text: "Weshalb setzt bei einem Fahrzeug mit Einbaumaschine und starrer Welle bei Aufnahme der Rückwärtsfahrt die Ruderwirkung erst relativ spät ein?"
-    answers:
-      - "Motortemperatur, Öldruck, Ladekontrolle."
-      - "Kühlwasseraustritt, Drehzahlmesser, Keilriemenspannung."
-      - "Schraubendrehzahl, Getriebeöltemperatur, Öldruck."
-      - "Druck der Einspritzpumpe, Impellerpumpe, Ölpumpe."
+    options:
+      - id: a_3d0494e20b67
+        text: "Motortemperatur, Öldruck, Ladekontrolle."
+        isCorrect: true
+      - id: a_8dabb9d62d8e
+        text: "Kühlwasseraustritt, Drehzahlmesser, Keilriemenspannung."
+        isCorrect: false
+      - id: a_88c054dcc213
+        text: "Schraubendrehzahl, Getriebeöltemperatur, Öldruck."
+        isCorrect: false
+      - id: a_faab31454418
+        text: "Druck der Einspritzpumpe, Impellerpumpe, Ölpumpe."
+        isCorrect: false
 
-  - number: 52
+  - id: q_7015d943cbed
+    number: 52
     text: "Während der Fahrt sollte die Maschinenanlage ständig überwacht werden. Worauf muss besonders geachtet werden?"
-    answers:
-      - "Defektes Thermostat, defekte Impellerpumpe, geschlossenes Seeventil, zu niedriger Kühlwasserstand."
-      - "Zu viel Motoröl, defekte Impellerpumpe, geschlossenes Seeventil, zu niedriger Kühlwasserstand."
-      - "Defektes Thermostat, defekte Impellerpumpe, geschlossenes Seeventil, zu hohe Batteriespannung."
-      - "Defektes Thermostat, defekte Kupplung, geschlossenes Seeventil, zu niedriger Kühlwasserstand."
+    options:
+      - id: a_6efa40cc14af
+        text: "Defektes Thermostat, defekte Impellerpumpe, geschlossenes Seeventil, zu niedriger Kühlwasserstand."
+        isCorrect: true
+      - id: a_5a1be5b366cf
+        text: "Zu viel Motoröl, defekte Impellerpumpe, geschlossenes Seeventil, zu niedriger Kühlwasserstand."
+        isCorrect: false
+      - id: a_a54643ae5165
+        text: "Defektes Thermostat, defekte Impellerpumpe, geschlossenes Seeventil, zu hohe Batteriespannung."
+        isCorrect: false
+      - id: a_875c5c9aa7d8
+        text: "Defektes Thermostat, defekte Kupplung, geschlossenes Seeventil, zu niedriger Kühlwasserstand."
+        isCorrect: false
 
-  - number: 53
+  - id: q_964cbc985657
+    number: 53
     text: "Die Temperatur der Antriebsmaschine überschreitet die zulässigen Grenzwerte. Was könnte die mögliche Ursache sein?"
-    answers:
-      - "Lichtmaschine bzw. Regler der Lichtmaschine defekt."
-      - "Zu hohe Motordrehzahl."
-      - "Keilriemen gerissen und hoher Stromverbrauch."
-      - "Anlasser ist nach dem Starten ausgefallen."
+    options:
+      - id: a_686295f89068
+        text: "Lichtmaschine bzw. Regler der Lichtmaschine defekt."
+        isCorrect: true
+      - id: a_b82cc5c60e03
+        text: "Zu hohe Motordrehzahl."
+        isCorrect: false
+      - id: a_45eba15204a4
+        text: "Keilriemen gerissen und hoher Stromverbrauch."
+        isCorrect: false
+      - id: a_8cda6e3c2efa
+        text: "Anlasser ist nach dem Starten ausgefallen."
+        isCorrect: false
 
-  - number: 54
+  - id: q_9458721b930d
+    number: 54
     text: "Die Ladekontrolllampe erlischt nach dem Starten nicht. Was könnte die mögliche Ursache sein?"
-    answers:
-      - "Druckschalter bzw. Öldruckpumpe defekt."
-      - "Zu viel Motoröl im Motor."
-      - "FI-Schalter defekt."
-      - "Zu hohe Motordrehzahl."
+    options:
+      - id: a_fbdfcd6ba889
+        text: "Druckschalter bzw. Öldruckpumpe defekt."
+        isCorrect: true
+      - id: a_857c9e44fafa
+        text: "Zu viel Motoröl im Motor."
+        isCorrect: false
+      - id: a_20c2712a120a
+        text: "FI-Schalter defekt."
+        isCorrect: false
+      - id: a_d0be5910853b
+        text: "Zu hohe Motordrehzahl."
+        isCorrect: false
 
-  - number: 55
+  - id: q_a2e24e2dee9a
+    number: 55
     text: "Die Ölkontrollleuchte leuchtet nach dem Starten weiter. Was könnte die mögliche Ursache sein?"
-    answers:
-      - "Blockierter Propeller."
-      - "Blockierte Kraftstoffzufuhr."
-      - "Verschmutzter Ölfilter."
-      - "Verschmutzter Luftfilter."
+    options:
+      - id: a_86bc8337ab73
+        text: "Blockierter Propeller."
+        isCorrect: true
+      - id: a_c84ff0cd1dc5
+        text: "Blockierte Kraftstoffzufuhr."
+        isCorrect: false
+      - id: a_3efe8c0010d4
+        text: "Verschmutzter Ölfilter."
+        isCorrect: false
+      - id: a_0e46f74aec7f
+        text: "Verschmutzter Luftfilter."
+        isCorrect: false
 
-  - number: 56
+  - id: q_1c733cd7709b
+    number: 56
     text: "Der Motor ist gestartet worden. Was kann die Ursache sein, wenn nach dem Einkuppeln der Antriebswelle der Motor stehenbleibt?"
-    answers:
-      - "Belüftungsschraube geschlossen; verstopfte Kraftstoffleitung."
-      - "Ansaugdüsen zu groß bzw. zu klein."
-      - "Tankdeckel ist offen."
-      - "Schraube an der Welle lose."
+    options:
+      - id: a_6fb1e1ab9fa3
+        text: "Belüftungsschraube geschlossen; verstopfte Kraftstoffleitung."
+        isCorrect: true
+      - id: a_80471884c6c5
+        text: "Ansaugdüsen zu groß bzw. zu klein."
+        isCorrect: false
+      - id: a_fb5226f1fd85
+        text: "Tankdeckel ist offen."
+        isCorrect: false
+      - id: a_431cf55d2375
+        text: "Schraube an der Welle lose."
+        isCorrect: false
 
-  - number: 57
+  - id: q_abec0f1d7490
+    number: 57
     text: "Ein Außenborder mit gefülltem Tank bleibt während der Fahrt stehen. Was könnten die Ursachen sein?"
-    answers:
-      - "Nautische Publikationen wie „Sicherheit auf dem Wasser“ und „Sicher auf See\"."
-      - "Verordnung über die Sicherung der Seefahrt und nautische Publikationen wie „Sicher auf See\"."
-      - "Nautische Publikation wie „Sicherheit auf dem Wasser“ und Internationales Signalbuch."
-      - "Internationales Signalbuch und Verordnung über die Sicherung der Seefahrt."
+    options:
+      - id: a_4861a520b37d
+        text: "Nautische Publikationen wie „Sicherheit auf dem Wasser“ und „Sicher auf See\"."
+        isCorrect: true
+      - id: a_72bf1dbf8b6d
+        text: "Verordnung über die Sicherung der Seefahrt und nautische Publikationen wie „Sicher auf See\"."
+        isCorrect: false
+      - id: a_b30bf3a815e9
+        text: "Nautische Publikation wie „Sicherheit auf dem Wasser“ und Internationales Signalbuch."
+        isCorrect: false
+      - id: a_5e21abfca417
+        text: "Internationales Signalbuch und Verordnung über die Sicherung der Seefahrt."
+        isCorrect: false
 
-  - number: 58
+  - id: q_c3ea3b6dc574
+    number: 58
     text: "Welche Veröffentlichungen enthalten wichtige Regeln und Tipps für Wassersportler, Empfehlungen zur Ausrüstung von Sportbooten sowie Hinweise zu umweltgerechtem Verhalten auf dem Wasser?"
-    answers:
-      - "Die Antriebsleistung beträgt höchstens 7,5 Kilowatt Betriebsart S1 (Dauerbetrieb)."
-      - "Es darf immer ohne Fahrerlaubnis geführt werden, unabhängig von der Antriebsleistung."
-      - "Bis zu einer Antriebsleistung von 11,03 Kilowatt Betriebsart S1 (Dauerbetrieb)."
-      - "Es darf nie ohne Fahrerlaubnis geführt werden, unabhängig von der Antriebsleistung."
+    options:
+      - id: a_031f2a9b76f0
+        text: "Die Antriebsleistung beträgt höchstens 7,5 Kilowatt Betriebsart S1 (Dauerbetrieb)."
+        isCorrect: true
+      - id: a_318dcccda549
+        text: "Es darf immer ohne Fahrerlaubnis geführt werden, unabhängig von der Antriebsleistung."
+        isCorrect: false
+      - id: a_d8c91d59d3ff
+        text: "Bis zu einer Antriebsleistung von 11,03 Kilowatt Betriebsart S1 (Dauerbetrieb)."
+        isCorrect: false
+      - id: a_b4e6fca754e0
+        text: "Es darf nie ohne Fahrerlaubnis geführt werden, unabhängig von der Antriebsleistung."
+        isCorrect: false
 
-  - number: 59
+  - id: q_c4f7ac33444b
+    number: 59
     text: "Unter welchen Voraussetzungen darf ein Sportboot mit Elektromotor ohne Fahrerlaubnis geführt werden?"
-    answers:
-      - "Alle Seeventile schließen und den Hauptschalter des Bordnetzes ausschalten."
-      - "Kraftstoff- und Wassertank auffüllen und das Bordnetz aufladen."
-      - "Tagestank schließen und Kraftstofffilter entwässern."
-      - "Fahrzeug seefest hinterlassen und den Hafenmeister verständigen."
+    options:
+      - id: a_62355b2df345
+        text: "Alle Seeventile schließen und den Hauptschalter des Bordnetzes ausschalten."
+        isCorrect: true
+      - id: a_ba617b6e502b
+        text: "Kraftstoff- und Wassertank auffüllen und das Bordnetz aufladen."
+        isCorrect: false
+      - id: a_9aa343ff6c5a
+        text: "Tagestank schließen und Kraftstofffilter entwässern."
+        isCorrect: false
+      - id: a_0fc7eefcaac5
+        text: "Fahrzeug seefest hinterlassen und den Hafenmeister verständigen."
+        isCorrect: false
 
-  - number: 60
+  - id: q_fb7b3846b3f2
+    number: 60
     text: "Welche Vorkehrungen sind für das längere Verlassen des Fahrzeugs zu treffen?"
-    answers:
-      - "Verringerung der Geschwindigkeit, um schädlichen Sog und Wellenschlag zu vermeiden."
-      - "Beibehaltung der Geschwindigkeit, um durch Gleitfahrt schädlichen Sog und Wellenschlag auszuschließen."
-      - "Verringerung der Geschwindigkeit und nötigenfalls vom Rechtsfahrgebot abweichen."
-      - "Auf Höhe der festgemachten Fahrzeuge aufstoppen und überprüfen, dass kein Dritter behindert oder geschädigt wird."
+    options:
+      - id: a_ca947703a492
+        text: "Verringerung der Geschwindigkeit, um schädlichen Sog und Wellenschlag zu vermeiden."
+        isCorrect: true
+      - id: a_6a11daffc9e4
+        text: "Beibehaltung der Geschwindigkeit, um durch Gleitfahrt schädlichen Sog und Wellenschlag auszuschließen."
+        isCorrect: false
+      - id: a_ebd0b2b6ce62
+        text: "Verringerung der Geschwindigkeit und nötigenfalls vom Rechtsfahrgebot abweichen."
+        isCorrect: false
+      - id: a_2275526bd2e6
+        text: "Auf Höhe der festgemachten Fahrzeuge aufstoppen und überprüfen, dass kein Dritter behindert oder geschädigt wird."
+        isCorrect: false
 
-  - number: 61
+  - id: q_4d7a7eaf7de4
+    number: 61
     text: "Wie ist ein enges Gewässer zu befahren, wenn man sich am Ufer festgemachten Fahrzeugen nähert?"
-    answers:
-      - "Möglichst an Deck, geschützt vor Sonneneinstrahlung, sonst in einem besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung nach außenbords hat."
-      - "Möglichst unten im Schiff, geschützt vor Sonneneinstrahlung, sonst in einem besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung nach außenbords hat."
-      - "Möglichst auf dem Vorschiff, geschützt vor Sonneneinstrahlung, sonst in einem besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung nach außenbords hat."
-      - "Möglichst an Deck, geschützt vor Sonneneinstrahlung, sonst in einem besonders abgeschlossenen Raum für Gasbehälter, der oben belüftet ist."
+    options:
+      - id: a_eb8c1989e983
+        text: "Möglichst an Deck, geschützt vor Sonneneinstrahlung, sonst in einem besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung nach außenbords hat."
+        isCorrect: true
+      - id: a_f723b684a3c2
+        text: "Möglichst unten im Schiff, geschützt vor Sonneneinstrahlung, sonst in einem besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung nach außenbords hat."
+        isCorrect: false
+      - id: a_e6e4de328abe
+        text: "Möglichst auf dem Vorschiff, geschützt vor Sonneneinstrahlung, sonst in einem besonders abgeschlossenen Raum für Gasbehälter, der in Bodenhöhe eine Öffnung nach außenbords hat."
+        isCorrect: false
+      - id: a_f72b1e39397f
+        text: "Möglichst an Deck, geschützt vor Sonneneinstrahlung, sonst in einem besonders abgeschlossenen Raum für Gasbehälter, der oben belüftet ist."
+        isCorrect: false
 
-  - number: 62
+  - id: q_fdbe26f8eb73
+    number: 62
     text: "Wo sollen die Gasbehälter einer Flüssiggasanlage gelagert werden?"
-    answers:
-      - "Beide Gase sind schwerer als Luft und bilden mit Luft ein explosives Gemisch."
-      - "Beide Gase sind leichter als Luft und bilden mit Luft ein explosives Gemisch."
-      - "Beide Gase sind schwerer als Wasser und bilden mit Wasser ein explosives Gemisch."
-      - "Beide Gase sind schwerer als Luft und bilden mit Wasser ein explosives Gemisch."
+    options:
+      - id: a_399e8ea28279
+        text: "Beide Gase sind schwerer als Luft und bilden mit Luft ein explosives Gemisch."
+        isCorrect: true
+      - id: a_f5fbe93d72b8
+        text: "Beide Gase sind leichter als Luft und bilden mit Luft ein explosives Gemisch."
+        isCorrect: false
+      - id: a_d4ffac200559
+        text: "Beide Gase sind schwerer als Wasser und bilden mit Wasser ein explosives Gemisch."
+        isCorrect: false
+      - id: a_6c7895c8d1b0
+        text: "Beide Gase sind schwerer als Luft und bilden mit Wasser ein explosives Gemisch."
+        isCorrect: false
 
-  - number: 63
+  - id: q_e46d5b52158d
+    number: 63
     text: "Warum sind die Flüssiggase Propan und Butan an Bord besonders gefährlich?"
-    answers:
-      - "Gaszuführung absperren und für Lüftung sorgen. Außerdem keine elektrischen Schalter betätigen und keinen Funk und keine Mobiltelefone benutzen."
-      - "Gasleitung entleeren und für Lüftung sorgen. Außerdem keine elektrischen Schalter betätigen und keine Telefone benutzen."
-      - "Gaszuführung absperren und für Lüftung sorgen. Außerdem keine elektrischen Schalter betätigen und per Telefon Hilfe holen."
-      - "Gasleitung entleeren und die Gasfreiheit mit dem Feuerzeug prüfen sowie über Funk oder Mobiltelefon Hilfe anfordern."
+    options:
+      - id: a_d63bb78d2b46
+        text: "Gaszuführung absperren und für Lüftung sorgen. Außerdem keine elektrischen Schalter betätigen und keinen Funk und keine Mobiltelefone benutzen."
+        isCorrect: true
+      - id: a_b2f552abc408
+        text: "Gasleitung entleeren und für Lüftung sorgen. Außerdem keine elektrischen Schalter betätigen und keine Telefone benutzen."
+        isCorrect: false
+      - id: a_807ceae5497f
+        text: "Gaszuführung absperren und für Lüftung sorgen. Außerdem keine elektrischen Schalter betätigen und per Telefon Hilfe holen."
+        isCorrect: false
+      - id: a_f5e523b112be
+        text: "Gasleitung entleeren und die Gasfreiheit mit dem Feuerzeug prüfen sowie über Funk oder Mobiltelefon Hilfe anfordern."
+        isCorrect: false
 
-  - number: 64
+  - id: q_91ea8256cbf4
+    number: 64
     text: "Was ist zu tun, wenn Flüssiggas in das Innere des Bootes gelangt?"
-    answers:
-      - "Die Anlage muss abgenommen sein, Leitungen und Anschlüsse müssen dicht sein. Haupthahn und andere Absperrventile sind zu öffnen."
-      - "Die Anlage muss abgenommen sein, die Inbetriebnahme darf nur durch eine besonders geprüfte Person erfolgen."
-      - "Die Anlage muss abgenommen sein und jährlich überprüft werden. Die Inbetriebnahme darf nur durch eine besonders geprüfte Person erfolgen."
-      - "Die Abnahme der Anlage darf nicht länger als drei Jahre zurückliegen. Haupthahn und andere Absperrventile sind zu öffnen."
+    options:
+      - id: a_8207daba0160
+        text: "Die Anlage muss abgenommen sein, Leitungen und Anschlüsse müssen dicht sein. Haupthahn und andere Absperrventile sind zu öffnen."
+        isCorrect: true
+      - id: a_6a5698a24ef8
+        text: "Die Anlage muss abgenommen sein, die Inbetriebnahme darf nur durch eine besonders geprüfte Person erfolgen."
+        isCorrect: false
+      - id: a_1ea6e80c4227
+        text: "Die Anlage muss abgenommen sein und jährlich überprüft werden. Die Inbetriebnahme darf nur durch eine besonders geprüfte Person erfolgen."
+        isCorrect: false
+      - id: a_19b6e3346084
+        text: "Die Abnahme der Anlage darf nicht länger als drei Jahre zurückliegen. Haupthahn und andere Absperrventile sind zu öffnen."
+        isCorrect: false
 
-  - number: 65
+  - id: q_84526bca3460
+    number: 65
     text: "Was ist vor Inbetriebnahme einer Flüssiggasanlage zu prüfen?"
-    answers:
-      - "Haupthahn und Absperrventile sind zu schließen."
-      - "Die Anlage ist gasfrei zu machen."
-      - "Gasflasche fachgerecht entsorgen."
-      - "Der Flüssiggasbehälter ist vollständig zu entleeren."
+    options:
+      - id: a_5b2f9fc06ef3
+        text: "Haupthahn und Absperrventile sind zu schließen."
+        isCorrect: true
+      - id: a_1d1fb04a1cc2
+        text: "Die Anlage ist gasfrei zu machen."
+        isCorrect: false
+      - id: a_ea56a8ecdc96
+        text: "Gasflasche fachgerecht entsorgen."
+        isCorrect: false
+      - id: a_804a8fc05189
+        text: "Der Flüssiggasbehälter ist vollständig zu entleeren."
+        isCorrect: false
 
-  - number: 66
+  - id: q_5888f343ec00
+    number: 66
     text: "Was ist zu beachten, wenn eine Flüssiggasanlage außer Betrieb gesetzt wird?"
-    answers:
-      - "Entsprechend der Herstellerangabe, mindestens alle 2 Jahre."
-      - "Jährlich und nach jedem Einsatz oder Übungsgebrauch."
-      - "Entsprechend der Herstellerangabe, mindestens alle 3 Jahre."
-      - "Jährlich, jeweils vor Beginn der Wassersportsaison."
+    options:
+      - id: a_08c18f1baa2f
+        text: "Entsprechend der Herstellerangabe, mindestens alle 2 Jahre."
+        isCorrect: true
+      - id: a_4254401fe414
+        text: "Jährlich und nach jedem Einsatz oder Übungsgebrauch."
+        isCorrect: false
+      - id: a_976366149f87
+        text: "Entsprechend der Herstellerangabe, mindestens alle 3 Jahre."
+        isCorrect: false
+      - id: a_1173df19375c
+        text: "Jährlich, jeweils vor Beginn der Wassersportsaison."
+        isCorrect: false
 
-  - number: 67
+  - id: q_99d3e8abc621
+    number: 67
     text: "Wie oft muss man aufblasbare Rettungsmittel warten lassen?"
-    answers:
-      - "ABC-Pulver- und Schaumlöscher, mindestens alle 2 Jahre."
-      - "Feuerlöscher mit Löschschaum, mindestens einmal pro Jahr."
-      - "CO2-Feuerlöscher, mindestens alle 2 Jahre."
-      - "ABC-Pulverlöscher, mindestens einmal pro Jahr."
+    options:
+      - id: a_90bca2cd686b
+        text: "ABC-Pulver- und Schaumlöscher, mindestens alle 2 Jahre."
+        isCorrect: true
+      - id: a_39185fafb226
+        text: "Feuerlöscher mit Löschschaum, mindestens einmal pro Jahr."
+        isCorrect: false
+      - id: a_ef69cd9245f2
+        text: "CO2-Feuerlöscher, mindestens alle 2 Jahre."
+        isCorrect: false
+      - id: a_48d1aeb2d003
+        text: "ABC-Pulverlöscher, mindestens einmal pro Jahr."
+        isCorrect: false
 
-  - number: 68
+  - id: q_a717a519e170
+    number: 68
     text: "Welcher Feuerlöscher ist für Sportboote zweckmäßig und wie oft muss man einen Feuerlöscher überprüfen lassen?"
-    answers:
-      - "Luftzufuhr verhindern, Feuerlöscher erst am Brandherd einsetzen und das Feuer möglichst von unten bekämpfen."
-      - "Rauchabzug sicherstellen und Feuerlöscher rechtzeitig einsetzen, dabei den Löschstrahl möglichst in die lodernden Flammen halten."
-      - "Luftzufuhr verhindern und den Feuerlöscher mit sparsamen Löschstrahlstößen einsetzen, dabei das Feuer möglichst von oben bekämpfen."
-      - "Handhabungshinweise durchlesen und den Feuerlöscher sofort einsetzen, dabei das Feuer möglichst von unten bekämpfen."
+    options:
+      - id: a_7b71105efa39
+        text: "Luftzufuhr verhindern, Feuerlöscher erst am Brandherd einsetzen und das Feuer möglichst von unten bekämpfen."
+        isCorrect: true
+      - id: a_2b62c4fc1541
+        text: "Rauchabzug sicherstellen und Feuerlöscher rechtzeitig einsetzen, dabei den Löschstrahl möglichst in die lodernden Flammen halten."
+        isCorrect: false
+      - id: a_9dc57c08bd1e
+        text: "Luftzufuhr verhindern und den Feuerlöscher mit sparsamen Löschstrahlstößen einsetzen, dabei das Feuer möglichst von oben bekämpfen."
+        isCorrect: false
+      - id: a_ebf57371f3ab
+        text: "Handhabungshinweise durchlesen und den Feuerlöscher sofort einsetzen, dabei das Feuer möglichst von unten bekämpfen."
+        isCorrect: false
 
-  - number: 69
+  - id: q_86a2d12a8106
+    number: 69
     text: "Welche Maßnahmen muss man ergreifen, um einen Brand mit dem Feuerlöscher wirksam zu bekämpfen?"
-    answers:
-      - "Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand nicht mehr erforderlich ist; alle erforderlichen Daten austauschen."
-      - "Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand nicht mehr erforderlich ist; die Wasserschutzpolizei benachrichtigen."
-      - "Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand nicht mehr erforderlich ist; Notsignal geben."
-      - "Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand nicht mehr erforderlich ist; Verschlusszustand herstellen."
+    options:
+      - id: a_d846bd9ff0bd
+        text: "Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand nicht mehr erforderlich ist; alle erforderlichen Daten austauschen."
+        isCorrect: true
+      - id: a_169d21339ab0
+        text: "Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand nicht mehr erforderlich ist; die Wasserschutzpolizei benachrichtigen."
+        isCorrect: false
+      - id: a_568e6bce8a2e
+        text: "Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand nicht mehr erforderlich ist; Notsignal geben."
+        isCorrect: false
+      - id: a_270fe2096e37
+        text: "Hilfe leisten und so lange am Unfallort bleiben, bis ein weiterer Beistand nicht mehr erforderlich ist; Verschlusszustand herstellen."
+        isCorrect: false
 
-  - number: 70
+  - id: q_438f2c3d9d5c
+    number: 70
     text: "Wie hat man sich nach einem Zusammenstoß zu verhalten?"
-    answers:
-      - "Luftdruckänderung, Luftfeuchtigkeit und Temperatur."
-      - "Luftdruckänderung, Sonneneinstrahlung und Höhenlage."
-      - "Luftdruckänderung, Luftfeuchtigkeit und Jahreszeit."
-      - "Luftdruckänderung, Tageszeit und Temperatur."
+    options:
+      - id: a_13efb7b50cc6
+        text: "Luftdruckänderung, Luftfeuchtigkeit und Temperatur."
+        isCorrect: true
+      - id: a_f51eac0a886c
+        text: "Luftdruckänderung, Sonneneinstrahlung und Höhenlage."
+        isCorrect: false
+      - id: a_44414a87e0c0
+        text: "Luftdruckänderung, Luftfeuchtigkeit und Jahreszeit."
+        isCorrect: false
+      - id: a_9d9b0e028fd0
+        text: "Luftdruckänderung, Tageszeit und Temperatur."
+        isCorrect: false
 
-  - number: 71
+  - id: q_6b8ae50a78c8
+    number: 71
     text: "Welche Faktoren sind hauptsächlich für das Wettergeschehen, also für Wind und Niederschläge, ausschlaggebend?"
-    answers:
-      - "Wenn Gefahr für Leib oder Leben von Personen besteht und daher Hilfe benötigt wird."
-      - "Wenn Gefahr für Leib oder Leben von Personen besteht oder das Schiff nicht mehr sicher manövriert werden kann."
-      - "Wenn Gefahr für Leib oder Leben von Personen oder erhebliche Sachwerte besteht und daher Hilfe benötigt wird."
-      - "Wenn Gefahr für Leib oder Leben von Personen, erhebliche Sachwerte oder die maritime Umwelt besteht."
+    options:
+      - id: a_6bba4aa69b74
+        text: "Wenn Gefahr für Leib oder Leben von Personen besteht und daher Hilfe benötigt wird."
+        isCorrect: true
+      - id: a_3737563af1ad
+        text: "Wenn Gefahr für Leib oder Leben von Personen besteht oder das Schiff nicht mehr sicher manövriert werden kann."
+        isCorrect: false
+      - id: a_1fc033444ad4
+        text: "Wenn Gefahr für Leib oder Leben von Personen oder erhebliche Sachwerte besteht und daher Hilfe benötigt wird."
+        isCorrect: false
+      - id: a_fc70e2e15032
+        text: "Wenn Gefahr für Leib oder Leben von Personen, erhebliche Sachwerte oder die maritime Umwelt besteht."
+        isCorrect: false
 
-  - number: 72
+  - id: q_eba2e274672e
+    number: 72
     text: "In welcher Situation dürfen Notsignale gegeben werden?"
-    answers:
-      - "Wenn Gefahr für Leib oder Leben von Personen besteht und daher Hilfe benötigt wird."
-      - "Wenn Gefahr für Leib oder Leben von Personen besteht oder das Schiff nicht mehr sicher manövriert werden kann."
-      - "Wenn Gefahr für Leib oder Leben von Personen oder erhebliche Sachwerte besteht und daher Hilfe benötigt wird."
-      - "Wenn Gefahr für Leib oder Leben von Personen, erhebliche Sachwerte oder die maritime Umwelt besteht."
+    options:
+      - id: a_6589c676cbd9
+        text: "Wenn Gefahr für Leib oder Leben von Personen besteht und daher Hilfe benötigt wird."
+        isCorrect: true
+      - id: a_3275a4214020
+        text: "Wenn Gefahr für Leib oder Leben von Personen besteht oder das Schiff nicht mehr sicher manövriert werden kann."
+        isCorrect: false
+      - id: a_6a297ab5f5e5
+        text: "Wenn Gefahr für Leib oder Leben von Personen oder erhebliche Sachwerte besteht und daher Hilfe benötigt wird."
+        isCorrect: false
+      - id: a_d9866592837f
+        text: "Wenn Gefahr für Leib oder Leben von Personen, erhebliche Sachwerte oder die maritime Umwelt besteht."
+        isCorrect: false
 

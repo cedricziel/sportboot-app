@@ -9,6 +9,7 @@ class StorageService {
   static const String _settingsKey = 'app_settings';
 
   late final SharedPreferences _prefs;
+  bool _isInitialized = false;
 
   // Singleton pattern
   static final StorageService _instance = StorageService._internal();
@@ -16,7 +17,9 @@ class StorageService {
   StorageService._internal();
 
   Future<void> init() async {
+    if (_isInitialized) return; // Skip if already initialized
     _prefs = await SharedPreferences.getInstance();
+    _isInitialized = true;
   }
 
   // Study Progress Management

@@ -44,6 +44,17 @@ class QuestionsProvider extends ChangeNotifier {
   Future<void> init() async {
     await _storage.init();
     await loadManifest();
+    
+    // Restore selected course from storage if available
+    final storedCourseId = getStoredCourseId();
+    if (storedCourseId != null && _manifest != null) {
+      final courseManifest = _manifest!.courses[storedCourseId];
+      if (courseManifest != null) {
+        _selectedCourseId = storedCourseId;
+        _selectedCourseManifest = courseManifest;
+        notifyListeners();
+      }
+    }
   }
   
   // Load manifest
