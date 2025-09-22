@@ -1,8 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sportboot_app/models/course.dart';
-import 'package:sportboot_app/models/question.dart';
-import 'package:sportboot_app/models/answer_option.dart';
-import 'package:sportboot_app/services/data_loader.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
 import 'package:sportboot_app/services/storage_service.dart';
 
@@ -12,6 +10,8 @@ void main() {
     
     setUp(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
+      // Set up SharedPreferences mock
+      SharedPreferences.setMockInitialValues({});
       provider = QuestionsProvider();
       // Initialize storage
       await StorageService().init();

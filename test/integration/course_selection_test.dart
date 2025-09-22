@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
 import 'package:sportboot_app/services/storage_service.dart';
 
@@ -8,13 +9,16 @@ void main() {
     
     setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
+      SharedPreferences.setMockInitialValues({});
       storage = StorageService();
       await storage.init();
     });
     
     setUp(() async {
-      // Clear any existing selection
-      storage.setSetting('selectedCourseId', null);
+      // Reset mock values for each test
+      SharedPreferences.setMockInitialValues({});
+      storage = StorageService();
+      await storage.init();
     });
 
     test('Course selection is persisted to storage', () async {

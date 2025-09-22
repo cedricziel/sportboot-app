@@ -18,7 +18,8 @@
       "Bash(flutter test:*)",
       "WebSearch",
       "Bash(flutter analyze:*)",
-      "WebFetch(domain:pub.dev)"
+      "WebFetch(domain:pub.dev)",
+      "mcp__github__create_issue"
     ],
     "deny": [],
     "ask": []
