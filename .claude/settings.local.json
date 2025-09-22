@@ -19,7 +19,8 @@
       "WebSearch",
       "Bash(flutter analyze:*)",
       "WebFetch(domain:pub.dev)",
-      "mcp__github__create_issue"
+      "mcp__github__create_issue",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
     "ask": []
