@@ -236,29 +236,21 @@ class QuestionScraper {
       final questionNum = int.parse(questionMatch.group(1)!);
       final questionText = questionMatch.group(2)!;
 
-      // Look for the next <ol> element with answers
+      // Look for the <ol> element with answers directly after this question
       Element? answerList;
-      for (int j = i + 1; j < paragraphs.length && j < i + 5; j++) {
-        final nextElement = paragraphs[j].nextElementSibling;
-        if (nextElement != null && nextElement.localName == 'ol') {
-          if (nextElement.classes.contains('elwisOL-lowerLiteral')) {
-            answerList = nextElement;
+      
+      // First, try to find ol directly after this paragraph
+      var sibling = p.nextElementSibling;
+      while (sibling != null && sibling.localName != 'p') {
+        if (sibling.localName == 'ol') {
+          // Check if it's the right type of list (with class or just any ol)
+          if (sibling.classes.contains('elwisOL-lowerLiteral') || 
+              sibling.querySelectorAll('li').length >= 3) {
+            answerList = sibling;
             break;
           }
         }
-      }
-
-      if (answerList == null) {
-        // Try finding ol directly after this paragraph
-        var sibling = p.nextElementSibling;
-        while (sibling != null &&
-            sibling.localName != 'ol' &&
-            sibling.localName != 'p') {
-          sibling = sibling.nextElementSibling;
-        }
-        if (sibling != null && sibling.localName == 'ol') {
-          answerList = sibling;
-        }
+        sibling = sibling.nextElementSibling;
       }
 
       if (answerList != null) {
