@@ -21,7 +21,8 @@
       "WebFetch(domain:pub.dev)",
       "mcp__github__create_issue",
       "WebFetch(domain:github.com)",
-      "Bash(echo $FLUTTER_TEST)"
+      "Bash(echo $FLUTTER_TEST)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []
