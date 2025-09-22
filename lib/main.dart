@@ -12,7 +12,7 @@ void main() async {
 
   // Initialize storage service
   await StorageService().init();
-  
+
   // Initialize notification service
   await NotificationService().init();
 
@@ -41,28 +41,29 @@ class _MyAppState extends State<MyApp> {
       final context = navigatorKey.currentContext;
       if (context != null) {
         final provider = Provider.of<QuestionsProvider>(context, listen: false);
-        
+
         // Load all questions if not already loaded
         if (provider.currentQuestions.isEmpty) {
           await provider.loadCourseById(
-            StorageService().getSetting('selectedCourseId', defaultValue: 'sbf-see')
+            StorageService().getSetting(
+              'selectedCourseId',
+              defaultValue: 'sbf-see',
+            ),
           );
         }
-        
+
         // Start a quiz session
         provider.startSession('quiz', 'all');
-        
+
         // Navigate to home screen first, then to quiz
         if (context.mounted) {
           Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (_) => const HomeScreen()),
             (route) => false,
           );
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => const QuizScreen(),
-            ),
-          );
+          Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (_) => const QuizScreen()));
         }
       }
     });

@@ -23,11 +23,14 @@ class Course {
     } else if (map['course'] is Map) {
       // Legacy format with nested course object
       final courseMap = map['course'] as Map<String, dynamic>;
-      courseName = courseMap['name'] as String? ?? courseMap['id'] as String? ?? 'Unknown';
+      courseName =
+          courseMap['name'] as String? ??
+          courseMap['id'] as String? ??
+          'Unknown';
     } else {
       courseName = 'Unknown Course';
     }
-    
+
     return Course(
       name: courseName,
       version: map['version'] as String? ?? '2024',

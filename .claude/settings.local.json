@@ -20,7 +20,8 @@
       "Bash(flutter analyze:*)",
       "WebFetch(domain:pub.dev)",
       "mcp__github__create_issue",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(echo $FLUTTER_TEST)"
     ],
     "deny": [],
     "ask": []

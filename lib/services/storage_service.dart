@@ -92,7 +92,7 @@ class StorageService {
     final settings = getSettings();
     return settings[key] ?? defaultValue;
   }
-  
+
   Future<void> setSetting(String key, dynamic value) async {
     final settings = getSettings();
     settings[key] = value;

@@ -45,7 +45,9 @@ class NotificationService {
       tz.setLocalLocation(tz.getLocation('Europe/Berlin'));
 
       // Android initialization settings
-      const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+      const androidSettings = AndroidInitializationSettings(
+        '@mipmap/ic_launcher',
+      );
 
       // iOS initialization settings
       const iosSettings = DarwinInitializationSettings(
@@ -86,7 +88,8 @@ class NotificationService {
 
     await _notifications
         .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
+          AndroidFlutterLocalNotificationsPlugin
+        >()
         ?.createNotificationChannel(androidChannel);
   }
 
@@ -94,21 +97,19 @@ class NotificationService {
   Future<bool> requestPermissions() async {
     // Request permission using permission_handler
     final status = await Permission.notification.request();
-    
+
     if (status.isGranted) {
       // For iOS, also request through the notification plugin
-      final iOS = _notifications.resolvePlatformSpecificImplementation<
-          IOSFlutterLocalNotificationsPlugin>();
+      final iOS = _notifications
+          .resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin
+          >();
       if (iOS != null) {
-        await iOS.requestPermissions(
-          alert: true,
-          badge: true,
-          sound: true,
-        );
+        await iOS.requestPermissions(alert: true, badge: true, sound: true);
       }
       return true;
     }
-    
+
     return false;
   }
 
@@ -124,99 +125,104 @@ class NotificationService {
       // Cancel existing notifications first
       await cancelAllNotifications();
 
-    // Check permissions
-    final hasPermission = await areNotificationsEnabled();
-    if (!hasPermission) {
-      final granted = await requestPermissions();
-      if (!granted) return;
-    }
+      // Check permissions
+      final hasPermission = await areNotificationsEnabled();
+      if (!hasPermission) {
+        final granted = await requestPermissions();
+        if (!granted) return;
+      }
 
-    // Get current date
-    final now = tz.TZDateTime.now(tz.local);
-    
-    // Create scheduled time for today
-    var scheduledDate = tz.TZDateTime(
-      tz.local,
-      now.year,
-      now.month,
-      now.day,
-      time.hour,
-      time.minute,
-    );
+      // Get current date
+      final now = tz.TZDateTime.now(tz.local);
 
-    // If the time has already passed today, schedule for tomorrow
-    if (scheduledDate.isBefore(now)) {
-      scheduledDate = scheduledDate.add(const Duration(days: 1));
-    }
+      // Create scheduled time for today
+      var scheduledDate = tz.TZDateTime(
+        tz.local,
+        now.year,
+        now.month,
+        now.day,
+        time.hour,
+        time.minute,
+      );
 
-    // Get random motivational message
-    final random = Random();
-    final message = _notificationMessages[random.nextInt(_notificationMessages.length)];
+      // If the time has already passed today, schedule for tomorrow
+      if (scheduledDate.isBefore(now)) {
+        scheduledDate = scheduledDate.add(const Duration(days: 1));
+      }
 
-    // Get course name from storage
-    final selectedCourse = _storage.getSetting('selectedCourseId', defaultValue: 'SBF-See');
-    final courseNames = {
-      'sbf-see': 'SBF-See',
-      'sbf-binnen': 'SBF-Binnen',
-      'sbf-binnen-segeln': 'SBF-Binnen Segeln',
-    };
-    final courseName = courseNames[selectedCourse] ?? 'Sportbootführerschein';
+      // Get random motivational message
+      final random = Random();
+      final message =
+          _notificationMessages[random.nextInt(_notificationMessages.length)];
 
-    // Android notification details
-    final androidDetails = AndroidNotificationDetails(
-      _channelId,
-      _channelName,
-      channelDescription: _channelDescription,
-      importance: Importance.high,
-      priority: Priority.high,
-      ticker: 'Quiz-Erinnerung',
-      styleInformation: BigTextStyleInformation(
+      // Get course name from storage
+      final selectedCourse = _storage.getSetting(
+        'selectedCourseId',
+        defaultValue: 'SBF-See',
+      );
+      final courseNames = {
+        'sbf-see': 'SBF-See',
+        'sbf-binnen': 'SBF-Binnen',
+        'sbf-binnen-segeln': 'SBF-Binnen Segeln',
+      };
+      final courseName = courseNames[selectedCourse] ?? 'Sportbootführerschein';
+
+      // Android notification details
+      final androidDetails = AndroidNotificationDetails(
+        _channelId,
+        _channelName,
+        channelDescription: _channelDescription,
+        importance: Importance.high,
+        priority: Priority.high,
+        ticker: 'Quiz-Erinnerung',
+        styleInformation: BigTextStyleInformation(
+          message,
+          contentTitle: 'Zeit zum Lernen! 📚',
+          summaryText: courseName,
+        ),
+        actions: [
+          const AndroidNotificationAction(
+            'start_quiz',
+            'Quiz starten',
+            showsUserInterface: true,
+          ),
+          const AndroidNotificationAction('later', 'Später'),
+        ],
+      );
+
+      // iOS notification details
+      const iosDetails = DarwinNotificationDetails(
+        presentAlert: true,
+        presentBadge: true,
+        presentSound: true,
+        sound: 'default',
+        categoryIdentifier: 'quiz_reminder',
+      );
+
+      final notificationDetails = NotificationDetails(
+        android: androidDetails,
+        iOS: iosDetails,
+      );
+
+      // Schedule the notification
+      await _notifications.zonedSchedule(
+        _dailyNotificationId,
+        'Zeit zum Lernen! 📚',
         message,
-        contentTitle: 'Zeit zum Lernen! 📚',
-        summaryText: courseName,
-      ),
-      actions: [
-        const AndroidNotificationAction(
-          'start_quiz',
-          'Quiz starten',
-          showsUserInterface: true,
-        ),
-        const AndroidNotificationAction(
-          'later',
-          'Später',
-        ),
-      ],
-    );
+        scheduledDate,
+        notificationDetails,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        matchDateTimeComponents:
+            DateTimeComponents.time, // Repeat daily at same time
+        payload: 'open_quiz',
+      );
 
-    // iOS notification details
-    const iosDetails = DarwinNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-      sound: 'default',
-      categoryIdentifier: 'quiz_reminder',
-    );
-
-    final notificationDetails = NotificationDetails(
-      android: androidDetails,
-      iOS: iosDetails,
-    );
-
-    // Schedule the notification
-    await _notifications.zonedSchedule(
-      _dailyNotificationId,
-      'Zeit zum Lernen! 📚',
-      message,
-      scheduledDate,
-      notificationDetails,
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      matchDateTimeComponents: DateTimeComponents.time, // Repeat daily at same time
-      payload: 'open_quiz',
-    );
-
-    // Save notification settings
-    await _storage.setSetting('notificationsEnabled', true);
-    await _storage.setSetting('notificationTime', '${time.hour}:${time.minute}');
+      // Save notification settings
+      await _storage.setSetting('notificationsEnabled', true);
+      await _storage.setSetting(
+        'notificationTime',
+        '${time.hour}:${time.minute}',
+      );
     } catch (e) {
       debugPrint('scheduleDailyNotification failed (likely in test): $e');
     }
@@ -244,36 +250,37 @@ class NotificationService {
   // Show instant notification (for preview)
   Future<void> showTestNotification() async {
     try {
-    final random = Random();
-    final message = _notificationMessages[random.nextInt(_notificationMessages.length)];
+      final random = Random();
+      final message =
+          _notificationMessages[random.nextInt(_notificationMessages.length)];
 
-    const androidDetails = AndroidNotificationDetails(
-      _channelId,
-      _channelName,
-      channelDescription: _channelDescription,
-      importance: Importance.high,
-      priority: Priority.high,
-      ticker: 'Test-Benachrichtigung',
-    );
+      const androidDetails = AndroidNotificationDetails(
+        _channelId,
+        _channelName,
+        channelDescription: _channelDescription,
+        importance: Importance.high,
+        priority: Priority.high,
+        ticker: 'Test-Benachrichtigung',
+      );
 
-    const iosDetails = DarwinNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-    );
+      const iosDetails = DarwinNotificationDetails(
+        presentAlert: true,
+        presentBadge: true,
+        presentSound: true,
+      );
 
-    final notificationDetails = NotificationDetails(
-      android: androidDetails,
-      iOS: iosDetails,
-    );
+      final notificationDetails = NotificationDetails(
+        android: androidDetails,
+        iOS: iosDetails,
+      );
 
-    await _notifications.show(
-      999, // Different ID for test notification
-      'Zeit zum Lernen! 📚',
-      message,
-      notificationDetails,
-      payload: 'test',
-    );
+      await _notifications.show(
+        999, // Different ID for test notification
+        'Zeit zum Lernen! 📚',
+        message,
+        notificationDetails,
+        payload: 'test',
+      );
     } catch (e) {
       debugPrint('showTestNotification failed (likely in test): $e');
     }
@@ -309,7 +316,9 @@ class NotificationService {
   Future<bool> isDailyNotificationScheduled() async {
     try {
       final pending = await getPendingNotifications();
-      return pending.any((notification) => notification.id == _dailyNotificationId);
+      return pending.any(
+        (notification) => notification.id == _dailyNotificationId,
+      );
     } catch (e) {
       debugPrint('isDailyNotificationScheduled failed (likely in test): $e');
       return false;
@@ -318,7 +327,10 @@ class NotificationService {
 
   // Update notification time (reschedule)
   Future<void> updateNotificationTime(TimeOfDay newTime) async {
-    final isEnabled = _storage.getSetting('notificationsEnabled', defaultValue: false);
+    final isEnabled = _storage.getSetting(
+      'notificationsEnabled',
+      defaultValue: false,
+    );
     if (isEnabled) {
       await scheduleDailyNotification(newTime);
     }
@@ -327,17 +339,27 @@ class NotificationService {
   // Get statistics about notification engagement
   Map<String, dynamic> getNotificationStats() {
     return {
-      'enabled': _storage.getSetting('notificationsEnabled', defaultValue: false),
+      'enabled': _storage.getSetting(
+        'notificationsEnabled',
+        defaultValue: false,
+      ),
       'time': _storage.getSetting('notificationTime', defaultValue: '19:00'),
       'lastShown': _storage.getSetting('lastNotificationDate'),
-      'interactionCount': _storage.getSetting('notificationInteractions', defaultValue: 0),
+      'interactionCount': _storage.getSetting(
+        'notificationInteractions',
+        defaultValue: 0,
+      ),
     };
   }
 
   // Track notification interaction
   void trackNotificationInteraction() {
-    final currentCount = _storage.getSetting('notificationInteractions', defaultValue: 0) as int;
+    final currentCount =
+        _storage.getSetting('notificationInteractions', defaultValue: 0) as int;
     _storage.setSetting('notificationInteractions', currentCount + 1);
-    _storage.setSetting('lastNotificationInteraction', DateTime.now().toIso8601String());
+    _storage.setSetting(
+      'lastNotificationInteraction',
+      DateTime.now().toIso8601String(),
+    );
   }
 }

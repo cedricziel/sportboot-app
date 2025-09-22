@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final provider = context.read<QuestionsProvider>();
       await provider.init();
-      
+
       // Check if a course is selected
       final storedCourseId = provider.getStoredCourseId();
       if (storedCourseId == null && mounted) {
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final provider = context.watch<QuestionsProvider>();
     final courseManifest = provider.selectedCourseManifest;
     final courseTitle = courseManifest?.shortName ?? 'Lernkarten';
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text(courseTitle),
@@ -51,7 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (_) => const CourseSelectionScreen()),
+                MaterialPageRoute(
+                  builder: (_) => const CourseSelectionScreen(),
+                ),
               );
             },
           ),
@@ -86,18 +88,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Consumer<QuestionsProvider>(
                   builder: (context, provider, _) {
                     final courseManifest = provider.selectedCourseManifest;
-                    final courseName = courseManifest?.name ?? 'Kein Kurs ausgewählt';
+                    final courseName =
+                        courseManifest?.name ?? 'Kein Kurs ausgewählt';
                     final courseIcon = courseManifest?.icon ?? '📚';
-                    
+
                     // Get total question count from manifest if available
                     final questionCount = courseManifest?.totalQuestions ?? 0;
-                    
+
                     return Column(
                       children: [
-                        Text(
-                          courseIcon,
-                          style: const TextStyle(fontSize: 48),
-                        ),
+                        Text(courseIcon, style: const TextStyle(fontSize: 48)),
                         const SizedBox(height: 8),
                         Text(
                           courseName,
@@ -128,13 +128,13 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Consumer<QuestionsProvider>(
                 builder: (context, provider, _) {
                   final courseManifest = provider.selectedCourseManifest;
-                  
+
                   if (courseManifest == null) {
                     return const Center(
                       child: Text('Bitte wähle einen Kurs aus'),
                     );
                   }
-                  
+
                   return ListView(
                     children: [
                       _buildQuickQuizCard(context),
@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         IconData icon;
                         Color color;
                         String subtitle;
-                        
+
                         switch (category.type ?? category.id) {
                           case 'all':
                             icon = Icons.list_alt;
@@ -170,10 +170,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             break;
                           default:
                             // For specific categories
-                            if (category.id.contains('segeln') || category.id.contains('sail')) {
+                            if (category.id.contains('segeln') ||
+                                category.id.contains('sail')) {
                               icon = Icons.sailing;
                               color = Colors.teal;
-                            } else if (category.id.contains('see') || category.id.contains('sea')) {
+                            } else if (category.id.contains('see') ||
+                                category.id.contains('sea')) {
                               icon = Icons.waves;
                               color = Colors.cyan;
                             } else if (category.id.contains('binnen')) {
@@ -185,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             }
                             subtitle = category.description;
                         }
-                        
+
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 12.0),
                           child: _buildCategoryCard(

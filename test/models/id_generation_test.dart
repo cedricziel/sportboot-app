@@ -11,22 +11,14 @@ void main() {
         'number': 1,
         'text': 'Test question?',
         'options': [
-          {
-            'id': 'a_answer1',
-            'text': 'Answer 1',
-            'isCorrect': true,
-          },
-          {
-            'id': 'a_answer2',
-            'text': 'Answer 2',
-            'isCorrect': false,
-          }
+          {'id': 'a_answer1', 'text': 'Answer 1', 'isCorrect': true},
+          {'id': 'a_answer2', 'text': 'Answer 2', 'isCorrect': false},
         ],
         'category': 'test',
       };
 
       final question = Question.fromMap(questionMap);
-      
+
       expect(question.id, 'q_test123');
       expect(question.options.length, 2);
       expect(question.options[0].id, 'a_answer1');
@@ -46,7 +38,7 @@ void main() {
       };
 
       final question = Question.fromMap(legacyMap);
-      
+
       expect(question.id, 'q_legacy');
       expect(question.options.length, 3);
       // Should generate IDs for legacy answers

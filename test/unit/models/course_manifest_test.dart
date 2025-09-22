@@ -73,10 +73,7 @@ void main() {
             'catalogRefs': ['basisfragen', 'spezifische-see'],
           },
         ],
-        'exam': {
-          'questionCount': 30,
-          'passingScore': 0.8,
-        },
+        'exam': {'questionCount': 30, 'passingScore': 0.8},
       };
 
       final course = CourseManifest.fromMap('sbf-see', map);
@@ -205,10 +202,7 @@ void main() {
             'categories': [],
           },
         },
-        'metadata': {
-          'version': '2024.01',
-          'source': 'ELWIS',
-        },
+        'metadata': {'version': '2024.01', 'source': 'ELWIS'},
       };
 
       final manifest = Manifest.fromMap(map);

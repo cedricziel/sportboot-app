@@ -25,8 +25,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _loadNotificationSettings() async {
     setState(() {
-      _notificationsEnabled = _storage.getSetting('notificationsEnabled', defaultValue: false);
-      final timeString = _storage.getSetting('notificationTime', defaultValue: '19:00');
+      _notificationsEnabled = _storage.getSetting(
+        'notificationsEnabled',
+        defaultValue: false,
+      );
+      final timeString = _storage.getSetting(
+        'notificationTime',
+        defaultValue: '19:00',
+      );
       final parts = timeString.split(':');
       _notificationTime = TimeOfDay(
         hour: int.parse(parts[0]),
@@ -227,7 +233,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     } else {
       await _notifications.cancelAllNotifications();
     }
-    
+
     setState(() {
       _notificationsEnabled = enabled;
     });
@@ -246,12 +252,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
         );
       },
     );
-    
+
     if (newTime != null && newTime != _notificationTime) {
       setState(() {
         _notificationTime = newTime;
       });
-      await _storage.setSetting('notificationTime', '${newTime.hour}:${newTime.minute}');
+      await _storage.setSetting(
+        'notificationTime',
+        '${newTime.hour}:${newTime.minute}',
+      );
       if (_notificationsEnabled) {
         await _notifications.scheduleDailyNotification(newTime);
       }

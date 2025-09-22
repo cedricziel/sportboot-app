@@ -12,7 +12,7 @@ class QuestionsProvider extends ChangeNotifier {
   int _currentQuestionIndex = 0;
   StudySession? _currentSession;
   final StorageService _storage = StorageService();
-  
+
   // Course management
   String? _selectedCourseId;
   CourseManifest? _selectedCourseManifest;
@@ -34,7 +34,7 @@ class QuestionsProvider extends ChangeNotifier {
   String? get error => _error;
   bool get hasNext => _currentQuestionIndex < _currentQuestions.length - 1;
   bool get hasPrevious => _currentQuestionIndex > 0;
-  
+
   // Course management getters
   String? get selectedCourseId => _selectedCourseId;
   CourseManifest? get selectedCourseManifest => _selectedCourseManifest;
@@ -44,7 +44,7 @@ class QuestionsProvider extends ChangeNotifier {
   Future<void> init() async {
     await _storage.init();
     await loadManifest();
-    
+
     // Restore selected course from storage if available
     final storedCourseId = getStoredCourseId();
     if (storedCourseId != null && _manifest != null) {
@@ -56,7 +56,7 @@ class QuestionsProvider extends ChangeNotifier {
       }
     }
   }
-  
+
   // Load manifest
   Future<void> loadManifest() async {
     try {
@@ -67,7 +67,7 @@ class QuestionsProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-  
+
   // Set selected course
   void setSelectedCourse(String courseId, CourseManifest courseManifest) {
     _selectedCourseId = courseId;
@@ -75,7 +75,7 @@ class QuestionsProvider extends ChangeNotifier {
     _storage.setSetting('selectedCourseId', courseId);
     notifyListeners();
   }
-  
+
   // Get selected course from storage
   String? getStoredCourseId() {
     return _storage.getSetting('selectedCourseId') as String?;
@@ -105,7 +105,7 @@ class QuestionsProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-  
+
   // Legacy method for backward compatibility
   Future<void> loadCourse(String filename) async {
     _isLoading = true;
@@ -152,14 +152,16 @@ class QuestionsProvider extends ChangeNotifier {
       }
       return;
     }
-    
+
     // Load full course first
     await loadCourseById(_selectedCourseId!);
-    
+
     // Filter by category
-    final category = _selectedCourseManifest!.categories
-        .firstWhere((c) => c.id == categoryId, orElse: () => _selectedCourseManifest!.categories.first);
-    
+    final category = _selectedCourseManifest!.categories.firstWhere(
+      (c) => c.id == categoryId,
+      orElse: () => _selectedCourseManifest!.categories.first,
+    );
+
     if (category.type == 'bookmarks') {
       filterByBookmarks();
     } else if (category.type == 'incorrect') {

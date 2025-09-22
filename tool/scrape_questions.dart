@@ -58,11 +58,7 @@ class Answer {
   final String text;
   final bool isCorrect;
 
-  Answer({
-    required this.id,
-    required this.text,
-    required this.isCorrect,
-  });
+  Answer({required this.id, required this.text, required this.isCorrect});
 
   Map<String, dynamic> toJson() => {
     'id': id,
@@ -274,19 +270,21 @@ class QuestionScraper {
 
         if (answerTexts.length >= 3) {
           // Generate question ID first
-          final questionId = generateQuestionId(questionNum, questionText, category);
-          
+          final questionId = generateQuestionId(
+            questionNum,
+            questionText,
+            category,
+          );
+
           // Create Answer objects with IDs
           final answers = <Answer>[];
           for (int i = 0; i < answerTexts.length; i++) {
             final answerId = generateAnswerId(questionId, i, answerTexts[i]);
             // First answer is typically the correct one in these exams
             final isCorrect = i == 0;
-            answers.add(Answer(
-              id: answerId,
-              text: answerTexts[i],
-              isCorrect: isCorrect,
-            ));
+            answers.add(
+              Answer(id: answerId, text: answerTexts[i], isCorrect: isCorrect),
+            );
           }
 
           questions.add(
@@ -370,40 +368,48 @@ class QuestionScraper {
         // Parse answers from YAML
         final answerList = q['options'] as List? ?? q['answers'] as List;
         final answers = <Answer>[];
-        
+
         if (answerList.first is Map) {
           // New format with Answer objects
           for (final a in answerList) {
-            answers.add(Answer(
-              id: a['id'],
-              text: a['text'],
-              isCorrect: a['isCorrect'] ?? false,
-            ));
+            answers.add(
+              Answer(
+                id: a['id'],
+                text: a['text'],
+                isCorrect: a['isCorrect'] ?? false,
+              ),
+            );
           }
         } else {
           // Legacy format - generate IDs
-          final questionId = q['id'] ?? generateQuestionId(
-            questionOffset + (q['number'] as int),
-            q['text'],
-            catalogId,
-          );
+          final questionId =
+              q['id'] ??
+              generateQuestionId(
+                questionOffset + (q['number'] as int),
+                q['text'],
+                catalogId,
+              );
           for (int i = 0; i < answerList.length; i++) {
             final answerId = generateAnswerId(questionId, i, answerList[i]);
-            answers.add(Answer(
-              id: answerId,
-              text: answerList[i],
-              isCorrect: i == 0, // Assume first is correct for legacy
-            ));
+            answers.add(
+              Answer(
+                id: answerId,
+                text: answerList[i],
+                isCorrect: i == 0, // Assume first is correct for legacy
+              ),
+            );
           }
         }
 
         allQuestions.add(
           Question(
-            id: q['id'] ?? generateQuestionId(
-              questionOffset + (q['number'] as int),
-              q['text'],
-              catalogId,
-            ),
+            id:
+                q['id'] ??
+                generateQuestionId(
+                  questionOffset + (q['number'] as int),
+                  q['text'],
+                  catalogId,
+                ),
             number: questionOffset + (q['number'] as int),
             text: q['text'],
             answers: answers,

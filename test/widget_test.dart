@@ -10,9 +10,7 @@ void main() {
 
     setUp(() {
       // Set up SharedPreferences mock
-      SharedPreferences.setMockInitialValues({
-        'selectedCourseId': 'sbf-see',
-      });
+      SharedPreferences.setMockInitialValues({'selectedCourseId': 'sbf-see'});
     });
 
     testWidgets('App should build without errors', (WidgetTester tester) async {

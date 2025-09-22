@@ -28,7 +28,7 @@ class Question {
   factory Question.fromMap(Map<String, dynamic> map) {
     // Handle both 'options' (new format) and 'answers' (legacy format)
     List<AnswerOption> options;
-    
+
     if (map.containsKey('options')) {
       // New format with structured options
       options = (map['options'] as List)
@@ -42,11 +42,14 @@ class Question {
       for (int i = 0; i < answers.length; i++) {
         // Generate a simple ID based on question ID and index
         final answerId = 'a_legacy_${map['id']}_$i';
-        options.add(AnswerOption(
-          id: answerId,
-          text: answers[i] as String,
-          isCorrect: i == 0, // Assume first answer is correct for legacy format
-        ));
+        options.add(
+          AnswerOption(
+            id: answerId,
+            text: answers[i] as String,
+            isCorrect:
+                i == 0, // Assume first answer is correct for legacy format
+          ),
+        );
       }
     } else {
       options = [];
@@ -55,7 +58,9 @@ class Question {
     return Question(
       id: map['id'] as String,
       number: map['number'] as int,
-      question: map['question'] as String? ?? map['text'] as String, // Support both 'question' and 'text' fields
+      question:
+          map['question'] as String? ??
+          map['text'] as String, // Support both 'question' and 'text' fields
       options: options,
       category: map['category'] as String,
       assets: (map['assets'] as List?)?.cast<String>() ?? [],
