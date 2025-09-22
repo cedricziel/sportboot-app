@@ -1,0 +1,124 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop, master ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main, develop, master ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.4'
+          channel: 'stable'
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Analyze code
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+      
+      - name: Run tests
+        run: flutter test --reporter compact
+      
+      - name: Check code formatting
+        run: dart format --set-exit-if-changed lib test tool
+
+  build-android:
+    name: Build Android
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.4'
+          channel: 'stable'
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Build APK
+        run: flutter build apk --release
+      
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+  build-ios:
+    name: Build iOS
+    runs-on: macos-latest
+    needs: test
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.4'
+          channel: 'stable'
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Build iOS (no signing)
+        run: flutter build ios --release --no-codesign
+      
+      - name: Upload iOS build
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build
+          path: build/ios/iphoneos/
+
+  build-web:
+    name: Build Web
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.4'
+          channel: 'stable'
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Build Web
+        run: flutter build web --release
+      
+      - name: Upload Web build
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: build/web/

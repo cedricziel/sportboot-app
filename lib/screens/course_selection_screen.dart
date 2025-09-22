@@ -84,9 +84,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
     }
 
     if (_manifest == null || _manifest!.courses.isEmpty) {
-      return const Center(
-        child: Text('Keine Kurse verfügbar'),
-      );
+      return const Center(child: Text('Keine Kurse verfügbar'));
     }
 
     return Padding(
@@ -96,16 +94,16 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
         children: [
           Text(
             'Verfügbare Kurse',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(
             'Wähle einen Kurs aus, um mit dem Lernen zu beginnen',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.grey[600],
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
           ),
           const SizedBox(height: 24),
           Expanded(
@@ -202,10 +200,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
               const SizedBox(height: 12),
               Text(
                 course.description,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
-                ),
+                style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -223,10 +218,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
                   ),
                   if (course.examConfig != null) ...[
                     const SizedBox(width: 12),
-                    _buildInfoChip(
-                      Icons.quiz_outlined,
-                      'Prüfung verfügbar',
-                    ),
+                    _buildInfoChip(Icons.quiz_outlined, 'Prüfung verfügbar'),
                   ],
                 ],
               ),
@@ -243,13 +235,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
       children: [
         Icon(icon, size: 16, color: Colors.grey[600]),
         const SizedBox(width: 4),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey[600],
-          ),
-        ),
+        Text(label, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
       ],
     );
   }
@@ -278,11 +264,9 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
 
     // Navigate to home screen
     if (context.mounted) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
     }
   }
 }

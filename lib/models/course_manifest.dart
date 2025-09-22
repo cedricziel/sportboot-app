@@ -78,7 +78,9 @@ class CourseManifest {
     final categoriesList = map['categories'] as List?;
     if (categoriesList != null) {
       for (final category in categoriesList) {
-        categories.add(CourseCategory.fromMap(category as Map<String, dynamic>));
+        categories.add(
+          CourseCategory.fromMap(category as Map<String, dynamic>),
+        );
       }
     }
 

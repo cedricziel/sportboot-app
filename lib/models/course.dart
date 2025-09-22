@@ -16,10 +16,25 @@ class Course {
   });
 
   factory Course.fromMap(Map<String, dynamic> map) {
+    // Handle both formats: course as String (new format) or course as Map (legacy format)
+    String courseName;
+    if (map['course'] is String) {
+      courseName = map['course'] as String;
+    } else if (map['course'] is Map) {
+      // Legacy format with nested course object
+      final courseMap = map['course'] as Map<String, dynamic>;
+      courseName =
+          courseMap['name'] as String? ??
+          courseMap['id'] as String? ??
+          'Unknown';
+    } else {
+      courseName = 'Unknown Course';
+    }
+
     return Course(
-      name: map['course'] as String,
-      version: map['version'] as String,
-      source: map['source'] as String,
+      name: courseName,
+      version: map['version'] as String? ?? '2024',
+      source: map['source'] as String? ?? 'ELWIS',
       questions: (map['questions'] as List)
           .map((q) => Question.fromMap(q as Map<String, dynamic>))
           .toList(),

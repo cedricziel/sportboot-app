@@ -1,6 +1,6 @@
 # Questions for Spezifische Fragen Segeln
 # Source: https://www.elwis.de/DE/Sportschifffahrt/Sportbootfuehrerscheine/Fragenkatalog-Binnen/Spezifische-Fragen-Segeln/Spezifische-Fragen-Segeln-node.html
-# Generated: 2025-09-01T12:36:34.806851
+# Generated: 2025-09-22T17:16:51.270264
 
 catalog:
   id: spezifische-segeln
@@ -9,379 +9,802 @@ catalog:
   questionCount: 47
 
 questions:
-  - number: 254
+  - id: q_c8b11926f423
+    number: 254
     text: "Was wird unter einem \"Kimmkieler\" verstanden?"
-    answers:
-      - "Er kann problemlos aufrecht trocken fallen."
-      - "Sein Tiefgang ist größer."
-      - "Die Abdrift ist geringer als bei anderen Kielbooten."
-      - "Der Kiel lässt sich aufholen."
+    options:
+      - id: a_1fb0f72a1f22
+        text: "Er kann problemlos aufrecht trocken fallen."
+        isCorrect: true
+      - id: a_0f53f26ca6cf
+        text: "Sein Tiefgang ist größer."
+        isCorrect: false
+      - id: a_a8bbebb2d149
+        text: "Die Abdrift ist geringer als bei anderen Kielbooten."
+        isCorrect: false
+      - id: a_e8c764caff11
+        text: "Der Kiel lässt sich aufholen."
+        isCorrect: false
 
-  - number: 255
+  - id: q_2861b3131842
+    number: 255
     text: "Worin besteht der Vorteil eines Kimmkielers gegenüber anderen Kielbooten?"
-    answers:
-      - "Eine Yacht mit flach gehendem Ballastkiel und zusätzlichem aufholbarem Schwert."
-      - "Eine Yacht mit einem Ballastkiel und einem zusätzlichen Schwert."
-      - "Eine Yacht mit einem aufholbaren Ballastkiel."
-      - "Eine Yacht mit zwei Seitenkielen."
+    options:
+      - id: a_078352567da9
+        text: "Eine Yacht mit flach gehendem Ballastkiel und zusätzlichem aufholbarem Schwert."
+        isCorrect: true
+      - id: a_9b13aa083723
+        text: "Eine Yacht mit einem Ballastkiel und einem zusätzlichen Schwert."
+        isCorrect: false
+      - id: a_0a7712f50bb3
+        text: "Eine Yacht mit einem aufholbaren Ballastkiel."
+        isCorrect: false
+      - id: a_ce21f0a8ae2f
+        text: "Eine Yacht mit zwei Seitenkielen."
+        isCorrect: false
 
-  - number: 256
+  - id: q_8ce78c0d4336
+    number: 256
     text: "Was wird unter einer \"Kielschwertyacht\" verstanden?"
-    answers:
-      - "Durch den Sog, der bei Fahrt durchs Wasser entsteht."
-      - "Durch die Schwerkraft fließt das Wasser außenbords."
-      - "Durch die Massenträgheit, die das Boot besitzt."
-      - "Durch das Druckgefälle zwischen Luft- und Wasserdruck."
+    options:
+      - id: a_d83c0597ea5b
+        text: "Durch den Sog, der bei Fahrt durchs Wasser entsteht."
+        isCorrect: true
+      - id: a_2b79d3481e89
+        text: "Durch die Schwerkraft fließt das Wasser außenbords."
+        isCorrect: false
+      - id: a_917f4817ab74
+        text: "Durch die Massenträgheit, die das Boot besitzt."
+        isCorrect: false
+      - id: a_c78eedc5ab65
+        text: "Durch das Druckgefälle zwischen Luft- und Wasserdruck."
+        isCorrect: false
 
-  - number: 257
+  - id: q_b4d39a02e10a
+    number: 257
     text: "Wodurch wirken die Bodenlenzventile einer Jolle, die unterhalb der Wasserlinie liegen?"
-    answers:
-      - "Die Fähigkeit eines Schiffes, durch seine Rumpfform der Krängung entgegenzuwirken."
-      - "Die Fähigkeit eines Schiffes, sich nach einer Kenterung wieder von selbst aufzurichten."
-      - "Die Fähigkeit eines Schiffes beim Loslassen der Pinne den Kurs beizubehalten."
-      - "Die Fähigkeit eines Schiffes über Jahre die Rumpfform auch bei starker Beanspruchung beizubehalten."
+    options:
+      - id: a_649d23f964d9
+        text: "Die Fähigkeit eines Schiffes, durch seine Rumpfform der Krängung entgegenzuwirken."
+        isCorrect: true
+      - id: a_93e21cdcf349
+        text: "Die Fähigkeit eines Schiffes, sich nach einer Kenterung wieder von selbst aufzurichten."
+        isCorrect: false
+      - id: a_9f0faf299e36
+        text: "Die Fähigkeit eines Schiffes beim Loslassen der Pinne den Kurs beizubehalten."
+        isCorrect: false
+      - id: a_b678f62c5607
+        text: "Die Fähigkeit eines Schiffes über Jahre die Rumpfform auch bei starker Beanspruchung beizubehalten."
+        isCorrect: false
 
-  - number: 258
+  - id: q_59276236491e
+    number: 258
     text: "Was wird unter \"Formstabilität\" verstanden?"
-    answers:
-      - "Die Fähigkeit eines Schiffes, durch seinen tief liegenden Ballast der Krängung entgegenzuwirken."
-      - "Die Möglichkeit durch zusätzlichen Innenballast die Krängung zu verringern."
-      - "Die Möglichkeit durch ein hohes Crewgewicht der Krängung entgegenzuwirken."
-      - "Die Fähigkeit eines Schiffes, durch seine Rumpfform der Krängung entgegenzuwirken."
+    options:
+      - id: a_bf682d193c12
+        text: "Die Fähigkeit eines Schiffes, durch seinen tief liegenden Ballast der Krängung entgegenzuwirken."
+        isCorrect: true
+      - id: a_251a1ccd973b
+        text: "Die Möglichkeit durch zusätzlichen Innenballast die Krängung zu verringern."
+        isCorrect: false
+      - id: a_7103fcfdceab
+        text: "Die Möglichkeit durch ein hohes Crewgewicht der Krängung entgegenzuwirken."
+        isCorrect: false
+      - id: a_1f7f0036896c
+        text: "Die Fähigkeit eines Schiffes, durch seine Rumpfform der Krängung entgegenzuwirken."
+        isCorrect: false
 
-  - number: 259
+  - id: q_8d9c81a91893
+    number: 259
     text: "Was wird unter \"Gewichtsstabilität\" verstanden?"
-    answers:
-      - "Kielyachten sind vorwiegend \"gewichtsstabil\"."
-      - "Jollen sind vorwiegend \"gewichtsstabil\"."
-      - "Katamarane sind vorwiegend \"gewichtsstabil\"."
-      - "Trimarane sind vorwiegend \"gewichtsstabil\"."
+    options:
+      - id: a_d31084c25e71
+        text: "Kielyachten sind vorwiegend \"gewichtsstabil\"."
+        isCorrect: true
+      - id: a_9e8259c42471
+        text: "Jollen sind vorwiegend \"gewichtsstabil\"."
+        isCorrect: false
+      - id: a_6fd357f74f6e
+        text: "Katamarane sind vorwiegend \"gewichtsstabil\"."
+        isCorrect: false
+      - id: a_d57cdb659340
+        text: "Trimarane sind vorwiegend \"gewichtsstabil\"."
+        isCorrect: false
 
-  - number: 260
+  - id: q_f33d92e512f8
+    number: 260
     text: "Welche Boote sind vorwiegend \"gewichtsstabil\"?"
-    answers:
-      - "Jollen sind vorwiegend \"formstabil\"."
-      - "Kielyachten sind vorwiegend \"formstabil\"."
-      - "Kimmkieler sind vorwiegend \"formstabil\"."
-      - "Kielschwertyachten sind vorwiegend \"formstabil\"."
+    options:
+      - id: a_4d3e134ca7da
+        text: "Jollen sind vorwiegend \"formstabil\"."
+        isCorrect: true
+      - id: a_16012ed51bd7
+        text: "Kielyachten sind vorwiegend \"formstabil\"."
+        isCorrect: false
+      - id: a_876ac972b976
+        text: "Kimmkieler sind vorwiegend \"formstabil\"."
+        isCorrect: false
+      - id: a_d3852b14628b
+        text: "Kielschwertyachten sind vorwiegend \"formstabil\"."
+        isCorrect: false
 
-  - number: 261
+  - id: q_5f0db7afbad8
+    number: 261
     text: "Welche Boote sind vorwiegend \"formstabil\"?"
-    answers:
-      - "Durch Ausreiten bzw. durch Benutzung der Trapezeinrichtung."
-      - "Durch Verlagerung von Innenballast."
-      - "Durch Umpumpen von Wasserballast."
-      - "Durch Ausfahren von sogenannten Trimmklappen oder eines Zusatzschwertes."
+    options:
+      - id: a_26da0b8fc5fa
+        text: "Durch Ausreiten bzw. durch Benutzung der Trapezeinrichtung."
+        isCorrect: true
+      - id: a_84444c377dcc
+        text: "Durch Verlagerung von Innenballast."
+        isCorrect: false
+      - id: a_028b856ae03a
+        text: "Durch Umpumpen von Wasserballast."
+        isCorrect: false
+      - id: a_e1cb758231f9
+        text: "Durch Ausfahren von sogenannten Trimmklappen oder eines Zusatzschwertes."
+        isCorrect: false
 
-  - number: 262
+  - id: q_e4c78e214f49
+    number: 262
     text: "Wodurch kann bei formstabilen Booten bei viel Wind die Stabilität erhöht werden?"
-    answers:
-      - "Es nimmt anfangs zu bis zu einem Maximum, von da wieder ab, bis Auftriebs- und Gewischtsschwerpunkt übereinander liegen, anschließend kentert die Jolle."
-      - "Es nimmt anfangs ab bis zu einem Minimum, von da wieder zu, bis Auftriebs- und Gewichtsschwerpunkt übereinander liegen, anschließend kentert die Jolle."
-      - "Es nimmt anfangs ab und erreicht ein Maximum, wenn Auftriebs- und Gewichtsschwerpunkt übereinander liegen, anschließend kentert die Jolle."
-      - "Es nimmt anfangs ab und erreicht sein Minimum, bis Auftriebs- und Gewichtsschwerpunkt übereinander liegen, anschließend kentert die Jolle."
+    options:
+      - id: a_7ce8d9ecf06d
+        text: "Es nimmt anfangs zu bis zu einem Maximum, von da wieder ab, bis Auftriebs- und Gewischtsschwerpunkt übereinander liegen, anschließend kentert die Jolle."
+        isCorrect: true
+      - id: a_cd9d684b5d22
+        text: "Es nimmt anfangs ab bis zu einem Minimum, von da wieder zu, bis Auftriebs- und Gewichtsschwerpunkt übereinander liegen, anschließend kentert die Jolle."
+        isCorrect: false
+      - id: a_3cb9dcabb6c3
+        text: "Es nimmt anfangs ab und erreicht ein Maximum, wenn Auftriebs- und Gewichtsschwerpunkt übereinander liegen, anschließend kentert die Jolle."
+        isCorrect: false
+      - id: a_a781b60ebde7
+        text: "Es nimmt anfangs ab und erreicht sein Minimum, bis Auftriebs- und Gewichtsschwerpunkt übereinander liegen, anschließend kentert die Jolle."
+        isCorrect: false
 
-  - number: 263
+  - id: q_1ade81ab3133
+    number: 263
     text: "Wie verändert sich das aufrichtende Kraftmoment einer Jolle bei Krängung?"
-    answers:
-      - "Es nimmt zu und erreicht nach Überschreitung des Maximums seinen kritischen Winkel erst bei über 90°."
-      - "Es nimmt bis zum Erreichen des kritischen Winkels zu, der bei etwa 70° liegt."
-      - "Es nimmt bis zum Erreichen des kritischen Winkels von 90° ab."
-      - "Es nimmt bis 90° Krängung ab und dann stetig zu."
+    options:
+      - id: a_17788c074450
+        text: "Es nimmt zu und erreicht nach Überschreitung des Maximums seinen kritischen Winkel erst bei über 90°."
+        isCorrect: true
+      - id: a_4c27ef122bf7
+        text: "Es nimmt bis zum Erreichen des kritischen Winkels zu, der bei etwa 70° liegt."
+        isCorrect: false
+      - id: a_8d08450236d0
+        text: "Es nimmt bis zum Erreichen des kritischen Winkels von 90° ab."
+        isCorrect: false
+      - id: a_0944e8fec2a3
+        text: "Es nimmt bis 90° Krängung ab und dann stetig zu."
+        isCorrect: false
 
-  - number: 264
+  - id: q_0c2bc7e28ac5
+    number: 264
     text: "Wie verändert sich das aufrichtende Kraftmoment einer Kielyacht bei stetig zunehmender Krängung?"
-    answers:
-      - "Notruder oder Paddel als Ersatz nehmen, Fahrwasser verlassen, sich als manövrierunfähig zu erkennen geben."
-      - "Sofort ankern und einen Notruf absetzen, Signalkörper (blauer Kegel) setzen."
-      - "Rote Flagge kreisförmig schwenken, Schleppleine bereithalten."
-      - "Segel bergen, Motor starten und in Rückwärtsfahrt das Ufer ansteuern."
+    options:
+      - id: a_236c841020fb
+        text: "Notruder oder Paddel als Ersatz nehmen, Fahrwasser verlassen, sich als manövrierunfähig zu erkennen geben."
+        isCorrect: true
+      - id: a_d5b3eed23ea3
+        text: "Sofort ankern und einen Notruf absetzen, Signalkörper (blauer Kegel) setzen."
+        isCorrect: false
+      - id: a_afb78a8e7c02
+        text: "Rote Flagge kreisförmig schwenken, Schleppleine bereithalten."
+        isCorrect: false
+      - id: a_30e70ebff79f
+        text: "Segel bergen, Motor starten und in Rückwärtsfahrt das Ufer ansteuern."
+        isCorrect: false
 
-  - number: 265
+  - id: q_9f7a90b3887b
+    number: 265
     text: "Welche Maßnahme ist bei Ruderbruch auf einer Jolle zu treffen?"
-    answers:
-      - "Durch einen Pinnenausleger."
-      - "Durch Verstellen des Travellers."
-      - "Durch das Ausreiten mit Hilfe des Trapezes."
-      - "Durch Ersetzen der Pinne durch ein Rad."
+    options:
+      - id: a_41df6725ac74
+        text: "Durch einen Pinnenausleger."
+        isCorrect: true
+      - id: a_1bdda98dc047
+        text: "Durch Verstellen des Travellers."
+        isCorrect: false
+      - id: a_fbae8796fcf0
+        text: "Durch das Ausreiten mit Hilfe des Trapezes."
+        isCorrect: false
+      - id: a_9183106d06f2
+        text: "Durch Ersetzen der Pinne durch ein Rad."
+        isCorrect: false
 
-  - number: 266
+  - id: q_7843264a350b
+    number: 266
     text: "Wodurch kann eine Pinnensteuerung auch bei Krängung des Bootes sicher erreicht und bedient werden?"
-    answers:
-      - "Damit es im Gebrauchsfall klar liegt."
-      - "Damit es trocknen kann und nicht verrottet."
-      - "Damit die Reißfestigkeit erhalten bleibt."
-      - "Damit es nicht durch UV-Strahlung beschädigt wird."
+    options:
+      - id: a_4abe5b7f3de0
+        text: "Damit es im Gebrauchsfall klar liegt."
+        isCorrect: true
+      - id: a_48b2d23bb5e1
+        text: "Damit es trocknen kann und nicht verrottet."
+        isCorrect: false
+      - id: a_2b5dbdac8093
+        text: "Damit die Reißfestigkeit erhalten bleibt."
+        isCorrect: false
+      - id: a_bd0eeefc3d44
+        text: "Damit es nicht durch UV-Strahlung beschädigt wird."
+        isCorrect: false
 
-  - number: 267
+  - id: q_e3bc4de52f82
+    number: 267
     text: "Warum sollte Tauwerk an Bord stets ordentlich aufgeschossen werden?"
-    answers:
-      - "Damit sie im Gebrauchsfall schnell und sicher gefiert werden können."
-      - "Damit sie trocknen können und nicht verrotten."
-      - "Damit sie nicht durch UV-Strahlung beschädigt werden."
-      - "Damit sie nicht mit den Schoten verwechselt werden können."
+    options:
+      - id: a_fbd78b30a666
+        text: "Damit sie im Gebrauchsfall schnell und sicher gefiert werden können."
+        isCorrect: true
+      - id: a_e97b8bb8340d
+        text: "Damit sie trocknen können und nicht verrotten."
+        isCorrect: false
+      - id: a_4880b8e1eeca
+        text: "Damit sie nicht durch UV-Strahlung beschädigt werden."
+        isCorrect: false
+      - id: a_460604ffdd47
+        text: "Damit sie nicht mit den Schoten verwechselt werden können."
+        isCorrect: false
 
-  - number: 268
+  - id: q_4d0cac00113e
+    number: 268
     text: "Warum sollten Fallen stets ordentlich aufgeschossen werden?"
-    answers:
-      - "Kopf, Hals, Schothorn."
-      - "Kopf, Hals, Nock."
-      - "Vorliek, Unterliek, Achterliek."
-      - "Vorstag, Unterwant, Achterstag."
+    options:
+      - id: a_36976f9bfe57
+        text: "Kopf, Hals, Schothorn."
+        isCorrect: true
+      - id: a_2bf2c7348f73
+        text: "Kopf, Hals, Nock."
+        isCorrect: false
+      - id: a_761e93299b61
+        text: "Vorliek, Unterliek, Achterliek."
+        isCorrect: false
+      - id: a_57d651b06514
+        text: "Vorstag, Unterwant, Achterstag."
+        isCorrect: false
 
-  - number: 269
+  - id: q_5da0ac1acc2f
+    number: 269
     text: "Wie heißen die Ecken eines Segels?"
-    answers:
-      - "Vorliek, Unterliek, Achterliek."
-      - "Kopf, Hals, Nock."
-      - "Vorstag, Unterwant, Achterstag."
-      - "Kopf, Hals, Schothorn."
+    options:
+      - id: a_140c600ab439
+        text: "Vorliek, Unterliek, Achterliek."
+        isCorrect: true
+      - id: a_fa8ced8f6634
+        text: "Kopf, Hals, Nock."
+        isCorrect: false
+      - id: a_11de3c13545e
+        text: "Vorstag, Unterwant, Achterstag."
+        isCorrect: false
+      - id: a_934870f4d5fb
+        text: "Kopf, Hals, Schothorn."
+        isCorrect: false
 
-  - number: 270
+  - id: q_2fed8899bdec
+    number: 270
     text: "Wie heißen die Kanten eines Segels?"
-    answers:
-      - "Der Formgebung und Aussteifung des Segels."
-      - "Der Erleichterung des Reffens."
-      - "Der Verhinderung des Killens von Segeln."
-      - "Der Möglichkeit das Segel auch bei Starkwind nutzen zu können."
+    options:
+      - id: a_a6f73b4dc9fe
+        text: "Der Formgebung und Aussteifung des Segels."
+        isCorrect: true
+      - id: a_07d850483499
+        text: "Der Erleichterung des Reffens."
+        isCorrect: false
+      - id: a_7964edec7520
+        text: "Der Verhinderung des Killens von Segeln."
+        isCorrect: false
+      - id: a_9368dc6c991b
+        text: "Der Möglichkeit das Segel auch bei Starkwind nutzen zu können."
+        isCorrect: false
 
-  - number: 271
+  - id: q_85d9e9b7f868
+    number: 271
     text: "Wozu dienen Segellatten?"
-    answers:
-      - "Killen schädigt das Tuch und lässt Nähte aufgehen."
-      - "Killen lässt das Boot bei stärkerem Wind kentern."
-      - "Killen führt zu Verletzungen der Besatzung."
-      - "Killen führt zu Beschädigungen an nebeneinander liegenden Schiffen."
+    options:
+      - id: a_900591570118
+        text: "Killen schädigt das Tuch und lässt Nähte aufgehen."
+        isCorrect: true
+      - id: a_1b0b1093a952
+        text: "Killen lässt das Boot bei stärkerem Wind kentern."
+        isCorrect: false
+      - id: a_6415071c09ca
+        text: "Killen führt zu Verletzungen der Besatzung."
+        isCorrect: false
+      - id: a_80f50e779ac0
+        text: "Killen führt zu Beschädigungen an nebeneinander liegenden Schiffen."
+        isCorrect: false
 
-  - number: 272
+  - id: q_8ac5f96b81c5
+    number: 272
     text: "Weshalb dürfen Segel nicht über einen längeren Zeitraum killen?"
-    answers:
-      - "Weil unter Winddruck daraus schnell große Schäden werden."
-      - "Weil dadurch der Vortrieb des Segels leidet."
-      - "Weil es nur noch bei Flaute eingesetzt werden kann."
-      - "Weil Feuchtigkeit in das Segel eindringen kann."
+    options:
+      - id: a_38ded2b41af1
+        text: "Weil unter Winddruck daraus schnell große Schäden werden."
+        isCorrect: true
+      - id: a_d1a7cf227336
+        text: "Weil dadurch der Vortrieb des Segels leidet."
+        isCorrect: false
+      - id: a_5d30effabffb
+        text: "Weil es nur noch bei Flaute eingesetzt werden kann."
+        isCorrect: false
+      - id: a_f4d0f54d6e96
+        text: "Weil Feuchtigkeit in das Segel eindringen kann."
+        isCorrect: false
 
-  - number: 273
+  - id: q_a28d4e091528
+    number: 273
     text: "Warum müssen auch kleine Schäden an den Segeln sofort repariert werden?"
-    answers:
-      - "An Flaggen oder anderen Anzeichen an Land."
-      - "An der Zugrichtung von Wolken."
-      - "An der Nationalflagge am Heck."
-      - "An den Trimmfäden im Großsegel."
+    options:
+      - id: a_6d5f81375380
+        text: "An Flaggen oder anderen Anzeichen an Land."
+        isCorrect: true
+      - id: a_a3696cdb6034
+        text: "An der Zugrichtung von Wolken."
+        isCorrect: false
+      - id: a_2a28ff95e14c
+        text: "An der Nationalflagge am Heck."
+        isCorrect: false
+      - id: a_1298be5644df
+        text: "An den Trimmfäden im Großsegel."
+        isCorrect: false
 
-  - number: 274
+  - id: q_f9121cc90e1a
+    number: 274
     text: "Woran kann wärend der Fahrt die Richtung des wahren Windes erkannt werden?"
-    answers:
-      - "Der scheinbare Wind."
-      - "Der Fahrtwind."
-      - "Der wahre Wind."
-      - "Die Windrichtung."
+    options:
+      - id: a_313275b43258
+        text: "Der scheinbare Wind."
+        isCorrect: true
+      - id: a_9e4a5793669c
+        text: "Der Fahrtwind."
+        isCorrect: false
+      - id: a_8faaa0094a8d
+        text: "Der wahre Wind."
+        isCorrect: false
+      - id: a_82d60b2b3826
+        text: "Die Windrichtung."
+        isCorrect: false
 
-  - number: 275
+  - id: q_8a7b66437cb9
+    number: 275
     text: "Welcher Wind wird in Fahrt von Standern bzw. Verklickern angezeigt?"
-    answers:
-      - "Auf Vorwindkurs."
-      - "Auf Halbwindkurs."
-      - "Auf Amwindkurs."
-      - "Auf Raumschotkurs."
+    options:
+      - id: a_16556b0820f9
+        text: "Auf Vorwindkurs."
+        isCorrect: true
+      - id: a_63c88ec4cfaa
+        text: "Auf Halbwindkurs."
+        isCorrect: false
+      - id: a_7cd17c865d5e
+        text: "Auf Amwindkurs."
+        isCorrect: false
+      - id: a_99f84b0d34e7
+        text: "Auf Raumschotkurs."
+        isCorrect: false
 
-  - number: 276
+  - id: q_f85f8e0274ad
+    number: 276
     text: "Wann kommen wahrer Wind und scheinbarer Wind auf einem segelnden Boot aus der gleichen Richtung?"
-    answers:
-      - "Der wahre Wind vermindert sich um den entgegenstehenden Fahrtwind."
-      - "Der wahre Wind wird durch den Fahrtwind abgebremst."
-      - "Der scheinbare Wind wird durch den Unterdruck am Segel entlang abgebremst."
-      - "Der scheinbare Wind ist unabhängig von der Windrichtung immer schwächer als der wahre Wind."
+    options:
+      - id: a_5c67bdf7cd7f
+        text: "Der wahre Wind vermindert sich um den entgegenstehenden Fahrtwind."
+        isCorrect: true
+      - id: a_5565a21d223a
+        text: "Der wahre Wind wird durch den Fahrtwind abgebremst."
+        isCorrect: false
+      - id: a_059cd7a48269
+        text: "Der scheinbare Wind wird durch den Unterdruck am Segel entlang abgebremst."
+        isCorrect: false
+      - id: a_dc6bdcaa2737
+        text: "Der scheinbare Wind ist unabhängig von der Windrichtung immer schwächer als der wahre Wind."
+        isCorrect: false
 
-  - number: 277
+  - id: q_fc81f1ec395a
+    number: 277
     text: "Warum ist der scheinbare Wind auf einem Vorwindkurs schwächer als der wahre Wind?"
-    answers:
-      - "Da sich auf diesem Kurs der wahre Wind und der Fahrtwind in Richtung und Stärke addieren."
-      - "Da sich auf diesem Kurs eine Düse zwischen Fock- und Großsegel bildet, die den Wind verstärkt."
-      - "Da der wahre Wind beim Amwindkurs stärker ist als bei raumen Kursen."
-      - "Da der scheinbare Wind unabhängig von der Windrichtung immer stärker als der wahre Wind ist."
+    options:
+      - id: a_33c3320c6004
+        text: "Da sich auf diesem Kurs der wahre Wind und der Fahrtwind in Richtung und Stärke addieren."
+        isCorrect: true
+      - id: a_a17eab30ecdb
+        text: "Da sich auf diesem Kurs eine Düse zwischen Fock- und Großsegel bildet, die den Wind verstärkt."
+        isCorrect: false
+      - id: a_4a0fec04e884
+        text: "Da der wahre Wind beim Amwindkurs stärker ist als bei raumen Kursen."
+        isCorrect: false
+      - id: a_79b4aab5c933
+        text: "Da der scheinbare Wind unabhängig von der Windrichtung immer stärker als der wahre Wind ist."
+        isCorrect: false
 
-  - number: 278
+  - id: q_7e6231c5fcdd
+    number: 278
     text: "Warum ist der scheinbare Wind auf einem Kurs hoch am Wind stärker als der wahre Wind?"
-    answers:
-      - "Der scheinbare Wind ist auf Amwindkursen stärker, auf Raumschot- und Vorwindkursen schwächer als der wahre Wind."
-      - "Boote sind stabiler, wenn der Wind achterlicher einfällt."
-      - "Der wahre Wind staut sich am Segel bei Raumschotkurs und ist deshalb schwächer."
-      - "Bei Amwindkurs streicht der Wind am tragflächenartig gewölbten Segel entlang und wird dadurch beschleunigt."
+    options:
+      - id: a_e6518ef026f5
+        text: "Der scheinbare Wind ist auf Amwindkursen stärker, auf Raumschot- und Vorwindkursen schwächer als der wahre Wind."
+        isCorrect: true
+      - id: a_b417c8ece7af
+        text: "Boote sind stabiler, wenn der Wind achterlicher einfällt."
+        isCorrect: false
+      - id: a_c97b52abc1c0
+        text: "Der wahre Wind staut sich am Segel bei Raumschotkurs und ist deshalb schwächer."
+        isCorrect: false
+      - id: a_461720c38a37
+        text: "Bei Amwindkurs streicht der Wind am tragflächenartig gewölbten Segel entlang und wird dadurch beschleunigt."
+        isCorrect: false
 
-  - number: 279
+  - id: q_af07bd81723a
+    number: 279
     text: "Auf einem Amwindkurs wurde gerefft. Ein entgegenkommendes Boot gleichen Typs segelt ungerefft. Wie lässt sich das erklären?"
-    answers:
-      - "Da der Fahrtwind zunächst gleich bleibt, der wahre Wind jedoch zunimmt, kommt der daraus resultierende scheinbare Wind raumer."
-      - "Da durch die Koreoliskraft der Wind auch seine Richtung ändert, wenn er stärker wird."
-      - "Da durch den Trimm des Bootes sich der Kurs automatisch ändert, wenn der Wind zunimmt."
-      - "Da die Windrichtung durch die Segelstellung beeinflusst wird, verändert sich auch der scheinbare Wind."
+    options:
+      - id: a_556539bdef08
+        text: "Da der Fahrtwind zunächst gleich bleibt, der wahre Wind jedoch zunimmt, kommt der daraus resultierende scheinbare Wind raumer."
+        isCorrect: true
+      - id: a_1adb599d6df1
+        text: "Da durch die Koreoliskraft der Wind auch seine Richtung ändert, wenn er stärker wird."
+        isCorrect: false
+      - id: a_5720606746e7
+        text: "Da durch den Trimm des Bootes sich der Kurs automatisch ändert, wenn der Wind zunimmt."
+        isCorrect: false
+      - id: a_df2c911ffd05
+        text: "Da die Windrichtung durch die Segelstellung beeinflusst wird, verändert sich auch der scheinbare Wind."
+        isCorrect: false
 
-  - number: 280
+  - id: q_0648fe7ccb6f
+    number: 280
     text: "Warum raumt beim Einfallen einer Bö auf Amwindkurs der scheinbare Wind?"
-    answers:
-      - "Mitluven, um weitere Höhe zu gewinnen."
-      - "Abfallen, um maximale Höhe zu segeln."
-      - "Segel etwas fieren, um die Bö in Krängung umzusetzen."
-      - "Ein Spinnacker kann gesetzt werden."
+    options:
+      - id: a_adc1cb36a55a
+        text: "Mitluven, um weitere Höhe zu gewinnen."
+        isCorrect: true
+      - id: a_995a7f10a8ae
+        text: "Abfallen, um maximale Höhe zu segeln."
+        isCorrect: false
+      - id: a_e2b5b79d5f57
+        text: "Segel etwas fieren, um die Bö in Krängung umzusetzen."
+        isCorrect: false
+      - id: a_4b0f041ff4a5
+        text: "Ein Spinnacker kann gesetzt werden."
+        isCorrect: false
 
-  - number: 281
+  - id: q_549cd1d5f42e
+    number: 281
     text: "Beim Einfallen einer Bö auf Amwindkurs raumt der scheinbare Wind. Welchen Nutzen kann auf der Kreuz daraus gezogen werden?"
-    answers:
-      - "Es sollte aufgeholt werden. Dadurch vermindert sich der Reibungswiderstand, aber auch die Gefahr der Kenterung bei einer unfreiwilligen Halse."
-      - "Es sollte gefiert werden. Dadurch wird das Boot stabiler und die Gefahr der Kenterung bei einer unfreiwilligen Halse reduziert."
-      - "Es sollte nie ganz aufgeholt werden, da es sonst bei einer Kenterung zum Aufrichten der Jolle nicht mehr greifbar ist."
-      - "Es sollte bei stärkerem Wind ganz aufgeholt werden, um die Steuerfähigkeit der Jolle zu verbessern."
+    options:
+      - id: a_4dbaad884204
+        text: "Es sollte aufgeholt werden. Dadurch vermindert sich der Reibungswiderstand, aber auch die Gefahr der Kenterung bei einer unfreiwilligen Halse."
+        isCorrect: true
+      - id: a_4b3ad193ac0c
+        text: "Es sollte gefiert werden. Dadurch wird das Boot stabiler und die Gefahr der Kenterung bei einer unfreiwilligen Halse reduziert."
+        isCorrect: false
+      - id: a_39cfd330b2fd
+        text: "Es sollte nie ganz aufgeholt werden, da es sonst bei einer Kenterung zum Aufrichten der Jolle nicht mehr greifbar ist."
+        isCorrect: false
+      - id: a_e2016e5e418b
+        text: "Es sollte bei stärkerem Wind ganz aufgeholt werden, um die Steuerfähigkeit der Jolle zu verbessern."
+        isCorrect: false
 
-  - number: 282
+  - id: q_e8d25c3264a2
+    number: 282
     text: "Wie sollte das Schwert einer Jolle auf Vorwindkurs gefahren werden und warum?"
-    answers:
-      - "Die Abdrift wird größer, die Krängung nimmt ab."
-      - "Die Abdrift wird größer, die Krängung nimmt zu."
-      - "Die Abdrift nimmt ab, das Boot wird aufgrund des geringeren Wasserwiderstandes schneller."
-      - "Die Abdrift wird kleiner, die Krängung nimmt ab."
+    options:
+      - id: a_e9853bbdd8a1
+        text: "Die Abdrift wird größer, die Krängung nimmt ab."
+        isCorrect: true
+      - id: a_8be567094479
+        text: "Die Abdrift wird größer, die Krängung nimmt zu."
+        isCorrect: false
+      - id: a_e8412e39ad12
+        text: "Die Abdrift nimmt ab, das Boot wird aufgrund des geringeren Wasserwiderstandes schneller."
+        isCorrect: false
+      - id: a_f5527fb72393
+        text: "Die Abdrift wird kleiner, die Krängung nimmt ab."
+        isCorrect: false
 
-  - number: 283
+  - id: q_8da8422f3818
+    number: 283
     text: "Wie verändern sich Abdrift und Krängung, wenn das Schwert einer Jolle auf einem Amwindkurs etwas aufgeholt wird?"
-    answers:
-      - "Möglichst aufrecht, da sonst Abdrift und Luvgierigkeit zunehmen."
-      - "Möglichst aufrecht, weil sonst Abdrift und Leegierigkeit zunehmen."
-      - "Leicht nach Lee geneigt, da sonst die Segel leicht nach Luv überkommen können."
-      - "Möglichst nach Luv geneigt, weil dadurch die Abdrift und die Luvgierigkeit abnehmen."
+    options:
+      - id: a_5f25a856a7ce
+        text: "Möglichst aufrecht, da sonst Abdrift und Luvgierigkeit zunehmen."
+        isCorrect: true
+      - id: a_a399177a286a
+        text: "Möglichst aufrecht, weil sonst Abdrift und Leegierigkeit zunehmen."
+        isCorrect: false
+      - id: a_6da8e511f2f4
+        text: "Leicht nach Lee geneigt, da sonst die Segel leicht nach Luv überkommen können."
+        isCorrect: false
+      - id: a_42ee9ce6faa1
+        text: "Möglichst nach Luv geneigt, weil dadurch die Abdrift und die Luvgierigkeit abnehmen."
+        isCorrect: false
 
-  - number: 284
+  - id: q_dd9d7b271e71
+    number: 284
     text: "Mit welcher Krängung sollte eine Jolle üblicherweise gesegelt werden und weshalb?"
-    answers:
-      - "Die Krängung nimmt zu, die Geschwindigkeit nimmt ab."
-      - "Die Krängung und die Geschwindigkeit nehmen bis zum kritischen Punkt zu, darüber hinaus schnell ab."
-      - "Die Geschwindigkeit nimmt zu, da dadurch die Windkräfte optimaler genutzt werden."
-      - "Das Boot bleibt stehen, da die Strömung abreißt."
+    options:
+      - id: a_e87059f8dbdf
+        text: "Die Krängung nimmt zu, die Geschwindigkeit nimmt ab."
+        isCorrect: true
+      - id: a_ea7b72c4bce9
+        text: "Die Krängung und die Geschwindigkeit nehmen bis zum kritischen Punkt zu, darüber hinaus schnell ab."
+        isCorrect: false
+      - id: a_39e96ff48094
+        text: "Die Geschwindigkeit nimmt zu, da dadurch die Windkräfte optimaler genutzt werden."
+        isCorrect: false
+      - id: a_a7361d8c8f57
+        text: "Das Boot bleibt stehen, da die Strömung abreißt."
+        isCorrect: false
 
-  - number: 285
+  - id: q_1bb4f81ce864
+    number: 285
     text: "Wie wirkt sich auf einem Halbwindkurs ein zu dicht geholtes Großsegel auf die Geschwindigkeit des Bootes aus?"
-    answers:
-      - "Das Unterliek killt, das Achterliek wird übermäßig gereckt."
-      - "Das Achterliek killt, das Vorliek wird übermäßig gereckt."
-      - "Das Vorliek killt, das Unterliek wird übermäßig gereckt."
-      - "Das Vorliek killt, das Achterliek wird übermäßig gereckt."
+    options:
+      - id: a_918a1d7c2a07
+        text: "Das Unterliek killt, das Achterliek wird übermäßig gereckt."
+        isCorrect: true
+      - id: a_edc8e12889ee
+        text: "Das Achterliek killt, das Vorliek wird übermäßig gereckt."
+        isCorrect: false
+      - id: a_809ce1f1d86f
+        text: "Das Vorliek killt, das Unterliek wird übermäßig gereckt."
+        isCorrect: false
+      - id: a_cf5ac1f83091
+        text: "Das Vorliek killt, das Achterliek wird übermäßig gereckt."
+        isCorrect: false
 
-  - number: 286
+  - id: q_e4ecabef332b
+    number: 286
     text: "Wie wirkt sich ein Holepunkt, der zu weit vorne liegt, auf Stand und Beanspruchung des Vorsegels aus?"
-    answers:
-      - "Das Achterliek killt, das Unterliek wird übermäßig gereckt."
-      - "Das Vorliek killt, das Unterliek wird übermäßig gereckt."
-      - "Das Unterliek killt, das Achterliek wird übermäßig gereckt."
-      - "Das Achterliek killt, das Vorliek wird übermäßig gereckt."
+    options:
+      - id: a_90d21977ab1e
+        text: "Das Achterliek killt, das Unterliek wird übermäßig gereckt."
+        isCorrect: true
+      - id: a_b691d53d8a65
+        text: "Das Vorliek killt, das Unterliek wird übermäßig gereckt."
+        isCorrect: false
+      - id: a_5a9fba574cf2
+        text: "Das Unterliek killt, das Achterliek wird übermäßig gereckt."
+        isCorrect: false
+      - id: a_54234743bf58
+        text: "Das Achterliek killt, das Vorliek wird übermäßig gereckt."
+        isCorrect: false
 
-  - number: 287
+  - id: q_e5e0fa272aed
+    number: 287
     text: "Wie wirkt sich ein Holepunkt, der zu weit achtern liegt, auf Stand und Beanspruchung des Vorsegels aus?"
-    answers:
-      - "Das Segel soll bauchig stehen."
-      - "Das Segel soll flach getrimmt werden."
-      - "Die Schoten müssen gefiert werden."
-      - "Die Schoten müssen dicht geholt werden."
+    options:
+      - id: a_f497bfdf6309
+        text: "Das Segel soll bauchig stehen."
+        isCorrect: true
+      - id: a_04e66b6408b2
+        text: "Das Segel soll flach getrimmt werden."
+        isCorrect: false
+      - id: a_fe3974182097
+        text: "Die Schoten müssen gefiert werden."
+        isCorrect: false
+      - id: a_b0e0600df3d1
+        text: "Die Schoten müssen dicht geholt werden."
+        isCorrect: false
 
-  - number: 288
+  - id: q_4ec0fa71c96e
+    number: 288
     text: "Wie muss ein Segel bei leichtem Wind getrimmt werden?"
-    answers:
-      - "Das Segel soll flach getrimmt werden."
-      - "Es soll bauchig getrimmt werden."
-      - "Die Schoten müssen dicht geholt werden."
-      - "Die Schoten müssen gefiert werden."
+    options:
+      - id: a_6649a77bb691
+        text: "Das Segel soll flach getrimmt werden."
+        isCorrect: true
+      - id: a_b85b4b065990
+        text: "Es soll bauchig getrimmt werden."
+        isCorrect: false
+      - id: a_299fc3dde568
+        text: "Die Schoten müssen dicht geholt werden."
+        isCorrect: false
+      - id: a_47356d9688cc
+        text: "Die Schoten müssen gefiert werden."
+        isCorrect: false
 
-  - number: 289
+  - id: q_366814a03380
+    number: 289
     text: "Wie muss ein Segel bei starkem Wind getrimmt werden?"
-    answers:
-      - "Je nach Zugkraft wird der untere Teil des Großsegels bauchiger oder flacher."
-      - "Je nach Zugkraft wird der untere Teil des Vorsegels bauchiger oder flacher."
-      - "Je nach Zugkraft wird der achtere Teil des Vorsegels bauchiger oder flacher."
-      - "Je nach Zugkraft wird der achtere Teil des Großsegels bauchiger oder flacher."
+    options:
+      - id: a_32362414d188
+        text: "Je nach Zugkraft wird der untere Teil des Großsegels bauchiger oder flacher."
+        isCorrect: true
+      - id: a_9e9102cfa82f
+        text: "Je nach Zugkraft wird der untere Teil des Vorsegels bauchiger oder flacher."
+        isCorrect: false
+      - id: a_81d7b1b1fb88
+        text: "Je nach Zugkraft wird der achtere Teil des Vorsegels bauchiger oder flacher."
+        isCorrect: false
+      - id: a_5420bc9f43a7
+        text: "Je nach Zugkraft wird der achtere Teil des Großsegels bauchiger oder flacher."
+        isCorrect: false
 
-  - number: 290
+  - id: q_c096d6026c7a
+    number: 290
     text: "Wie beeinflusst ein Unterliekstrecker den Trimm des Segels?"
-    answers:
-      - "Großsegel flacher trimmen; Gewichtsverlagerung nach achtern."
-      - "Großsegel flacher trimmen; Gewichtsverlagerung nach vorne."
-      - "Vorsegel flacher trimmen; Gewichtsverlagerung nach achtern."
-      - "Vorsegel flacher trimmen; Gewichtsverlagerung nach vorne."
+    options:
+      - id: a_ff1e157733f7
+        text: "Großsegel flacher trimmen; Gewichtsverlagerung nach achtern."
+        isCorrect: true
+      - id: a_1ca3fe44c2cc
+        text: "Großsegel flacher trimmen; Gewichtsverlagerung nach vorne."
+        isCorrect: false
+      - id: a_46b99a79fada
+        text: "Vorsegel flacher trimmen; Gewichtsverlagerung nach achtern."
+        isCorrect: false
+      - id: a_a5e3038658d8
+        text: "Vorsegel flacher trimmen; Gewichtsverlagerung nach vorne."
+        isCorrect: false
 
-  - number: 291
+  - id: q_85d200399fe4
+    number: 291
     text: "Um auf Amwindkursen eine Jolle auf Kurs zu halten, muss die Pinne stets stark von der Seite der Segel weggezogen werden. Wie kann der Trimmfehler behoben werden?"
-    answers:
-      - "Großsegel bauchiger trimmen, Gewichtsverlagerung nach vorn."
-      - "Großsegel flacher trimmen, Gewichtsverlagerung nach vorn."
-      - "Großsegel bauchiger trimmen, Gewichtsverlagerung nach hinten."
-      - "Großsegel flacher trimmen, Gewichtsverlagerung nach hinten."
+    options:
+      - id: a_2b955b5effbb
+        text: "Großsegel bauchiger trimmen, Gewichtsverlagerung nach vorn."
+        isCorrect: true
+      - id: a_b64474551759
+        text: "Großsegel flacher trimmen, Gewichtsverlagerung nach vorn."
+        isCorrect: false
+      - id: a_be16ab5be24e
+        text: "Großsegel bauchiger trimmen, Gewichtsverlagerung nach hinten."
+        isCorrect: false
+      - id: a_5a0a2e4585ed
+        text: "Großsegel flacher trimmen, Gewichtsverlagerung nach hinten."
+        isCorrect: false
 
-  - number: 292
+  - id: q_abd878a1fff2
+    number: 292
     text: "Um auf Amwindkursen eine Jolle auf Kurs zu halten, muss die Pinne stets stark zur Seite der Segel hingedrückt werden. Wie kann der Trimmfehler behoben werden?"
-    answers:
-      - "Weil es im Notfall von selbst in den Wind schießt."
-      - "Weil es sich so anspruchsvoller steuern lässt."
-      - "Weil es so weniger Höhe läuft."
-      - "Weil es auf Raumschotkurs mehr Geschwindigkeit läuft."
+    options:
+      - id: a_edf3470b906f
+        text: "Weil es im Notfall von selbst in den Wind schießt."
+        isCorrect: true
+      - id: a_5ba30b1996a2
+        text: "Weil es sich so anspruchsvoller steuern lässt."
+        isCorrect: false
+      - id: a_c35dad757c95
+        text: "Weil es so weniger Höhe läuft."
+        isCorrect: false
+      - id: a_2724e7be07bb
+        text: "Weil es auf Raumschotkurs mehr Geschwindigkeit läuft."
+        isCorrect: false
 
-  - number: 293
+  - id: q_c022b2e74e57
+    number: 293
     text: "Warum soll ein gut getrimmtes Segelboot leicht luvgierig sein?"
-    answers:
-      - "Die Luvgierigkeit nimmt zu."
-      - "Die Leegierigkeit nimmt zu."
-      - "Keinen."
-      - "Bis 45° Krängung nimmt die Luvgierigkeit zu, dann wieder ab."
+    options:
+      - id: a_f543af2dd56e
+        text: "Die Luvgierigkeit nimmt zu."
+        isCorrect: true
+      - id: a_cdde3a905d86
+        text: "Die Leegierigkeit nimmt zu."
+        isCorrect: false
+      - id: a_f577688b888c
+        text: "Keinen."
+        isCorrect: false
+      - id: a_f0c5f924b79a
+        text: "Bis 45° Krängung nimmt die Luvgierigkeit zu, dann wieder ab."
+        isCorrect: false
 
-  - number: 294
+  - id: q_8c5a5e8e684b
+    number: 294
     text: "Welchen Einfluss hat zunehmende Krängung auf den Trimm des Bootes?"
-    answers:
-      - "1 Wende, 2 Halse, 3 Q-Wende."
-      - "1 Q-Wende, 2 Halse, 3 Wende."
-      - "1 Halse, 2 Wende, 3 Q-Wende."
-      - "1 Wende, 2 Q-Wende, 3 Halse."
+    options:
+      - id: a_df7f32cbb9a7
+        text: "1 Wende, 2 Halse, 3 Q-Wende."
+        isCorrect: true
+      - id: a_b01b99c49122
+        text: "1 Q-Wende, 2 Halse, 3 Wende."
+        isCorrect: false
+      - id: a_db7b7827ebdd
+        text: "1 Halse, 2 Wende, 3 Q-Wende."
+        isCorrect: false
+      - id: a_9bc36eeec2e4
+        text: "1 Wende, 2 Q-Wende, 3 Halse."
+        isCorrect: false
 
-  - number: 295
+  - id: q_07116d822eed
+    number: 295
     text: "Welche Manöver hat das Boot auf dem eingezeichneten Kurs an den Punkten 1, 2 und 3 gefahren?"
-    answers:
-      - "1 Wende, 2 Halse, 3 Q-Wende."
-      - "1 Q-Wende, 2 Halse, 3 Wende."
-      - "1 Halse, 2 Wende, 3 Q-Wende."
-      - "1 Wende, 2 Q-Wende, 3 Halse."
+    options:
+      - id: a_a648fb484625
+        text: "1 Wende, 2 Halse, 3 Q-Wende."
+        isCorrect: true
+      - id: a_dcb43873c946
+        text: "1 Q-Wende, 2 Halse, 3 Wende."
+        isCorrect: false
+      - id: a_6cb51f276041
+        text: "1 Halse, 2 Wende, 3 Q-Wende."
+        isCorrect: false
+      - id: a_f7e51c63ac98
+        text: "1 Wende, 2 Q-Wende, 3 Halse."
+        isCorrect: false
 
-  - number: 296
+  - id: q_149ef9bc78d2
+    number: 296
     text: "Was ist mit Schwert und Ruder einer Jolle zu tun, wenn das Boot an einer Boje liegen gelassen wird?"
-    answers:
-      - "Es kann zu Verletzungen der Crew, zu Riggschäden und zur Kenterung führen."
-      - "Es kann zur plötzlichen Änderung der Ausweichpflicht kommen."
-      - "Es kann zum Verlust der Steuerfähigkeit des Fahrzeuges führen."
-      - "Es kann erneut eine Patenthalse folgen, wenn nicht sofort abgefallen wird."
+    options:
+      - id: a_66cf7e9ba0df
+        text: "Es kann zu Verletzungen der Crew, zu Riggschäden und zur Kenterung führen."
+        isCorrect: true
+      - id: a_3da7dcad8c7c
+        text: "Es kann zur plötzlichen Änderung der Ausweichpflicht kommen."
+        isCorrect: false
+      - id: a_3f3a9a304508
+        text: "Es kann zum Verlust der Steuerfähigkeit des Fahrzeuges führen."
+        isCorrect: false
+      - id: a_fbbf7d56bd5d
+        text: "Es kann erneut eine Patenthalse folgen, wenn nicht sofort abgefallen wird."
+        isCorrect: false
 
-  - number: 297
+  - id: q_73ead8893c4d
+    number: 297
     text: "Warum ist eine Patenthalse gefährlich?"
-    answers:
-      - "Wende."
-      - "Halse."
-      - "Q-Wende."
-      - "Aufschießer."
+    options:
+      - id: a_5c1a1922fb03
+        text: "Wende."
+        isCorrect: true
+      - id: a_57919104c7ac
+        text: "Halse."
+        isCorrect: false
+      - id: a_bada85f96d86
+        text: "Q-Wende."
+        isCorrect: false
+      - id: a_8c20da5ce020
+        text: "Aufschießer."
+        isCorrect: false
 
-  - number: 298
+  - id: q_f1c360b5904b
+    number: 298
     text: "Ein Segelboot segelt am Wind, plötzlich bricht das Luvwant. Welches Manöver ist sinnvoll?"
-    answers:
-      - "Abfallen auf Vorwindkurs."
-      - "Dichtholen und Anluven."
-      - "Einen Aufschießer fahren."
-      - "Eine Halse fahren."
+    options:
+      - id: a_98fe1d1c49d4
+        text: "Abfallen auf Vorwindkurs."
+        isCorrect: true
+      - id: a_2e131b7a9731
+        text: "Dichtholen und Anluven."
+        isCorrect: false
+      - id: a_c4335537b5ac
+        text: "Einen Aufschießer fahren."
+        isCorrect: false
+      - id: a_890e2984287e
+        text: "Eine Halse fahren."
+        isCorrect: false
 
-  - number: 299
+  - id: q_43e1ab746255
+    number: 299
     text: "Ein Segelboot segelt bei starkem Wind nur unter Großsegel auf Amwindkurs. Plötzlich bricht das Vorstag. Was ist sofort zu unternehmen?"
-    answers:
-      - "Durch die Fock oder ein Fall."
-      - "Durch die Fockschot oder das Großfall."
-      - "Durch die Vor- oder die Achterleine."
-      - "Durch die Fockschot oder eine Reffleine."
+    options:
+      - id: a_52373e5f58f7
+        text: "Durch die Fock oder ein Fall."
+        isCorrect: true
+      - id: a_facaff95244e
+        text: "Durch die Fockschot oder das Großfall."
+        isCorrect: false
+      - id: a_ea10f5eb3bba
+        text: "Durch die Vor- oder die Achterleine."
+        isCorrect: false
+      - id: a_57825fa6da26
+        text: "Durch die Fockschot oder eine Reffleine."
+        isCorrect: false
 
-  - number: 300
+  - id: q_b4fceb92dabd
+    number: 300
     text: "Ein Segelboot segelt bei starkem Wind nur unter Großsegel auf Amwindkurs. Plötzlich bricht das Vorstag. Womit kann das gebrochene Vorstag schnell provisorisch ersetzt werden?"
-    answers:
-      - "Durch die Fock oder ein Fall."
-      - "Durch die Fockschot oder das Großfall."
-      - "Durch die Vor- oder die Achterleine."
-      - "Durch die Fockschot oder eine Reffleine."
+    options:
+      - id: a_8b38e4925219
+        text: "Durch die Fock oder ein Fall."
+        isCorrect: true
+      - id: a_d28535df9374
+        text: "Durch die Fockschot oder das Großfall."
+        isCorrect: false
+      - id: a_333e245a9592
+        text: "Durch die Vor- oder die Achterleine."
+        isCorrect: false
+      - id: a_12ca18d375d7
+        text: "Durch die Fockschot oder eine Reffleine."
+        isCorrect: false
 

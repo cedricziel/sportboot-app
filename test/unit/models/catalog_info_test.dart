@@ -16,7 +16,10 @@ void main() {
 
       expect(catalog.id, 'basisfragen');
       expect(catalog.name, 'Basisfragen');
-      expect(catalog.description, 'Grundlegende Fragen für alle Sportbootführerscheine');
+      expect(
+        catalog.description,
+        'Grundlegende Fragen für alle Sportbootführerscheine',
+      );
       expect(catalog.url, 'https://example.com/basisfragen');
       expect(catalog.alternateUrl, 'https://example.com/alt/basisfragen');
       expect(catalog.questionCount, 72);

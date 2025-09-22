@@ -20,7 +20,7 @@ class DataLoader {
       final String yamlString = await rootBundle.loadString(_manifestPath);
       final dynamic yamlData = loadYaml(yamlString);
       final Map<String, dynamic> jsonData = _convertYamlToJson(yamlData);
-      
+
       _manifestCache = Manifest.fromMap(jsonData);
       return _manifestCache!;
     } catch (e) {
@@ -39,7 +39,7 @@ class DataLoader {
       // First, ensure manifest is loaded to get course info
       final manifest = await loadManifest();
       final courseManifest = manifest.courses[courseId];
-      
+
       if (courseManifest == null) {
         throw Exception('Course $courseId not found in manifest');
       }

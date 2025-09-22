@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/storage_service.dart';
+import '../services/notification_service.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -10,12 +11,34 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final StorageService _storage = StorageService();
+  final NotificationService _notifications = NotificationService();
   late Map<String, dynamic> _settings;
+  bool _notificationsEnabled = false;
+  TimeOfDay _notificationTime = const TimeOfDay(hour: 19, minute: 0);
 
   @override
   void initState() {
     super.initState();
     _settings = _storage.getSettings();
+    _loadNotificationSettings();
+  }
+
+  Future<void> _loadNotificationSettings() async {
+    setState(() {
+      _notificationsEnabled = _storage.getSetting(
+        'notificationsEnabled',
+        defaultValue: false,
+      );
+      final timeString = _storage.getSetting(
+        'notificationTime',
+        defaultValue: '19:00',
+      );
+      final parts = timeString.split(':');
+      _notificationTime = TimeOfDay(
+        hour: int.parse(parts[0]),
+        minute: int.parse(parts[1]),
+      );
+    });
   }
 
   void _updateSetting(String key, dynamic value) {
@@ -73,6 +96,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () => _showDailyGoalDialog(),
           ),
+          const Divider(),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'Benachrichtigungen',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ),
+          SwitchListTile(
+            title: const Text('Tägliche Erinnerung'),
+            subtitle: const Text('Erinnere mich ans tägliche Quiz'),
+            value: _notificationsEnabled,
+            onChanged: (value) => _toggleNotifications(value),
+          ),
+          if (_notificationsEnabled)
+            ListTile(
+              title: const Text('Erinnerungszeit'),
+              subtitle: Text(_notificationTime.format(context)),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+              onTap: () => _selectNotificationTime(),
+            ),
+          if (_notificationsEnabled)
+            ListTile(
+              title: const Text('Test-Benachrichtigung'),
+              subtitle: const Text('Sende eine Test-Benachrichtigung'),
+              trailing: const Icon(Icons.notifications_active),
+              onTap: () => _sendTestNotification(),
+            ),
           const Divider(),
           const Padding(
             padding: EdgeInsets.all(16.0),
@@ -163,5 +214,68 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ],
     );
+  }
+
+  Future<void> _toggleNotifications(bool enabled) async {
+    if (enabled) {
+      final hasPermission = await _notifications.requestPermissions();
+      if (!hasPermission) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Benachrichtigungen wurden nicht erlaubt'),
+            ),
+          );
+        }
+        return;
+      }
+      await _notifications.scheduleDailyNotification(_notificationTime);
+    } else {
+      await _notifications.cancelAllNotifications();
+    }
+
+    setState(() {
+      _notificationsEnabled = enabled;
+    });
+    await _storage.setSetting('notificationsEnabled', enabled);
+  }
+
+  Future<void> _selectNotificationTime() async {
+    final TimeOfDay? newTime = await showTimePicker(
+      context: context,
+      initialTime: _notificationTime,
+      helpText: 'Wähle Erinnerungszeit',
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+          child: child!,
+        );
+      },
+    );
+
+    if (newTime != null && newTime != _notificationTime) {
+      setState(() {
+        _notificationTime = newTime;
+      });
+      await _storage.setSetting(
+        'notificationTime',
+        '${newTime.hour}:${newTime.minute}',
+      );
+      if (_notificationsEnabled) {
+        await _notifications.scheduleDailyNotification(newTime);
+      }
+    }
+  }
+
+  Future<void> _sendTestNotification() async {
+    await _notifications.showTestNotification();
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Test-Benachrichtigung gesendet!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
   }
 }
