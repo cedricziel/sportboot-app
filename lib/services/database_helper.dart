@@ -125,11 +125,20 @@ class DatabaseHelper {
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
     if (oldVersion < newVersion) {
-      await db.execute('DROP TABLE IF EXISTS $tableQuestions');
-      await db.execute('DROP TABLE IF EXISTS $tableProgress');
+      // Temporarily disable foreign keys to avoid constraint errors
+      await db.execute('PRAGMA foreign_keys = OFF');
+
+      // Drop tables in reverse dependency order (child tables first)
       await db.execute('DROP TABLE IF EXISTS $tableBookmarks');
+      await db.execute('DROP TABLE IF EXISTS $tableProgress');
       await db.execute('DROP TABLE IF EXISTS $tableSettings');
+      await db.execute('DROP TABLE IF EXISTS $tableQuestions');
+
+      // Recreate all tables with new schema
       await _onCreate(db, newVersion);
+
+      // Re-enable foreign keys
+      await db.execute('PRAGMA foreign_keys = ON');
     }
   }
 
