@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import '../models/course.dart';
 import '../models/course_manifest.dart';
 import '../models/question.dart';
@@ -51,7 +51,10 @@ class QuestionsProvider extends ChangeNotifier {
   // Initialize storage and load manifest
   Future<void> init() async {
     _isLoading = true;
-    notifyListeners();
+    // Defer the notification to avoid calling it during build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      notifyListeners();
+    });
 
     try {
       await _storage.init();
@@ -60,11 +63,17 @@ class QuestionsProvider extends ChangeNotifier {
       await _migrationService.migrateDataIfNeeded(
         onProgress: (progress) {
           _migrationProgress = progress;
-          notifyListeners();
+          // Defer the notification to avoid calling it during build
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            notifyListeners();
+          });
         },
         onStatusUpdate: (status) {
           _migrationStatus = status;
-          notifyListeners();
+          // Defer the notification to avoid calling it during build
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            notifyListeners();
+          });
         },
       );
 
@@ -83,7 +92,10 @@ class QuestionsProvider extends ChangeNotifier {
       _error = 'Initialization failed: $e';
     } finally {
       _isLoading = false;
-      notifyListeners();
+      // Defer the notification to avoid calling it during build
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        notifyListeners();
+      });
     }
   }
 

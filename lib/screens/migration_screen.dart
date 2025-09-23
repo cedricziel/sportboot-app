@@ -15,7 +15,10 @@ class _MigrationScreenState extends State<MigrationScreen> {
   @override
   void initState() {
     super.initState();
-    _initializeApp();
+    // Defer initialization to after the first frame to avoid setState during build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initializeApp();
+    });
   }
 
   Future<void> _initializeApp() async {
