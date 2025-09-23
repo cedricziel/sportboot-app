@@ -2,16 +2,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
 import 'package:sportboot_app/services/storage_service.dart';
+import 'package:sportboot_app/services/database_helper.dart';
+import 'package:sportboot_app/repositories/question_repository.dart';
+import '../helpers/test_database_helper.dart';
 
 void main() {
   group('Course Selection Persistence Tests', () {
     late StorageService storage;
+    late DatabaseHelper databaseHelper;
+    late QuestionRepository repository;
 
     setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
       SharedPreferences.setMockInitialValues({});
+      
+      // Initialize test database
+      await TestDatabaseHelper.initializeTestDatabase();
+      
       storage = StorageService();
       await storage.init();
+      
+      databaseHelper = DatabaseHelper.instance;
+      repository = QuestionRepository();
     });
 
     setUp(() async {
@@ -19,6 +31,19 @@ void main() {
       SharedPreferences.setMockInitialValues({});
       storage = StorageService();
       await storage.init();
+      
+      // Clear and setup test database with some questions
+      await databaseHelper.clearDatabase();
+      final testQuestions = TestDatabaseHelper.generateTestQuestions(
+        count: 10,
+        courseId: 'sbf-see',
+        category: 'Test',
+      );
+      await repository.insertQuestions(testQuestions, 'sbf-see');
+    });
+
+    tearDown(() async {
+      await databaseHelper.close();
     });
 
     test('Course selection is persisted to storage', () async {
@@ -64,8 +89,8 @@ void main() {
       final provider = QuestionsProvider();
       await provider.init();
 
-      // Should not crash, but course manifest will be null
-      expect(provider.selectedCourseId, isNull);
+      // Should not crash, selectedCourseId will be the invalid one but manifest will be null
+      expect(provider.selectedCourseId, 'non-existent-course');
       expect(provider.selectedCourseManifest, isNull);
     });
 

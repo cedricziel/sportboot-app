@@ -80,6 +80,7 @@ dev_dependencies:
   # Testing dependencies
   mockito: ^5.5.1
   build_runner: ^2.4.7
+  sqflite_common_ffi: ^2.3.0
 
   # For build scripts
   http: ^1.1.0
