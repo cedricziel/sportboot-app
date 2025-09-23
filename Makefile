@@ -5,7 +5,7 @@ DATA_SOURCE = .data
 DATA_TARGET = assets/data
 CACHE_DIR = .cache
 
-.PHONY: help build scrape copy-data clean clean-cache
+.PHONY: help build scrape copy-data clean clean-cache logo splash
 
 # Default target - show help
 help:
@@ -13,6 +13,8 @@ help:
 	@echo "  build        - Run Dart scraper and copy data (recommended)"
 	@echo "  scrape       - Run Dart question scraper"
 	@echo "  copy-data    - Copy scraped data to app assets"
+	@echo "  logo         - Generate app logo images"
+	@echo "  splash       - Generate native splash screens (requires logo)"
 	@echo "  clean        - Remove temporary files and build artifacts"
 	@echo "  clean-cache  - Remove cached HTML files"
 
@@ -48,3 +50,27 @@ clean-cache:
 	@echo "Cleaning cache..."
 	@rm -rf $(CACHE_DIR) 2>/dev/null || true
 	@echo "✓ Cache cleaned"
+
+# Generate logo images
+logo:
+	@echo "Generating logo images..."
+	@if ! command -v python3 >/dev/null 2>&1; then \
+		echo "Error: Python 3 is required to generate logos"; \
+		exit 1; \
+	fi
+	@if [ ! -d "venv" ]; then \
+		echo "Creating Python virtual environment..."; \
+		python3 -m venv venv; \
+	fi
+	@echo "Installing dependencies..."
+	@./venv/bin/pip install -q Pillow
+	@echo "Generating logos..."
+	@./venv/bin/python tool/generate_logo.py
+	@echo "✓ Logo images generated"
+
+# Generate native splash screens
+splash: logo
+	@echo "Generating native splash screens..."
+	@flutter pub get
+	@dart run flutter_native_splash:create
+	@echo "✓ Splash screens generated"
