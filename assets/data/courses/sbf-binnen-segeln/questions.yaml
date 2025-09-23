@@ -1,5 +1,5 @@
 # Questions for Sportbootführerschein Binnen unter Segeln
-# Generated: 2025-09-23T09:20:26.450924
+# Generated: 2025-09-23T09:49:29.359581
 
 course: "Sportbootführerschein Binnen unter Segeln"
 version: '2025'
@@ -84,6 +84,8 @@ questions:
         text: "Weniger als 4 Sekunden."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Schallsignal-723.gif"
 
   - id: q_a013ca5930aa
     number: 5
@@ -102,6 +104,8 @@ questions:
         text: "Etwa 6 - 8 Sekunden."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Schallsignal-728.gif"
 
   - id: q_92e078a99400
     number: 6
@@ -320,6 +324,8 @@ questions:
         text: "Begegnungsverbot für Fahrzeuge über 20 m Länge."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A02.gif"
 
   - id: q_9ed5706fb567
     number: 18
@@ -338,6 +344,8 @@ questions:
         text: "Überholverbot für alle Fahrzeuge."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A04.gif"
 
   - id: q_4f194c04ae8d
     number: 19
@@ -356,6 +364,8 @@ questions:
         text: "Wasserstraße, die nicht jederzeit sicher befahren werden kann; Gefahr durch Seegang."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-A04a.gif"
 
   - id: q_96f80a5832fc
     number: 20
@@ -374,6 +384,8 @@ questions:
         text: "Verengung des Fahrwassers auf 40 m."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Einschraenkungszeichen-C5.gif"
 
   - id: q_8139ec75c2cd
     number: 21
@@ -392,6 +404,8 @@ questions:
         text: "Weiterfahrt für Sportfahrzeuge verboten."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-B05.gif"
 
   - id: q_ff1f8dc21702
     number: 22
@@ -410,6 +424,8 @@ questions:
         text: "Ankern und Festmachen verboten."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A06.gif"
 
   - id: q_881a0003d9ae
     number: 23
@@ -428,6 +444,8 @@ questions:
         text: "Festmache- und Liegeverbot für gewerbliche Schiffe."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A07.gif"
 
   - id: q_41e55f0da1aa
     number: 24
@@ -446,6 +464,8 @@ questions:
         text: "Abgabe eines kurzen und eines langen Tons."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Schild-10.gif"
 
   - id: q_eaa3654047e7
     number: 25
@@ -464,6 +484,8 @@ questions:
         text: "Genehmigungsfreie Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Hinweiszeichen-E17.gif"
 
   - id: q_5651e056fa9e
     number: 26
@@ -482,6 +504,8 @@ questions:
         text: "Wechseln der Fahrwasserseite ist gestattet."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Hinweiszeichen-E11.gif"
 
   - id: q_abe176b0eaf4
     number: 27
@@ -500,6 +524,8 @@ questions:
         text: "Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne Antriebsmaschine befahrbar."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A01-Tafeln.gif"
 
   - id: q_841226ff7bec
     number: 28
@@ -518,6 +544,8 @@ questions:
         text: "Außergewöhnliche Schifffahrtsbehinderung."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-A19aa.gif"
 
   - id: q_0cd8355a5d4b
     number: 29
@@ -536,6 +564,8 @@ questions:
         text: "Außergewöhnliche Schifffahrtsbehinderung."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-A19d.gif"
 
   - id: q_35af0ffa6cf6
     number: 30
@@ -554,6 +584,8 @@ questions:
         text: "Schleuse in Betrieb, auf Ausfahrtsignal gemäß Reihenfolge warten."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-A23bb.gif"
 
   - id: q_fd741ac1c706
     number: 31
@@ -1940,6 +1972,8 @@ questions:
         text: "Liegestelle für alle Fahrzeuge, für Kleinfahrzeuge verboten."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Hinweiszeichen-E057.gif"
 
   - id: q_e47ea0e0c249
     number: 180
@@ -1958,6 +1992,8 @@ questions:
         text: "Liegestelle für Fahrzeuge mit gefährlichen Gütern, nicht für Kleinfahrzeuge."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Hinweiszeichen-E0512.gif"
 
   - id: q_992cdd543995
     number: 181
@@ -2014,6 +2050,8 @@ questions:
         text: "Die Durchfahrt ist nur durch diese Brückenöffnung und nur in eine Richtung gestattet."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Empfehlungszeichen-D1b-Rhein-Mosel.jpg"
 
   - id: q_29b8efc14d95
     number: 184
@@ -2032,6 +2070,8 @@ questions:
         text: "Empfohlene Durchfahrt mit Gegenverkehr."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Verbotszeichen-A10.gif"
 
   - id: q_b8066c16e72a
     number: 185
@@ -2050,6 +2090,8 @@ questions:
         text: "Empfohlene Durchfahrt mit Gegenverkehr."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Empfehlungszeichen-D2.gif"
 
   - id: q_00628c321812
     number: 186
@@ -2108,6 +2150,8 @@ questions:
         text: "Schutzbedürftige Anlage."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Verbotszeichen-A01-Tafeln.gif"
 
   - id: q_3cb3319e27fc
     number: 189
@@ -2200,6 +2244,8 @@ questions:
         text: "Fahrzeug eines Schleppverbandes."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-004-Tag.gif"
 
   - id: q_012af93a4ebc
     number: 194
@@ -2218,6 +2264,8 @@ questions:
         text: "Schleppfahrzeug an der Spitze eines Schleppverbandes."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-006-Tag.gif"
 
   - id: q_adc4fb09b5a5
     number: 195
@@ -2314,6 +2362,8 @@ questions:
         text: "Fahrzeug der Überwachungsbehörden im Einsatz."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-027a-Tag.gif"
 
   - id: q_9304bd2ebe58
     number: 200
@@ -2350,6 +2400,8 @@ questions:
         text: "Fahrzeug der Überwachungsbehörden im Einsatz."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-028a-Tag.gif"
 
   - id: q_83c39004d07a
     number: 202
@@ -2386,6 +2438,8 @@ questions:
         text: "Fahrzeug der Überwachungsbehörden im Einsatz."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-029a-Tag.gif"
 
   - id: q_d0c117085114
     number: 204
@@ -2404,6 +2458,8 @@ questions:
         text: "Festgefahrenes Fahrzeug, das einseitig nicht passierbar ist."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-037-Tag.gif"
 
   - id: q_5b84b8102d99
     number: 205
@@ -2638,6 +2694,8 @@ questions:
         text: "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-051-Nacht.gif"
 
   - id: q_e1709d88a2ff
     number: 218
@@ -2656,6 +2714,8 @@ questions:
         text: "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-051-Tag.gif"
 
   - id: q_28eba3e9e251
     number: 219
@@ -2674,6 +2734,8 @@ questions:
         text: "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der roten Seite gestattet; rot-weiße Seite gesperrt. Sog und Wellenschlag vermeiden."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-052-Nacht.gif"
 
   - id: q_c1967bc59818
     number: 220
@@ -2692,6 +2754,8 @@ questions:
         text: "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der roten Seite gestattet; rot-weiße Seite gesperrt. Sog und Wellenschlag vermeiden."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-052-Tag.gif"
 
   - id: q_1e48d33b7eae
     number: 221
@@ -2710,6 +2774,8 @@ questions:
         text: "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an der roten Seite gestattet; grüne Seite gesperrt."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-050a-Nacht.gif"
 
   - id: q_067dfbc86026
     number: 222
@@ -2728,6 +2794,8 @@ questions:
         text: "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an der roten Seite gestattet; grüne Seite gesperrt."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-050b-Tag.gif"
 
   - id: q_e9ee65c9ae7d
     number: 223
@@ -2746,6 +2814,8 @@ questions:
         text: "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der Seite mit dem rot-weiß-roten Tafelzeichen gestattet; grün-weiß-grüne Seite gesperrt."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-050a-Tag.gif"
 
   - id: q_73cf249e3a4c
     number: 224
@@ -2764,6 +2834,8 @@ questions:
         text: "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-049a-Nacht.gif"
 
   - id: q_1c0b998fd921
     number: 225
@@ -2782,6 +2854,8 @@ questions:
         text: "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-049b-Tag.gif"
 
   - id: q_2c0d1b10d174
     number: 226
@@ -2800,6 +2874,8 @@ questions:
         text: "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-049a-Tag.gif"
 
   - id: q_fd962be107b5
     number: 227
@@ -2818,6 +2894,8 @@ questions:
         text: "Schwimmende Anlage / Schwimmkörper. Vorbeifahrt in möglichst weitem Abstand, Geschwindigkeit vermindern, Sog und Wellenschlag vermeiden."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Bild-058-Tag.gif"
 
   - id: q_77d2dfcc60e1
     number: 228
@@ -2836,6 +2914,8 @@ questions:
         text: "Gesperrte Wasserfläche, Verbot der Durchfahrt und Sperrung der Schifffahrt."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Verbotszeichen-A01a.gif"
 
   - id: q_0f2bb9c0e61d
     number: 229
@@ -2854,6 +2934,8 @@ questions:
         text: "Fahrverbot für Kleinfahrzeuge ohne laufende Antriebsmaschine."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Verbotszeichen-A12.gif"
 
   - id: q_a2d54cbc5acc
     number: 230
@@ -3642,6 +3724,8 @@ questions:
         text: "Achtung Ausfahrt aus Hafen oder Nebenfahrwasser."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Verbotszeichen-A01-Pfeil.gif"
 
   - id: q_fa8db4acc2da
     number: 272
@@ -3680,6 +3764,8 @@ questions:
         text: "Gebot: Vor dem Schild anhalten."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Gebotszeichen-B08.gif"
 
   - id: q_2618f92bdb00
     number: 274
@@ -3698,6 +3784,8 @@ questions:
         text: "Wendeverbot in der Mitte des Fahrwassers."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Verbotszeichen-A08.gif"
 
   - id: q_914a3ef578c8
     number: 275
@@ -3716,6 +3804,8 @@ questions:
         text: "Vorgeschriebener Wendeplatz. Stillliegen von Kleinfahrzeugen erlaubt."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Hinweiszeichen-E08.gif"
 
   - id: q_cfd37d782319
     number: 276
@@ -3734,6 +3824,8 @@ questions:
         text: "Sicherheitstor."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Hinweiszeichen-E03.gif"
 
   - id: q_4db2b5e5c6f4
     number: 277
@@ -4456,6 +4548,8 @@ questions:
         text: "Schutzbedürftige Anlage."
         isCorrect: false
     category: spezifische-binnen
+    assets:
+      - "Verbotszeichen-A01-Tafeln.gif"
 
   - id: q_5ee48dcfb05d
     number: 317
