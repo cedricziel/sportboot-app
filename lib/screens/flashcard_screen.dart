@@ -15,14 +15,18 @@ class FlashcardScreen extends StatelessWidget {
         actions: [
           Consumer<QuestionsProvider>(
             builder: (context, provider, _) {
-              return IconButton(
-                icon: Icon(
-                  provider.isCurrentQuestionBookmarked()
-                      ? Icons.bookmark
-                      : Icons.bookmark_border,
-                ),
-                onPressed: () {
-                  provider.toggleBookmark();
+              return FutureBuilder<bool>(
+                future: provider.isCurrentQuestionBookmarked(),
+                builder: (context, snapshot) {
+                  final isBookmarked = snapshot.data ?? false;
+                  return IconButton(
+                    icon: Icon(
+                      isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                    ),
+                    onPressed: () {
+                      provider.toggleBookmark();
+                    },
+                  );
                 },
               );
             },
@@ -48,7 +52,10 @@ class FlashcardScreen extends StatelessWidget {
             children: [
               // Progress indicator
               LinearProgressIndicator(
-                value: provider.getProgress(),
+                value: provider.currentQuestions.isNotEmpty
+                    ? (provider.currentQuestionIndex + 1) /
+                        provider.currentQuestions.length
+                    : 0,
                 backgroundColor: Colors.grey[300],
                 valueColor: AlwaysStoppedAnimation<Color>(
                   Theme.of(context).primaryColor,

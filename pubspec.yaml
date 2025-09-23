@@ -47,6 +47,13 @@ dependencies:
 
   # Image handling
   cached_network_image: ^3.3.0
+  
+  # Database
+  sqflite: ^2.3.0
+  path: ^1.9.0
+  
+  # Animation for smooth transitions
+  flutter_animate: ^4.5.0
 
   # Crypto utilities
   crypto: ^3.0.3
@@ -77,7 +84,6 @@ dev_dependencies:
   # For build scripts
   http: ^1.1.0
   html: ^0.15.4
-  path: ^1.8.3
 
   # Launcher icons
   flutter_launcher_icons: ^0.14.1

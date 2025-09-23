@@ -3,7 +3,9 @@ import '../models/course.dart';
 import '../models/course_manifest.dart';
 import '../models/question.dart';
 import '../models/study_session.dart';
+import '../repositories/question_repository.dart';
 import '../services/data_loader.dart';
+import '../services/migration_service.dart';
 import '../services/storage_service.dart';
 
 class QuestionsProvider extends ChangeNotifier {
@@ -12,6 +14,8 @@ class QuestionsProvider extends ChangeNotifier {
   int _currentQuestionIndex = 0;
   StudySession? _currentSession;
   final StorageService _storage = StorageService();
+  final QuestionRepository _repository = QuestionRepository();
+  final MigrationService _migrationService = MigrationService();
 
   // Course management
   String? _selectedCourseId;
@@ -20,6 +24,8 @@ class QuestionsProvider extends ChangeNotifier {
 
   bool _isLoading = false;
   String? _error;
+  double _migrationProgress = 0.0;
+  String _migrationStatus = '';
 
   // Getters
   Course? get currentCourse => _currentCourse;
@@ -34,6 +40,8 @@ class QuestionsProvider extends ChangeNotifier {
   String? get error => _error;
   bool get hasNext => _currentQuestionIndex < _currentQuestions.length - 1;
   bool get hasPrevious => _currentQuestionIndex > 0;
+  double get migrationProgress => _migrationProgress;
+  String get migrationStatus => _migrationStatus;
 
   // Course management getters
   String? get selectedCourseId => _selectedCourseId;
@@ -42,18 +50,40 @@ class QuestionsProvider extends ChangeNotifier {
 
   // Initialize storage and load manifest
   Future<void> init() async {
-    await _storage.init();
-    await loadManifest();
+    _isLoading = true;
+    notifyListeners();
 
-    // Restore selected course from storage if available
-    final storedCourseId = getStoredCourseId();
-    if (storedCourseId != null && _manifest != null) {
-      final courseManifest = _manifest!.courses[storedCourseId];
-      if (courseManifest != null) {
-        _selectedCourseId = storedCourseId;
-        _selectedCourseManifest = courseManifest;
-        notifyListeners();
+    try {
+      await _storage.init();
+      
+      // Perform data migration if needed
+      await _migrationService.migrateDataIfNeeded(
+        onProgress: (progress) {
+          _migrationProgress = progress;
+          notifyListeners();
+        },
+        onStatusUpdate: (status) {
+          _migrationStatus = status;
+          notifyListeners();
+        },
+      );
+
+      await loadManifest();
+
+      // Restore selected course from storage if available
+      final storedCourseId = getStoredCourseId();
+      if (storedCourseId != null && _manifest != null) {
+        final courseManifest = _manifest!.courses[storedCourseId];
+        if (courseManifest != null) {
+          _selectedCourseId = storedCourseId;
+          _selectedCourseManifest = courseManifest;
+        }
       }
+    } catch (e) {
+      _error = 'Initialization failed: $e';
+    } finally {
+      _isLoading = false;
+      notifyListeners();
     }
   }
 
@@ -81,185 +111,91 @@ class QuestionsProvider extends ChangeNotifier {
     return _storage.getSetting('selectedCourseId') as String?;
   }
 
-  // Load course data by course ID
-  Future<void> loadCourseById(String courseId) async {
-    _isLoading = true;
-    _error = null;
-    notifyListeners();
-
-    try {
-      _currentCourse = await DataLoader.loadCourseById(courseId);
-      _currentQuestions = List.from(_currentCourse!.questions);
-      _currentQuestionIndex = 0;
-
-      // Apply shuffle if enabled
-      if (_storage.getSetting('shuffleQuestions', defaultValue: false)) {
-        _currentQuestions.shuffle();
-      }
-
-      _error = null;
-    } catch (e) {
-      _error = e.toString();
-    } finally {
-      _isLoading = false;
-      notifyListeners();
-    }
-  }
-
-  // Legacy method for backward compatibility
-  Future<void> loadCourse(String filename) async {
-    _isLoading = true;
-    _error = null;
-    notifyListeners();
-
-    try {
-      _currentCourse = await DataLoader.loadCourse(filename);
-      _currentQuestions = List.from(_currentCourse!.questions);
-      _currentQuestionIndex = 0;
-
-      // Apply shuffle if enabled
-      if (_storage.getSetting('shuffleQuestions', defaultValue: false)) {
-        _currentQuestions.shuffle();
-      }
-
-      _error = null;
-    } catch (e) {
-      _error = e.toString();
-    } finally {
-      _isLoading = false;
-      notifyListeners();
-    }
-  }
-
-  // Load all questions for selected course
+  // Load all questions from database
   Future<void> loadAllQuestions() async {
-    if (_selectedCourseId != null) {
-      await loadCourseById(_selectedCourseId!);
-    } else {
-      // Fallback to SBF-See for backward compatibility
-      await loadCourse('all_questions.yaml');
-    }
+    await _loadQuestionsFromDatabase(() => _repository.getAllQuestions());
   }
 
-  // Load questions by category for selected course
-  Future<void> loadCategory(String categoryId) async {
-    if (_selectedCourseId == null || _selectedCourseManifest == null) {
-      // Fallback to old behavior for backward compatibility
-      if (categoryId == 'basisfragen') {
-        await loadCourse('basisfragen.yaml');
-      } else if (categoryId == 'spezifische-see') {
-        await loadCourse('spezifische-see.yaml');
-      }
-      return;
-    }
-
-    // Load full course first
-    await loadCourseById(_selectedCourseId!);
-
-    // Filter by category
-    final category = _selectedCourseManifest!.categories.firstWhere(
-      (c) => c.id == categoryId,
-      orElse: () => _selectedCourseManifest!.categories.first,
-    );
-
-    if (category.type == 'bookmarks') {
-      filterByBookmarks();
-    } else if (category.type == 'incorrect') {
-      filterByIncorrect();
-    } else {
-      // Filter by catalog refs
-      _currentQuestions = _currentCourse!.questions
-          .where((q) => category.catalogRefs.contains(q.category))
-          .toList();
-      _currentQuestionIndex = 0;
-      notifyListeners();
-    }
+  // Load questions by category from database
+  Future<void> loadCourseById(String courseId) async {
+    await _loadQuestionsFromDatabase(() => _repository.getQuestionsByCourse(courseId));
   }
 
-  // Load random questions for quick quiz
-  Future<void> loadRandomQuestions(int count) async {
+  // Load questions by category
+  Future<void> loadQuestionsByCategory(String category) async {
+    await _loadQuestionsFromDatabase(() => _repository.getQuestionsByCategory(category));
+  }
+
+  // Load bookmarked questions from database
+  Future<void> loadBookmarkedQuestions() async {
+    await _loadQuestionsFromDatabase(() => _repository.getBookmarkedQuestions());
+  }
+
+  // Load incorrect questions from database
+  Future<void> loadIncorrectQuestions() async {
+    await _loadQuestionsFromDatabase(() => _repository.getIncorrectQuestions());
+  }
+
+  // Generic method to load questions from database
+  Future<void> _loadQuestionsFromDatabase(
+    Future<List<Question>> Function() loader,
+  ) async {
     _isLoading = true;
     _error = null;
     notifyListeners();
 
     try {
-      // Load all questions for selected course
-      if (_selectedCourseId != null) {
-        _currentCourse = await DataLoader.loadCourseById(_selectedCourseId!);
-      } else {
-        // Fallback
-        _currentCourse = await DataLoader.loadCourse('all_questions.yaml');
-      }
-
-      // Get a shuffled list of all questions
-      final allQuestions = List<Question>.from(_currentCourse!.questions);
-      allQuestions.shuffle();
-
-      // Take only the requested number of questions
-      _currentQuestions = allQuestions.take(count).toList();
+      _currentQuestions = await loader();
       _currentQuestionIndex = 0;
+
+      // Apply shuffle if enabled
+      if (_storage.getSetting('shuffleQuestions', defaultValue: false)) {
+        _currentQuestions.shuffle();
+      }
 
       _error = null;
     } catch (e) {
-      _error = e.toString();
+      _error = 'Failed to load questions: $e';
+      _currentQuestions = [];
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
 
-  // Start a new study session
-  void startSession(String mode, String category) {
-    _currentSession = StudySession(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      startTime: DateTime.now(),
-      questionIds: _currentQuestions.map((q) => q.id).toList(),
-      answers: {},
-      timeSpent: {},
-      category: category,
-      mode: mode,
-    );
-    notifyListeners();
+  // Legacy methods for backward compatibility
+  Future<void> loadBasisfragen() async {
+    await loadQuestionsByCategory('Basisfragen');
   }
 
-  // End current session
-  void endSession() {
-    if (_currentSession != null) {
-      _currentSession = _currentSession!.copyWith(endTime: DateTime.now());
-      _storage.incrementStatistic('studySessions');
-      _storage.updateStudyStreak();
+  Future<void> loadSpezifischeSee() async {
+    await loadQuestionsByCategory('Spezifische Fragen See');
+  }
+
+  Future<void> loadRandomQuestions(int count) async {
+    await loadAllQuestions();
+    if (_currentQuestions.isNotEmpty && count < _currentQuestions.length) {
+      _currentQuestions.shuffle();
+      _currentQuestions = _currentQuestions.take(count).toList();
+      notifyListeners();
     }
-    notifyListeners();
   }
 
-  // Answer current question
-  void answerQuestion(int selectedIndex) {
-    if (currentQuestion == null || _currentSession == null) return;
-
-    final isCorrect = currentQuestion!.isAnswerCorrect(selectedIndex);
-
-    // Update session
-    _currentSession!.answers[currentQuestion!.id] = isCorrect;
-
-    // Update storage
-    _storage.saveQuestionProgress(
-      currentQuestion!.id,
-      isCorrect,
-      (_storage.getProgress()[currentQuestion!.id]?['attempts'] ?? 0) + 1,
-    );
-
-    // Update statistics
-    _storage.incrementStatistic('totalQuestions');
-    if (isCorrect) {
-      _storage.incrementStatistic('correctAnswers');
-    } else {
-      _storage.incrementStatistic('incorrectAnswers');
-    }
-
-    notifyListeners();
+  Future<void> loadCategory(String category) async {
+    await loadQuestionsByCategory(category);
   }
 
-  // Navigation
+  // Filter questions by bookmarks (now loads from database)
+  Future<void> filterByBookmarks() async {
+    await loadBookmarkedQuestions();
+  }
+
+  // Filter questions by incorrect answers (now loads from database)
+  Future<void> filterByIncorrect() async {
+    await loadIncorrectQuestions();
+  }
+
+  // Navigation methods
   void nextQuestion() {
     if (hasNext) {
       _currentQuestionIndex++;
@@ -281,65 +217,126 @@ class QuestionsProvider extends ChangeNotifier {
     }
   }
 
-  // Bookmarks
-  void toggleBookmark() {
-    if (currentQuestion != null) {
-      _storage.toggleBookmark(currentQuestion!.id);
-      notifyListeners();
-    }
+  // Start a new study session
+  void startSession(String mode, String category) {
+    _currentSession = StudySession(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      startTime: DateTime.now(),
+      questionIds: _currentQuestions.map((q) => q.id).toList(),
+      answers: {},
+      timeSpent: {},
+      category: category,
+      mode: mode,
+    );
+    notifyListeners();
   }
 
-  bool isCurrentQuestionBookmarked() {
+  // Answer a question and update database
+  Future<void> answerQuestion(int answerIndex) async {
+    if (_currentSession == null || currentQuestion == null) return;
+
+    final isCorrect = currentQuestion!.isAnswerCorrect(answerIndex);
+    
+    // Update session with new answer
+    final updatedAnswers = Map<String, bool>.from(_currentSession!.answers);
+    updatedAnswers[currentQuestion!.id] = isCorrect;
+    
+    _currentSession = _currentSession!.copyWith(
+      answers: updatedAnswers,
+    );
+
+    // Update progress in database
+    await _repository.updateProgress(
+      questionId: currentQuestion!.id,
+      isCorrect: isCorrect,
+    );
+
+    notifyListeners();
+  }
+
+  // End current session
+  void endSession() {
+    _currentSession = null;
+    notifyListeners();
+  }
+
+  // Bookmark operations
+  Future<void> toggleBookmark([String? questionId]) async {
+    final id = questionId ?? currentQuestion?.id;
+    if (id == null) return;
+    
+    final bookmarks = await _repository.getBookmarkedQuestionIds();
+    
+    if (bookmarks.contains(id)) {
+      await _repository.removeBookmark(id);
+    } else {
+      await _repository.addBookmark(id);
+    }
+    
+    notifyListeners();
+  }
+
+  Future<bool> isBookmarked(String questionId) async {
+    final bookmarks = await _repository.getBookmarkedQuestionIds();
+    return bookmarks.contains(questionId);
+  }
+  
+  Future<bool> isCurrentQuestionBookmarked() async {
     if (currentQuestion == null) return false;
-    return _storage.isBookmarked(currentQuestion!.id);
+    return isBookmarked(currentQuestion!.id);
   }
 
-  // Filter questions
-  void filterByBookmarks() {
-    if (_currentCourse == null) return;
-
-    final bookmarks = _storage.getBookmarks();
-    _currentQuestions = _currentCourse!.questions
-        .where((q) => bookmarks.contains(q.id))
-        .toList();
-    _currentQuestionIndex = 0;
-    notifyListeners();
+  // Get counts for UI
+  Future<int> getBookmarkCount() async {
+    return await _repository.getBookmarkCount();
   }
 
-  void filterByIncorrect() {
-    if (_currentCourse == null) return;
-
-    final progress = _storage.getProgress();
-    _currentQuestions = _currentCourse!.questions
-        .where((q) => progress[q.id]?['correct'] == false)
-        .toList();
-    _currentQuestionIndex = 0;
-    notifyListeners();
+  Future<int> getIncorrectCount() async {
+    return await _repository.getIncorrectCount();
   }
 
-  void resetFilters() {
-    if (_currentCourse != null) {
-      _currentQuestions = List.from(_currentCourse!.questions);
-      _currentQuestionIndex = 0;
-      notifyListeners();
-    }
+  // Get overall progress
+  Future<Map<String, dynamic>> getProgress() async {
+    return await _repository.getProgress();
   }
-
-  // Progress tracking
-  double getProgress() {
-    if (_currentQuestions.isEmpty) return 0;
-    return (_currentQuestionIndex + 1) / _currentQuestions.length;
-  }
-
-  Map<String, int> getSessionStats() {
+  
+  // Get session stats
+  Map<String, dynamic> getSessionStats() {
     if (_currentSession == null) {
-      return {'correct': 0, 'incorrect': 0, 'unanswered': 0};
+      return {
+        'correct': 0,
+        'incorrect': 0,
+        'total': 0,
+      };
     }
-
+    
     return {
       'correct': _currentSession!.correctAnswers,
       'incorrect': _currentSession!.incorrectAnswers,
-      'unanswered': _currentSession!.unanswered,
+      'total': _currentSession!.totalQuestions,
     };
+  }
+
+  // Reset progress
+  Future<void> resetProgress() async {
+    _currentQuestionIndex = 0;
+    _currentSession = null;
+    // Could also clear database progress if needed
+    notifyListeners();
+  }
+
+  // Settings
+  bool get shuffleEnabled => 
+      _storage.getSetting('shuffleQuestions', defaultValue: false);
+
+  void toggleShuffle() {
+    final current = shuffleEnabled;
+    _storage.setSetting('shuffleQuestions', !current);
+    
+    if (!current && _currentQuestions.isNotEmpty) {
+      _currentQuestions.shuffle();
+    }
+    
+    notifyListeners();
   }
 }
