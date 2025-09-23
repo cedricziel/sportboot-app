@@ -86,6 +86,9 @@ dev_dependencies:
   http: ^1.1.0
   html: ^0.15.4
 
+  # Pre-commit hooks for code quality
+  flutter_pre_commit: ^0.2.4
+
   # Launcher icons
   flutter_launcher_icons: ^0.14.1
 
