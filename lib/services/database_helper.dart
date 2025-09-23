@@ -31,16 +31,18 @@ class DatabaseHelper {
 
   // Factory for test databases with unique names
   factory DatabaseHelper.forTest(String testName) {
+    // Always create a unique database name to ensure test isolation
+    // Use timestamp and a counter to guarantee uniqueness
     final dbName =
-        'test_${testName}_${DateTime.now().millisecondsSinceEpoch}.db';
-    if (!_testInstances.containsKey(dbName)) {
-      _testInstances[dbName] = DatabaseHelper._privateConstructor(
-        databaseName: dbName,
-        isTestDatabase: true,
-      );
-    }
+        'test_${testName}_${DateTime.now().microsecondsSinceEpoch}_${_testCounter++}.db';
+    _testInstances[dbName] = DatabaseHelper._privateConstructor(
+      databaseName: dbName,
+      isTestDatabase: true,
+    );
     return _testInstances[dbName]!;
   }
+
+  static int _testCounter = 0;
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -52,13 +54,13 @@ class DatabaseHelper {
     try {
       final String dbName = _customDatabaseName ?? _databaseName;
 
-      // For test databases, use a simple path or in-memory database
-      // This avoids the need for platform-specific getDatabasesPath()
+      // For test databases, use in-memory database
+      // This avoids file system issues and is faster
       final String path;
       if (_isTestDatabase) {
-        // Use a simple file path for test databases
-        // This works in CI environments without platform channels
-        path = dbName;
+        // Use in-memory database for tests
+        // Each instance gets its own memory space
+        path = ':memory:';
       } else {
         // Production path using platform-specific database directory
         path = join(await getDatabasesPath(), dbName);

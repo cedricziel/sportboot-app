@@ -28,17 +28,17 @@ class TestDatabaseHelper {
     return QuestionRepository(databaseHelper: dbHelper, cache: cache);
   }
 
-  static MigrationService createTestMigrationService(String testName) {
-    // Use the same database helper instance that the repository uses
-    final dbHelper = createTestDatabaseHelper(testName);
+  static MigrationService createTestMigrationService(
+    String testName, {
+    DatabaseHelper? dbHelper,
+  }) {
+    // Use provided database helper or create a new one
+    final db = dbHelper ?? createTestDatabaseHelper(testName);
     final repository = QuestionRepository(
-      databaseHelper: dbHelper,
+      databaseHelper: db,
       cache: CacheService(),
     );
-    return MigrationService(
-      questionRepository: repository,
-      databaseHelper: dbHelper,
-    );
+    return MigrationService(questionRepository: repository, databaseHelper: db);
   }
 
   static QuestionsProvider createTestProvider(String testName) {
