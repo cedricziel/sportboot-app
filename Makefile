@@ -5,7 +5,7 @@ DATA_SOURCE = .data
 DATA_TARGET = assets/data
 CACHE_DIR = .cache
 
-.PHONY: help build scrape copy-data clean clean-cache logo splash
+.PHONY: help build scrape copy-data clean clean-cache logo splash icons
 
 # Default target - show help
 help:
@@ -14,6 +14,7 @@ help:
 	@echo "  scrape       - Run Dart question scraper"
 	@echo "  copy-data    - Copy scraped data to app assets"
 	@echo "  logo         - Generate app logo images"
+	@echo "  icons        - Generate app icons for iOS and macOS"
 	@echo "  splash       - Generate native splash screens (requires logo)"
 	@echo "  clean        - Remove temporary files and build artifacts"
 	@echo "  clean-cache  - Remove cached HTML files"
@@ -71,3 +72,10 @@ splash: logo
 	@flutter pub get
 	@dart run flutter_native_splash:create
 	@echo "✓ Splash screens generated"
+
+# Generate app icons for iOS and macOS
+icons:
+	@echo "Generating app icons for iOS and macOS..."
+	@flutter pub get
+	@dart run flutter_launcher_icons
+	@echo "✓ App icons generated for iOS and macOS"
