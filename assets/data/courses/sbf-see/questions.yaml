@@ -1,7 +1,7 @@
 # Questions for Sportbootführerschein See
-# Generated: 2025-09-23T09:02:26.997227
+# Generated: 2025-09-23T09:20:26.409452
 
-course: Sportbootführerschein See
+course: "Sportbootführerschein See"
 version: '2025'
 source: ELWIS
 metadata:
@@ -2222,19 +2222,13 @@ questions:
         text: "Mindestens alle zwei Minuten ein kräftiges Schallsignal, das mit den vorgeschriebenen nicht verwechselt werden kann."
         isCorrect: true
       - id: a_6aba4c06d07d
-        text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife, und zwar lang, kurz, kurz
-
-."
+        text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife, und zwar lang, kurz, kurz \n\n \n."
         isCorrect: false
       - id: a_54466bbdfacf
-        text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife, und zwar lang, lang, kurz
-
-."
+        text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife, und zwar lang, lang, kurz \n\n \n."
         isCorrect: false
       - id: a_8b8f721322b6
-        text: "Mit der Pfeife kurz, lang, kurz
-
-."
+        text: "Mit der Pfeife kurz, lang, kurz \n\n \n."
         isCorrect: false
     category: spezifische-see
 
@@ -2283,22 +2277,16 @@ questions:
     text: "Welches zusätzliche Schallsignal darf jeder Ankerlieger bei verminderter Sicht geben, um einem sich nähernden Fahrzeug seinen Standort anzuzeigen?"
     options:
       - id: a_7bccb1c6bdcb
-        text: "Mit der Pfeife kurz, lang, kurz
-
-."
+        text: "Mit der Pfeife kurz, lang, kurz \n\n \n."
         isCorrect: true
       - id: a_8d4d8b860e27
         text: "Mindestens alle zwei Minuten ein kräftiges Schallsignal, das mit den vorgeschriebenen nicht verwechselt werden kann."
         isCorrect: false
       - id: a_547e30b06316
-        text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife, und zwar lang, kurz, kurz
-
-."
+        text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife, und zwar lang, kurz, kurz \n\n \n."
         isCorrect: false
       - id: a_770cc0264e24
-        text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife, und zwar lang, lang, kurz
-
-."
+        text: "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife, und zwar lang, lang, kurz \n\n \n."
         isCorrect: false
     category: spezifische-see
 
@@ -5139,24 +5127,16 @@ questions:
     text: "Welche Notsignale können gegeben werden?"
     options:
       - id: a_77df129c009e
-        text: "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben
-
-per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder."
+        text: "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben \n\n \n per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder."
         isCorrect: true
       - id: a_f3d922c51e95
-        text: "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben
-
-per Licht oder Ton, Seewasserfärber, seitliches Heben und Senken der Arme, Ball über oder unter Flaggensignal NC, EPIRB, DSC, Radartransponder."
+        text: "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben \n\n \n per Licht oder Ton, Seewasserfärber, seitliches Heben und Senken der Arme, Ball über oder unter Flaggensignal NC, EPIRB, DSC, Radartransponder."
         isCorrect: false
       - id: a_0270d54b05e5
-        text: "Leuchtrakete mit orangem Leuchtstern oder orange brennende Handfackel, rotes Rauchsignal, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben
-
-per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder."
+        text: "Leuchtrakete mit orangem Leuchtstern oder orange brennende Handfackel, rotes Rauchsignal, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben \n\n \n per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder."
         isCorrect: false
       - id: a_81b69452172d
-        text: "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben
-
-per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder."
+        text: "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben \n\n \n per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder."
         isCorrect: false
     category: spezifische-see
 

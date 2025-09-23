@@ -190,7 +190,7 @@ class FlashcardWidget extends StatelessWidget {
                   ],
                 ),
               );
-            }).toList(),
+            }),
             if (question.explanation != null) ...[
               const SizedBox(height: 24),
               Container(

@@ -1,4 +1,5 @@
 #!/usr/bin/env dart
+// ignore_for_file: avoid_print
 
 import 'dart:io';
 import 'dart:convert';
@@ -238,7 +239,7 @@ class QuestionScraper {
 
       // Look for any associated images in the next paragraph
       String? imageFile;
-      
+
       // Check the next element - it might be a paragraph containing an image
       var nextElement = p.nextElementSibling;
       if (nextElement != null && nextElement.localName == 'p') {
@@ -253,24 +254,25 @@ class QuestionScraper {
           }
         }
       }
-      
+
       // Look for the <ol> element with answers after this question
       Element? answerList;
-      
+
       // Search through siblings to find the answer list
       // Skip over any intervening paragraphs (including image containers)
       var sibling = p.nextElementSibling;
       while (sibling != null) {
         if (sibling.localName == 'ol') {
           // Check if it's the right type of list (with class or just any ol)
-          if (sibling.classes.contains('elwisOL-lowerLiteral') || 
+          if (sibling.classes.contains('elwisOL-lowerLiteral') ||
               sibling.querySelectorAll('li').length >= 3) {
             answerList = sibling;
             break;
           }
         }
         // Stop if we hit another question paragraph
-        if (sibling.localName == 'p' && RegExp(r'^\d+\.').hasMatch(sibling.text.trim())) {
+        if (sibling.localName == 'p' &&
+            RegExp(r'^\d+\.').hasMatch(sibling.text.trim())) {
           break;
         }
         sibling = sibling.nextElementSibling;
@@ -332,8 +334,8 @@ class QuestionScraper {
     buffer.writeln();
     buffer.writeln('catalog:');
     buffer.writeln('  id: ${catalog.id}');
-    buffer.writeln('  name: "${catalog.name}"');
-    buffer.writeln('  description: "${catalog.description}"');
+    buffer.writeln('  name: ${json.encode(catalog.name)}');
+    buffer.writeln('  description: ${json.encode(catalog.description)}');
     buffer.writeln('  questionCount: ${questions.length}');
     buffer.writeln();
     buffer.writeln('questions:');
@@ -341,16 +343,16 @@ class QuestionScraper {
     for (final question in questions) {
       buffer.writeln('  - id: ${question.id}');
       buffer.writeln('    number: ${question.number}');
-      buffer.writeln('    text: "${question.text.replaceAll('"', '\\"')}"');
+      buffer.writeln('    text: ${json.encode(question.text)}');
       buffer.writeln('    options:');
       for (final answer in question.answers) {
         buffer.writeln('      - id: ${answer.id}');
-        buffer.writeln('        text: "${answer.text.replaceAll('"', '\\"')}"');
+        buffer.writeln('        text: ${json.encode(answer.text)}');
         buffer.writeln('        isCorrect: ${answer.isCorrect}');
       }
       if (question.image != null) {
         buffer.writeln('    assets:');
-        buffer.writeln('      - "${question.image}"');
+        buffer.writeln('      - ${json.encode(question.image!)}');
       }
       buffer.writeln();
     }
@@ -447,7 +449,7 @@ class QuestionScraper {
     buffer.writeln('# Questions for ${course.name}');
     buffer.writeln('# Generated: ${DateTime.now().toIso8601String()}');
     buffer.writeln();
-    buffer.writeln('course: ${course.name}');
+    buffer.writeln('course: ${json.encode(course.name)}');
     buffer.writeln('version: \'${DateTime.now().year}\'');
     buffer.writeln('source: ELWIS');
     buffer.writeln('metadata:');
@@ -463,17 +465,17 @@ class QuestionScraper {
     for (final question in allQuestions) {
       buffer.writeln('  - id: ${question.id}');
       buffer.writeln('    number: ${question.number}');
-      buffer.writeln('    text: "${question.text.replaceAll('"', '\\"')}"');
+      buffer.writeln('    text: ${json.encode(question.text)}');
       buffer.writeln('    options:');
       for (final answer in question.answers) {
         buffer.writeln('      - id: ${answer.id}');
-        buffer.writeln('        text: "${answer.text.replaceAll('"', '\\"')}"');
+        buffer.writeln('        text: ${json.encode(answer.text)}');
         buffer.writeln('        isCorrect: ${answer.isCorrect}');
       }
       buffer.writeln('    category: ${question.category}');
       if (question.image != null) {
         buffer.writeln('    assets:');
-        buffer.writeln('      - "${question.image}"');
+        buffer.writeln('      - ${json.encode(question.image!)}');
       }
       buffer.writeln();
     }
