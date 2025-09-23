@@ -79,6 +79,9 @@ dev_dependencies:
   html: ^0.15.4
   path: ^1.8.3
 
+  # Launcher icons
+  flutter_launcher_icons: ^0.14.1
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -123,3 +126,11 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# Flutter launcher icons configuration
+flutter_launcher_icons:
+  ios: true
+  macos:
+    generate: true
+    image_path: "assets/images/logo@2x.png"
+  image_path: "assets/images/logo@2x.png"
