@@ -31,18 +31,22 @@ class DatabaseHelper {
 
   // Factory for test databases with unique names
   factory DatabaseHelper.forTest(String testName) {
-    // Always create a unique database name to ensure test isolation
-    // Use timestamp and a counter to guarantee uniqueness
+    // Check if we already have an instance for this test name
+    // This allows sharing the same database within a test
+    if (_testInstances.containsKey(testName)) {
+      return _testInstances[testName]!;
+    }
+
+    // Create a new instance for this test name
+    // Use timestamp to ensure uniqueness across test runs
     final dbName =
-        'test_${testName}_${DateTime.now().microsecondsSinceEpoch}_${_testCounter++}.db';
-    _testInstances[dbName] = DatabaseHelper._privateConstructor(
+        'test_${testName}_${DateTime.now().microsecondsSinceEpoch}.db';
+    _testInstances[testName] = DatabaseHelper._privateConstructor(
       databaseName: dbName,
       isTestDatabase: true,
     );
-    return _testInstances[dbName]!;
+    return _testInstances[testName]!;
   }
-
-  static int _testCounter = 0;
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -54,13 +58,13 @@ class DatabaseHelper {
     try {
       final String dbName = _customDatabaseName ?? _databaseName;
 
-      // For test databases, use a simple file path to avoid platform channel issues
-      // This ensures tests work in CI without needing platform-specific paths
+      // For test databases, use in-memory database
+      // This works with sqflite_common_ffi without platform channels
       final String path;
       if (_isTestDatabase) {
-        // Use a simple file path for tests
-        // This avoids getDatabasesPath() which requires platform channels
-        path = dbName;
+        // Use in-memory database for tests
+        // This works with sqflite_common_ffi and avoids file system issues
+        path = ':memory:';
       } else {
         // Production path using platform-specific database directory
         path = join(await getDatabasesPath(), dbName);
@@ -72,6 +76,8 @@ class DatabaseHelper {
         onCreate: _onCreate,
         onUpgrade: _onUpgrade,
         onConfigure: _onConfigure,
+        // For in-memory databases, we need to ensure single instance
+        singleInstance: _isTestDatabase ? false : true,
       );
     } catch (e, stackTrace) {
       throw DatabaseInitializationException(
@@ -270,11 +276,28 @@ class DatabaseHelper {
     }
   }
 
+  // Clean up a specific test instance
+  static Future<void> cleanupTestInstance(String testName) async {
+    if (_testInstances.containsKey(testName)) {
+      final instance = _testInstances[testName]!;
+      try {
+        if (instance._database != null) {
+          await instance.close();
+        }
+      } catch (e) {
+        debugPrint('Error closing test database: $e');
+      }
+      _testInstances.remove(testName);
+    }
+  }
+
   // Clean up all test instances
   static Future<void> cleanupTestInstances() async {
     for (final instance in _testInstances.values) {
       try {
-        await instance.close();
+        if (instance._database != null) {
+          await instance.close();
+        }
       } catch (e) {
         debugPrint('Error closing test database: $e');
       }

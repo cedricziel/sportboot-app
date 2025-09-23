@@ -242,12 +242,8 @@ class TestDatabaseHelper {
     // Define test courses that match the actual manifest
     final courses = ['sbf-see', 'sbf-binnen', 'sbf-binnen-segeln'];
 
-    // Define categories that match actual data
-    final categories = [
-      'Basisfragen',
-      'Spezifische Fragen See',
-      'Spezifische Fragen Binnen',
-    ];
+    // Define categories that match actual data (lowercase as in YAML files)
+    final categories = ['basisfragen', 'spezifische-see', 'spezifische-binnen'];
 
     for (final course in courses) {
       final allQuestions = <Question>[];

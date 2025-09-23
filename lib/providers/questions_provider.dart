@@ -226,11 +226,11 @@ class QuestionsProvider extends ChangeNotifier {
 
   // Legacy methods for backward compatibility
   Future<void> loadBasisfragen() async {
-    await loadQuestionsByCategory('Basisfragen');
+    await loadQuestionsByCategory('basisfragen');
   }
 
   Future<void> loadSpezifischeSee() async {
-    await loadQuestionsByCategory('Spezifische Fragen See');
+    await loadQuestionsByCategory('spezifische-see');
   }
 
   Future<void> loadRandomQuestions(int count) async {
