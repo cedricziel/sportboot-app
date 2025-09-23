@@ -24,7 +24,8 @@
       "Bash(echo $FLUTTER_TEST)",
       "Bash(grep:*)",
       "Bash(dart tool/scrape_questions.dart:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(sed:*)"
     ],
     "deny": [],
     "ask": []
