@@ -20,10 +20,14 @@ class DatabaseHelper {
 
   // Instance-specific fields
   final String? _customDatabaseName;
+  final bool _isTestDatabase;
   Database? _database;
 
-  DatabaseHelper._privateConstructor({String? databaseName})
-    : _customDatabaseName = databaseName;
+  DatabaseHelper._privateConstructor({
+    String? databaseName,
+    bool isTestDatabase = false,
+  }) : _customDatabaseName = databaseName,
+       _isTestDatabase = isTestDatabase;
 
   // Factory for test databases with unique names
   factory DatabaseHelper.forTest(String testName) {
@@ -32,6 +36,7 @@ class DatabaseHelper {
     if (!_testInstances.containsKey(dbName)) {
       _testInstances[dbName] = DatabaseHelper._privateConstructor(
         databaseName: dbName,
+        isTestDatabase: true,
       );
     }
     return _testInstances[dbName]!;
@@ -46,7 +51,19 @@ class DatabaseHelper {
   Future<Database> _initDatabase() async {
     try {
       final String dbName = _customDatabaseName ?? _databaseName;
-      final String path = join(await getDatabasesPath(), dbName);
+
+      // For test databases, use a simple path or in-memory database
+      // This avoids the need for platform-specific getDatabasesPath()
+      final String path;
+      if (_isTestDatabase) {
+        // Use a simple file path for test databases
+        // This works in CI environments without platform channels
+        path = dbName;
+      } else {
+        // Production path using platform-specific database directory
+        path = join(await getDatabasesPath(), dbName);
+      }
+
       return await openDatabase(
         path,
         version: _databaseVersion,
