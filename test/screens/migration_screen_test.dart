@@ -15,10 +15,10 @@ void main() {
 
     setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
-      
+
       // Initialize test database
       await TestDatabaseHelper.initializeTestDatabase();
-      
+
       databaseHelper = DatabaseHelper.instance;
       repository = QuestionRepository();
     });
@@ -26,46 +26,46 @@ void main() {
     setUp(() async {
       // Set up SharedPreferences mock
       SharedPreferences.setMockInitialValues({});
-      
+
       // Clear database for fresh migration
       await databaseHelper.clearDatabase();
     });
-    
+
     tearDown(() async {
       await databaseHelper.close();
     });
 
-    testWidgets('MigrationScreen shows progress indicator', (WidgetTester tester) async {
+    testWidgets('MigrationScreen shows progress indicator', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MultiProvider(
           providers: [
             ChangeNotifierProvider(create: (_) => QuestionsProvider()),
           ],
-          child: const MaterialApp(
-            home: MigrationScreen(),
-          ),
+          child: const MaterialApp(home: MigrationScreen()),
         ),
       );
 
       // Should show the app title
       expect(find.text('SBF-See Lernkarten'), findsOneWidget);
-      
+
       // Should show progress indicator
       expect(find.byType(LinearProgressIndicator), findsOneWidget);
-      
+
       // Should show sailing icon
       expect(find.byIcon(Icons.sailing), findsOneWidget);
     });
 
-    testWidgets('MigrationScreen shows migration status', (WidgetTester tester) async {
+    testWidgets('MigrationScreen shows migration status', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MultiProvider(
           providers: [
             ChangeNotifierProvider(create: (_) => QuestionsProvider()),
           ],
-          child: const MaterialApp(
-            home: MigrationScreen(),
-          ),
+          child: const MaterialApp(home: MigrationScreen()),
         ),
       );
 
@@ -77,19 +77,19 @@ void main() {
       // (exact text depends on migration state)
     });
 
-    testWidgets('MigrationScreen navigates after initialization', (WidgetTester tester) async {
+    testWidgets('MigrationScreen navigates after initialization', (
+      WidgetTester tester,
+    ) async {
       // Pre-populate database to skip migration
       final testQuestions = TestDatabaseHelper.generateTestQuestions(count: 1);
       await repository.insertQuestions(testQuestions, 'test-course');
-      
+
       await tester.pumpWidget(
         MultiProvider(
           providers: [
             ChangeNotifierProvider(create: (_) => QuestionsProvider()),
           ],
-          child: const MaterialApp(
-            home: MigrationScreen(),
-          ),
+          child: const MaterialApp(home: MigrationScreen()),
         ),
       );
 
@@ -102,17 +102,15 @@ void main() {
       // but we can verify migration screen tried to navigate
     });
 
-    testWidgets('MigrationScreen shows progress percentage', (WidgetTester tester) async {
+    testWidgets('MigrationScreen shows progress percentage', (
+      WidgetTester tester,
+    ) async {
       final provider = QuestionsProvider();
-      
+
       await tester.pumpWidget(
         MultiProvider(
-          providers: [
-            ChangeNotifierProvider.value(value: provider),
-          ],
-          child: const MaterialApp(
-            home: MigrationScreen(),
-          ),
+          providers: [ChangeNotifierProvider.value(value: provider)],
+          child: const MaterialApp(home: MigrationScreen()),
         ),
       );
 

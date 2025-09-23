@@ -34,7 +34,9 @@ class Question {
       final optionsList = map['options'] as List;
       options = [];
       for (int i = 0; i < optionsList.length; i++) {
-        final optionMap = Map<String, dynamic>.from(optionsList[i] as Map<String, dynamic>);
+        final optionMap = Map<String, dynamic>.from(
+          optionsList[i] as Map<String, dynamic>,
+        );
         // Generate ID if missing
         if (!optionMap.containsKey('id') || optionMap['id'] == null) {
           optionMap['id'] = 'a_${map['id']}_$i';

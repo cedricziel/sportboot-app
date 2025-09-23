@@ -9,13 +9,13 @@ void main() {
   group('App Widget Tests', () {
     late DatabaseHelper databaseHelper;
     late QuestionRepository repository;
-    
+
     setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
-      
+
       // Initialize test database
       await TestDatabaseHelper.initializeTestDatabase();
-      
+
       databaseHelper = DatabaseHelper.instance;
       repository = QuestionRepository();
     });
@@ -23,7 +23,7 @@ void main() {
     setUp(() async {
       // Set up SharedPreferences mock
       SharedPreferences.setMockInitialValues({'selectedCourseId': 'sbf-see'});
-      
+
       // Setup test database with some questions
       await databaseHelper.clearDatabase();
       final testQuestions = TestDatabaseHelper.generateTestQuestions(
@@ -33,7 +33,7 @@ void main() {
       );
       await repository.insertQuestions(testQuestions, 'sbf-see');
     });
-    
+
     tearDown(() async {
       await databaseHelper.close();
     });
@@ -44,10 +44,10 @@ void main() {
 
       // App should build without throwing errors
       expect(tester.takeException(), isNull);
-      
+
       // The app should initially show migration screen
       await tester.pump();
-      
+
       // Then navigate to course selection
       await tester.pumpAndSettle(const Duration(seconds: 2));
     });

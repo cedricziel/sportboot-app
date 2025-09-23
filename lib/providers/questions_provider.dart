@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import '../models/course.dart';
 import '../models/course_manifest.dart';
@@ -57,16 +58,18 @@ class QuestionsProvider extends ChangeNotifier {
     });
 
     try {
-      print('[QuestionsProvider] Initializing...');
+      debugPrint('[QuestionsProvider] Initializing...');
       await _storage.init();
-      print('[QuestionsProvider] Storage initialized');
-      
+      debugPrint('[QuestionsProvider] Storage initialized');
+
       // Perform data migration if needed
-      print('[QuestionsProvider] Starting migration check...');
+      debugPrint('[QuestionsProvider] Starting migration check...');
       await _migrationService.migrateDataIfNeeded(
         onProgress: (progress) {
           _migrationProgress = progress;
-          print('[QuestionsProvider] Migration progress: ${(progress * 100).toInt()}%');
+          debugPrint(
+            '[QuestionsProvider] Migration progress: ${(progress * 100).toInt()}%',
+          );
           // Defer the notification to avoid calling it during build
           WidgetsBinding.instance.addPostFrameCallback((_) {
             notifyListeners();
@@ -74,17 +77,17 @@ class QuestionsProvider extends ChangeNotifier {
         },
         onStatusUpdate: (status) {
           _migrationStatus = status;
-          print('[QuestionsProvider] Migration status: $status');
+          debugPrint('[QuestionsProvider] Migration status: $status');
           // Defer the notification to avoid calling it during build
           WidgetsBinding.instance.addPostFrameCallback((_) {
             notifyListeners();
           });
         },
       );
-      print('[QuestionsProvider] Migration completed');
+      debugPrint('[QuestionsProvider] Migration completed');
 
       await loadManifest();
-      print('[QuestionsProvider] Manifest loaded');
+      debugPrint('[QuestionsProvider] Manifest loaded');
 
       // Restore selected course from storage if available
       final storedCourseId = getStoredCourseId();
@@ -137,17 +140,23 @@ class QuestionsProvider extends ChangeNotifier {
 
   // Load questions by category from database
   Future<void> loadCourseById(String courseId) async {
-    await _loadQuestionsFromDatabase(() => _repository.getQuestionsByCourse(courseId));
+    await _loadQuestionsFromDatabase(
+      () => _repository.getQuestionsByCourse(courseId),
+    );
   }
 
   // Load questions by category
   Future<void> loadQuestionsByCategory(String category) async {
-    await _loadQuestionsFromDatabase(() => _repository.getQuestionsByCategory(category));
+    await _loadQuestionsFromDatabase(
+      () => _repository.getQuestionsByCategory(category),
+    );
   }
 
   // Load bookmarked questions from database
   Future<void> loadBookmarkedQuestions() async {
-    await _loadQuestionsFromDatabase(() => _repository.getBookmarkedQuestions());
+    await _loadQuestionsFromDatabase(
+      () => _repository.getBookmarkedQuestions(),
+    );
   }
 
   // Load incorrect questions from database
@@ -164,20 +173,22 @@ class QuestionsProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      print('[QuestionsProvider] Loading questions from database...');
+      debugPrint('[QuestionsProvider] Loading questions from database...');
       _currentQuestions = await loader();
-      print('[QuestionsProvider] Loaded ${_currentQuestions.length} questions');
+      debugPrint(
+        '[QuestionsProvider] Loaded ${_currentQuestions.length} questions',
+      );
       _currentQuestionIndex = 0;
 
       // Apply shuffle if enabled
       if (_storage.getSetting('shuffleQuestions', defaultValue: false)) {
         _currentQuestions.shuffle();
-        print('[QuestionsProvider] Shuffled questions');
+        debugPrint('[QuestionsProvider] Shuffled questions');
       }
 
       _error = null;
     } catch (e) {
-      print('[QuestionsProvider] Error loading questions: $e');
+      debugPrint('[QuestionsProvider] Error loading questions: $e');
       _error = 'Failed to load questions: $e';
       _currentQuestions = [];
     } finally {
@@ -259,14 +270,12 @@ class QuestionsProvider extends ChangeNotifier {
     if (_currentSession == null || currentQuestion == null) return;
 
     final isCorrect = currentQuestion!.isAnswerCorrect(answerIndex);
-    
+
     // Update session with new answer
     final updatedAnswers = Map<String, bool>.from(_currentSession!.answers);
     updatedAnswers[currentQuestion!.id] = isCorrect;
-    
-    _currentSession = _currentSession!.copyWith(
-      answers: updatedAnswers,
-    );
+
+    _currentSession = _currentSession!.copyWith(answers: updatedAnswers);
 
     // Update progress in database
     await _repository.updateProgress(
@@ -287,15 +296,15 @@ class QuestionsProvider extends ChangeNotifier {
   Future<void> toggleBookmark([String? questionId]) async {
     final id = questionId ?? currentQuestion?.id;
     if (id == null) return;
-    
+
     final bookmarks = await _repository.getBookmarkedQuestionIds();
-    
+
     if (bookmarks.contains(id)) {
       await _repository.removeBookmark(id);
     } else {
       await _repository.addBookmark(id);
     }
-    
+
     notifyListeners();
   }
 
@@ -303,7 +312,7 @@ class QuestionsProvider extends ChangeNotifier {
     final bookmarks = await _repository.getBookmarkedQuestionIds();
     return bookmarks.contains(questionId);
   }
-  
+
   Future<bool> isCurrentQuestionBookmarked() async {
     if (currentQuestion == null) return false;
     return isBookmarked(currentQuestion!.id);
@@ -322,17 +331,13 @@ class QuestionsProvider extends ChangeNotifier {
   Future<Map<String, dynamic>> getProgress() async {
     return await _repository.getProgress();
   }
-  
+
   // Get session stats
   Map<String, dynamic> getSessionStats() {
     if (_currentSession == null) {
-      return {
-        'correct': 0,
-        'incorrect': 0,
-        'total': 0,
-      };
+      return {'correct': 0, 'incorrect': 0, 'total': 0};
     }
-    
+
     return {
       'correct': _currentSession!.correctAnswers,
       'incorrect': _currentSession!.incorrectAnswers,
@@ -349,17 +354,17 @@ class QuestionsProvider extends ChangeNotifier {
   }
 
   // Settings
-  bool get shuffleEnabled => 
+  bool get shuffleEnabled =>
       _storage.getSetting('shuffleQuestions', defaultValue: false);
 
   void toggleShuffle() {
     final current = shuffleEnabled;
     _storage.setSetting('shuffleQuestions', !current);
-    
+
     if (!current && _currentQuestions.isNotEmpty) {
       _currentQuestions.shuffle();
     }
-    
+
     notifyListeners();
   }
 }

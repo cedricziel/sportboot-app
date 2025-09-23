@@ -165,7 +165,7 @@ class _QuizScreenState extends State<QuizScreen> {
               LinearProgressIndicator(
                 value: provider.currentQuestions.isNotEmpty
                     ? (provider.currentQuestionIndex + 1) /
-                        provider.currentQuestions.length
+                          provider.currentQuestions.length
                     : 0,
                 backgroundColor: Colors.grey[300],
               ),

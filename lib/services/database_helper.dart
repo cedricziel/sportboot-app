@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -116,7 +117,7 @@ class DatabaseHelper {
       final count = result.first.values.first as int?;
       return count != null && count > 0;
     } catch (e) {
-      print('Error checking if database is populated: $e');
+      debugPrint('Error checking if database is populated: $e');
       return false;
     }
   }

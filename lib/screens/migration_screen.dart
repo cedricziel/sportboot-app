@@ -24,7 +24,7 @@ class _MigrationScreenState extends State<MigrationScreen> {
   Future<void> _initializeApp() async {
     final provider = Provider.of<QuestionsProvider>(context, listen: false);
     await provider.init();
-    
+
     if (mounted) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => const CourseSelectionScreen()),
@@ -43,15 +43,17 @@ class _MigrationScreenState extends State<MigrationScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.sailing,
-                    size: 80,
-                    color: Theme.of(context).colorScheme.primary,
-                  ).animate(
-                    onPlay: (controller) => controller.repeat(),
-                  ).shimmer(
-                    duration: 2.seconds,
-                    color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
-                  ),
+                        Icons.sailing,
+                        size: 80,
+                        color: Theme.of(context).colorScheme.primary,
+                      )
+                      .animate(onPlay: (controller) => controller.repeat())
+                      .shimmer(
+                        duration: 2.seconds,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.primary.withValues(alpha: 0.3),
+                      ),
                   const SizedBox(height: 40),
                   Text(
                     'SBF-See Lernkarten',
@@ -71,9 +73,9 @@ class _MigrationScreenState extends State<MigrationScreen> {
                   SizedBox(
                     width: 250,
                     child: LinearProgressIndicator(
-                      value: provider.migrationProgress > 0 
-                        ? provider.migrationProgress 
-                        : null,
+                      value: provider.migrationProgress > 0
+                          ? provider.migrationProgress
+                          : null,
                       minHeight: 4,
                     ),
                   ),

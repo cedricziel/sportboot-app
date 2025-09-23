@@ -18,24 +18,27 @@ class MigrationService {
     required Function(String) onStatusUpdate,
   }) async {
     try {
-      print('[MigrationService] Checking if database is populated...');
+      debugPrint('[MigrationService] Checking if database is populated...');
       final isPopulated = await _databaseHelper.isDatabasePopulated();
-      print('[MigrationService] Database populated: $isPopulated');
-      
+      debugPrint('[MigrationService] Database populated: $isPopulated');
+
       if (isPopulated) {
         final count = await _questionRepository.getQuestionCount();
-        print('[MigrationService] Database already has $count questions');
+        debugPrint('[MigrationService] Database already has $count questions');
         onStatusUpdate('Database already populated');
         onProgress(1.0);
         return;
       }
 
-      print('[MigrationService] Starting data migration...');
+      debugPrint('[MigrationService] Starting data migration...');
       onStatusUpdate('Starting data migration...');
-      await _performMigration(onProgress: onProgress, onStatusUpdate: onStatusUpdate);
+      await _performMigration(
+        onProgress: onProgress,
+        onStatusUpdate: onStatusUpdate,
+      );
     } catch (e, stackTrace) {
-      print('[MigrationService] Error during migration check: $e');
-      print('[MigrationService] Stack trace: $stackTrace');
+      debugPrint('[MigrationService] Error during migration check: $e');
+      debugPrint('[MigrationService] Stack trace: $stackTrace');
       onStatusUpdate('Migration error: $e');
       rethrow;
     }
@@ -47,7 +50,7 @@ class MigrationService {
   }) async {
     try {
       onProgress(0.0);
-      
+
       final filesToLoad = [
         ('sbf-see/all_questions.yaml', 'all'),
         ('sbf-see/basisfragen.yaml', 'basisfragen'),
@@ -58,35 +61,45 @@ class MigrationService {
       var processedFiles = 0;
 
       for (final (file, courseId) in filesToLoad) {
-        print('[MigrationService] Processing file: $file for course: $courseId');
+        debugPrint(
+          '[MigrationService] Processing file: $file for course: $courseId',
+        );
         onStatusUpdate('Loading $courseId...');
-        
+
         try {
           final yamlString = await rootBundle.loadString('$_basePath$file');
-          print('[MigrationService] Loaded YAML file, size: ${yamlString.length} bytes');
-          
+          debugPrint(
+            '[MigrationService] Loaded YAML file, size: ${yamlString.length} bytes',
+          );
+
           onStatusUpdate('Parsing $courseId...');
           final questions = await compute(_parseYamlInBackground, yamlString);
-          print('[MigrationService] Parsed ${questions.length} questions from $courseId');
-          
+          debugPrint(
+            '[MigrationService] Parsed ${questions.length} questions from $courseId',
+          );
+
           onStatusUpdate('Saving $courseId to database...');
           await _questionRepository.insertQuestions(questions, courseId);
-          print('[MigrationService] Saved ${questions.length} questions to database');
-          
+          debugPrint(
+            '[MigrationService] Saved ${questions.length} questions to database',
+          );
+
           processedFiles++;
           onProgress(processedFiles / totalFiles);
         } catch (e) {
-          print('[MigrationService] Error processing $file: $e');
+          debugPrint('[MigrationService] Error processing $file: $e');
           throw Exception('Failed to process $file: $e');
         }
       }
 
       final totalQuestions = await _questionRepository.getQuestionCount();
-      print('[MigrationService] Migration completed. Total questions in database: $totalQuestions');
+      debugPrint(
+        '[MigrationService] Migration completed. Total questions in database: $totalQuestions',
+      );
       onStatusUpdate('Migration completed successfully');
       onProgress(1.0);
     } catch (e) {
-      print('[MigrationService] Migration failed: $e');
+      debugPrint('[MigrationService] Migration failed: $e');
       onStatusUpdate('Migration failed: $e');
       rethrow;
     }
@@ -98,8 +111,11 @@ class MigrationService {
   }) async {
     onStatusUpdate('Clearing existing data...');
     await _databaseHelper.clearDatabase();
-    
-    await _performMigration(onProgress: onProgress, onStatusUpdate: onStatusUpdate);
+
+    await _performMigration(
+      onProgress: onProgress,
+      onStatusUpdate: onStatusUpdate,
+    );
   }
 
   static List<Question> _parseYamlInBackground(String yamlString) {

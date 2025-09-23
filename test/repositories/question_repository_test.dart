@@ -20,7 +20,7 @@ void main() {
       databaseHelper = DatabaseHelper.instance;
       repository = QuestionRepository();
       await databaseHelper.clearDatabase();
-      
+
       // Generate test questions
       testQuestions = TestDatabaseHelper.generateTestQuestions(count: 5);
     });
@@ -31,11 +31,11 @@ void main() {
 
     test('insertQuestion should add a single question to database', () async {
       final question = testQuestions.first;
-      
+
       final id = await repository.insertQuestion(question, 'test-course');
-      
+
       expect(id, greaterThan(0));
-      
+
       // Verify question was inserted
       final db = await databaseHelper.database;
       final result = await db.query(
@@ -43,7 +43,7 @@ void main() {
         where: 'id = ?',
         whereArgs: [question.id],
       );
-      
+
       expect(result.length, 1);
       expect(result.first['text'], question.question);
       expect(result.first['course_id'], 'test-course');
@@ -51,19 +51,19 @@ void main() {
 
     test('insertQuestions should batch insert multiple questions', () async {
       await repository.insertQuestions(testQuestions, 'test-course');
-      
+
       // Verify all questions were inserted
       final db = await databaseHelper.database;
       final result = await db.query('questions');
-      
+
       expect(result.length, testQuestions.length);
     });
 
     test('getAllQuestions should return all questions', () async {
       await repository.insertQuestions(testQuestions, 'test-course');
-      
+
       final questions = await repository.getAllQuestions();
-      
+
       expect(questions.length, testQuestions.length);
       expect(questions.first.id, testQuestions.first.id);
     });
@@ -78,12 +78,12 @@ void main() {
         count: 2,
         category: 'Category 2',
       );
-      
+
       await repository.insertQuestions(category1Questions, 'test-course');
       await repository.insertQuestions(category2Questions, 'test-course');
-      
+
       final result = await repository.getQuestionsByCategory('Category 1');
-      
+
       expect(result.length, 3);
       expect(result.every((q) => q.category == 'Category 1'), true);
     });
@@ -92,53 +92,55 @@ void main() {
       // Insert questions for different courses
       await repository.insertQuestions(testQuestions.sublist(0, 3), 'course-1');
       await repository.insertQuestions(testQuestions.sublist(3), 'course-2');
-      
+
       final result = await repository.getQuestionsByCourse('course-1');
-      
+
       expect(result.length, 3);
     });
 
     test('addBookmark and removeBookmark should manage bookmarks', () async {
       await repository.insertQuestions(testQuestions, 'test-course');
       final questionId = testQuestions.first.id;
-      
+
       // Add bookmark
       await repository.addBookmark(questionId);
-      
+
       var bookmarks = await repository.getBookmarkedQuestionIds();
       expect(bookmarks.contains(questionId), true);
-      
+
       // Remove bookmark
       await repository.removeBookmark(questionId);
-      
+
       bookmarks = await repository.getBookmarkedQuestionIds();
       expect(bookmarks.contains(questionId), false);
     });
 
-    test('getBookmarkedQuestions should return only bookmarked questions', () async {
-      await repository.insertQuestions(testQuestions, 'test-course');
-      
-      // Bookmark first two questions
-      await repository.addBookmark(testQuestions[0].id);
-      await repository.addBookmark(testQuestions[1].id);
-      
-      final bookmarked = await repository.getBookmarkedQuestions();
-      
-      expect(bookmarked.length, 2);
-      expect(bookmarked.map((q) => q.id), 
-        containsAll([testQuestions[0].id, testQuestions[1].id]));
-    });
+    test(
+      'getBookmarkedQuestions should return only bookmarked questions',
+      () async {
+        await repository.insertQuestions(testQuestions, 'test-course');
+
+        // Bookmark first two questions
+        await repository.addBookmark(testQuestions[0].id);
+        await repository.addBookmark(testQuestions[1].id);
+
+        final bookmarked = await repository.getBookmarkedQuestions();
+
+        expect(bookmarked.length, 2);
+        expect(
+          bookmarked.map((q) => q.id),
+          containsAll([testQuestions[0].id, testQuestions[1].id]),
+        );
+      },
+    );
 
     test('updateProgress should track question answers', () async {
       await repository.insertQuestions(testQuestions, 'test-course');
       final questionId = testQuestions.first.id;
-      
+
       // Answer correctly
-      await repository.updateProgress(
-        questionId: questionId,
-        isCorrect: true,
-      );
-      
+      await repository.updateProgress(questionId: questionId, isCorrect: true);
+
       // Check progress was recorded
       final db = await databaseHelper.database;
       final result = await db.query(
@@ -146,56 +148,58 @@ void main() {
         where: 'question_id = ?',
         whereArgs: [questionId],
       );
-      
+
       expect(result.length, 1);
       expect(result.first['times_correct'], 1);
       expect(result.first['times_incorrect'], 0);
       expect(result.first['last_answer_correct'], 1);
-      
+
       // Answer incorrectly
-      await repository.updateProgress(
-        questionId: questionId,
-        isCorrect: false,
-      );
-      
+      await repository.updateProgress(questionId: questionId, isCorrect: false);
+
       final updatedResult = await db.query(
         'progress',
         where: 'question_id = ?',
         whereArgs: [questionId],
       );
-      
+
       expect(updatedResult.first['times_correct'], 1);
       expect(updatedResult.first['times_incorrect'], 1);
       expect(updatedResult.first['last_answer_correct'], 0);
     });
 
-    test('getIncorrectQuestions should return questions answered incorrectly', () async {
-      await repository.insertQuestions(testQuestions, 'test-course');
-      
-      // Mark some questions as incorrect
-      await repository.updateProgress(
-        questionId: testQuestions[0].id,
-        isCorrect: false,
-      );
-      await repository.updateProgress(
-        questionId: testQuestions[1].id,
-        isCorrect: false,
-      );
-      await repository.updateProgress(
-        questionId: testQuestions[2].id,
-        isCorrect: true,
-      );
-      
-      final incorrect = await repository.getIncorrectQuestions();
-      
-      expect(incorrect.length, 2);
-      expect(incorrect.map((q) => q.id), 
-        containsAll([testQuestions[0].id, testQuestions[1].id]));
-    });
+    test(
+      'getIncorrectQuestions should return questions answered incorrectly',
+      () async {
+        await repository.insertQuestions(testQuestions, 'test-course');
+
+        // Mark some questions as incorrect
+        await repository.updateProgress(
+          questionId: testQuestions[0].id,
+          isCorrect: false,
+        );
+        await repository.updateProgress(
+          questionId: testQuestions[1].id,
+          isCorrect: false,
+        );
+        await repository.updateProgress(
+          questionId: testQuestions[2].id,
+          isCorrect: true,
+        );
+
+        final incorrect = await repository.getIncorrectQuestions();
+
+        expect(incorrect.length, 2);
+        expect(
+          incorrect.map((q) => q.id),
+          containsAll([testQuestions[0].id, testQuestions[1].id]),
+        );
+      },
+    );
 
     test('getProgress should return overall statistics', () async {
       await repository.insertQuestions(testQuestions, 'test-course');
-      
+
       // Create some progress
       await repository.updateProgress(
         questionId: testQuestions[0].id,
@@ -209,9 +213,9 @@ void main() {
         questionId: testQuestions[2].id,
         isCorrect: true,
       );
-      
+
       final progress = await repository.getProgress();
-      
+
       expect(progress['overall'], isNotNull);
       final overall = progress['overall'] as Map<String, dynamic>;
       expect(overall['total'], 3);
@@ -221,26 +225,26 @@ void main() {
 
     test('getQuestionCount should return correct count', () async {
       await repository.insertQuestions(testQuestions, 'test-course');
-      
+
       final count = await repository.getQuestionCount();
-      
+
       expect(count, testQuestions.length);
     });
 
     test('getBookmarkCount should return correct count', () async {
       await repository.insertQuestions(testQuestions, 'test-course');
-      
+
       await repository.addBookmark(testQuestions[0].id);
       await repository.addBookmark(testQuestions[1].id);
-      
+
       final count = await repository.getBookmarkCount();
-      
+
       expect(count, 2);
     });
 
     test('getIncorrectCount should return correct count', () async {
       await repository.insertQuestions(testQuestions, 'test-course');
-      
+
       await repository.updateProgress(
         questionId: testQuestions[0].id,
         isCorrect: false,
@@ -253,9 +257,9 @@ void main() {
         questionId: testQuestions[2].id,
         isCorrect: true,
       );
-      
+
       final count = await repository.getIncorrectCount();
-      
+
       expect(count, 2);
     });
 
@@ -271,14 +275,14 @@ void main() {
         category: 'Test Category',
         assets: ['image1.png', 'image2.png'],
       );
-      
+
       await repository.insertQuestion(question, 'test-course');
-      
+
       final retrieved = await repository.getAllQuestions();
-      
+
       expect(retrieved.length, 1);
       final result = retrieved.first;
-      
+
       expect(result.id, question.id);
       expect(result.number, question.number);
       expect(result.question, question.question);

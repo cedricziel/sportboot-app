@@ -9,18 +9,16 @@ class QuestionRepository {
 
   Future<int> insertQuestion(Question question, String courseId) async {
     final db = await _databaseHelper.database;
-    
+
     final correctAnswerIndex = question.options.indexWhere((o) => o.isCorrect);
-    
+
     final values = {
       'id': question.id,
       'course_id': courseId,
       'category': question.category,
       'number': question.number,
       'text': question.question,
-      'options': jsonEncode(
-        question.options.map((o) => o.toMap()).toList(),
-      ),
+      'options': jsonEncode(question.options.map((o) => o.toMap()).toList()),
       'correct_answer': correctAnswerIndex,
       'assets': question.assets.isNotEmpty ? jsonEncode(question.assets) : null,
       'created_at': DateTime.now().millisecondsSinceEpoch,
@@ -34,24 +32,29 @@ class QuestionRepository {
     );
   }
 
-  Future<void> insertQuestions(List<Question> questions, String courseId) async {
+  Future<void> insertQuestions(
+    List<Question> questions,
+    String courseId,
+  ) async {
     final db = await _databaseHelper.database;
     final batch = db.batch();
 
     for (final question in questions) {
-      final correctAnswerIndex = question.options.indexWhere((o) => o.isCorrect);
-      
+      final correctAnswerIndex = question.options.indexWhere(
+        (o) => o.isCorrect,
+      );
+
       final values = {
         'id': question.id,
         'course_id': courseId,
         'category': question.category,
         'number': question.number,
         'text': question.question,
-        'options': jsonEncode(
-          question.options.map((o) => o.toMap()).toList(),
-        ),
+        'options': jsonEncode(question.options.map((o) => o.toMap()).toList()),
         'correct_answer': correctAnswerIndex,
-        'assets': question.assets.isNotEmpty ? jsonEncode(question.assets) : null,
+        'assets': question.assets.isNotEmpty
+            ? jsonEncode(question.assets)
+            : null,
         'created_at': DateTime.now().millisecondsSinceEpoch,
         'updated_at': DateTime.now().millisecondsSinceEpoch,
       };
@@ -125,14 +128,10 @@ class QuestionRepository {
 
   Future<void> addBookmark(String questionId) async {
     final db = await _databaseHelper.database;
-    await db.insert(
-      DatabaseHelper.tableBookmarks,
-      {
-        'question_id': questionId,
-        'bookmarked_at': DateTime.now().millisecondsSinceEpoch,
-      },
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await db.insert(DatabaseHelper.tableBookmarks, {
+      'question_id': questionId,
+      'bookmarked_at': DateTime.now().millisecondsSinceEpoch,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<void> removeBookmark(String questionId) async {
@@ -150,7 +149,7 @@ class QuestionRepository {
       DatabaseHelper.tableBookmarks,
       columns: ['question_id'],
     );
-    
+
     return maps.map((m) => m['question_id'] as String).toSet();
   }
 
@@ -159,7 +158,7 @@ class QuestionRepository {
     required bool isCorrect,
   }) async {
     final db = await _databaseHelper.database;
-    
+
     final existing = await db.query(
       DatabaseHelper.tableProgress,
       where: 'question_id = ?',
@@ -167,19 +166,17 @@ class QuestionRepository {
     );
 
     if (existing.isEmpty) {
-      await db.insert(
-        DatabaseHelper.tableProgress,
-        {
-          'question_id': questionId,
-          'times_shown': 1,
-          'times_correct': isCorrect ? 1 : 0,
-          'times_incorrect': isCorrect ? 0 : 1,
-          'last_answered_at': DateTime.now().millisecondsSinceEpoch,
-          'last_answer_correct': isCorrect ? 1 : 0,
-        },
-      );
+      await db.insert(DatabaseHelper.tableProgress, {
+        'question_id': questionId,
+        'times_shown': 1,
+        'times_correct': isCorrect ? 1 : 0,
+        'times_incorrect': isCorrect ? 0 : 1,
+        'last_answered_at': DateTime.now().millisecondsSinceEpoch,
+        'last_answer_correct': isCorrect ? 1 : 0,
+      });
     } else {
-      await db.rawUpdate('''
+      await db.rawUpdate(
+        '''
         UPDATE ${DatabaseHelper.tableProgress}
         SET times_shown = times_shown + 1,
             times_correct = times_correct + ?,
@@ -187,19 +184,21 @@ class QuestionRepository {
             last_answered_at = ?,
             last_answer_correct = ?
         WHERE question_id = ?
-      ''', [
-        isCorrect ? 1 : 0,
-        isCorrect ? 0 : 1,
-        DateTime.now().millisecondsSinceEpoch,
-        isCorrect ? 1 : 0,
-        questionId,
-      ]);
+      ''',
+        [
+          isCorrect ? 1 : 0,
+          isCorrect ? 0 : 1,
+          DateTime.now().millisecondsSinceEpoch,
+          isCorrect ? 1 : 0,
+          questionId,
+        ],
+      );
     }
   }
 
   Future<Map<String, dynamic>> getProgress() async {
     final db = await _databaseHelper.database;
-    
+
     final totalResult = await db.rawQuery('''
       SELECT 
         COUNT(*) as total,
@@ -219,22 +218,23 @@ class QuestionRepository {
       GROUP BY q.category
     ''');
 
-    return {
-      'overall': totalResult.first,
-      'byCategory': categoriesResult,
-    };
+    return {'overall': totalResult.first, 'byCategory': categoriesResult};
   }
 
   Future<int> getQuestionCount() async {
     final db = await _databaseHelper.database;
-    final result = await db.rawQuery('SELECT COUNT(*) FROM ${DatabaseHelper.tableQuestions}');
+    final result = await db.rawQuery(
+      'SELECT COUNT(*) FROM ${DatabaseHelper.tableQuestions}',
+    );
     final count = result.first.values.first as int?;
     return count ?? 0;
   }
 
   Future<int> getBookmarkCount() async {
     final db = await _databaseHelper.database;
-    final result = await db.rawQuery('SELECT COUNT(*) FROM ${DatabaseHelper.tableBookmarks}');
+    final result = await db.rawQuery(
+      'SELECT COUNT(*) FROM ${DatabaseHelper.tableBookmarks}',
+    );
     final count = result.first.values.first as int?;
     return count ?? 0;
   }

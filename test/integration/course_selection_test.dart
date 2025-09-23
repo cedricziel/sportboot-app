@@ -15,13 +15,13 @@ void main() {
     setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
       SharedPreferences.setMockInitialValues({});
-      
+
       // Initialize test database
       await TestDatabaseHelper.initializeTestDatabase();
-      
+
       storage = StorageService();
       await storage.init();
-      
+
       databaseHelper = DatabaseHelper.instance;
       repository = QuestionRepository();
     });
@@ -31,7 +31,7 @@ void main() {
       SharedPreferences.setMockInitialValues({});
       storage = StorageService();
       await storage.init();
-      
+
       // Clear and setup test database with some questions
       await databaseHelper.clearDatabase();
       final testQuestions = TestDatabaseHelper.generateTestQuestions(
