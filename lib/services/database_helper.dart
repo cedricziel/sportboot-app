@@ -2,10 +2,12 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import '../exceptions/database_exceptions.dart';
 
 class DatabaseHelper {
   static const String _databaseName = 'sportboot.db';
-  static const int _databaseVersion = 1;
+  static const int _databaseVersion =
+      2; // Incremented for new indexes and foreign key constraints
 
   static const String tableQuestions = 'questions';
   static const String tableProgress = 'progress';
@@ -24,13 +26,27 @@ class DatabaseHelper {
   }
 
   Future<Database> _initDatabase() async {
-    final String path = join(await getDatabasesPath(), _databaseName);
-    return await openDatabase(
-      path,
-      version: _databaseVersion,
-      onCreate: _onCreate,
-      onUpgrade: _onUpgrade,
-    );
+    try {
+      final String path = join(await getDatabasesPath(), _databaseName);
+      return await openDatabase(
+        path,
+        version: _databaseVersion,
+        onCreate: _onCreate,
+        onUpgrade: _onUpgrade,
+        onConfigure: _onConfigure,
+      );
+    } catch (e, stackTrace) {
+      throw DatabaseInitializationException(
+        message: 'Failed to initialize database',
+        originalError: e,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  Future<void> _onConfigure(Database db) async {
+    // Enable foreign key constraints for data integrity
+    await db.execute('PRAGMA foreign_keys = ON');
   }
 
   Future<void> _onCreate(Database db, int version) async {
@@ -57,6 +73,11 @@ class DatabaseHelper {
       CREATE INDEX idx_questions_course ON $tableQuestions(course_id)
     ''');
 
+    // Composite index for common query patterns
+    await db.execute('''
+      CREATE INDEX idx_questions_course_category ON $tableQuestions(course_id, category)
+    ''');
+
     await db.execute('''
       CREATE TABLE $tableProgress (
         question_id TEXT PRIMARY KEY,
@@ -65,16 +86,32 @@ class DatabaseHelper {
         times_incorrect INTEGER DEFAULT 0,
         last_answered_at INTEGER,
         last_answer_correct INTEGER,
-        FOREIGN KEY (question_id) REFERENCES $tableQuestions (id)
+        FOREIGN KEY (question_id) REFERENCES $tableQuestions (id) ON DELETE CASCADE
       )
+    ''');
+
+    // Index for finding questions with incorrect answers
+    await db.execute('''
+      CREATE INDEX idx_progress_incorrect ON $tableProgress(times_incorrect) 
+      WHERE times_incorrect > 0
+    ''');
+
+    // Index for last answered questions
+    await db.execute('''
+      CREATE INDEX idx_progress_last_answered ON $tableProgress(last_answered_at DESC)
     ''');
 
     await db.execute('''
       CREATE TABLE $tableBookmarks (
         question_id TEXT PRIMARY KEY,
         bookmarked_at INTEGER NOT NULL,
-        FOREIGN KEY (question_id) REFERENCES $tableQuestions (id)
+        FOREIGN KEY (question_id) REFERENCES $tableQuestions (id) ON DELETE CASCADE
       )
+    ''');
+
+    // Index for sorting bookmarks by date
+    await db.execute('''
+      CREATE INDEX idx_bookmarks_date ON $tableBookmarks(bookmarked_at DESC)
     ''');
 
     await db.execute('''
@@ -96,12 +133,76 @@ class DatabaseHelper {
     }
   }
 
+  /// Execute a function within a database transaction
+  Future<T> executeInTransaction<T>(
+    Future<T> Function(Transaction txn) action,
+  ) async {
+    final db = await database;
+    try {
+      return await db.transaction((txn) async {
+        return await action(txn);
+      });
+    } catch (e, stackTrace) {
+      throw TransactionException(
+        message: 'Transaction failed',
+        originalError: e,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  /// Execute multiple operations atomically in a batch
+  Future<List<Object?>> executeBatch(
+    void Function(Batch batch) operations,
+  ) async {
+    final db = await database;
+    try {
+      final batch = db.batch();
+      operations(batch);
+      return await batch.commit(noResult: false);
+    } catch (e, stackTrace) {
+      throw TransactionException(
+        message: 'Batch operation failed',
+        originalError: e,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  /// Execute multiple operations atomically without returning results
+  Future<void> executeBatchNoResult(
+    void Function(Batch batch) operations,
+  ) async {
+    final db = await database;
+    try {
+      final batch = db.batch();
+      operations(batch);
+      await batch.commit(noResult: true);
+    } catch (e, stackTrace) {
+      throw TransactionException(
+        message: 'Batch operation failed',
+        originalError: e,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
   Future<void> clearDatabase() async {
     final db = await database;
-    await db.delete(tableQuestions);
-    await db.delete(tableProgress);
-    await db.delete(tableBookmarks);
-    await db.delete(tableSettings);
+    try {
+      await db.transaction((txn) async {
+        await txn.delete(tableQuestions);
+        await txn.delete(tableProgress);
+        await txn.delete(tableBookmarks);
+        await txn.delete(tableSettings);
+      });
+    } catch (e, stackTrace) {
+      throw QueryException(
+        message: 'Failed to clear database',
+        originalError: e,
+        stackTrace: stackTrace,
+      );
+    }
   }
 
   Future<void> close() async {

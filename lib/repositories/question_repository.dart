@@ -3,9 +3,12 @@ import 'package:sqflite/sqflite.dart';
 import '../models/question.dart';
 import '../models/answer_option.dart';
 import '../services/database_helper.dart';
+import '../services/cache_service.dart';
+import '../exceptions/database_exceptions.dart';
 
 class QuestionRepository {
   final DatabaseHelper _databaseHelper = DatabaseHelper.instance;
+  final CacheService _cache = CacheService();
 
   Future<int> insertQuestion(Question question, String courseId) async {
     final db = await _databaseHelper.database;
@@ -36,47 +39,64 @@ class QuestionRepository {
     List<Question> questions,
     String courseId,
   ) async {
-    final db = await _databaseHelper.database;
-    final batch = db.batch();
+    if (questions.isEmpty) return;
 
+    // Validate data before insertion
     for (final question in questions) {
-      final correctAnswerIndex = question.options.indexWhere(
-        (o) => o.isCorrect,
-      );
-
-      final values = {
-        'id': question.id,
-        'course_id': courseId,
-        'category': question.category,
-        'number': question.number,
-        'text': question.question,
-        'options': jsonEncode(question.options.map((o) => o.toMap()).toList()),
-        'correct_answer': correctAnswerIndex,
-        'assets': question.assets.isNotEmpty
-            ? jsonEncode(question.assets)
-            : null,
-        'created_at': DateTime.now().millisecondsSinceEpoch,
-        'updated_at': DateTime.now().millisecondsSinceEpoch,
-      };
-
-      batch.insert(
-        DatabaseHelper.tableQuestions,
-        values,
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
+      if (question.id.isEmpty) {
+        throw DataValidationException(
+          message: 'Question ID cannot be empty',
+          field: 'id',
+          invalidValue: question.id,
+        );
+      }
     }
 
-    await batch.commit(noResult: true);
+    // Invalidate cache for this course
+    _cache.invalidatePattern('questions_course_$courseId.*');
+    _cache.invalidate('all_questions');
+
+    await _databaseHelper.executeBatchNoResult((batch) {
+      for (final question in questions) {
+        final correctAnswerIndex = question.options.indexWhere(
+          (o) => o.isCorrect,
+        );
+
+        final values = {
+          'id': question.id,
+          'course_id': courseId,
+          'category': question.category,
+          'number': question.number,
+          'text': question.question,
+          'options': jsonEncode(
+            question.options.map((o) => o.toMap()).toList(),
+          ),
+          'correct_answer': correctAnswerIndex,
+          'assets': question.assets.isNotEmpty
+              ? jsonEncode(question.assets)
+              : null,
+          'created_at': DateTime.now().millisecondsSinceEpoch,
+          'updated_at': DateTime.now().millisecondsSinceEpoch,
+        };
+
+        batch.insert(
+          DatabaseHelper.tableQuestions,
+          values,
+          conflictAlgorithm: ConflictAlgorithm.replace,
+        );
+      }
+    });
   }
 
   Future<List<Question>> getAllQuestions() async {
-    final db = await _databaseHelper.database;
-    final maps = await db.query(
-      DatabaseHelper.tableQuestions,
-      orderBy: 'number ASC',
-    );
-
-    return _mapToQuestions(maps);
+    return await _cache.getOrCompute<List<Question>>('all_questions', () async {
+      final db = await _databaseHelper.database;
+      final maps = await db.query(
+        DatabaseHelper.tableQuestions,
+        orderBy: 'number ASC',
+      );
+      return _mapToQuestions(maps);
+    }, duration: const Duration(minutes: 10));
   }
 
   Future<List<Question>> getQuestionsByCategory(String category) async {
@@ -270,4 +290,107 @@ class QuestionRepository {
       );
     }).toList();
   }
+
+  /// Get questions with pagination support
+  Future<PaginatedResult<Question>> getQuestionsPaginated({
+    int page = 1,
+    int pageSize = 20,
+    String? category,
+    String? courseId,
+  }) async {
+    if (page < 1) {
+      throw DataValidationException(
+        message: 'Page number must be greater than 0',
+        field: 'page',
+        invalidValue: page,
+      );
+    }
+
+    if (pageSize < 1 || pageSize > 100) {
+      throw DataValidationException(
+        message: 'Page size must be between 1 and 100',
+        field: 'pageSize',
+        invalidValue: pageSize,
+      );
+    }
+
+    final db = await _databaseHelper.database;
+    final offset = (page - 1) * pageSize;
+
+    // Build where clause
+    final whereClauses = <String>[];
+    final whereArgs = <dynamic>[];
+
+    if (category != null) {
+      whereClauses.add('category = ?');
+      whereArgs.add(category);
+    }
+
+    if (courseId != null) {
+      whereClauses.add('course_id = ?');
+      whereArgs.add(courseId);
+    }
+
+    final whereClause = whereClauses.isNotEmpty
+        ? whereClauses.join(' AND ')
+        : null;
+
+    // Get total count
+    final countResult = await db.rawQuery(
+      'SELECT COUNT(*) as count FROM ${DatabaseHelper.tableQuestions}${whereClause != null ? ' WHERE $whereClause' : ''}',
+      whereArgs,
+    );
+
+    final totalCount = (countResult.first['count'] as int?) ?? 0;
+
+    // Get paginated results
+    final maps = await db.query(
+      DatabaseHelper.tableQuestions,
+      where: whereClause,
+      whereArgs: whereArgs,
+      orderBy: 'number ASC',
+      limit: pageSize,
+      offset: offset,
+    );
+
+    final questions = _mapToQuestions(maps);
+
+    return PaginatedResult(
+      items: questions,
+      page: page,
+      pageSize: pageSize,
+      totalCount: totalCount,
+      totalPages: (totalCount / pageSize).ceil(),
+    );
+  }
+
+  /// Clear all caches
+  void clearCache() {
+    _cache.clear();
+  }
+
+  /// Dispose resources
+  void dispose() {
+    _cache.dispose();
+  }
+}
+
+/// Result class for paginated queries
+class PaginatedResult<T> {
+  final List<T> items;
+  final int page;
+  final int pageSize;
+  final int totalCount;
+  final int totalPages;
+
+  const PaginatedResult({
+    required this.items,
+    required this.page,
+    required this.pageSize,
+    required this.totalCount,
+    required this.totalPages,
+  });
+
+  bool get hasNextPage => page < totalPages;
+  bool get hasPreviousPage => page > 1;
 }
