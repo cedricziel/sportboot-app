@@ -18,7 +18,11 @@ class TestDatabaseHelper {
 
     _testDatabase = await openDatabase(
       inMemoryDatabasePath,
-      version: 1,
+      version: 2, // Match production database version
+      onConfigure: (db) async {
+        // Enable foreign keys to match production
+        await db.execute('PRAGMA foreign_keys = ON');
+      },
       onCreate: (db, version) async {
         await db.execute('''
           CREATE TABLE questions (
@@ -43,6 +47,11 @@ class TestDatabaseHelper {
           CREATE INDEX idx_questions_course ON questions(course_id)
         ''');
 
+        // Add composite index to match production
+        await db.execute('''
+          CREATE INDEX idx_questions_course_category ON questions(course_id, category)
+        ''');
+
         await db.execute('''
           CREATE TABLE progress (
             question_id TEXT PRIMARY KEY,
@@ -51,16 +60,31 @@ class TestDatabaseHelper {
             times_incorrect INTEGER DEFAULT 0,
             last_answered_at INTEGER,
             last_answer_correct INTEGER,
-            FOREIGN KEY (question_id) REFERENCES questions (id)
+            FOREIGN KEY (question_id) REFERENCES questions (id) ON DELETE CASCADE
           )
+        ''');
+
+        // Add indexes for progress table
+        await db.execute('''
+          CREATE INDEX idx_progress_incorrect ON progress(times_incorrect) 
+          WHERE times_incorrect > 0
+        ''');
+
+        await db.execute('''
+          CREATE INDEX idx_progress_last_answered ON progress(last_answered_at DESC)
         ''');
 
         await db.execute('''
           CREATE TABLE bookmarks (
             question_id TEXT PRIMARY KEY,
             bookmarked_at INTEGER NOT NULL,
-            FOREIGN KEY (question_id) REFERENCES questions (id)
+            FOREIGN KEY (question_id) REFERENCES questions (id) ON DELETE CASCADE
           )
+        ''');
+
+        // Add index for bookmarks
+        await db.execute('''
+          CREATE INDEX idx_bookmarks_date ON bookmarks(bookmarked_at DESC)
         ''');
 
         await db.execute('''

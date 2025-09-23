@@ -25,7 +25,7 @@ void main() {
     test('Database should be initialized with correct version', () async {
       final db = await databaseHelper.database;
       final version = await db.getVersion();
-      expect(version, 1);
+      expect(version, 2); // Updated to match current database version
     });
 
     test('Database should have all required tables', () async {
