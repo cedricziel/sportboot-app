@@ -1,5 +1,6 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
-import 'dart:convert';
 import 'package:yaml/yaml.dart';
 import 'package:sportboot_app/models/course.dart';
 import 'package:sportboot_app/models/course_manifest.dart';

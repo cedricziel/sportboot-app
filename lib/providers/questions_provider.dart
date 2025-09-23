@@ -332,8 +332,9 @@ class QuestionsProvider extends ChangeNotifier {
   }
 
   Map<String, int> getSessionStats() {
-    if (_currentSession == null)
+    if (_currentSession == null) {
       return {'correct': 0, 'incorrect': 0, 'unanswered': 0};
+    }
 
     return {
       'correct': _currentSession!.correctAnswers,
