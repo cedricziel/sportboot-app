@@ -54,13 +54,13 @@ class DatabaseHelper {
     try {
       final String dbName = _customDatabaseName ?? _databaseName;
 
-      // For test databases, use in-memory database
-      // This avoids file system issues and is faster
+      // For test databases, use a simple file path to avoid platform channel issues
+      // This ensures tests work in CI without needing platform-specific paths
       final String path;
       if (_isTestDatabase) {
-        // Use in-memory database for tests
-        // Each instance gets its own memory space
-        path = ':memory:';
+        // Use a simple file path for tests
+        // This avoids getDatabasesPath() which requires platform channels
+        path = dbName;
       } else {
         // Production path using platform-specific database directory
         path = join(await getDatabasesPath(), dbName);
