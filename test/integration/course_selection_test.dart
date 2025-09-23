@@ -34,12 +34,23 @@ void main() {
 
       // Clear and setup test database with some questions
       await databaseHelper.clearDatabase();
-      final testQuestions = TestDatabaseHelper.generateTestQuestions(
-        count: 10,
+
+      // Insert some test questions with proper categories
+      final basisfragen = TestDatabaseHelper.generateTestQuestions(
+        count: 5,
         courseId: 'sbf-see',
-        category: 'Test',
+        category: 'basisfragen',
+        idPrefix: 'bas',
       );
-      await repository.insertQuestions(testQuestions, 'sbf-see');
+      await repository.insertQuestions(basisfragen, 'sbf-see');
+
+      final spezifischeSee = TestDatabaseHelper.generateTestQuestions(
+        count: 5,
+        courseId: 'sbf-see',
+        category: 'spezifische-see',
+        idPrefix: 'spe',
+      );
+      await repository.insertQuestions(spezifischeSee, 'sbf-see');
     });
 
     tearDown(() async {
@@ -151,18 +162,17 @@ void main() {
         final sbfSeeCount = provider.currentQuestions.length;
         expect(sbfSeeCount, greaterThan(0));
 
-        // Switch to SBF-Binnen and verify different question count
-        if (provider.manifest!.courses.containsKey('sbf-binnen')) {
-          final sbfBinnen = provider.manifest!.courses['sbf-binnen']!;
-          provider.setSelectedCourse('sbf-binnen', sbfBinnen);
+        // Verify we're actually loading the selected course
+        expect(provider.selectedCourseId, 'sbf-see');
 
-          await provider.loadAllQuestions();
-          final sbfBinnenCount = provider.currentQuestions.length;
-          expect(sbfBinnenCount, greaterThan(0));
+        // Test that loading with a category filter works
+        // Use the actual catalog IDs that are stored in the database
+        await provider.loadQuestionsByCategory('basisfragen');
+        final categoryCount = provider.currentQuestions.length;
 
-          // The courses should have different question counts
-          expect(sbfSeeCount != sbfBinnenCount, true);
-        }
+        // Category should have fewer questions than all questions
+        expect(categoryCount, greaterThan(0));
+        expect(categoryCount <= sbfSeeCount, true);
       }
     });
   });

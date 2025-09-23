@@ -4,7 +4,8 @@ import 'package:sportboot_app/models/answer_option.dart';
 import 'package:sportboot_app/repositories/question_repository.dart';
 
 class TestDatabaseHelper {
-  static Database? _testDatabase;
+  static int _dbCounter = 0;
+  static final Map<String, Database> _databases = {};
 
   static Future<void> initializeTestDatabase() async {
     // Initialize FFI for desktop testing
@@ -13,12 +14,15 @@ class TestDatabaseHelper {
   }
 
   static Future<Database> getTestDatabase() async {
-    if (_testDatabase != null && _testDatabase!.isOpen) {
-      return _testDatabase!;
+    // Create a unique database for each test to avoid locking issues
+    final dbName = 'test_db_${++_dbCounter}.db';
+
+    if (_databases.containsKey(dbName) && _databases[dbName]!.isOpen) {
+      return _databases[dbName]!;
     }
 
-    _testDatabase = await openDatabase(
-      inMemoryDatabasePath,
+    _databases[dbName] = await openDatabase(
+      dbName,
       version: 2, // Match production database version
       onConfigure: (db) async {
         // Enable foreign keys to match production
@@ -98,14 +102,17 @@ class TestDatabaseHelper {
       },
     );
 
-    return _testDatabase!;
+    return _databases[dbName]!;
   }
 
   static Future<void> closeTestDatabase() async {
-    if (_testDatabase != null && _testDatabase!.isOpen) {
-      await _testDatabase!.close();
+    // Close all test databases
+    for (final db in _databases.values) {
+      if (db.isOpen) {
+        await db.close();
+      }
     }
-    _testDatabase = null;
+    _databases.clear();
   }
 
   static Future<void> clearTestDatabase() async {
