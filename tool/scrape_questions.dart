@@ -1,6 +1,8 @@
 #!/usr/bin/env dart
 
 import 'dart:io';
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as html_parser;
 import 'package:html/dom.dart';
@@ -51,14 +53,30 @@ class Course {
   }
 }
 
+class Answer {
+  final String id;
+  final String text;
+  final bool isCorrect;
+
+  Answer({required this.id, required this.text, required this.isCorrect});
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'text': text,
+    'isCorrect': isCorrect,
+  };
+}
+
 class Question {
+  final String id;
   final int number;
   final String text;
-  final List<String> answers;
+  final List<Answer> answers;
   final String category;
   final String? image;
 
   Question({
+    required this.id,
     required this.number,
     required this.text,
     required this.answers,
@@ -67,9 +85,10 @@ class Question {
   });
 
   Map<String, dynamic> toJson() => {
+    'id': id,
     'number': number,
     'text': text,
-    'answers': answers,
+    'answers': answers.map((a) => a.toJson()).toList(),
     'category': category,
     if (image != null) 'image': image,
   };
@@ -77,6 +96,36 @@ class Question {
 
 class QuestionScraper {
   final String cacheDir = '.cache';
+
+  /// Generate a unique ID for a question based on its content
+  String generateQuestionId(int number, String text, String category) {
+    final content = '$category-$number-${_normalizeText(text)}';
+    final hash = _generateHash(content);
+    return 'q_$hash';
+  }
+
+  /// Generate a unique ID for an answer based on its content
+  String generateAnswerId(String questionId, int index, String text) {
+    final content = '$questionId-$index-${_normalizeText(text)}';
+    final hash = _generateHash(content);
+    return 'a_$hash';
+  }
+
+  /// Generate SHA-256 hash and return first 12 characters
+  String _generateHash(String content) {
+    final bytes = utf8.encode(content);
+    final digest = sha256.convert(bytes);
+    return digest.toString().substring(0, 12);
+  }
+
+  /// Normalize text to ensure consistent ID generation
+  String _normalizeText(String text) {
+    return text
+        .toLowerCase()
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .replaceAll(RegExp(r'[^\w\s]'), '')
+        .trim();
+  }
 
   Future<void> run() async {
     print('🚀 Starting question scraping...\n');
@@ -187,45 +236,80 @@ class QuestionScraper {
       final questionNum = int.parse(questionMatch.group(1)!);
       final questionText = questionMatch.group(2)!;
 
-      // Look for the next <ol> element with answers
-      Element? answerList;
-      for (int j = i + 1; j < paragraphs.length && j < i + 5; j++) {
-        final nextElement = paragraphs[j].nextElementSibling;
-        if (nextElement != null && nextElement.localName == 'ol') {
-          if (nextElement.classes.contains('elwisOL-lowerLiteral')) {
-            answerList = nextElement;
-            break;
+      // Look for any associated images in the next paragraph
+      String? imageFile;
+      
+      // Check the next element - it might be a paragraph containing an image
+      var nextElement = p.nextElementSibling;
+      if (nextElement != null && nextElement.localName == 'p') {
+        // Look for img tags within this paragraph
+        final imgs = nextElement.querySelectorAll('img');
+        if (imgs.isNotEmpty) {
+          final src = imgs.first.attributes['src'];
+          if (src != null && src.contains('Frage')) {
+            // Extract just the filename from the path
+            final filename = src.split('/').last.split('?').first;
+            imageFile = filename;
           }
         }
       }
-
-      if (answerList == null) {
-        // Try finding ol directly after this paragraph
-        var sibling = p.nextElementSibling;
-        while (sibling != null &&
-            sibling.localName != 'ol' &&
-            sibling.localName != 'p') {
-          sibling = sibling.nextElementSibling;
+      
+      // Look for the <ol> element with answers after this question
+      Element? answerList;
+      
+      // Search through siblings to find the answer list
+      // Skip over any intervening paragraphs (including image containers)
+      var sibling = p.nextElementSibling;
+      while (sibling != null) {
+        if (sibling.localName == 'ol') {
+          // Check if it's the right type of list (with class or just any ol)
+          if (sibling.classes.contains('elwisOL-lowerLiteral') || 
+              sibling.querySelectorAll('li').length >= 3) {
+            answerList = sibling;
+            break;
+          }
         }
-        if (sibling != null && sibling.localName == 'ol') {
-          answerList = sibling;
+        // Stop if we hit another question paragraph
+        if (sibling.localName == 'p' && RegExp(r'^\d+\.').hasMatch(sibling.text.trim())) {
+          break;
         }
+        sibling = sibling.nextElementSibling;
       }
 
       if (answerList != null) {
-        final answers = answerList
+        final answerTexts = answerList
             .querySelectorAll('li')
             .map((li) => li.text.trim())
             .where((text) => text.isNotEmpty)
             .toList();
 
-        if (answers.length >= 3) {
+        if (answerTexts.length >= 3) {
+          // Generate question ID first
+          final questionId = generateQuestionId(
+            questionNum,
+            questionText,
+            category,
+          );
+
+          // Create Answer objects with IDs
+          final answers = <Answer>[];
+          for (int i = 0; i < answerTexts.length; i++) {
+            final answerId = generateAnswerId(questionId, i, answerTexts[i]);
+            // First answer is typically the correct one in these exams
+            final isCorrect = i == 0;
+            answers.add(
+              Answer(id: answerId, text: answerTexts[i], isCorrect: isCorrect),
+            );
+          }
+
           questions.add(
             Question(
+              id: questionId,
               number: questionNum,
               text: questionText,
               answers: answers,
               category: category,
+              image: imageFile,
             ),
           );
         }
@@ -255,14 +339,18 @@ class QuestionScraper {
     buffer.writeln('questions:');
 
     for (final question in questions) {
-      buffer.writeln('  - number: ${question.number}');
+      buffer.writeln('  - id: ${question.id}');
+      buffer.writeln('    number: ${question.number}');
       buffer.writeln('    text: "${question.text.replaceAll('"', '\\"')}"');
-      buffer.writeln('    answers:');
+      buffer.writeln('    options:');
       for (final answer in question.answers) {
-        buffer.writeln('      - "${answer.replaceAll('"', '\\"')}"');
+        buffer.writeln('      - id: ${answer.id}');
+        buffer.writeln('        text: "${answer.text.replaceAll('"', '\\"')}"');
+        buffer.writeln('        isCorrect: ${answer.isCorrect}');
       }
       if (question.image != null) {
-        buffer.writeln('    image: "${question.image}"');
+        buffer.writeln('    assets:');
+        buffer.writeln('      - "${question.image}"');
       }
       buffer.writeln();
     }
@@ -294,13 +382,56 @@ class QuestionScraper {
       final questions = catalogYaml['questions'] as List;
 
       for (final q in questions) {
+        // Parse answers from YAML
+        final answerList = q['options'] as List? ?? q['answers'] as List;
+        final answers = <Answer>[];
+
+        if (answerList.first is Map) {
+          // New format with Answer objects
+          for (final a in answerList) {
+            answers.add(
+              Answer(
+                id: a['id'],
+                text: a['text'],
+                isCorrect: a['isCorrect'] ?? false,
+              ),
+            );
+          }
+        } else {
+          // Legacy format - generate IDs
+          final questionId =
+              q['id'] ??
+              generateQuestionId(
+                questionOffset + (q['number'] as int),
+                q['text'],
+                catalogId,
+              );
+          for (int i = 0; i < answerList.length; i++) {
+            final answerId = generateAnswerId(questionId, i, answerList[i]);
+            answers.add(
+              Answer(
+                id: answerId,
+                text: answerList[i],
+                isCorrect: i == 0, // Assume first is correct for legacy
+              ),
+            );
+          }
+        }
+
         allQuestions.add(
           Question(
+            id:
+                q['id'] ??
+                generateQuestionId(
+                  questionOffset + (q['number'] as int),
+                  q['text'],
+                  catalogId,
+                ),
             number: questionOffset + (q['number'] as int),
             text: q['text'],
-            answers: List<String>.from(q['answers']),
+            answers: answers,
             category: catalogId,
-            image: q['image'],
+            image: q['assets'] != null ? (q['assets'] as List).first : null,
           ),
         );
       }
@@ -316,9 +447,11 @@ class QuestionScraper {
     buffer.writeln('# Questions for ${course.name}');
     buffer.writeln('# Generated: ${DateTime.now().toIso8601String()}');
     buffer.writeln();
-    buffer.writeln('course:');
-    buffer.writeln('  id: ${course.id}');
-    buffer.writeln('  name: "${course.name}"');
+    buffer.writeln('course: ${course.name}');
+    buffer.writeln('version: \'${DateTime.now().year}\'');
+    buffer.writeln('source: ELWIS');
+    buffer.writeln('metadata:');
+    buffer.writeln('  courseId: ${course.id}');
     buffer.writeln('  totalQuestions: ${allQuestions.length}');
     buffer.writeln('  catalogs:');
     for (final catalogId in course.catalogIds) {
@@ -328,15 +461,19 @@ class QuestionScraper {
     buffer.writeln('questions:');
 
     for (final question in allQuestions) {
-      buffer.writeln('  - number: ${question.number}');
+      buffer.writeln('  - id: ${question.id}');
+      buffer.writeln('    number: ${question.number}');
       buffer.writeln('    text: "${question.text.replaceAll('"', '\\"')}"');
-      buffer.writeln('    answers:');
+      buffer.writeln('    options:');
       for (final answer in question.answers) {
-        buffer.writeln('      - "${answer.replaceAll('"', '\\"')}"');
+        buffer.writeln('      - id: ${answer.id}');
+        buffer.writeln('        text: "${answer.text.replaceAll('"', '\\"')}"');
+        buffer.writeln('        isCorrect: ${answer.isCorrect}');
       }
       buffer.writeln('    category: ${question.category}');
       if (question.image != null) {
-        buffer.writeln('    image: "${question.image}"');
+        buffer.writeln('    assets:');
+        buffer.writeln('      - "${question.image}"');
       }
       buffer.writeln();
     }

@@ -19,27 +19,27 @@ categories:
     name: "Alle Fragen"
     description: "Kompletter Fragenkatalog mit 300 Fragen"
     includeAll: true
-    
+
   - id: basics
     name: "Basisfragen"
     description: "72 grundlegende Fragen"
     catalogs: ["basisfragen"]
-    
+
   - id: specific-motor
     name: "Spezifische Binnen"
     description: "181 spezifische Fragen für Binnenschifffahrtsstraßen"
     catalogs: ["spezifische-binnen"]
-    
+
   - id: specific-sail
     name: "Spezifische Segeln"
     description: "47 spezifische Fragen für das Segeln"
     catalogs: ["spezifische-segeln"]
-    
+
   - id: bookmarks
     name: "Lesezeichen"
     description: "Markierte Fragen zum späteren Lernen"
     type: bookmarks
-    
+
   - id: incorrect
     name: "Falsch beantwortet"
     description: "Fragen, die falsch beantwortet wurden"
