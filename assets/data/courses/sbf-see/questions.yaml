@@ -1,12 +1,12 @@
 # Questions for Sportbootführerschein See
-# Generated: 2025-09-23T00:49:18.319132
+# Generated: 2025-09-23T09:02:26.997227
 
 course: Sportbootführerschein See
 version: '2025'
 source: ELWIS
 metadata:
   courseId: sbf-see
-  totalQuestions: 199
+  totalQuestions: 285
   catalogs:
     - basisfragen
     - spezifische-see
@@ -63,6 +63,42 @@ questions:
         isCorrect: false
       - id: a_5881abbb5fa9
         text: "Wenn es weder an Land festgemacht ist noch vor Anker liegt noch Fahrt durchs Wasser macht."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_5bb32aef5a9e
+    number: 4
+    text: "Wie lang ist die Dauer eines kurzen Tons ("
+    options:
+      - id: a_40b8381e3fd7
+        text: "Etwa 1 Sekunde."
+        isCorrect: true
+      - id: a_f0aae48e07fe
+        text: "Etwa 2 Sekunden."
+        isCorrect: false
+      - id: a_2c002e3ebd03
+        text: "Weniger als 1 Sekunde."
+        isCorrect: false
+      - id: a_321222fb35dc
+        text: "Weniger als 4 Sekunden."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_a013ca5930aa
+    number: 5
+    text: "Wie lang ist die Dauer eines langen Tons ("
+    options:
+      - id: a_c4f8279f2e32
+        text: "Etwa 4 - 6 Sekunden."
+        isCorrect: true
+      - id: a_d0850af54f18
+        text: "Etwa 2 - 6 Sekunden."
+        isCorrect: false
+      - id: a_7cc2ccfbe7f8
+        text: "Etwa 1 - 2 Sekunden."
+        isCorrect: false
+      - id: a_ec16ac3511ec
+        text: "Etwa 6 - 8 Sekunden."
         isCorrect: false
     category: basisfragen
 
@@ -243,6 +279,278 @@ questions:
         isCorrect: false
       - id: a_5087e7a3c3e5
         text: "Es muss das leewärtige Fahrzeug dem luvwärtigen Fahrzeug ausweichen."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_cb25eb90fc7b
+    number: 16
+    text: "Welche Bedeutung hat folgendes Schallsignal?"
+    options:
+      - id: a_aea537870074
+        text: "Bleib-weg-Signal, Gefahrenbereich sofort verlassen."
+        isCorrect: true
+      - id: a_e40808aa1ebb
+        text: "Allgemeines Gefahr- und Warnsignal."
+        isCorrect: false
+      - id: a_ba9cec5a438e
+        text: "Ankerlieger über 100 m Länge."
+        isCorrect: false
+      - id: a_1bb086090ad6
+        text: "Manövrierbehinderter Schleppverband über 200 m Länge."
+        isCorrect: false
+    category: basisfragen
+    assets:
+      - "Schallzeichen-Frage-16.gif"
+
+  - id: q_4036003a0078
+    number: 17
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_14da8f0822c4
+        text: "Überholverbot."
+        isCorrect: true
+      - id: a_b3438fbe4ce4
+        text: "Begegnungsverbot."
+        isCorrect: false
+      - id: a_5b4e0a8c34c3
+        text: "Überholverbot für Fahrzeuge unter 20 m Länge."
+        isCorrect: false
+      - id: a_4adb9138c0c1
+        text: "Begegnungsverbot für Fahrzeuge über 20 m Länge."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_9ed5706fb567
+    number: 18
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_00588c5085af
+        text: "Begegnungsverbot an einer Engstelle."
+        isCorrect: true
+      - id: a_873bee0887c0
+        text: "Begegnungsverbot für Fahrzeuge über 12 m Länge."
+        isCorrect: false
+      - id: a_f2da2c57d234
+        text: "Überholverbot; mit Gegenverkehr muss gerechnet werden."
+        isCorrect: false
+      - id: a_b7a957b80e1a
+        text: "Überholverbot für alle Fahrzeuge."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_4f194c04ae8d
+    number: 19
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_5180befa0a52
+        text: "Sog und Wellenschlag vermeiden."
+        isCorrect: true
+      - id: a_6d4fba64a12d
+        text: "Gefährdeter Strandbereich, Überspülungsgefahr; Mindestpassierabstand 100 m."
+        isCorrect: false
+      - id: a_f7dc67c4e828
+        text: "Wasserstraße, die jederzeit sicher befahren werden kann; keine Gefahr durch Seegang."
+        isCorrect: false
+      - id: a_2c366cb0c961
+        text: "Wasserstraße, die nicht jederzeit sicher befahren werden kann; Gefahr durch Seegang."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_96f80a5832fc
+    number: 20
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_b246e626fe2d
+        text: "Mindestabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort der Tafel an eingehalten werden muss."
+        isCorrect: true
+      - id: a_04aa656f24bf
+        text: "Maximalgeschwindigkeit in km/h, die auf der in Fahrtrichtung rechten Fahrwasserseite nicht überschritten werden darf."
+        isCorrect: false
+      - id: a_95b3b5cd866e
+        text: "Maximalabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort der Tafel an eingehalten werden muss."
+        isCorrect: false
+      - id: a_0441b598a19e
+        text: "Verengung des Fahrwassers auf 40 m."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_8139ec75c2cd
+    number: 21
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_cb0717697f6e
+        text: "Haltegebot vor beweglichen Brücken, Sperrwerken und Schleusen."
+        isCorrect: true
+      - id: a_8e337f0ca7b9
+        text: "Dauernde Sperrung einer Teilstrecke der Wasserstraße."
+        isCorrect: false
+      - id: a_bcfe68ddab51
+        text: "Gebot zur Abgabe eines langen Signaltons."
+        isCorrect: false
+      - id: a_730ec8df788d
+        text: "Weiterfahrt für Sportfahrzeuge verboten."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_ff1f8dc21702
+    number: 22
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_fb4243a3bf2c
+        text: "Ankern verboten für alle Fahrzeuge."
+        isCorrect: true
+      - id: a_249d91fb9837
+        text: "Ankern verboten für Kleinfahrzeuge unter 12 m Länge."
+        isCorrect: false
+      - id: a_961c0239a33e
+        text: "Ankern verboten für Kleinfahrzeuge ab 12 m Länge."
+        isCorrect: false
+      - id: a_700512963d07
+        text: "Ankern und Festmachen verboten."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_881a0003d9ae
+    number: 23
+    text: "Welche Bedeutung haben folgende Tafelzeichen?"
+    options:
+      - id: a_fced7314292f
+        text: "Festmache- und Liegeverbot."
+        isCorrect: true
+      - id: a_d873553a4a55
+        text: "Festmache- und Liegeverbot für Sportboote."
+        isCorrect: false
+      - id: a_489325bc293f
+        text: "Festmache- und Liegeverbot für Sportboote über 12 m Länge."
+        isCorrect: false
+      - id: a_6b8e2d83b0a9
+        text: "Festmache- und Liegeverbot für gewerbliche Schiffe."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_41e55f0da1aa
+    number: 24
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_691fa4350925
+        text: "Abgabe eines langen Tons."
+        isCorrect: true
+      - id: a_71ce0f192982
+        text: "Abgabe eines kurzen Tons."
+        isCorrect: false
+      - id: a_8ddf7e974488
+        text: "Abgabe von zwei langen Tönen."
+        isCorrect: false
+      - id: a_45fc5a8846af
+        text: "Abgabe eines kurzen und eines langen Tons."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_eaa3654047e7
+    number: 25
+    text: "Welche Bedeutung haben folgende Tafelzeichen?"
+    options:
+      - id: a_6bbaf2b79147
+        text: "Wasserflächen, auf denen mit Wasserski oder Wassermotorrädern gefahren werden darf."
+        isCorrect: true
+      - id: a_80c42c90c190
+        text: "Genehmigungspflichtige Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern."
+        isCorrect: false
+      - id: a_f5ff16eb6123
+        text: "Fahren mit Wasserski oder Wassermotorrädern erlaubt. Wasserskiläufer und Wassermotorräder haben Vorfahrt."
+        isCorrect: false
+      - id: a_8dc4de0062e0
+        text: "Genehmigungsfreie Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_5651e056fa9e
+    number: 26
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_3c65c572b899
+        text: "Ende einer Gebots- oder Verbotsstrecke."
+        isCorrect: true
+      - id: a_47bab68b556b
+        text: "Streckenabschnitt für eine nicht frei fahrende Fähre."
+        isCorrect: false
+      - id: a_ab11082a7b59
+        text: "Queren des Fahrwassers ist gestattet."
+        isCorrect: false
+      - id: a_b24368249158
+        text: "Wechseln der Fahrwasserseite ist gestattet."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_abe176b0eaf4
+    number: 27
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_fac7f31a42cd
+        text: "Verbot der Durchfahrt und Sperrung der Schifffahrt."
+        isCorrect: true
+      - id: a_3671700220c4
+        text: "Verbot der Durchfahrt und Sperrung für Kleinfahrzeuge."
+        isCorrect: false
+      - id: a_35951de77239
+        text: "Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne laufende Antriebsmaschine befahrbar."
+        isCorrect: false
+      - id: a_4027b081181c
+        text: "Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne Antriebsmaschine befahrbar."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_841226ff7bec
+    number: 28
+    text: "Welche Bedeutung haben folgende Schifffahrtszeichen?"
+    options:
+      - id: a_7efb433f0792
+        text: "Brücke, Sperrwerk oder Schleuse geschlossen."
+        isCorrect: true
+      - id: a_6a7d0beef52b
+        text: "Anlage dauerhaft gesperrt."
+        isCorrect: false
+      - id: a_bffe2c7a81a6
+        text: "Stoppsignal für alle Fahrzeuge."
+        isCorrect: false
+      - id: a_615535138335
+        text: "Außergewöhnliche Schifffahrtsbehinderung."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_0cd8355a5d4b
+    number: 29
+    text: "Welche Bedeutung haben folgende Schifffahrtszeichen?"
+    options:
+      - id: a_f29e9211fcb4
+        text: "Anlage dauerhaft gesperrt."
+        isCorrect: true
+      - id: a_c44278fa578a
+        text: "Brücke, Sperrwerk oder Schleuse geschlossen."
+        isCorrect: false
+      - id: a_00555fb76394
+        text: "Stoppsignal für alle Fahrzeuge."
+        isCorrect: false
+      - id: a_277c4b1a1ac6
+        text: "Außergewöhnliche Schifffahrtsbehinderung."
+        isCorrect: false
+    category: basisfragen
+
+  - id: q_35af0ffa6cf6
+    number: 30
+    text: "Was bedeuten diese Lichter vor einer Schleuse?"
+    options:
+      - id: a_3d1874d4e33d
+        text: "Einfahrt frei, Gegenverkehr gesperrt."
+        isCorrect: true
+      - id: a_260faf3e0ecb
+        text: "Einfahrt frei, Schleusentor öffnet."
+        isCorrect: false
+      - id: a_11fc7331cb62
+        text: "Schleuse in Betrieb, auf Einfahrtsignal gemäß Reihenfolge warten."
+        isCorrect: false
+      - id: a_435b3b2c4f50
+        text: "Schleuse in Betrieb, auf Ausfahrtsignal gemäß Reihenfolge warten."
         isCorrect: false
     category: basisfragen
 
@@ -1003,7 +1311,7 @@ questions:
     category: basisfragen
 
   - id: q_966706a03c37
-    number: 128
+    number: 145
     text: "Wo gelten die Kollisionsverhütungsregeln (KVR)?"
     options:
       - id: a_29ed4c49181d
@@ -1021,7 +1329,7 @@ questions:
     category: spezifische-see
 
   - id: q_854c0a5de475
-    number: 129
+    number: 146
     text: "Was gilt, wenn eine Bestimmung der Seeschifffahrtsstraßen-Ordnung (SeeSchStrO) mit den Kollisionsverhütungsregeln (KVR) im Widerspruch steht?"
     options:
       - id: a_8ff758a94a1b
@@ -1039,7 +1347,7 @@ questions:
     category: spezifische-see
 
   - id: q_181ba916a51b
-    number: 130
+    number: 147
     text: "Welche Sportboote sind von der Fahrerlaubnispflicht auf den Seeschifffahrtsstraßen ausgenommen?"
     options:
       - id: a_a3c774dd1a04
@@ -1057,7 +1365,7 @@ questions:
     category: spezifische-see
 
   - id: q_24412587ddb4
-    number: 131
+    number: 148
     text: "Wer ist für die Befolgung der Verkehrsvorschriften verantwortlich?"
     options:
       - id: a_1c82b9ae28e6
@@ -1075,7 +1383,7 @@ questions:
     category: spezifische-see
 
   - id: q_5be26afdb65d
-    number: 132
+    number: 149
     text: "Was bedeutet \"seemännische Sorgfaltspflicht\"?"
     options:
       - id: a_0fd79f4e0052
@@ -1093,7 +1401,7 @@ questions:
     category: spezifische-see
 
   - id: q_12adc915a719
-    number: 133
+    number: 150
     text: "Welche Sicherheitsmaßnahmen hat der Fahrzeugführer im Rahmen seiner seemännischen Sorgfaltspflicht vor Fahrtantritt zum Schutze und für die Sicherheit der Personen an Bord zu treffen?"
     options:
       - id: a_a798a53c068a
@@ -1111,7 +1419,7 @@ questions:
     category: spezifische-see
 
   - id: q_eeec7f54b6ce
-    number: 134
+    number: 151
     text: "Was bedeutet das \"Manöver des letzten Augenblicks\"?"
     options:
       - id: a_d91121320c4d
@@ -1129,7 +1437,7 @@ questions:
     category: spezifische-see
 
   - id: q_e299b0bd79b2
-    number: 135
+    number: 152
     text: "Wann ist das \"Manöver des letzten Augenblicks\" durchzuführen?"
     options:
       - id: a_f640db7267e4
@@ -1147,7 +1455,7 @@ questions:
     category: spezifische-see
 
   - id: q_1e61bd916be8
-    number: 136
+    number: 153
     text: "Wann gilt ein Fahrzeug als überholendes Fahrzeug?"
     options:
       - id: a_780a37c5456d
@@ -1165,7 +1473,7 @@ questions:
     category: spezifische-see
 
   - id: q_365bf00aa6c1
-    number: 137
+    number: 154
     text: "Wann ist ein Fahrzeug manövrierunfähig?"
     options:
       - id: a_d5f43185228f
@@ -1183,7 +1491,7 @@ questions:
     category: spezifische-see
 
   - id: q_8247200eba99
-    number: 138
+    number: 155
     text: "Wann ist ein Fahrzeug manövrierbehindert?"
     options:
       - id: a_c32de800befc
@@ -1201,7 +1509,7 @@ questions:
     category: spezifische-see
 
   - id: q_a19529291dd5
-    number: 139
+    number: 156
     text: "Welche besonderen Maßnahmen sind bei verminderter Sicht zu treffen?"
     options:
       - id: a_a8ca31faa8d1
@@ -1219,7 +1527,7 @@ questions:
     category: spezifische-see
 
   - id: q_c349d3def70e
-    number: 140
+    number: 157
     text: "Welche Vorschriften regeln die Ausrüstung, Anordnung und Anbringung der Positionslaternen, Sichtzeichen und Schallsignalanlagen auf Fahrzeugen?"
     options:
       - id: a_2ca8b16e67de
@@ -1237,7 +1545,7 @@ questions:
     category: spezifische-see
 
   - id: q_d59c58e1000e
-    number: 141
+    number: 158
     text: "Welche Positionslaternen und Schallsignalanlagen dürfen auf Sportbooten unter deutscher Flagge verwendet werden?"
     options:
       - id: a_e34ff070f90a
@@ -1255,7 +1563,7 @@ questions:
     category: spezifische-see
 
   - id: q_9ab0cdba4054
-    number: 142
+    number: 159
     text: "Was sind \"Verkehrstrennungsgebiete\"?"
     options:
       - id: a_7f5de82dcd71
@@ -1273,7 +1581,7 @@ questions:
     category: spezifische-see
 
   - id: q_9fe53ea04e46
-    number: 143
+    number: 160
     text: "Wie sind Verkehrstrennungsgebiete zu befahren?"
     options:
       - id: a_a8b1ffaaa7a6
@@ -1291,7 +1599,7 @@ questions:
     category: spezifische-see
 
   - id: q_84b51a2545b7
-    number: 144
+    number: 161
     text: "Was bedeutet \"in Sicht befindlich\"?"
     options:
       - id: a_2a533351f6b4
@@ -1309,7 +1617,7 @@ questions:
     category: spezifische-see
 
   - id: q_8843b1fbc3a7
-    number: 145
+    number: 162
     text: "Was bedeutet sichere Geschwindigkeit?"
     options:
       - id: a_a90464c6bd39
@@ -1326,8 +1634,86 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_e7e33812e93a
+    number: 163
+    text: "Welches Fahrzeug führt diese Lichter?"
+    options:
+      - id: a_9ff8f5eb3398
+        text: "Maschinenfahrzeug in Fahrt von weniger als 50 m Länge."
+        isCorrect: true
+      - id: a_09d516bed909
+        text: "Maschinenfahrzeug in Fahrt von 50 und mehr Meter Länge."
+        isCorrect: false
+      - id: a_f883450793ad
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_562c5c321cd0
+        text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_523c3cb725ce
+    number: 164
+    text: "Welches Fahrzeug muss diese Lichter führen?"
+    options:
+      - id: a_e3382f5c0171
+        text: "Maschinenfahrzeug in Fahrt von 50 und mehr Meter Länge."
+        isCorrect: true
+      - id: a_23807af29f45
+        text: "Maschinenfahrzeug in Fahrt von weniger als 50 m Länge."
+        isCorrect: false
+      - id: a_51af79adce46
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_7dc9f596f662
+        text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-92-gif.gif"
+
+  - id: q_2b33726df017
+    number: 165
+    text: "Welches Fahrzeug führt diese Lichter?"
+    options:
+      - id: a_8c8eb897bfa4
+        text: "Manövrierbehinderter Schleppverband in Fahrt von 200 m Länge oder weniger."
+        isCorrect: true
+      - id: a_7532850563f0
+        text: "Manövrierbehinderter Schleppverband in Fahrt von mehr als 200 m Länge."
+        isCorrect: false
+      - id: a_fc520c2c2c8c
+        text: "Manövrierbehinderter Schleppverband in Fahrt von 200 m Länge oder weniger, ohne Fahrt durchs Wasser."
+        isCorrect: false
+      - id: a_262c1ac36c60
+        text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-93-gif.gif"
+
+  - id: q_a5167f01040c
+    number: 166
+    text: "Welches Fahrzeug führt diese Lichter?"
+    options:
+      - id: a_12ac070a2ae3
+        text: "Manövrierbehinderter Schleppverband in Fahrt von mehr als 200 m Länge."
+        isCorrect: true
+      - id: a_bba9bb8fc7ce
+        text: "Manövrierbehinderter Schleppverband in Fahrt von 200 m Länge oder weniger."
+        isCorrect: false
+      - id: a_5388b2367316
+        text: "Manövrierbehinderter Schleppverband in Fahrt von mehr als 200 m Länge, ohne Fahrt durch das Wasser."
+        isCorrect: false
+      - id: a_ffc97bb6ba26
+        text: "Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-94-gif.gif"
+
   - id: q_44a88eeaa543
-    number: 150
+    number: 167
     text: "Welche Lichter führen geschleppte Fahrzeuge?"
     options:
       - id: a_3d12340d7c4b
@@ -1345,7 +1731,7 @@ questions:
     category: spezifische-see
 
   - id: q_0aa5a31cc8bc
-    number: 151
+    number: 168
     text: "Was bedeutet es, wenn jedes Fahrzeug eines Schleppverbandes einen schwarzen Rhombus führt?"
     options:
       - id: a_09c760e86253
@@ -1362,8 +1748,68 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_a3098424c806
+    number: 169
+    text: "Welches Fahrzeug führt diese Lichter?"
+    options:
+      - id: a_d5ecd0414674
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt."
+        isCorrect: true
+      - id: a_512efa81081c
+        text: "Ein manövrierbehindertes Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_3923590dcece
+        text: "Ein tiefgangbehindertes Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_d739d6edd731
+        text: "Ein Grundsitzer von 50 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-97-gif.gif"
+
+  - id: q_0618c0ec03d0
+    number: 170
+    text: "Welches Fahrzeug führt diese Lichter?"
+    options:
+      - id: a_55bda48a2937
+        text: "Ein manövrierunfähiges Fahrzeug mit Fahrt durch das Wasser."
+        isCorrect: true
+      - id: a_684bf1e72006
+        text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durch das Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+      - id: a_234f5aa5dd31
+        text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durch das Wasser."
+        isCorrect: false
+      - id: a_34b85cd242de
+        text: "Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durch das Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-98-gif.gif"
+
+  - id: q_70c4fa5edc45
+    number: 171
+    text: "Welches Fahrzeug führt diese Signalkörper?"
+    options:
+      - id: a_8ebbe8585b90
+        text: "Ein manövrierunfähiges Fahrzeug."
+        isCorrect: true
+      - id: a_1d400ccfa748
+        text: "Ein manövrierbehindertes Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_ab3635a60cce
+        text: "Ein fischendes Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_40de708c9ffe
+        text: "Ein Grundsitzer von 50 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Signalkoerper-Frage-99-gif.gif"
+
   - id: q_8779aa3f634a
-    number: 155
+    number: 172
     text: "Welche Lichter führen manövrierunfähige Fahrzeuge von 12 und mehr Meter Länge in Fahrt, ohne Fahrt durch das Wasser?"
     options:
       - id: a_55ba7b906847
@@ -1381,7 +1827,7 @@ questions:
     category: spezifische-see
 
   - id: q_6bb87edf0798
-    number: 156
+    number: 173
     text: "Welche Lichter führen manövrierunfähige Fahrzeuge von 12 und mehr Meter Länge in Fahrt mit Fahrt durch das Wasser?"
     options:
       - id: a_61f4d3aa80a8
@@ -1398,8 +1844,228 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_67fd25129494
+    number: 174
+    text: "Welches Fahrzeug führt diese Lichter?"
+    options:
+      - id: a_82404244411c
+        text: "Ein manövrierbehindertes Fahrzeug in Fahrt."
+        isCorrect: true
+      - id: a_9252cc0732c5
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_a24b889a9f41
+        text: "Ein fischendes Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_d6861133e622
+        text: "Ein Grundsitzer von weniger als 50 m Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-102-gif.gif"
+
+  - id: q_e0a97038082f
+    number: 175
+    text: "Welches Fahrzeug muss diese Lichter führen?"
+    options:
+      - id: a_e3418d656163
+        text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durch das Wasser von 50 und mehr Meter Länge."
+        isCorrect: true
+      - id: a_9441ba2bce18
+        text: "Ein manövrierunfähiges Fahrzeug mit Fahrt durch das Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+      - id: a_6e9ce9f6d789
+        text: "Ein manövrierbehindertes Fahrzeug ohne Fahrt durch das Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+      - id: a_27a48b58622b
+        text: "Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durch das Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-103-gif.gif"
+
+  - id: q_078aecc58304
+    number: 176
+    text: "Welches Fahrzeug führt diese Signalkörper?"
+    options:
+      - id: a_1196a7ed4473
+        text: "Ein manövrierbehindertes Fahrzeug."
+        isCorrect: true
+      - id: a_1878bf133da8
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_40820f2cd4e2
+        text: "Ein fischendes Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_a1e0df5926b0
+        text: "Ein Grundsitzer von weniger als 50 m Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Signalkoerper-Frage-104-gif.gif"
+
+  - id: q_659c0f243721
+    number: 177
+    text: "Welches Fahrzeug führt diese Lichter?"
+    options:
+      - id: a_c32a92335a4e
+        text: "Ein Grundsitzer von weniger als 50 m Länge."
+        isCorrect: true
+      - id: a_ed11c4caf2c0
+        text: "Ein manövrierbehindertes Fahrzeug."
+        isCorrect: false
+      - id: a_f9cac3529285
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_56284e4c988c
+        text: "Ein Grundsitzer von 50 m und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-105-gif.gif"
+
+  - id: q_012b6fea69e1
+    number: 178
+    text: "Welches Fahrzeug führt diese Signalkörper?"
+    options:
+      - id: a_5ab7e3c4cb44
+        text: "Ein Grundsitzer."
+        isCorrect: true
+      - id: a_fc3e019c471c
+        text: "Ein manövrierunfähiges Fahrzeug."
+        isCorrect: false
+      - id: a_ab86ccc51927
+        text: "Ein manövrierbehindertes Fahrzeug."
+        isCorrect: false
+      - id: a_a7f2029db912
+        text: "Ein fischendes Fahrzeug."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Signalkoerper-Frage-106-gif.gif"
+
+  - id: q_f8475264f363
+    number: 179
+    text: "Welches Fahrzeug führt diese Lichter?"
+    options:
+      - id: a_975bd5f7fcaf
+        text: "Ein Grundsitzer von 50 und mehr Meter Länge."
+        isCorrect: true
+      - id: a_26944cdc3ece
+        text: "Ein manövrierbehindertes Fahrzeug."
+        isCorrect: false
+      - id: a_79ee6d23703c
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_f59a933f6dee
+        text: "Ein Grundsitzer von weniger als 50 m Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-107-gif.gif"
+
+  - id: q_c71aeaf5e674
+    number: 180
+    text: "Welches Fahrzeug muss diese Lichter führen?"
+    options:
+      - id: a_544ec41f0862
+        text: "Ein tiefgangbehindertes Fahrzeug von 50 und mehr Meter Länge in Fahrt."
+        isCorrect: true
+      - id: a_58269cf6b550
+        text: "Ein manövrierbehindertes Fahrzeug."
+        isCorrect: false
+      - id: a_203b99002e1e
+        text: "Ein manövrierunfähiges Fahrzeug."
+        isCorrect: false
+      - id: a_4ede0b0c43a8
+        text: "Ein Grundsitzer von weniger als 50 m Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-108-gif.gif"
+
+  - id: q_dd9c5452734a
+    number: 181
+    text: "Welches Fahrzeug führt diese Signalkörper?"
+    options:
+      - id: a_a4582e828959
+        text: "Ein tiefgangbehindertes Fahrzeug in Fahrt."
+        isCorrect: true
+      - id: a_8675599e4483
+        text: "Ein manövrierbehindertes Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_159174d651c1
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_c10b5318f7a8
+        text: "Ein Grundsitzer von weniger als 50 Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Signalkoerper-Frage-109-gif.gif"
+
+  - id: q_4c5fa7f9c061
+    number: 182
+    text: "Welches Fahrzeug muss diese Lichter führen?"
+    options:
+      - id: a_1465ed905e62
+        text: "Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durch das Wasser von 50 und mehr Meter Länge."
+        isCorrect: true
+      - id: a_db2d19e88c44
+        text: "Ein fischendes Fahrzeug in Fahrt, das nicht trawlt, z. B. Treibnetzfischer."
+        isCorrect: false
+      - id: a_49ffcd7f59dc
+        text: "Ein Behördenfahrzeug im Einsatz."
+        isCorrect: false
+      - id: a_1e545062b18f
+        text: "Ein manövrierbehindertes Fahrzeug in Fahrt."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-110-gif.gif"
+
+  - id: q_d4f7542fe613
+    number: 183
+    text: "Welches Fahrzeug führt diese Lichter?"
+    options:
+      - id: a_3ff12d3743f5
+        text: "Ein fischendes Fahrzeug in Fahrt oder vor Anker, das nicht trawlt, z. B. Treibnetzfischer."
+        isCorrect: true
+      - id: a_597648e14ca7
+        text: "Ein Lotsenfahrzeug im Einsatz."
+        isCorrect: false
+      - id: a_d9ce4d277b28
+        text: "Ein manövrierbehindertes Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_ad5185342d8f
+        text: "Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durchs Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-111-gif.gif"
+
+  - id: q_ffc024b252c7
+    number: 184
+    text: "Welches Fahrzeug führt diese Signalkörper?"
+    options:
+      - id: a_b226e8f3b84b
+        text: "Ein fischendes Fahrzeug in Fahrt oder vor Anker."
+        isCorrect: true
+      - id: a_683486ff6ea9
+        text: "Ein manövrierbehindertes Fahrzeug."
+        isCorrect: false
+      - id: a_4209e223bd81
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt."
+        isCorrect: false
+      - id: a_d6e9d428e4d9
+        text: "Ein Grundsitzer von weniger als 50 m Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Signalkoerper-Frage-112-gif.gif"
+
   - id: q_c45f5b366ecd
-    number: 168
+    number: 185
     text: "Welche Fahrzeuge führen nur Seitenlichter rot und grün und ein weißes Hecklicht?"
     options:
       - id: a_75d1e22c6c07
@@ -1417,7 +2083,7 @@ questions:
     category: spezifische-see
 
   - id: q_00ccbf886e3a
-    number: 169
+    number: 186
     text: "Was für ein Licht muss ein Ankerlieger von weniger als 50 m Länge führen?"
     options:
       - id: a_2f96f2eccc04
@@ -1434,8 +2100,104 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_c027a3ecee1a
+    number: 187
+    text: "Welches Fahrzeug muss diese Lichter führen?"
+    options:
+      - id: a_26fb99cf76a7
+        text: "Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge."
+        isCorrect: true
+      - id: a_48f9b26a8b4f
+        text: "Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durchs Wasser von 50 und mehr Meter Länge."
+        isCorrect: false
+      - id: a_d0298f518046
+        text: "Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert."
+        isCorrect: false
+      - id: a_58657f72f763
+        text: "Ein Grundsitzer von 200 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Lichter-Frage-115-gif.gif"
+
+  - id: q_4595ce773582
+    number: 188
+    text: "Sie hören bei verminderter Sicht mindestens alle zwei Minuten einen langen Ton mit der Pfeife ("
+    options:
+      - id: a_9f96882c5ac6
+        text: "Ein Maschinenfahrzeug, das Fahrt durchs Wasser macht."
+        isCorrect: true
+      - id: a_6dbe0a62e08a
+        text: "Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes in Fahrt."
+        isCorrect: false
+      - id: a_49f67b19f597
+        text: "Ein Fahrzeug mit gefährlicher Ladung vor Anker von weniger als 100 m Länge."
+        isCorrect: false
+      - id: a_344b88c0c5a5
+        text: "Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_b71d387edf34
+    number: 189
+    text: "Sie hören bei verminderter Sicht mindestens alle zwei Minuten zwei aufeinander folgende lange Töne mit der Pfeife ("
+    options:
+      - id: a_90774b47d87c
+        text: "Ein Maschinenfahrzeug in Fahrt, das seine Maschine gestoppt hat und keine Fahrt durchs Wasser macht."
+        isCorrect: true
+      - id: a_f57ab2ac8078
+        text: "Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes in Fahrt."
+        isCorrect: false
+      - id: a_13f4e2df41b3
+        text: "Ein Fahrzeug mit gefährlicher Ladung vor Anker von weniger als 100 m Länge."
+        isCorrect: false
+      - id: a_aa218f8faed6
+        text: "Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_5afc9038c7dc
+    number: 190
+    text: "Welche Fahrzeuge geben bei verminderter Sicht mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife, und zwar lang, kurz, kurz"
+    options:
+      - id: a_baaf7fb79505
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt, ein manövrierbehindertes Fahrzeug in Fahrt oder vor Anker, ein tiefgangbehindertes Fahrzeug in Fahrt, ein Segelfahrzeug in Fahrt, ein schleppendes oder schiebendes Fahrzeug in Fahrt, ein fischendes Fahrzeug in Fahrt oder vor Anker."
+        isCorrect: true
+      - id: a_887d43e5d4cd
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt, ein manövrierbehindertes Fahrzeug in Fahrt oder vor Anker, ein tiefgangbehindertes Fahrzeug in Fahrt, ein Maschinenfahrzeug in Fahrt, das Fahrt durchs Wasser macht, ein schleppendes oder schiebendes Fahrzeug in Fahrt, ein fischendes Fahrzeug in Fahrt oder vor Anker."
+        isCorrect: false
+      - id: a_91dea26d97da
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt, ein manövrierbehindertes Fahrzeug in Fahrt oder vor Anker, ein tiefgangbehindertes Fahrzeug in Fahrt, ein Segelfahrzeug in Fahrt, ein schleppendes oder schiebendes Fahrzeug in Fahrt, ein fischendes Fahrzeug in Fahrt oder vor Anker, ein Maschinenfahrzeug in Fahrt, das seine Maschine gestoppt hat und keine Fahrt durchs Wasser macht."
+        isCorrect: false
+      - id: a_6694d3c6786d
+        text: "Ein manövrierunfähiges Fahrzeug in Fahrt, ein manövrierbehindertes Fahrzeug in Fahrt oder vor Anker, ein tiefgangbehindertes Fahrzeug in Fahrt, ein Segelfahrzeug in Fahrt, ein schleppendes oder schiebendes Fahrzeug in Fahrt, ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes in Fahrt, ein fischendes Fahrzeug in Fahrt oder vor Anker."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-Frage-118-gif.gif"
+
+  - id: q_0e27f4da77a9
+    number: 191
+    text: "Welches Fahrzeug gibt bei verminderter Sicht - im Anschluss an das Signal: lang, kurz, kurz"
+    options:
+      - id: a_257e5d4370ec
+        text: "Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes in Fahrt."
+        isCorrect: true
+      - id: a_ffbe5b583b69
+        text: "Ein Maschinenfahrzeug in Fahrt, das seine Maschine gestoppt hat und keine Fahrt durchs Wasser macht."
+        isCorrect: false
+      - id: a_6fe6f4720d91
+        text: "Ein Fahrzeug mit gefährlicher Ladung vor Anker von weniger als 100 m Länge."
+        isCorrect: false
+      - id: a_fec9ab0d307e
+        text: "Ein manövrierunfähiges Fahrzeug von weniger als 100 m Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-Frage-118-gif.gif"
+
   - id: q_3ded52de19a6
-    number: 175
+    number: 192
     text: "Was für ein Schallsignal muss ein Segelfahrzeug in Fahrt von 12 und mehr Meter Länge bei verminderter Sicht geben?"
     options:
       - id: a_b95fd3a54717
@@ -1453,7 +2215,7 @@ questions:
     category: spezifische-see
 
   - id: q_8154be3ff786
-    number: 176
+    number: 193
     text: "Welches Schallsignal muss ein Fahrzeug in Fahrt von weniger als 12 m Länge bei verminderter Sicht geben, wenn es die sonst vorgeschriebenen Schallsignale nicht geben kann?"
     options:
       - id: a_d0cba9837f6e
@@ -1476,8 +2238,48 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_07f7b3e9b9c6
+    number: 194
+    text: "Welches Fahrzeug gibt bei verminderter Sicht mindestens jede Minute etwa 5 Sekunden lang rasches Läuten der Glocke?"
+    options:
+      - id: a_e609887195f7
+        text: "Ein Fahrzeug vor Anker von weniger als 100 m Länge."
+        isCorrect: true
+      - id: a_61eb6f1cd145
+        text: "Ein Fahrzeug vor Anker von 100 und mehr Meter Länge."
+        isCorrect: false
+      - id: a_111962403bb2
+        text: "Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes in Fahrt."
+        isCorrect: false
+      - id: a_cb87324a0e40
+        text: "Ein Maschinenfahrzeug in Fahrt, das seine Maschine gestoppt hat und keine Fahrt durchs Wasser macht."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-Frage-122-gif.gif"
+
+  - id: q_6966286ddb3e
+    number: 195
+    text: "Welches Fahrzeug gibt bei verminderter Sicht mindestens jede Minute etwa 5 Sekunden lang rasches Läuten der Glocke und unmittelbar danach ungefähr 5 Sekunden lang rasch den Gong schlagen?"
+    options:
+      - id: a_b813801f1123
+        text: "Ein Fahrzeug vor Anker von 100 und mehr Meter Länge."
+        isCorrect: true
+      - id: a_a814c60cdce7
+        text: "Ein Fahrzeug vor Anker von weniger als 100 m Länge."
+        isCorrect: false
+      - id: a_8cfd08d26313
+        text: "Ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes in Fahrt."
+        isCorrect: false
+      - id: a_0ca81e93e933
+        text: "Ein Maschinenfahrzeug in Fahrt, das seine Maschine gestoppt hat und keine Fahrt durchs Wasser macht."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-Frage-122-gif.gif"
+
   - id: q_cb0433861956
-    number: 179
+    number: 196
     text: "Welches zusätzliche Schallsignal darf jeder Ankerlieger bei verminderter Sicht geben, um einem sich nähernden Fahrzeug seinen Standort anzuzeigen?"
     options:
       - id: a_7bccb1c6bdcb
@@ -1501,7 +2303,7 @@ questions:
     category: spezifische-see
 
   - id: q_d0746790a558
-    number: 180
+    number: 197
     text: "Woran kann man feststellen, ob die Möglichkeit der Gefahr eines Zusammenstoßes besteht?"
     options:
       - id: a_5d0f62626fa9
@@ -1519,7 +2321,7 @@ questions:
     category: spezifische-see
 
   - id: q_ee7978c5abf6
-    number: 181
+    number: 198
     text: "Zwei in Sicht befindliche Segelfahrzeuge nähern sich im freien Seeraum oder außerhalb des Fahrwassers so, dass die Möglichkeit der Gefahr eines Zusammenstoßes besteht. Welches Fahrzeug muss dem anderen ausweichen, wenn sie den Wind von derselben Seite haben?"
     options:
       - id: a_a5b3b2bfcaaa
@@ -1537,7 +2339,7 @@ questions:
     category: spezifische-see
 
   - id: q_0b73fc3dfdd3
-    number: 182
+    number: 199
     text: "Wie müssen sich zwei in Sicht befindliche Maschinenfahrzeuge verhalten, die sich einander auf entgegengesetzten oder fast entgegengesetzten Kursen nähern, um die Möglichkeit der Gefahr eines Zusammenstoßes zu vermeiden?"
     options:
       - id: a_b3468ffa0d30
@@ -1555,7 +2357,7 @@ questions:
     category: spezifische-see
 
   - id: q_24f0f499d2b0
-    number: 183
+    number: 200
     text: "Wie hat sich ein Maschinenfahrzeug im freien Seeraum oder außerhalb des Fahrwassers gegenüber einem in Sicht befindlichen Segelfahrzeug zu verhalten, wenn die Möglichkeit der Gefahr eines Zusammenstoßes besteht?"
     options:
       - id: a_1b2ac1f28710
@@ -1573,7 +2375,7 @@ questions:
     category: spezifische-see
 
   - id: q_f67d6f67fd64
-    number: 184
+    number: 201
     text: "Wie hat sich ein Maschinenfahrzeug im freien Seeraum oder außerhalb des Fahrwassers gegenüber einem in Sicht befindlichen manövrierunfähigen Fahrzeug zu verhalten, wenn die Möglichkeit der Gefahr eines Zusammenstoßes besteht?"
     options:
       - id: a_2d72db213f54
@@ -1591,7 +2393,7 @@ questions:
     category: spezifische-see
 
   - id: q_cbcacd804ae2
-    number: 185
+    number: 202
     text: "Wie hat sich ein Maschinenfahrzeug im freien Seeraum oder außerhalb des Fahrwassers gegenüber einem in Sicht befindlichen manövrierbehinderten Fahrzeug zu verhalten, wenn die Möglichkeit der Gefahr eines Zusammenstoßes besteht?"
     options:
       - id: a_7944242621f0
@@ -1609,7 +2411,7 @@ questions:
     category: spezifische-see
 
   - id: q_53f764a0e388
-    number: 186
+    number: 203
     text: "Wie hat sich ein Maschinenfahrzeug im freien Seeraum oder außerhalb des Fahrwassers gegenüber einem in Sicht befindlichen fischenden Fahrzeug zu verhalten, wenn die Möglichkeit der Gefahr eines Zusammenstoßes besteht?"
     options:
       - id: a_ec30caa02eac
@@ -1627,7 +2429,7 @@ questions:
     category: spezifische-see
 
   - id: q_7af51531c024
-    number: 187
+    number: 204
     text: "Wie hat sich ein Segelfahrzeug im freien Seeraum oder außerhalb des Fahrwassers gegenüber einem in Sicht befindlichen fischenden Fahrzeug zu verhalten, wenn die Möglichkeit der Gefahr eines Zusammenstoßes besteht?"
     options:
       - id: a_f6f2516fa9de
@@ -1644,8 +2446,48 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_55e1aee05a0c
+    number: 205
+    text: "Wie muss man sich gegenüber diesem Fahrzeug verhalten?"
+    options:
+      - id: a_2ec5ad08eb1e
+        text: "Die sichere Durchfahrt des Fahrzeugs darf nicht behindert werden."
+        isCorrect: true
+      - id: a_66d7c0cdbc3c
+        text: "Das Fahrzeug muss an Steuerbord passiert werden."
+        isCorrect: false
+      - id: a_12ffab412d2b
+        text: "Sog und Wellenschlag vermeiden."
+        isCorrect: false
+      - id: a_6397f1c89081
+        text: "Kurs und Geschwindigkeit beibehalten."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Fahrzeug-Frage-133.gif"
+
+  - id: q_06f6dccca077
+    number: 206
+    text: "Wie muss man sich gegenüber diesem Fahrzeug verhalten?"
+    options:
+      - id: a_7256ee5cc8ea
+        text: "Die sichere Durchfahrt des Fahrzeugs darf nicht behindert werden."
+        isCorrect: true
+      - id: a_078635fecc79
+        text: "Das Fahrzeug muss an Steuerbord passiert werden."
+        isCorrect: false
+      - id: a_563e41ef5574
+        text: "Sog und Wellenschlag vermeiden."
+        isCorrect: false
+      - id: a_3217aff1e8c9
+        text: "Kurs und Geschwindigkeit beibehalten."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Fahrzeug-Frage-134-gif.gif"
+
   - id: q_aa5af0608685
-    number: 190
+    number: 207
     text: "Wie verhält sich der Kurshaltepflichtige vor Einleitung des Manövers des letzten Augenblicks gegenüber einem ausweichpflichtigen Fahrzeug?"
     options:
       - id: a_4182cd703db0
@@ -1663,7 +2505,7 @@ questions:
     category: spezifische-see
 
   - id: q_e2c3eeba3ce1
-    number: 191
+    number: 208
     text: "Wie muss sich ein Ausweichpflichtiger gegenüber einem Kurshalter verhalten?"
     options:
       - id: a_c6d1f5aaa842
@@ -1681,7 +2523,7 @@ questions:
     category: spezifische-see
 
   - id: q_65e98b971628
-    number: 192
+    number: 209
     text: "Wie hat sich ein überholendes Fahrzeug zu verhalten?"
     options:
       - id: a_37106b77343a
@@ -1699,7 +2541,7 @@ questions:
     category: spezifische-see
 
   - id: q_4a3401760489
-    number: 193
+    number: 210
     text: "Wie hat man sich zu verhalten, wenn man bei verminderter Sicht anscheinend vorlicher als querab das Schallsignal eines anderen Fahrzeugs hört?"
     options:
       - id: a_5cb3e6e0baa5
@@ -1717,7 +2559,7 @@ questions:
     category: spezifische-see
 
   - id: q_8626c737daf2
-    number: 194
+    number: 211
     text: "Wie verhält man sich als Kurshalter, wenn man feststellt, dass ein anderes Fahrzeug seiner Ausweichpflicht nicht nachkommt und die Gefahr einer unmittelbaren Kollision bevorsteht?"
     options:
       - id: a_ca044341d2ec
@@ -1734,8 +2576,48 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_9ffd04af9376
+    number: 212
+    text: "Welche Bedeutung hat folgendes Schallsignal?"
+    options:
+      - id: a_156551c8e2f9
+        text: "Ein ausweichpflichtiges Fahrzeug wird auf seine Ausweichpflicht aufmerksam gemacht."
+        isCorrect: true
+      - id: a_f78d2c00f2bb
+        text: "Allgemeines Gefahren- und Warnsignal."
+        isCorrect: false
+      - id: a_ec4c12bdefe8
+        text: "Bleib-Weg-Signal, Explosionsgefahr durch gefährliche Güter. Sofort den Gefahrenbereich verlassen. Feuer und Zündfunken vermeiden."
+        isCorrect: false
+      - id: a_232cd6c6ff0a
+        text: "Seeschifffahrtsstraße gesperrt. Weiterfahrt verboten, sofort aufstoppen."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-Frage-140-gif.gif"
+
+  - id: q_b36e882d2f09
+    number: 213
+    text: "Welche Bedeutung hat folgendes Schallsignal?"
+    options:
+      - id: a_3a2f029aa32a
+        text: "Ein Ankerlieger macht ein sich näherndes Fahrzeug auf eine gefährliche Annäherung aufmerksam."
+        isCorrect: true
+      - id: a_c775a07091fa
+        text: "Die Maschine des Fahrzeugs läuft rückwärts."
+        isCorrect: false
+      - id: a_3aeb6820577b
+        text: "Schutzbedürftige Anlage; Geschwindigkeit reduzieren, Sog und Wellenschlag vermeiden."
+        isCorrect: false
+      - id: a_b3edd7886033
+        text: "Maschinenfahrzeug, das seine Maschinen gestoppt hat und keine Fahrt durchs Wasser macht."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-d-Frage-120-gif.gif"
+
   - id: q_c58c0888e114
-    number: 197
+    number: 214
     text: "Was ist bei der Benutzung eines Verkehrstrennungsgebietes zu beachten?"
     options:
       - id: a_fcbd1f33cca3
@@ -1753,7 +2635,7 @@ questions:
     category: spezifische-see
 
   - id: q_ea3567e477ab
-    number: 198
+    number: 215
     text: "Was ist hinsichtlich des Querens eines Verkehrstrennungsgebietes zu beachten?"
     options:
       - id: a_50a77f520ab0
@@ -1771,7 +2653,7 @@ questions:
     category: spezifische-see
 
   - id: q_1f43d623c5e5
-    number: 199
+    number: 216
     text: "In welcher Vorschrift findet man die Regeln zum Befahren von Verkehrstrennungsgebieten?"
     options:
       - id: a_98be5d7e0b10
@@ -1789,7 +2671,7 @@ questions:
     category: spezifische-see
 
   - id: q_2d77c0c15afa
-    number: 200
+    number: 217
     text: "Wie hat sich ein Maschinenfahrzeug bei Kollisionsgefahr in einem Einbahnweg eines Verkehrstrennungsgebietes gegenüber einem Maschinenfahrzeug zu verhalten, das den Einbahnweg von Steuerbord kommend quert?"
     options:
       - id: a_3170264f56c5
@@ -1807,7 +2689,7 @@ questions:
     category: spezifische-see
 
   - id: q_fede1ad5e7da
-    number: 201
+    number: 218
     text: "Wie hat sich ein Segelfahrzeug beim Queren eines Verkehrstrennungsgebietes gegenüber einem Maschinenfahrzeug zu verhalten, das auf einem Einbahnweg in der allgemeinen Verkehrsrichtung fährt?"
     options:
       - id: a_0d4a0a43975a
@@ -1825,7 +2707,7 @@ questions:
     category: spezifische-see
 
   - id: q_9c7b757e6ec6
-    number: 202
+    number: 219
     text: "Wie haben sich Fahrzeuge von weniger als 20 m Länge oder Segelfahrzeuge in Verkehrstrennungsgebieten zu verhalten?"
     options:
       - id: a_960991972eeb
@@ -1842,8 +2724,88 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_9f5de4b2ef60
+    number: 220
+    text: "Was ist das für ein Fahrzeug und was ist zu beachten?"
+    options:
+      - id: a_03f420294094
+        text: "Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren, an der zwei schwarze Rhomben senkrecht übereinander angeordnet sind."
+        isCorrect: true
+      - id: a_314e3a1ae77e
+        text: "Ein manövrierbehindertes Fahrzeug, das die Schifffahrt behindert. Es ist an der Seite zu passieren, an der zwei schwarze Bälle senkrecht übereinander angeordnet sind."
+        isCorrect: false
+      - id: a_b5c7f983b33e
+        text: "Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren, die in meiner Fahrtrichtung rechts liegt."
+        isCorrect: false
+      - id: a_60237ea9ba0d
+        text: "Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es darf an keiner Seite passiert werden."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Fahrzeug-Frage-148-gif.gif"
+
+  - id: q_a3119420c7d1
+    number: 221
+    text: "Was ist das für ein Fahrzeug und was ist zu beachten?"
+    options:
+      - id: a_e2ae263afdfb
+        text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt nicht behindert. Es ist an der Seite zu passieren, die in Fahrtrichtung rechts liegt."
+        isCorrect: true
+      - id: a_2b850cf42bef
+        text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren, die in Fahrtrichtung links liegt."
+        isCorrect: false
+      - id: a_10124aa3a5af
+        text: "Ein manövrierunfähiges Fahrzeug mit Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren, die in Fahrtrichtung rechts liegt."
+        isCorrect: false
+      - id: a_f5940272630a
+        text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es darf an beiden Seiten passiert werden."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Fahrzeug-Frage-149-gif.gif"
+
+  - id: q_b10656e54204
+    number: 222
+    text: "Was ist das für ein Fahrzeug und was ist zu beachten?"
+    options:
+      - id: a_48f17324f29d
+        text: "Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren, an der zwei grüne Rundumlichter senkrecht übereinander angeordnet sind."
+        isCorrect: true
+      - id: a_dd35c49035b8
+        text: "Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das die Schifffahrt behindert. Es ist an der Seite zu passieren, an der zwei rote Rundumlichter senkrecht übereinander angeordnet sind."
+        isCorrect: false
+      - id: a_a8883e082693
+        text: "Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren, die in Fahrtrichtung links liegt."
+        isCorrect: false
+      - id: a_34b2f80a86fc
+        text: "Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Steuerbordseite des Fahrwassers (Rechtsfahrgebot) zu passieren."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Fahrzeug-Frage-150-gif.gif"
+
+  - id: q_0e3419037402
+    number: 223
+    text: "Was ist das für ein Fahrzeug und was ist zu beachten?"
+    options:
+      - id: a_03d297d781b2
+        text: "Fahrzeug mit gefährlichen Gütern, Abstand halten, Rauchen und offenes Feuer verboten."
+        isCorrect: true
+      - id: a_71f8390e2813
+        text: "Fahrzeug des öffentlichen Dienstes. Es darf von den Verkehrsregeln abweichen."
+        isCorrect: false
+      - id: a_61dd94316125
+        text: "Fahrzeug in Seenot. Hilfe leisten bzw. weitere Hilfe anfordern."
+        isCorrect: false
+      - id: a_467368a7862d
+        text: "Fahrzeug mit Taucher im Einsatz. Großen Abstand halten."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Fahrzeug-Frage-151-gif.gif"
+
   - id: q_2a1418e535e7
-    number: 207
+    number: 224
     text: "Wo ist festgelegt, welche Wasserflächen Seeschifffahrtsstraßen sind?"
     options:
       - id: a_1074872b0c4b
@@ -1861,7 +2823,7 @@ questions:
     category: spezifische-see
 
   - id: q_c740f17dde87
-    number: 208
+    number: 225
     text: "Welche örtlichen Sondervorschriften zusätzlich zur Seeschifffahrtsstraßen-Ordnung (SeeSchStrO) und zur Schifffahrtsordnung Emsmündung (EmsSchO) gibt es und was ist darin geregelt?"
     options:
       - id: a_fd2a4b305730
@@ -1878,8 +2840,28 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_e81de8d5f743
+    number: 226
+    text: "Was ist das für ein Fahrzeug und was ist zu beachten?"
+    options:
+      - id: a_715460c7a0f4
+        text: "Fahrzeug des öffentlichen Dienstes im Einsatz. Es darf von den Verkehrsvorschriften abweichen."
+        isCorrect: true
+      - id: a_a000e3832833
+        text: "Fahrzeug der Bundesmarine im Einsatz. Es hat Munition oder andere Gefahrgüter an Bord."
+        isCorrect: false
+      - id: a_51b4fa30f53c
+        text: "Lotsenfahrzeug mit Sonderrechten im Einsatz. Es darf vom Rechtsfahrgebot abweichen."
+        isCorrect: false
+      - id: a_dd26dca8098b
+        text: "Tiefgangbehindertes Fahrzeug. Es darf nicht behindert werden."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Fahrzeug-Frage-154-gif.gif"
+
   - id: q_0ad8e86cbfe7
-    number: 210
+    number: 227
     text: "Wer gibt das Sichtzeichen \"Leuchtkugeln mit weißen Sternen\" und was ist zu beachten?"
     options:
       - id: a_73cb4e7728c1
@@ -1897,7 +2879,7 @@ questions:
     category: spezifische-see
 
   - id: q_17f7491bd351
-    number: 211
+    number: 228
     text: "Was sind Fahrwasser im Sinne der Seeschifffahrtsstraßen-Ordnung (SeeSchStrO) und der Schifffahrtsordnung Emsmündung (EmsSchO)?"
     options:
       - id: a_bf41c4a320b2
@@ -1915,7 +2897,7 @@ questions:
     category: spezifische-see
 
   - id: q_b60eea8f0042
-    number: 212
+    number: 229
     text: "Welches ist - außer in Wattgebieten - die Steuerbordseite eines Fahrwassers?"
     options:
       - id: a_67baa53601f5
@@ -1933,7 +2915,7 @@ questions:
     category: spezifische-see
 
   - id: q_d253ec4b0419
-    number: 213
+    number: 230
     text: "Welche verkehrsrechtliche Verpflichtung hat ein Fahrzeugführer nach § 3 der Seeschifffahrtsstraßen-Ordnung (SeeSchStrO), dessen Fahrzeug mit einer UKW-Funkanlage ausgerüstet ist?"
     options:
       - id: a_06a7a0597d7c
@@ -1951,7 +2933,7 @@ questions:
     category: spezifische-see
 
   - id: q_fa07cec1fa22
-    number: 214
+    number: 231
     text: "Welches Licht muss ein Fahrzeug unter Segel von weniger als 12 m Länge oder ein Fahrzeug unter Ruder auf der Seeschifffahrtsstraße führen, wenn es die nach den Kollisionsverhütungsregeln (KVR) vorgeschriebenen Lichter nicht führen kann?"
     options:
       - id: a_3461b1c98f79
@@ -1969,7 +2951,7 @@ questions:
     category: spezifische-see
 
   - id: q_ab577ec8333e
-    number: 215
+    number: 232
     text: "Wann darf ein Maschinenfahrzeug von weniger als 7 m Länge auf Seeschifffahrtsstraßen nicht fahren, wenn es die nach den Kollisionsverhütungsregeln (KVR) vorgeschriebenen Lichter nicht führen kann?"
     options:
       - id: a_9cd6c22b3491
@@ -1987,7 +2969,7 @@ questions:
     category: spezifische-see
 
   - id: q_46d65ca56101
-    number: 216
+    number: 233
     text: "Welches Schallsignal ist beim Einlaufen in Fahrwasser und Häfen zu geben, wenn die Verkehrslage es erfordert?"
     options:
       - id: a_5f237db9fb36
@@ -2004,8 +2986,28 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_d4f9e0f08a4c
+    number: 234
+    text: "Welche Bedeutung hat folgendes Schallsignal?"
+    options:
+      - id: a_abfb4e5e057f
+        text: "Allgemeines \"Gefahr- und Warnsignal\"."
+        isCorrect: true
+      - id: a_2b3c2c62d1f8
+        text: "Sperrung der Seeschifffahrtsstraße."
+        isCorrect: false
+      - id: a_d5ade9bb66a0
+        text: "Sofort anhalten (Fahrzeug des öffentlichen Dienstes)."
+        isCorrect: false
+      - id: a_9f13a7f87746
+        text: "Brücke/Schleuse kann vorübergehend nicht geöffnet werden."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-Frage-162-gif.gif"
+
   - id: q_25b0ac798925
-    number: 218
+    number: 235
     text: "Wie lautet das \"allgemeine Gefahr- und Warnsignal\"?"
     options:
       - id: a_a6889a099de5
@@ -2023,7 +3025,7 @@ questions:
     category: spezifische-see
 
   - id: q_ed91c43499fe
-    number: 219
+    number: 236
     text: "Wann ist das \"allgemeine Gefahr- und Warnsignal\" zu geben?"
     options:
       - id: a_2386764dbd31
@@ -2041,7 +3043,7 @@ questions:
     category: spezifische-see
 
   - id: q_2b1d74a5abff
-    number: 220
+    number: 237
     text: "Wie haben sich Fahrzeuge zu verhalten, die in ein Fahrwasser einlaufen, ein Fahrwasser queren, im Fahrwasser drehen oder ihre Anker- und Liegeplätze verlassen?"
     options:
       - id: a_f2fd2d173539
@@ -2059,7 +3061,7 @@ questions:
     category: spezifische-see
 
   - id: q_78d661776f28
-    number: 221
+    number: 238
     text: "Wie haben Segelfahrzeuge im Fahrwasser, die nicht deutlich der Richtung eines Fahrwassers folgen, untereinander auszuweichen?"
     options:
       - id: a_17c88e1f7995
@@ -2077,7 +3079,7 @@ questions:
     category: spezifische-see
 
   - id: q_b60ac3d75237
-    number: 222
+    number: 239
     text: "Welche Ausweichregeln gelten außerhalb des Fahrwassers?"
     options:
       - id: a_22ac2932b0aa
@@ -2095,7 +3097,7 @@ questions:
     category: spezifische-see
 
   - id: q_7a763c6ebb38
-    number: 223
+    number: 240
     text: "Wo ist das Überholen verboten?"
     options:
       - id: a_1e05b82c60b7
@@ -2113,7 +3115,7 @@ questions:
     category: spezifische-see
 
   - id: q_583142ebfe54
-    number: 224
+    number: 241
     text: "Wo darf Wasserski gelaufen, Wassermotorrad gefahren oder mit einem Segelsurfbrett gefahren werden?"
     options:
       - id: a_f28395017b6d
@@ -2131,7 +3133,7 @@ questions:
     category: spezifische-see
 
   - id: q_cd710ccc517e
-    number: 225
+    number: 242
     text: "Wie haben sich Führer von Zugbooten der Wasserskiläufer bzw. Wassermotorradfahrer und Segelsurfer bei der Annäherung an andere Fahrzeuge zu verhalten?"
     options:
       - id: a_28a23c7eb0cf
@@ -2149,7 +3151,7 @@ questions:
     category: spezifische-see
 
   - id: q_b90c34d2c04a
-    number: 226
+    number: 243
     text: "Wo ist das Ankern verboten?"
     options:
       - id: a_20c97304f3ce
@@ -2167,7 +3169,7 @@ questions:
     category: spezifische-see
 
   - id: q_6d44bc7abaa8
-    number: 227
+    number: 244
     text: "Was ist zu unternehmen, um die Schifffahrt zu warnen, wenn das eigene Fahrzeug gesunken ist und ein Schifffahrtshindernis darstellt?"
     options:
       - id: a_d613ca360ca7
@@ -2185,7 +3187,7 @@ questions:
     category: spezifische-see
 
   - id: q_4113deb24c10
-    number: 228
+    number: 245
     text: "Bei welchem Signal dürfen Sportfahrzeuge in die Schleusen des Nord-Ostsee-Kanals einfahren?"
     options:
       - id: a_4137d3c5cb05
@@ -2203,7 +3205,7 @@ questions:
     category: spezifische-see
 
   - id: q_53292fc019d1
-    number: 229
+    number: 246
     text: "Wo findet man Regeln für das Durchfahren des Nord-Ostsee-Kanals (NOK)?"
     options:
       - id: a_e354c705c422
@@ -2221,7 +3223,7 @@ questions:
     category: spezifische-see
 
   - id: q_6e68b5e98246
-    number: 230
+    number: 247
     text: "Was bedeuten im Nord-Ostsee-Kanal an einem Weichensignalmast drei unterbrochene rote Lichter übereinander und was ist zu beachten?"
     options:
       - id: a_fd9adc689b22
@@ -2238,8 +3240,100 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_e97f9050d02a
+    number: 248
+    text: "Welche Bedeutung hat folgendes Tafelzeichen?"
+    options:
+      - id: a_9c0e7b210d58
+        text: "Die Geschwindigkeit durch das Wasser in km/h, auf dem Nord-Ostsee-Kanal (NOK) über Grund in km/h, die nicht überschritten werden darf."
+        isCorrect: true
+      - id: a_70e697560a07
+        text: "Mindestabstand in Metern, der in der nachfolgenden Strecke vom Aufstellungsort der Tafel an eingehalten werden muss."
+        isCorrect: false
+      - id: a_7bf8841c4d04
+        text: "Die Geschwindigkeit durch das Wasser in sm/h (Knoten) auf dem Nord-Ostsee-Kanal (NOK) über Grund in sm/h, die nicht überschritten werden darf."
+        isCorrect: false
+      - id: a_9cc013a192e6
+        text: "Mindestabstand zu anderen Fahrzeugen in Metern, der im bekanntgemachten Streckenabschnitt nicht unterschritten werden darf."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_3961bca012be
+    number: 249
+    text: "Welche Bedeutung haben folgende Sichtzeichen?"
+    options:
+      - id: a_14cc42c21130
+        text: "Schutzbedürftige Anlage."
+        isCorrect: true
+      - id: a_c08b9ec6242d
+        text: "Dauernde Sperrung einer Teilstrecke der Seeschifffahrtsstraße."
+        isCorrect: false
+      - id: a_d5b79097ac5c
+        text: "Dauernde Sperrung der Seeschifffahrtsstraße."
+        isCorrect: false
+      - id: a_0bd6e8e4231f
+        text: "Außergewöhnliche Schifffahrtsbehinderung."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_0455c73c806a
+    number: 250
+    text: "Welche Bedeutung hat folgendes Schallsignal und was ist zu beachten?"
+    options:
+      - id: a_fcf76a0ccc54
+        text: "Brücke, Sperrwerk, Schleuse kann vorübergehend nicht geöffnet werden; Fahrt unterbrechen, Freigabe abwarten."
+        isCorrect: true
+      - id: a_dbce355f63c1
+        text: "Ein Ausweichpflichtiger wird vom Vorfahrtberechtigten auf seine Ausweichpflicht hingewiesen; sofort Ausweichmanöver einleiten."
+        isCorrect: false
+      - id: a_37aca63b23bc
+        text: "Bleib-weg-Signal, Gefahr durch gefährliche Ladung; sofort den Gefahrenbereich verlassen. Offenes Feuer vermeiden (Explosionsgefahr)."
+        isCorrect: false
+      - id: a_34f9c57d7b7b
+        text: "Brücke, Sperrwerk, Schleuse wird zur Öffnung vorbereitet; Fahrt fortsetzen."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-Frage-178-gif.gif"
+
+  - id: q_838c19c2ccd0
+    number: 251
+    text: "Welche Bedeutung hat folgendes Sichtzeichen?"
+    options:
+      - id: a_c97359305c23
+        text: "Geschwindigkeit von 8 km/h Fahrt durch das Wasser, die innerhalb eines Bereiches von 500 m von der jeweiligen Uferlinie wegen Badebetriebs nicht überschritten werden darf."
+        isCorrect: true
+      - id: a_95eb6b4e4166
+        text: "Kennzeichnung besonderer Gebiete und Stellen, z. B. Warngebiete; die Bedeutung kann der Seekarte entnommen und aus der Beschriftung des Schifffahrtszeichens erkannt werden."
+        isCorrect: false
+      - id: a_1d8cad1f5ea0
+        text: "Geschwindigkeit von 8 sm/h Fahrt durch das Wasser, die innerhalb eines Mindestabstandes von 500 m von der jeweiligen Uferlinie wegen Badebetriebs nicht überschritten werden darf."
+        isCorrect: false
+      - id: a_b1e2477c4644
+        text: "Buhnenbauwerk, Gefahr durch Sog und Wellenschlag. Insbesondere auf Badebetrieb und Schwimmer achten."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_43d95720c8c8
+    number: 252
+    text: "Welche Bedeutung hat folgendes Schifffahrtszeichen?"
+    options:
+      - id: a_53c1f48e90c5
+        text: "Gesperrt für alle Maschinenfahrzeuge und Wassermotorräder wegen Badebetriebs."
+        isCorrect: true
+      - id: a_c1e245aff655
+        text: "Höchstgeschwindigkeit von 4,3 Knoten Fahrt durch das Wasser, die innerhalb von 500 m von der jeweiligen Uferlinie wegen Badebetriebs nicht überschritten werden darf."
+        isCorrect: false
+      - id: a_8de24c4a4945
+        text: "Einzelgefahrenstelle, erkennbar an ihrer Farbgebung, die an allen Seiten mit einer maximalen Geschwindigkeit von 4,3 Knoten passiert werden kann."
+        isCorrect: false
+      - id: a_42478ade1e24
+        text: "Kennzeichnung besonderer Gebiete und Stellen, z. B. Warngebiet."
+        isCorrect: false
+    category: spezifische-see
+
   - id: q_600cf618d303
-    number: 236
+    number: 253
     text: "Welche Höchstgeschwindigkeit darf vor Stellen mit erkennbarem Badebetrieb - außerhalb des Fahrwassers - in einem Abstand von 500 m und weniger vom Ufer nicht überschritten werden?"
     options:
       - id: a_29a1c42a64db
@@ -2256,8 +3350,28 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_50b6e4f64eb3
+    number: 254
+    text: "Welche Bedeutung hat folgendes Schifffahrtszeichen?"
+    options:
+      - id: a_e741ba046362
+        text: "Kennzeichnung von besonderen Gebieten und Stellen."
+        isCorrect: true
+      - id: a_13253277ac95
+        text: "Kennzeichnung von Sperrgebieten."
+        isCorrect: false
+      - id: a_2d4720764a46
+        text: "Kennzeichnung von Schießgebieten."
+        isCorrect: false
+      - id: a_392074f4fb00
+        text: "Kennzeichnung von Badegebieten."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schifffahrtszeichen-Frage-182-gif.gif"
+
   - id: q_28dabf80e8e2
-    number: 238
+    number: 255
     text: "Woran ist ein militärisches Warngebiet zu erkennen, das wegen Schießübungen für die Schifffahrt gesperrt ist?"
     options:
       - id: a_d4b5ab342ac4
@@ -2274,8 +3388,264 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_10e839945c63
+    number: 256
+    text: "Welche Bedeutung haben folgende Schifffahrtszeichen?"
+    options:
+      - id: a_4c0a009abff2
+        text: "Sperrgebiet."
+        isCorrect: true
+      - id: a_152c1866bfe9
+        text: "Sperrgebiet und Badezone."
+        isCorrect: false
+      - id: a_b93156992bd0
+        text: "Sperrgebiet wegen Aquakulturen und Muschelzuchtanlagen."
+        isCorrect: false
+      - id: a_8918eb6e1bdd
+        text: "Schießgebiet."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_56726e4720ca
+    number: 257
+    text: "Welche Bedeutung hat folgendes Flaggensignal?"
+    options:
+      - id: a_23c8af2f0838
+        text: "Anhalten."
+        isCorrect: true
+      - id: a_4312651d43d7
+        text: "Seenotsignal."
+        isCorrect: false
+      - id: a_ab6249a3c5fc
+        text: "Anker behindert Schifffahrt."
+        isCorrect: false
+      - id: a_2fe57d314b37
+        text: "Schleppverband, länger als 200 m"
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Flaggensignal-Frage-185-gif.gif"
+
+  - id: q_23811ba38c9e
+    number: 258
+    text: "Welche Bedeutung hat folgendes Schallsignal?"
+    options:
+      - id: a_d0aa7a2dcdc5
+        text: "Polizeifahrzeug fordert zum Anhalten auf."
+        isCorrect: true
+      - id: a_255a27f51a43
+        text: "Ankerlieger macht auf gefährliche Annäherung aufmerksam."
+        isCorrect: false
+      - id: a_8b5b2ae6f1f3
+        text: "Letzter bemannter Anhang eines Schleppverbandes."
+        isCorrect: false
+      - id: a_6755120b0cf2
+        text: "Manövrierbehindertes Fahrzeug blockiert das Fahrwasser."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-Frage-186-gif.gif"
+
+  - id: q_0b9af4b4fb1e
+    number: 259
+    text: "Welche Bedeutung haben folgende Sichtzeichen?"
+    options:
+      - id: a_59c4408c1abd
+        text: "Dauernde Sperrung der Seeschifffahrtsstraße. Weiterfahrt verboten."
+        isCorrect: true
+      - id: a_76e16c77342e
+        text: "Schutzbedürftige Anlage. Sog und Wellenschlag vermeiden."
+        isCorrect: false
+      - id: a_4866a93f281c
+        text: "Außergewöhnliche Schifffahrtsbehinderung. Vorsichtig passieren."
+        isCorrect: false
+      - id: a_a3931df5ceed
+        text: "Ende einer Gebots- oder Verbotsstrecke. Freie Weiterfahrt."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Gebotszeichen-Frage-187.gif"
+
+  - id: q_1311ee30f438
+    number: 260
+    text: "Welche Bedeutung hat folgendes Schallsignal?"
+    options:
+      - id: a_239a0927fa3d
+        text: "Sperrung der Seeschifffahrtsstraße, Weiterfahrt verboten."
+        isCorrect: true
+      - id: a_399dbb53921d
+        text: "Einfahrt in Schleuse oder Anlage gesperrt, auf Freigabe warten."
+        isCorrect: false
+      - id: a_7f9598fb05a5
+        text: "Ein Ankerlieger bei schlechter Sicht, vorsichtig weiter navigieren."
+        isCorrect: false
+      - id: a_0fb2968b9e4c
+        text: "Fahrzeug des öffentlichen Dienstes, anhalten."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schallsignal-Frage-188-gif.gif"
+
+  - id: q_b05b3c23e37a
+    number: 261
+    text: "Welche Bedeutung haben folgende Sichtzeichen?"
+    options:
+      - id: a_de3acd92d55e
+        text: "Außergewöhnliche Schifffahrtsbehinderung."
+        isCorrect: true
+      - id: a_41fc18dd0704
+        text: "Dauernde Sperrung der Seeschifffahrtsstraße."
+        isCorrect: false
+      - id: a_87079aec1534
+        text: "Schutzbedürftige Anlage."
+        isCorrect: false
+      - id: a_90d623c2f6c1
+        text: "Zeitweilige Sperrung der Seeschifffahrtsstraße."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_2b3796dcf3e1
+    number: 262
+    text: "Welche Bedeutung hat folgende Tonne?"
+    options:
+      - id: a_b27f2ea4c499
+        text: "Kennzeichnung der Mitte von Schifffahrtswegen."
+        isCorrect: true
+      - id: a_799105a3b42e
+        text: "Kennzeichnung von Einzelgefahrenstellen."
+        isCorrect: false
+      - id: a_734d6d3e323d
+        text: "Kennzeichnung einer Reede."
+        isCorrect: false
+      - id: a_ecfdde62d627
+        text: "Kennzeichnung der Backbordseite eines Fahrwassers."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Tonne-Frage-190-gif.gif"
+
+  - id: q_808292a12956
+    number: 263
+    text: "Welche Bedeutung hat folgendes Schifffahrtszeichen?"
+    options:
+      - id: a_1b821400efe5
+        text: "Die Steuerbordseite des Fahrwassers."
+        isCorrect: true
+      - id: a_957b2e4118ae
+        text: "Die Backbordseite des Fahrwassers."
+        isCorrect: false
+      - id: a_8f2f3fe08ea3
+        text: "Die Mitte eines Schifffahrtsweges."
+        isCorrect: false
+      - id: a_a4eef2fb6ecd
+        text: "Die Kennzeichnung von Hindernissen."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schifffahrtszeichen-Frage-191-gif.gif"
+
+  - id: q_1b07a7d8e86c
+    number: 264
+    text: "Welche Bedeutung hat folgendes Schifffahrtszeichen?"
+    options:
+      - id: a_204ef5dc632d
+        text: "Die Backbordseite des Fahrwassers."
+        isCorrect: true
+      - id: a_c12e137bc879
+        text: "Die Steuerbordseite des Fahrwassers."
+        isCorrect: false
+      - id: a_b809c1f52131
+        text: "Die Mitte eines Wattfahrwassers."
+        isCorrect: false
+      - id: a_e74d99d321df
+        text: "Die Kennzeichnung eines Hindernisses im Wattfahrwasser."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schifffahrtszeichen-Frage-192-gif.gif"
+
+  - id: q_5f37712377e5
+    number: 265
+    text: "Welche Bedeutung hat folgende(s) Tonne/Schifffahrtszeichen?"
+    options:
+      - id: a_8a6628c4ff4c
+        text: "Die Steuerbordseite des Fahrwassers."
+        isCorrect: true
+      - id: a_312fc31c895b
+        text: "Die Backbordseite des Fahrwassers."
+        isCorrect: false
+      - id: a_a7039d9c61bc
+        text: "Die Mitte eines Schifffahrtsweges."
+        isCorrect: false
+      - id: a_6c10a271522e
+        text: "Die Kennzeichnung von Hindernissen."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schifffahrtszeichen-Frage-193-gif.gif"
+
+  - id: q_1ccb64db1799
+    number: 266
+    text: "Welche Bedeutung hat folgende(s) Tonne/Schifffahrtszeichen?"
+    options:
+      - id: a_0d2ba08fda71
+        text: "Die Backbordseite des Fahrwassers."
+        isCorrect: true
+      - id: a_460e3eabcd90
+        text: "Die Steuerbordseite des Fahrwassers."
+        isCorrect: false
+      - id: a_6b5591ce5aad
+        text: "Die Mitte eines Wattfahrwassers."
+        isCorrect: false
+      - id: a_e44be659f190
+        text: "Die Kennzeichnung eines Hindernisses im Wattfahrwasser."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Schifffahrtszeichen-Frage-194-gif.gif"
+
+  - id: q_4a154cd47975
+    number: 267
+    text: "Welche Bedeutung hat folgende Tonne?"
+    options:
+      - id: a_fdd13972cbd6
+        text: "Steuerbordseite des durchgehenden Fahrwassers/Backbordseite des abzweigenden oder einmündenden Fahrwassers."
+        isCorrect: true
+      - id: a_f61f10e5f51e
+        text: "Backbordseite des durchgehenden Fahrwassers/Steuerbordseite des abzweigenden oder einmündenden Fahrwassers."
+        isCorrect: false
+      - id: a_830dc07cd60d
+        text: "Steuerbordseite des durchgehenden Fahrwassers."
+        isCorrect: false
+      - id: a_8b47e88fb161
+        text: "Backbordseite des durchgehenden Fahrwassers."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Tonne-Frage-195-gif.gif"
+
+  - id: q_cbef41ccaf57
+    number: 268
+    text: "Welche Bedeutung hat folgende Tonne?"
+    options:
+      - id: a_0a313b9d7ba5
+        text: "Backbordseite des durchgehenden Fahrwassers, Steuerbordseite des abzweigenden oder einmündenden Fahrwassers."
+        isCorrect: true
+      - id: a_ab30f6d752b2
+        text: "Steuerbordseite des durchgehenden Fahrwassers, Backbordseite des abzweigenden oder einmündenden Fahrwassers."
+        isCorrect: false
+      - id: a_321d894a0530
+        text: "Steuerbordseite des durchgehenden Fahrwassers."
+        isCorrect: false
+      - id: a_2f08144d3dcb
+        text: "Backbordseite des durchgehenden Fahrwassers."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Tonne-Frage-196-gif.gif"
+
   - id: q_8ac651d78bd5
-    number: 252
+    number: 269
     text: "Welche Bedeutung hat folgende Kennung: \"Oc (2) R. Whis.\"?"
     options:
       - id: a_2987f4904d5e
@@ -2293,7 +3663,7 @@ questions:
     category: spezifische-see
 
   - id: q_79edc5723bc3
-    number: 253
+    number: 270
     text: "Welche Kennung und Farbe haben die Feuer der Leuchttonnen an der Steuerbordseite des Fahrwassers?"
     options:
       - id: a_3f5f385bd85f
@@ -2311,7 +3681,7 @@ questions:
     category: spezifische-see
 
   - id: q_bb5281cc51a2
-    number: 254
+    number: 271
     text: "Welche Kennung und Farbe haben die Feuer der Leuchttonnen an der Backbordseite des Fahrwassers?"
     options:
       - id: a_e3ec4dfaa6b3
@@ -2328,8 +3698,178 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_4689f06158b4
+    number: 272
+    text: "Welche Bedeutung hat folgendes Schifffahrtszeichen?"
+    options:
+      - id: a_a1121e094830
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant."
+        isCorrect: true
+      - id: a_edbd41e5e5c6
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant."
+        isCorrect: false
+      - id: a_8aa411c047a1
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant."
+        isCorrect: false
+      - id: a_a5b5016651d1
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_e22c6e4783f5
+    number: 273
+    text: "Welche Bedeutung hat folgendes Schifffahrtszeichen?"
+    options:
+      - id: a_bd86af188002
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant."
+        isCorrect: true
+      - id: a_9fcc258c96b6
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant."
+        isCorrect: false
+      - id: a_5f84231669a5
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant."
+        isCorrect: false
+      - id: a_078feb314e2f
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_886e3712460c
+    number: 274
+    text: "Welche Bedeutung hat folgendes Schifffahrtszeichen?"
+    options:
+      - id: a_2f57334a31a4
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant."
+        isCorrect: true
+      - id: a_16a340dd74f4
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant."
+        isCorrect: false
+      - id: a_f1e6d6979658
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant."
+        isCorrect: false
+      - id: a_40c67508bb3b
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_62659b208996
+    number: 275
+    text: "Welche Bedeutung hat folgendes Schifffahrtszeichen?"
+    options:
+      - id: a_f1bde8c78ffc
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant."
+        isCorrect: true
+      - id: a_67496e812960
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant."
+        isCorrect: false
+      - id: a_00f9435f72fc
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant."
+        isCorrect: false
+      - id: a_2037695e95f8
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant."
+        isCorrect: false
+    category: spezifische-see
+
+  - id: q_cce34be88e85
+    number: 276
+    text: "Welche Bedeutung hat das Feuer einer Leuchttonne mit folgender Kennung?"
+    options:
+      - id: a_bc2e27ea2af4
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, die nördlich zu passieren ist."
+        isCorrect: true
+      - id: a_b128ae2ff871
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, die südlich zu passieren ist."
+        isCorrect: false
+      - id: a_9f03df574384
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, die östlich zu passieren ist."
+        isCorrect: false
+      - id: a_a639995179b0
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, die westlich zu passieren ist."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Feuer-Frage-204-gif.gif"
+
+  - id: q_e2e706f006c6
+    number: 277
+    text: "Welche Bedeutung hat das Feuer einer Leuchttonne mit folgender Kennung?"
+    options:
+      - id: a_46fe2f5e95dc
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, die östlich zu passieren ist."
+        isCorrect: true
+      - id: a_9be652bda0ff
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, die nördlich zu passieren ist."
+        isCorrect: false
+      - id: a_491c9e8850b9
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, die südlich zu passieren ist."
+        isCorrect: false
+      - id: a_d83eb8f331c6
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, die westlich zu passieren ist."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Feuer-Frage-205-gif.gif"
+
+  - id: q_dd45557e24ce
+    number: 278
+    text: "Welche Bedeutung hat das Feuer einer Leuchttonne mit folgender Kennung?"
+    options:
+      - id: a_bb688cc191d0
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant."
+        isCorrect: true
+      - id: a_7257c731a012
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant."
+        isCorrect: false
+      - id: a_732600aaced0
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant."
+        isCorrect: false
+      - id: a_198d45374303
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Feuer-Frage-206-gif.gif"
+
+  - id: q_2c83b78813f9
+    number: 279
+    text: "Welche Bedeutung hat das Feuer einer Leuchttonne mit folgender Kennung?"
+    options:
+      - id: a_846e30333c25
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant. Sie ist westlich zu passieren."
+        isCorrect: true
+      - id: a_2fbbcade14b4
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant. Sie ist südlich zu passieren."
+        isCorrect: false
+      - id: a_9a42e76e55a9
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant. Sie ist östlich zu passieren."
+        isCorrect: false
+      - id: a_83bff743106d
+        text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant. Sie ist nördlich zu passieren."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Feuer-Frage-207-gif.gif"
+
+  - id: q_745b61654aa5
+    number: 280
+    text: "Was kennzeichnet eines der folgenden Schifffahrtszeichen und welches Verhalten wird gefordert?"
+    options:
+      - id: a_01cdfc6b03b2
+        text: "Eine Einzelgefahrenstelle, die an allen Seiten passiert werden kann."
+        isCorrect: true
+      - id: a_ff9e0f90f997
+        text: "Den nördlichen Quadranten einer allgemeinen Gefahrenstelle, die nördlich passiert werden muss."
+        isCorrect: false
+      - id: a_c6a8702d667e
+        text: "Den südlichen Quadranten einer allgemeinen Gefahrenstelle, die südlich passiert werden muss."
+        isCorrect: false
+      - id: a_b46a6b6c4e59
+        text: "Den westlichen Quadranten einer allgemeinen Gefahrenstelle, die westlich passiert werden muss."
+        isCorrect: false
+    category: spezifische-see
+
   - id: q_06fef33676a4
-    number: 264
+    number: 281
     text: "Welche Bedeutung hat das Feuer einer Leuchttonne mit folgender Kennung: Fl. (2)?"
     options:
       - id: a_82c336b997f7
@@ -2347,7 +3887,7 @@ questions:
     category: spezifische-see
 
   - id: q_e732e9f8dc06
-    number: 265
+    number: 282
     text: "Was versteht man unter einem Leitfeuer?"
     options:
       - id: a_ed03663866c3
@@ -2365,7 +3905,7 @@ questions:
     category: spezifische-see
 
   - id: q_194b6ec55241
-    number: 266
+    number: 283
     text: "Wie navigiert man mittels eines Leitfeuers?"
     options:
       - id: a_58ced0ded498
@@ -2383,7 +3923,7 @@ questions:
     category: spezifische-see
 
   - id: q_ea3a94570bff
-    number: 267
+    number: 284
     text: "Was versteht man unter einem Richtfeuer?"
     options:
       - id: a_bc66f946f45e
@@ -2401,7 +3941,7 @@ questions:
     category: spezifische-see
 
   - id: q_1209fc2ba9f0
-    number: 268
+    number: 285
     text: "Was versteht man unter einem Quermarkenfeuer?"
     options:
       - id: a_94356ee52864
@@ -2419,7 +3959,7 @@ questions:
     category: spezifische-see
 
   - id: q_827210a00dca
-    number: 269
+    number: 286
     text: "Wie navigiert man mittels eines Quermarkenfeuers?"
     options:
       - id: a_574a5cfa4ffe
@@ -2437,7 +3977,7 @@ questions:
     category: spezifische-see
 
   - id: q_efc6c903f315
-    number: 270
+    number: 287
     text: "Was versteht man unter einem unterbrochenen Feuer?"
     options:
       - id: a_e1574b8278af
@@ -2455,7 +3995,7 @@ questions:
     category: spezifische-see
 
   - id: q_4a098f765a75
-    number: 271
+    number: 288
     text: "Wo findet man die Grenzen der Naturschutzgebiete auf See?"
     options:
       - id: a_46dfd1ba5e75
@@ -2473,7 +4013,7 @@ questions:
     category: spezifische-see
 
   - id: q_47391ef56079
-    number: 272
+    number: 289
     text: "Wo findet man auszugsweise Hinweise zu Befahrensmöglichkeiten der Naturschutzgebiete in Küstengewässern?"
     options:
       - id: a_f89d60eaad23
@@ -2491,7 +4031,7 @@ questions:
     category: spezifische-see
 
   - id: q_de9e115b33ed
-    number: 273
+    number: 290
     text: "Weshalb sollte das Anlaufen von Seehundbänken im Bereich der Watten vermieden werden?"
     options:
       - id: a_8b0f8ae2e89d
@@ -2509,7 +4049,7 @@ questions:
     category: spezifische-see
 
   - id: q_cd5c0a970012
-    number: 274
+    number: 291
     text: "Welcher Abstand sollte gemäß den \"10 Goldenen Regeln\" für das Verhalten von Wassersportlern mindestens zu Liegeplätzen von Seehunden und zu Vogelansammlungen eingehalten werden?"
     options:
       - id: a_881845d1d0a1
@@ -2527,7 +4067,7 @@ questions:
     category: spezifische-see
 
   - id: q_55d039acf998
-    number: 275
+    number: 292
     text: "Was versteht man unter einem Blinkfeuer?"
     options:
       - id: a_9db5964158e1
@@ -2545,7 +4085,7 @@ questions:
     category: spezifische-see
 
   - id: q_72d01709e267
-    number: 276
+    number: 293
     text: "Was versteht man unter einem Blitzfeuer?"
     options:
       - id: a_c93e22cf6a17
@@ -2563,7 +4103,7 @@ questions:
     category: spezifische-see
 
   - id: q_55eae7a04d4e
-    number: 277
+    number: 294
     text: "Was versteht man unter einem Funkelfeuer?"
     options:
       - id: a_1db710dd3ac2
@@ -2581,7 +4121,7 @@ questions:
     category: spezifische-see
 
   - id: q_98cabc5ea87d
-    number: 278
+    number: 295
     text: "Was versteht man unter einem Gleichtaktfeuer?"
     options:
       - id: a_3943553c2b99
@@ -2599,7 +4139,7 @@ questions:
     category: spezifische-see
 
   - id: q_7ee198e12462
-    number: 279
+    number: 296
     text: "Was versteht man unter der Wiederkehr eines Leuchtfeuers?"
     options:
       - id: a_cdfc7cf41def
@@ -2617,7 +4157,7 @@ questions:
     category: spezifische-see
 
   - id: q_ace173ba885b
-    number: 280
+    number: 297
     text: "Wie hat man sich beim Befahren von Naturschutzgebieten und Nationalparken zu verhalten?"
     options:
       - id: a_bba9510ae068
@@ -2635,7 +4175,7 @@ questions:
     category: spezifische-see
 
   - id: q_ba46cb390e37
-    number: 281
+    number: 298
     text: "Welche Sondervorschriften enthalten die örtlichen Befahrensregelungen in den Naturschutzgebieten und Nationalparks?"
     options:
       - id: a_b14a08080127
@@ -2653,7 +4193,7 @@ questions:
     category: spezifische-see
 
   - id: q_addd62402844
-    number: 282
+    number: 299
     text: "Welche Verkehre können in einer ausgewiesenen Erlaubniszone zugelassen werden?"
     options:
       - id: a_6762ccdcefec
@@ -2671,7 +4211,7 @@ questions:
     category: spezifische-see
 
   - id: q_90235ff6cdff
-    number: 283
+    number: 300
     text: "Was verstehen Sie gemäß Nordsee-Befahrens-Verordnung (NordSBefV) unter Schnellfahrkorridore?"
     options:
       - id: a_521eff53c6fd
@@ -2689,7 +4229,7 @@ questions:
     category: spezifische-see
 
   - id: q_3d67c28dd833
-    number: 284
+    number: 301
     text: "Wie hoch, soweit die Nordsee-Befahrens-Verordnung (NordSBefV) nicht ausdrücklich etwas anderes bestimmt, ist die maximale Geschwindigkeit, die ein Maschinenfahrzeug in Nationalparken im Bereich der Nordsee fahren darf?"
     options:
       - id: a_e4efcf1f881f
@@ -2707,7 +4247,7 @@ questions:
     category: spezifische-see
 
   - id: q_e47011c6153f
-    number: 285
+    number: 302
     text: "Welche Verpflichtung hat man als Bootsführer, um einen Beitrag zur Reinhaltung der Gewässer zu leisten?"
     options:
       - id: a_f8c826a0c398
@@ -2725,7 +4265,7 @@ questions:
     category: spezifische-see
 
   - id: q_c2b012117b18
-    number: 286
+    number: 303
     text: "Welche amtlichen nautischen Veröffentlichungen geben Aufschluss über das Fahrtgebiet?"
     options:
       - id: a_1f057bcfa046
@@ -2743,7 +4283,7 @@ questions:
     category: spezifische-see
 
   - id: q_6e290218ba2b
-    number: 287
+    number: 304
     text: "Welche Angaben enthalten die Nachrichten für Seefahrer (NfS) und die Bekanntmachungen für Seefahrer (BfS)?"
     options:
       - id: a_aa0f5eac9011
@@ -2761,7 +4301,7 @@ questions:
     category: spezifische-see
 
   - id: q_4025a7cb082c
-    number: 288
+    number: 305
     text: "Welchen Effekt können Wind und gegenläufiger Tidenstrom im Bereich von Seegaten haben?"
     options:
       - id: a_6edde5fea5ed
@@ -2779,7 +4319,7 @@ questions:
     category: spezifische-see
 
   - id: q_e56d0c53b15f
-    number: 289
+    number: 306
     text: "Wo findet man Angaben über Küsten-, Häfen- und Naturverhältnisse?"
     options:
       - id: a_feadc57b65a1
@@ -2797,7 +4337,7 @@ questions:
     category: spezifische-see
 
   - id: q_e231e1964078
-    number: 290
+    number: 307
     text: "Wovon sollte man sich vor Gebrauch einer Seekarte überzeugen?"
     options:
       - id: a_6c68424b66b3
@@ -2815,7 +4355,7 @@ questions:
     category: spezifische-see
 
   - id: q_7cdaaca53b00
-    number: 291
+    number: 308
     text: "In welchen Maßeinheiten werden in deutschen Seekarten die Tiefen angegeben?"
     options:
       - id: a_8f9477430741
@@ -2833,7 +4373,7 @@ questions:
     category: spezifische-see
 
   - id: q_167f9196e0e2
-    number: 292
+    number: 309
     text: "Wo findet man Bedeutungen und Erläuterungen zu Zeichen, Abkürzungen und Begriffen in deutschen Seekarten?"
     options:
       - id: a_45b73e5ea579
@@ -2851,7 +4391,7 @@ questions:
     category: spezifische-see
 
   - id: q_ae92892f8f58
-    number: 293
+    number: 310
     text: "Wo findet man die für die Navigation wichtigen Beschreibungen der Schifffahrtszeichen, Angaben über deren Befeuerung und Angaben über Signalstellen?"
     options:
       - id: a_d3391feea4cd
@@ -2869,7 +4409,7 @@ questions:
     category: spezifische-see
 
   - id: q_4a9218ff17dd
-    number: 294
+    number: 311
     text: "Wo entnimmt man in der Seekarte die Seemeilen?"
     options:
       - id: a_38b8a6d5b823
@@ -2887,7 +4427,7 @@ questions:
     category: spezifische-see
 
   - id: q_e7fefde423d3
-    number: 295
+    number: 312
     text: "Was versteht man unter einer Seemeile und wie lang ist eine Seemeile (in Metern)?"
     options:
       - id: a_f47d1fc6341c
@@ -2905,7 +4445,7 @@ questions:
     category: spezifische-see
 
   - id: q_2e36f626ecc8
-    number: 296
+    number: 313
     text: "Was versteht man unter dem Geschwindigkeitsbegriff \"Knoten\"?"
     options:
       - id: a_ec5d6dde2116
@@ -2923,7 +4463,7 @@ questions:
     category: spezifische-see
 
   - id: q_ba87ac988c2c
-    number: 297
+    number: 314
     text: "Woraus entnimmt man die Magnetkompassablenkung?"
     options:
       - id: a_fb33d0bf7d33
@@ -2941,7 +4481,7 @@ questions:
     category: spezifische-see
 
   - id: q_e629697d5fad
-    number: 298
+    number: 315
     text: "Was versteht man in der terrestrischen Navigation unter einer Peilung?"
     options:
       - id: a_2c92cc8e102b
@@ -2959,7 +4499,7 @@ questions:
     category: spezifische-see
 
   - id: q_0e6bc01682df
-    number: 299
+    number: 316
     text: "Wie erhält man eine Standlinie?"
     options:
       - id: a_bb43ac950302
@@ -2977,7 +4517,7 @@ questions:
     category: spezifische-see
 
   - id: q_fa20e426cb08
-    number: 300
+    number: 317
     text: "Was versteht man unter Stromversetzung?"
     options:
       - id: a_8c2e23922dcb
@@ -2995,7 +4535,7 @@ questions:
     category: spezifische-see
 
   - id: q_aba982c62529
-    number: 301
+    number: 318
     text: "Was versteht man unter Windversetzung?"
     options:
       - id: a_8b07560d20fb
@@ -3013,7 +4553,7 @@ questions:
     category: spezifische-see
 
   - id: q_4035bd4a6e9c
-    number: 302
+    number: 319
     text: "Was versteht man unter einem Koppelort?"
     options:
       - id: a_008f4d32f29d
@@ -3031,7 +4571,7 @@ questions:
     category: spezifische-see
 
   - id: q_96fa3caf057f
-    number: 303
+    number: 320
     text: "Was ist bei der Aufstellung eines Magnetkompasses an Bord zu beachten?"
     options:
       - id: a_68fbcf08598e
@@ -3049,7 +4589,7 @@ questions:
     category: spezifische-see
 
   - id: q_b52528c0a4fc
-    number: 304
+    number: 321
     text: "Was versteht man unter Ebbe?"
     options:
       - id: a_e11ddf1ec3dc
@@ -3067,7 +4607,7 @@ questions:
     category: spezifische-see
 
   - id: q_ddd845b810a6
-    number: 305
+    number: 322
     text: "Was versteht man unter Flut?"
     options:
       - id: a_25c148a8a49b
@@ -3085,7 +4625,7 @@ questions:
     category: spezifische-see
 
   - id: q_f119df384e81
-    number: 306
+    number: 323
     text: "Was versteht man unter einer Tide?"
     options:
       - id: a_f1e8365d113d
@@ -3103,7 +4643,7 @@ questions:
     category: spezifische-see
 
   - id: q_1fe859665662
-    number: 307
+    number: 324
     text: "Was versteht man unter einem Niedrigwasser?"
     options:
       - id: a_4cb83cd06925
@@ -3121,7 +4661,7 @@ questions:
     category: spezifische-see
 
   - id: q_4140861c7ab6
-    number: 308
+    number: 325
     text: "Was versteht man unter einem Hochwasser?"
     options:
       - id: a_72b9161ccffd
@@ -3139,7 +4679,7 @@ questions:
     category: spezifische-see
 
   - id: q_339b21368ea7
-    number: 309
+    number: 326
     text: "Was versteht man unter \"Tidenhub\"?"
     options:
       - id: a_33d23aec309c
@@ -3157,7 +4697,7 @@ questions:
     category: spezifische-see
 
   - id: q_cd8f144ad31a
-    number: 310
+    number: 327
     text: "Wo sind für einen bestimmten Ort die Angaben über Hoch- und Niedrigwasserzeiten und den Tidenhub zu finden?"
     options:
       - id: a_f64c0e1a9a9c
@@ -3175,7 +4715,7 @@ questions:
     category: spezifische-see
 
   - id: q_0597d20b41cb
-    number: 311
+    number: 328
     text: "Wie lang sollte eine Schleppleine bei starkem Seegang sein?"
     options:
       - id: a_a797b52add41
@@ -3193,7 +4733,7 @@ questions:
     category: spezifische-see
 
   - id: q_2dccd031d4d4
-    number: 312
+    number: 329
     text: "Was ist zu beachten, wenn ein Sportboot geschleppt werden soll?"
     options:
       - id: a_36ba078d2fb9
@@ -3211,7 +4751,7 @@ questions:
     category: spezifische-see
 
   - id: q_8abd15e7d58e
-    number: 313
+    number: 330
     text: "Womit kann ein steuerunfähiges Sportboot mit dem Bug in den Wind gehalten werden?"
     options:
       - id: a_007df3c80088
@@ -3229,7 +4769,7 @@ questions:
     category: spezifische-see
 
   - id: q_7d68d5bca56d
-    number: 314
+    number: 331
     text: "Warum sollte bei starkem Seegang die Fahrt vermindert werden?"
     options:
       - id: a_2b3644dc90a7
@@ -3246,8 +4786,28 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_c74278e41b57
+    number: 332
+    text: "Was bedeutet folgendes Zeichen?"
+    options:
+      - id: a_189738513ee1
+        text: "Wind aus Richtung Nordwest; Stärke: Bft. 3; wolkenlos."
+        isCorrect: true
+      - id: a_add7851c4ba6
+        text: "Wind in Richtung Nordwest; Stärke: Bft. 3; wolkenlos."
+        isCorrect: false
+      - id: a_8cb50444a136
+        text: "Strom aus Richtung Nordwest; Stärke: 3 Knoten; Tidegebiet."
+        isCorrect: false
+      - id: a_b13395b4134b
+        text: "Strom in Richtung Nordwest; Stärke: 3 Knoten; Tidegebiet."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Zeichen-Frage-260-gif.gif"
+
   - id: q_6160bd91fda3
-    number: 316
+    number: 333
     text: "Welche Angaben liefert die Beaufort-Skala?"
     options:
       - id: a_1de2c3e015e1
@@ -3265,7 +4825,7 @@ questions:
     category: spezifische-see
 
   - id: q_0a09b914996c
-    number: 317
+    number: 334
     text: "Wie werden Orte gleichen Luftdrucks in der Wetterkarte dargestellt und in welcher Maßeinheit wird der Luftdruck angegeben?"
     options:
       - id: a_4fb4654e2700
@@ -3283,7 +4843,7 @@ questions:
     category: spezifische-see
 
   - id: q_376de6ecca4b
-    number: 318
+    number: 335
     text: "Womit muss bei rasch fallendem Luftdruck gerechnet werden?"
     options:
       - id: a_9a7a134ea610
@@ -3301,7 +4861,7 @@ questions:
     category: spezifische-see
 
   - id: q_cb80585f4d6f
-    number: 319
+    number: 336
     text: "Was bedeuten die in der Wetterkarte abgebildeten Isobaren?"
     options:
       - id: a_66272be758cf
@@ -3318,8 +4878,48 @@ questions:
         isCorrect: false
     category: spezifische-see
 
+  - id: q_80b3155b88b3
+    number: 337
+    text: "Was zeigt die folgende Abbildung?"
+    options:
+      - id: a_875ac8bfe0c4
+        text: "Abbildung eines Hochdruckgebietes auf der Nordhalbkugel, Isobaren mit Angabe des Luftdrucks in hPa."
+        isCorrect: true
+      - id: a_8527b106da09
+        text: "Abbildung eines Hochdruckgebietes auf der Südhalbkugel, Isobaren mit Angabe des Luftdrucks in hPa."
+        isCorrect: false
+      - id: a_66d797373c08
+        text: "Abbildung eines Hochdruckgebietes auf der Nordhalbkugel, Isobaren mit Angabe des Luftdrucks in hPa, Zugrichtung Nordwest."
+        isCorrect: false
+      - id: a_af57ae569be6
+        text: "Abbildung eines Hochdruckgebietes auf der Südhalbkugel, Isobaren mit Angabe des Luftdrucks in hPa, Zugrichtung Südwest."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Abbildung-Frage-265.gif"
+
+  - id: q_37bb1ee3df66
+    number: 338
+    text: "Was zeigt die folgende Abbildung?"
+    options:
+      - id: a_6d8329d3f37f
+        text: "Abbildung eines Tiefdruckgebietes auf der Nordhalbkugel mit Warm- und Kaltfront, Isobaren mit Angabe des Luftdrucks in hPa, warme und kalte Luftströmung."
+        isCorrect: true
+      - id: a_3566ed25400e
+        text: "Abbildung eines Tiefdruckgebietes auf der Südhalbkugel mit Kalt- und Warmfront, Isobaren mit Angabe des Luftdrucks in hPa, kalte und warme Luftströmung."
+        isCorrect: false
+      - id: a_2c7b6e286489
+        text: "Abbildung eines Tiefdruckgebietes auf der Nordhalbkugel mit Kaltfront vor der Warmfront, Angabe des Luftdrucks in hPa, Warmfront südlich, Kaltfront nördlich des Zentrums."
+        isCorrect: false
+      - id: a_ee4e905a241d
+        text: "Abbildung eines Tiefdruckgebietes auf der Südhalbkugel mit Warmfront vor der Kaltfront, Angabe des Luftdrucks in hPa, Darstellung des Kalt- und Warmluftstroms."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Abbildung-Frage-266.gif"
+
   - id: q_f3a2ec7ae8a8
-    number: 322
+    number: 339
     text: "Für welche Windstärken wird eine Starkwindwarnung herausgegeben?"
     options:
       - id: a_e246f0c61a18
@@ -3337,7 +4937,7 @@ questions:
     category: spezifische-see
 
   - id: q_1c861d78d3ab
-    number: 323
+    number: 340
     text: "Für welche Windstärken wird eine Sturmwarnung herausgegeben?"
     options:
       - id: a_fc1d136fb85e
@@ -3355,7 +4955,7 @@ questions:
     category: spezifische-see
 
   - id: q_25b55cd777b1
-    number: 324
+    number: 341
     text: "Was ist in amtlichen Wetterberichten unter \"frischem Wind\" zu verstehen?"
     options:
       - id: a_9f108208076b
@@ -3373,7 +4973,7 @@ questions:
     category: spezifische-see
 
   - id: q_3b42ee7c7243
-    number: 325
+    number: 342
     text: "Was ist in amtlichen Wetterberichten unter \"schwerem Sturm\", \"orkanartigem Sturm\" und \"Orkan\" zu verstehen?"
     options:
       - id: a_d00128505330
@@ -3391,7 +4991,7 @@ questions:
     category: spezifische-see
 
   - id: q_1062939673d9
-    number: 326
+    number: 343
     text: "Wie hat man seine Fahrweise im Fahrwasser bei verminderter Sicht aufgrund seemännischer Sorgfaltspflicht einzurichten, wenn das Fahrzeug nicht über die technische Ausrüstung, insbesondere zur Ortung anderer Fahrzeuge, verfügt?"
     options:
       - id: a_c9b916f3d3c0
@@ -3409,7 +5009,7 @@ questions:
     category: spezifische-see
 
   - id: q_d7c3c6bd694b
-    number: 327
+    number: 344
     text: "Wozu dient primär das Automatische Identifikationssystem (AIS)?"
     options:
       - id: a_929b1822032e
@@ -3427,7 +5027,7 @@ questions:
     category: spezifische-see
 
   - id: q_59559d47a316
-    number: 328
+    number: 345
     text: "Welche Informationen können über das Automatische Identifikationssystem (AIS) ausgetauscht werden?"
     options:
       - id: a_4fa8bbb55fc0
@@ -3445,7 +5045,7 @@ questions:
     category: spezifische-see
 
   - id: q_f3dab1cb94f6
-    number: 329
+    number: 346
     text: "Welche Sicherheitsmaßnahmen sind an Bord aufgrund der seemännischen Sorgfaltspflicht neben den in den Kollisionsverhütungsregeln vorgeschriebenen Verhaltensmaßregeln bei verminderter Sicht zu treffen?"
     options:
       - id: a_e3d0f6e63d03
@@ -3463,7 +5063,7 @@ questions:
     category: spezifische-see
 
   - id: q_c73f507005a9
-    number: 330
+    number: 347
     text: "Welche Sicherheitsmaßnahmen sind auf See vor Eintritt von schwerem Wetter (Starkwind, Sturm) zu treffen?"
     options:
       - id: a_7a227f3663d7
@@ -3481,7 +5081,7 @@ questions:
     category: spezifische-see
 
   - id: q_20fba244a83d
-    number: 331
+    number: 348
     text: "Mit welchen Hilfsmitteln kann eine im Wasser treibende Person schnell und sicher an Bord genommen werden?"
     options:
       - id: a_ebe9248a4160
@@ -3499,7 +5099,7 @@ questions:
     category: spezifische-see
 
   - id: q_e51c6e0084c5
-    number: 332
+    number: 349
     text: "Was ist zu tun, wenn das Fahrzeug gekentert ist?"
     options:
       - id: a_efc07d164ef3
@@ -3517,7 +5117,7 @@ questions:
     category: spezifische-see
 
   - id: q_dcc90d3a9dff
-    number: 333
+    number: 350
     text: "Wie verhindert man das Überbordfallen von Personen bei starkem Seegang?"
     options:
       - id: a_f3e74246079b
@@ -3535,7 +5135,7 @@ questions:
     category: spezifische-see
 
   - id: q_13f978ed5db1
-    number: 334
+    number: 351
     text: "Welche Notsignale können gegeben werden?"
     options:
       - id: a_77df129c009e
@@ -3561,7 +5161,7 @@ per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben u
     category: spezifische-see
 
   - id: q_1b7d8aaafd3a
-    number: 335
+    number: 352
     text: "Was bedeutet das Flaggensignal \"NC\" auf einem Fahrzeug?"
     options:
       - id: a_69c1432bffd9
@@ -3579,7 +5179,7 @@ per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben u
     category: spezifische-see
 
   - id: q_743e6de83d0b
-    number: 336
+    number: 353
     text: "Was bedeutet anhaltendes Ertönen eines Nebelsignalgerätes von einem Fahrzeug?"
     options:
       - id: a_746cd31e390f
@@ -3596,8 +5196,28 @@ per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben u
         isCorrect: false
     category: spezifische-see
 
+  - id: q_127a8e0ec4d3
+    number: 354
+    text: "Was bedeutet das folgende durch Licht oder Schallsignal gegebene Morsesignal?"
+    options:
+      - id: a_82aac416e4cc
+        text: "Seenotsignal."
+        isCorrect: true
+      - id: a_3a31a05904b0
+        text: "Nebelsignal."
+        isCorrect: false
+      - id: a_8ee9ca9312a8
+        text: "Bleib-weg-Signal."
+        isCorrect: false
+      - id: a_1915b4c2876b
+        text: "Überholsignal."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Notsignal-Frage-279-gif.gif"
+
   - id: q_cde21f60f4d9
-    number: 338
+    number: 355
     text: "Was bedeutet eine Leuchtrakete mit einem roten Stern?"
     options:
       - id: a_7e34d1127fde
@@ -3613,4 +5233,44 @@ per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben u
         text: "Aufforderung zur Kursänderung."
         isCorrect: false
     category: spezifische-see
+
+  - id: q_fb952ff3ffa3
+    number: 356
+    text: "Was bedeutet folgendes Flaggensignal?"
+    options:
+      - id: a_be043926038d
+        text: "Fahrzeug in Seenot."
+        isCorrect: true
+      - id: a_c603897717f2
+        text: "Fahrzeug des öffentlichen Dienstes."
+        isCorrect: false
+      - id: a_c19c8feca80e
+        text: "Fahrzeug mit gefährlichen Gütern."
+        isCorrect: false
+      - id: a_0f1dd276a579
+        text: "Fahrzeug verlässt Liegeplatz."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Flaggensignal-Frage-284-gif.gif"
+
+  - id: q_51b8b1dc1dba
+    number: 357
+    text: "Was bedeutet auf einem Schiff eines der folgenden Signale?"
+    options:
+      - id: a_5a0078fb8f96
+        text: "Fahrzeug in Seenot."
+        isCorrect: true
+      - id: a_8f665a799da0
+        text: "Fahrzeug ist manövrierbehindert."
+        isCorrect: false
+      - id: a_a258a76a606c
+        text: "Fahrzeug mit gefährlichen Gütern."
+        isCorrect: false
+      - id: a_375d0f8f2778
+        text: "Fahrzeug vor Anker mit mehr als 100 m Länge."
+        isCorrect: false
+    category: spezifische-see
+    assets:
+      - "Signal-Frage-285-gif.gif"
 
