@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import '../models/course.dart';
 import '../models/course_manifest.dart';
@@ -28,13 +27,31 @@ class QuestionsProvider extends ChangeNotifier {
   double _migrationProgress = 0.0;
   String _migrationStatus = '';
 
+  // Cache for shuffled questions to maintain consistency
+  final Map<String, Question> _shuffledQuestionsCache = {};
+
   // Getters
   Course? get currentCourse => _currentCourse;
   List<Question> get currentQuestions => _currentQuestions;
-  Question? get currentQuestion =>
-      _currentQuestionIndex < _currentQuestions.length
-      ? _currentQuestions[_currentQuestionIndex]
-      : null;
+  Question? get currentQuestion {
+    if (_currentQuestionIndex >= _currentQuestions.length) {
+      return null;
+    }
+
+    final originalQuestion = _currentQuestions[_currentQuestionIndex];
+
+    // Check if we already have a shuffled version cached
+    if (_shuffledQuestionsCache.containsKey(originalQuestion.id)) {
+      return _shuffledQuestionsCache[originalQuestion.id];
+    }
+
+    // Create and cache a shuffled version
+    final shuffledQuestion = originalQuestion.copyWithShuffledOptions();
+    _shuffledQuestionsCache[originalQuestion.id] = shuffledQuestion;
+
+    return shuffledQuestion;
+  }
+
   int get currentQuestionIndex => _currentQuestionIndex;
   StudySession? get currentSession => _currentSession;
   bool get isLoading => _isLoading;
@@ -180,10 +197,13 @@ class QuestionsProvider extends ChangeNotifier {
       );
       _currentQuestionIndex = 0;
 
-      // Apply shuffle if enabled
+      // Clear the shuffled questions cache when loading new questions
+      _shuffledQuestionsCache.clear();
+
+      // Apply shuffle if enabled (shuffles the order of questions, not their answers)
       if (_storage.getSetting('shuffleQuestions', defaultValue: false)) {
         _currentQuestions.shuffle();
-        debugPrint('[QuestionsProvider] Shuffled questions');
+        debugPrint('[QuestionsProvider] Shuffled question order');
       }
 
       _error = null;

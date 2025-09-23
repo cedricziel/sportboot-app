@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'answer_option.dart';
 
 class Question {
@@ -106,5 +107,24 @@ class Question {
   bool isAnswerCorrect(int index) {
     if (index < 0 || index >= options.length) return false;
     return options[index].isCorrect;
+  }
+
+  // Create a copy of the question with shuffled answer options
+  Question copyWithShuffledOptions() {
+    final random = Random();
+    final shuffledOptions = List<AnswerOption>.from(options)..shuffle(random);
+
+    return Question(
+      id: id,
+      number: number,
+      question: question,
+      options: shuffledOptions,
+      category: category,
+      assets: assets,
+      subcategory: subcategory,
+      difficulty: difficulty,
+      tags: tags,
+      explanation: explanation,
+    );
   }
 }
