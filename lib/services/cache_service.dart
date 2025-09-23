@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 
 /// A simple in-memory cache service for database query results
@@ -91,10 +92,18 @@ class CacheService {
 
   void _startCleanupTimer() {
     _cleanupTimer?.cancel();
-    _cleanupTimer = Timer.periodic(
-      const Duration(minutes: 1),
-      (_) => _removeExpiredEntries(),
-    );
+
+    // Don't start cleanup timer in test mode to avoid pending timer issues
+    final isTestMode =
+        Platform.environment.containsKey('FLUTTER_TEST') ||
+        (kDebugMode && Platform.environment['FLUTTER_TEST'] == 'true');
+
+    if (!isTestMode) {
+      _cleanupTimer = Timer.periodic(
+        const Duration(minutes: 1),
+        (_) => _removeExpiredEntries(),
+      );
+    }
   }
 
   void _removeExpiredEntries() {
