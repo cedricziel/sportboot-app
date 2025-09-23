@@ -5,7 +5,7 @@ DATA_SOURCE = .data
 DATA_TARGET = assets/data
 CACHE_DIR = .cache
 
-.PHONY: help build scrape copy-data clean clean-cache logo splash icons
+.PHONY: help build scrape copy-data clean clean-cache logo splash icons bump build-ios build-testflight
 
 # Default target - show help
 help:
@@ -16,6 +16,9 @@ help:
 	@echo "  logo         - Generate app logo images"
 	@echo "  icons        - Generate app icons for iOS and macOS"
 	@echo "  splash       - Generate native splash screens (requires logo)"
+	@echo "  bump         - Increment build number in pubspec.yaml"
+	@echo "  build-ios    - Build iOS app for release (auto-increments build number)"
+	@echo "  build-testflight - Build and prepare for TestFlight upload"
 	@echo "  clean        - Remove temporary files and build artifacts"
 	@echo "  clean-cache  - Remove cached HTML files"
 
@@ -79,3 +82,38 @@ icons:
 	@flutter pub get
 	@dart run flutter_launcher_icons
 	@echo "✓ App icons generated for iOS and macOS"
+
+# Increment build number
+bump:
+	@./tool/bump_build.sh
+
+# Build iOS app for release
+build-ios: bump
+	@echo "Building iOS app for release..."
+	@flutter clean
+	@flutter pub get
+	@flutter build ios --release
+	@echo "✓ iOS app built successfully"
+	@echo ""
+	@echo "Next steps:"
+	@echo "1. Open ios/Runner.xcworkspace in Xcode"
+	@echo "2. Select 'Any iOS Device' as the target"
+	@echo "3. Product > Archive"
+	@echo "4. Distribute App > TestFlight & App Store"
+
+# Build for TestFlight (includes everything needed)
+build-testflight: icons splash bump
+	@echo "Preparing build for TestFlight..."
+	@flutter clean
+	@flutter pub get
+	@flutter build ios --release
+	@echo "✓ Build prepared for TestFlight"
+	@echo ""
+	@echo "To upload to TestFlight:"
+	@echo "1. Open ios/Runner.xcworkspace in Xcode"
+	@echo "2. Select 'Any iOS Device' as the target"
+	@echo "3. Product > Archive"
+	@echo "4. In Organizer: Distribute App > TestFlight & App Store"
+	@echo "5. Follow the upload wizard"
+	@echo ""
+	@echo "Alternative: Use Transporter app for direct upload"

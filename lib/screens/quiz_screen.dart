@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
 import '../widgets/answer_option_widget.dart';
+import '../widgets/zoomable_image.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -163,7 +164,10 @@ class _QuizScreenState extends State<QuizScreen> {
           return Column(
             children: [
               LinearProgressIndicator(
-                value: provider.getProgress(),
+                value: provider.currentQuestions.isNotEmpty
+                    ? (provider.currentQuestionIndex + 1) /
+                          provider.currentQuestions.length
+                    : 0,
                 backgroundColor: Colors.grey[300],
               ),
               Padding(
@@ -184,8 +188,8 @@ class _QuizScreenState extends State<QuizScreen> {
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
                             children: [
-                              Text(
-                                question.question,
+                              SelectableText(
+                                _removeSquareBrackets(question.question),
                                 style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
@@ -194,18 +198,25 @@ class _QuizScreenState extends State<QuizScreen> {
                               if (question.assets.isNotEmpty) ...[
                                 const SizedBox(height: 16),
                                 ...question.assets.map(
-                                  (asset) => Image.asset(
-                                    'assets/images/${asset.split('/').last}',
-                                    height: 150,
-                                    errorBuilder: (context, error, stackTrace) {
-                                      return Container(
-                                        padding: const EdgeInsets.all(8),
-                                        color: Colors.grey[200],
-                                        child: Text(
-                                          'Bild: ${asset.split('/').last}',
-                                        ),
-                                      );
-                                    },
+                                  (asset) => Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8.0,
+                                    ),
+                                    child: ConstrainedBox(
+                                      constraints: BoxConstraints(
+                                        maxHeight:
+                                            MediaQuery.of(context).size.height *
+                                            0.25,
+                                        maxWidth:
+                                            MediaQuery.of(context).size.width -
+                                            48,
+                                      ),
+                                      child: ZoomableImage(
+                                        assetPath:
+                                            'assets/images/${asset.split('/').last}',
+                                        height: 150,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -302,5 +313,11 @@ class _QuizScreenState extends State<QuizScreen> {
         },
       ),
     );
+  }
+
+  // Helper function to remove square bracketed descriptions from text
+  String _removeSquareBrackets(String text) {
+    // Remove all text within square brackets including the brackets
+    return text.replaceAll(RegExp(r'\[[^\]]*\]'), '').trim();
   }
 }

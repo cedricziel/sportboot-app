@@ -13,7 +13,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In macOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-version: 1.0.0+1
+version: 0.0.1+1
 
 environment:
   sdk: ^3.8.1
@@ -47,6 +47,14 @@ dependencies:
 
   # Image handling
   cached_network_image: ^3.3.0
+  photo_view: ^0.15.0
+  
+  # Database
+  sqflite: ^2.3.0
+  path: ^1.9.0
+  
+  # Animation for smooth transitions
+  flutter_animate: ^4.5.0
 
   # Crypto utilities
   crypto: ^3.0.3
@@ -73,11 +81,14 @@ dev_dependencies:
   # Testing dependencies
   mockito: ^5.5.1
   build_runner: ^2.4.7
+  sqflite_common_ffi: ^2.3.0
 
   # For build scripts
   http: ^1.1.0
   html: ^0.15.4
-  path: ^1.8.3
+
+  # Pre-commit hooks for code quality
+  flutter_pre_commit: ^0.2.4
 
   # Launcher icons
   flutter_launcher_icons: ^0.14.1

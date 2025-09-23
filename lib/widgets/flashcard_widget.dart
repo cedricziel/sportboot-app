@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import '../models/question.dart';
+import 'zoomable_image.dart';
 
 class FlashcardWidget extends StatelessWidget {
   final Question question;
@@ -41,54 +42,48 @@ class FlashcardWidget extends StatelessWidget {
   }
 
   Widget _buildQuestionSide(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              const Icon(Icons.help_outline, size: 48, color: Colors.blue),
-              const SizedBox(height: 24),
-              Text(
-                question.question,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              if (question.assets.isNotEmpty) ...[
-                const SizedBox(height: 16),
-                ...question.assets.map(
-                  (asset) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Image.asset(
-                      'assets/images/${asset.split('/').last}',
-                      height: 100,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          padding: const EdgeInsets.all(8),
-                          color: Colors.grey[200],
-                          child: Text(
-                            'Bild: ${asset.split('/').last}',
-                            style: const TextStyle(fontSize: 12),
-                          ),
-                        );
-                      },
+    // Remove bracketed descriptions from question text
+    final cleanedQuestion = _removeSquareBrackets(question.question);
+
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.help_outline, size: 48, color: Colors.blue),
+            const SizedBox(height: 24),
+            SelectableText(
+              cleanedQuestion,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              textAlign: TextAlign.center,
+            ),
+            if (question.assets.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              ...question.assets.map(
+                (asset) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: MediaQuery.of(context).size.height * 0.3,
+                      maxWidth: MediaQuery.of(context).size.width - 48,
+                    ),
+                    child: ZoomableImage(
+                      assetPath: 'assets/images/${asset.split('/').last}',
+                      height: 150,
                     ),
                   ),
                 ),
-              ],
-              const SizedBox(height: 32),
-              const Text(
-                'Tippe zum Umdrehen',
-                style: TextStyle(color: Colors.grey, fontSize: 14),
               ),
             ],
-          ),
+            const SizedBox(height: 32),
+            const Text(
+              'Tippe zum Umdrehen',
+              style: TextStyle(color: Colors.grey, fontSize: 14),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
@@ -154,7 +149,7 @@ class FlashcardWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          SelectableText(
                             option.text,
                             style: TextStyle(
                               fontSize: 14,
@@ -216,7 +211,7 @@ class FlashcardWidget extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 8),
-                    Text(
+                    SelectableText(
                       question.explanation!,
                       style: const TextStyle(fontSize: 14),
                     ),
@@ -228,5 +223,11 @@ class FlashcardWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // Helper function to remove square bracketed descriptions from text
+  String _removeSquareBrackets(String text) {
+    // Remove all text within square brackets including the brackets
+    return text.replaceAll(RegExp(r'\[[^\]]*\]'), '').trim();
   }
 }

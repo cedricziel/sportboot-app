@@ -1,20 +1,35 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sportboot_app/models/course.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
+import 'package:sportboot_app/repositories/question_repository.dart';
 import 'package:sportboot_app/services/storage_service.dart';
+import '../helpers/test_database_helper.dart';
 
 void main() {
   group('Course Loading Tests', () {
     late QuestionsProvider provider;
 
-    setUp(() async {
+    setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
+      // Initialize FFI for database testing
+      sqfliteFfiInit();
+      databaseFactory = databaseFactoryFfi;
+    });
+
+    setUp(() async {
       // Set up SharedPreferences mock
       SharedPreferences.setMockInitialValues({});
+
+      // Initialize repository and populate test data
+      final repository = QuestionRepository();
+      await TestDatabaseHelper.populateTestDatabase(repository);
+
       provider = QuestionsProvider();
       // Initialize storage
       await StorageService().init();
+      await provider.init();
     });
 
     test('Course model handles both YAML formats correctly', () {

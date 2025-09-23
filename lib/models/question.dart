@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'answer_option.dart';
 
 class Question {
@@ -31,9 +32,18 @@ class Question {
 
     if (map.containsKey('options')) {
       // New format with structured options
-      options = (map['options'] as List)
-          .map((option) => AnswerOption.fromMap(option as Map<String, dynamic>))
-          .toList();
+      final optionsList = map['options'] as List;
+      options = [];
+      for (int i = 0; i < optionsList.length; i++) {
+        final optionMap = Map<String, dynamic>.from(
+          optionsList[i] as Map<String, dynamic>,
+        );
+        // Generate ID if missing
+        if (!optionMap.containsKey('id') || optionMap['id'] == null) {
+          optionMap['id'] = 'a_${map['id']}_$i';
+        }
+        options.add(AnswerOption.fromMap(optionMap));
+      }
     } else if (map.containsKey('answers')) {
       // Legacy format with simple string answers
       // Generate IDs for backward compatibility
@@ -97,5 +107,24 @@ class Question {
   bool isAnswerCorrect(int index) {
     if (index < 0 || index >= options.length) return false;
     return options[index].isCorrect;
+  }
+
+  // Create a copy of the question with shuffled answer options
+  Question copyWithShuffledOptions() {
+    final random = Random();
+    final shuffledOptions = List<AnswerOption>.from(options)..shuffle(random);
+
+    return Question(
+      id: id,
+      number: number,
+      question: question,
+      options: shuffledOptions,
+      category: category,
+      assets: assets,
+      subcategory: subcategory,
+      difficulty: difficulty,
+      tags: tags,
+      explanation: explanation,
+    );
   }
 }

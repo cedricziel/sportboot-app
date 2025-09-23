@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -94,7 +95,25 @@ class NotificationService {
 
   // Request notification permissions
   Future<bool> requestPermissions() async {
-    // Request permission using permission_handler
+    // macOS handles notifications differently - permissions are managed at the system level
+    if (Platform.isMacOS) {
+      // For macOS, request through the notification plugin directly
+      final macOS = _notifications
+          .resolvePlatformSpecificImplementation<
+            MacOSFlutterLocalNotificationsPlugin
+          >();
+      if (macOS != null) {
+        final granted = await macOS.requestPermissions(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+        return granted ?? false;
+      }
+      return true; // Assume granted if we can't check
+    }
+
+    // For iOS and Android, use permission_handler
     final status = await Permission.notification.request();
 
     if (status.isGranted) {
@@ -114,6 +133,13 @@ class NotificationService {
 
   // Check if notifications are enabled
   Future<bool> areNotificationsEnabled() async {
+    // macOS doesn't use permission_handler for notifications
+    if (Platform.isMacOS) {
+      // For macOS, we can't easily check if notifications are enabled
+      // Return the stored setting instead
+      return _storage.getSetting('notificationsEnabled', defaultValue: false);
+    }
+
     final status = await Permission.notification.status;
     return status.isGranted;
   }
@@ -268,7 +294,7 @@ class NotificationService {
         presentSound: true,
       );
 
-      final notificationDetails = NotificationDetails(
+      const notificationDetails = NotificationDetails(
         android: androidDetails,
         iOS: iosDetails,
       );

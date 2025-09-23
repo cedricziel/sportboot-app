@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/questions_provider.dart';
-import 'screens/course_selection_screen.dart';
+import 'screens/migration_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/quiz_screen.dart';
 import 'services/storage_service.dart';
@@ -96,7 +96,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-        home: const CourseSelectionScreen(),
+        home: const MigrationScreen(),
       ),
     );
   }
