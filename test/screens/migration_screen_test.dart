@@ -77,30 +77,40 @@ void main() {
       // (exact text depends on migration state)
     });
 
-    testWidgets('MigrationScreen navigates after initialization', (
-      WidgetTester tester,
-    ) async {
-      // Pre-populate database to skip migration
-      final testQuestions = TestDatabaseHelper.generateTestQuestions(count: 1);
-      await repository.insertQuestions(testQuestions, 'test-course');
+    testWidgets(
+      'MigrationScreen navigates after initialization',
+      (WidgetTester tester) async {
+        // Pre-populate database to skip migration
+        final testQuestions = TestDatabaseHelper.generateTestQuestions(
+          count: 1,
+        );
+        await repository.insertQuestions(testQuestions, 'test-course');
 
-      await tester.pumpWidget(
-        MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (_) => QuestionsProvider()),
-          ],
-          child: const MaterialApp(home: MigrationScreen()),
-        ),
-      );
+        await tester.pumpWidget(
+          MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_) => QuestionsProvider()),
+            ],
+            child: const MaterialApp(home: MigrationScreen()),
+          ),
+        );
 
-      // Wait for initialization and navigation
-      await tester.pumpAndSettle(const Duration(seconds: 2));
+        // Wait for initialization without using pumpAndSettle
+        // (pumpAndSettle hangs due to repeating animation)
+        await tester.pump(); // Initial frame
+        await tester.pump(const Duration(milliseconds: 100)); // Let init start
+        await tester.pump(
+          const Duration(seconds: 1),
+        ); // Wait for initialization
+        await tester.pump(); // Final frame
 
-      // Should navigate away from migration screen
-      // (In real app, it navigates to CourseSelectionScreen)
-      // Since we don't have routes set up in test, navigation will fail
-      // but we can verify migration screen tried to navigate
-    });
+        // Should navigate away from migration screen
+        // (In real app, it navigates to CourseSelectionScreen)
+        // Since we don't have routes set up in test, navigation will fail
+        // but we can verify migration screen tried to navigate
+      },
+      timeout: const Timeout(Duration(seconds: 10)),
+    );
 
     testWidgets('MigrationScreen shows progress percentage', (
       WidgetTester tester,

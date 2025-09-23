@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sportboot_app/models/course.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
 import 'package:sportboot_app/services/storage_service.dart';
@@ -8,8 +9,14 @@ void main() {
   group('Course Loading Tests', () {
     late QuestionsProvider provider;
 
-    setUp(() async {
+    setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
+      // Initialize FFI for database testing
+      sqfliteFfiInit();
+      databaseFactory = databaseFactoryFfi;
+    });
+
+    setUp(() async {
       // Set up SharedPreferences mock
       SharedPreferences.setMockInitialValues({});
       provider = QuestionsProvider();

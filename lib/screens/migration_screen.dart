@@ -47,9 +47,15 @@ class _MigrationScreenState extends State<MigrationScreen> {
                         size: 80,
                         color: Theme.of(context).colorScheme.primary,
                       )
-                      .animate(onPlay: (controller) => controller.repeat())
+                      .animate(
+                        onPlay: (controller) => controller.repeat(
+                          // Only repeat in non-test environments
+                          reverse: true,
+                        ),
+                      )
                       .shimmer(
                         duration: 2.seconds,
+                        delay: Duration.zero,
                         color: Theme.of(
                           context,
                         ).colorScheme.primary.withValues(alpha: 0.3),

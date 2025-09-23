@@ -7,9 +7,16 @@ on:
     branches: [ main, develop, master ]
   workflow_dispatch:
 
+# Concurrency control to cancel in-progress runs when a new one starts
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    # Add timeout to prevent hanging tests from running forever
+    timeout-minutes: 15
     
     steps:
       - name: Checkout code
@@ -28,7 +35,7 @@ jobs:
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
       
       - name: Run tests
-        run: flutter test --reporter compact
+        run: flutter test --reporter compact --timeout 30s
       
       - name: Check code formatting
         run: dart format --set-exit-if-changed lib test
