@@ -237,22 +237,43 @@ class QuestionScraper {
       final questionNum = int.parse(questionMatch.group(1)!);
       final questionText = questionMatch.group(2)!;
 
-      // Look for any associated images in the next paragraph
+      // Look for any associated images in the next elements
       String? imageFile;
 
-      // Check the next element - it might be a paragraph containing an image
+      // Check the next few elements - image might be in a separate paragraph
       var nextElement = p.nextElementSibling;
-      if (nextElement != null && nextElement.localName == 'p') {
-        // Look for img tags within this paragraph
-        final imgs = nextElement.querySelectorAll('img');
-        if (imgs.isNotEmpty) {
-          final src = imgs.first.attributes['src'];
-          if (src != null && src.contains('Frage')) {
-            // Extract just the filename from the path
-            final filename = src.split('/').last.split('?').first;
-            imageFile = filename;
+      var elementsChecked = 0;
+      while (nextElement != null && elementsChecked < 3) {
+        // Check if this element contains an image
+        if (nextElement.localName == 'p') {
+          // Check if it's a picture paragraph (has class "picture")
+          if (nextElement.classes.contains('picture') ||
+              nextElement.querySelector('img') != null) {
+            final imgs = nextElement.querySelectorAll('img');
+            if (imgs.isNotEmpty) {
+              final src = imgs.first.attributes['src'];
+              if (src != null) {
+                // Extract just the filename from the path
+                final filename = src.split('/').last.split('?').first;
+                imageFile = filename;
+                break;
+              }
+            }
+          }
+
+          // Stop if we hit another question paragraph
+          if (RegExp(r'^\d+\.').hasMatch(nextElement.text.trim())) {
+            break;
           }
         }
+
+        // Stop if we hit an ordered list (answers)
+        if (nextElement.localName == 'ol') {
+          break;
+        }
+
+        nextElement = nextElement.nextElementSibling;
+        elementsChecked++;
       }
 
       // Look for the <ol> element with answers after this question

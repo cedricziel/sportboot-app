@@ -1,5 +1,5 @@
 # Questions for Sportbootführerschein See
-# Generated: 2025-09-23T09:20:26.409452
+# Generated: 2025-09-23T09:49:29.316686
 
 course: "Sportbootführerschein See"
 version: '2025'
@@ -83,6 +83,8 @@ questions:
         text: "Weniger als 4 Sekunden."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Schallsignal-723.gif"
 
   - id: q_a013ca5930aa
     number: 5
@@ -101,6 +103,8 @@ questions:
         text: "Etwa 6 - 8 Sekunden."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Schallsignal-728.gif"
 
   - id: q_92e078a99400
     number: 6
@@ -319,6 +323,8 @@ questions:
         text: "Begegnungsverbot für Fahrzeuge über 20 m Länge."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A02.gif"
 
   - id: q_9ed5706fb567
     number: 18
@@ -337,6 +343,8 @@ questions:
         text: "Überholverbot für alle Fahrzeuge."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A04.gif"
 
   - id: q_4f194c04ae8d
     number: 19
@@ -355,6 +363,8 @@ questions:
         text: "Wasserstraße, die nicht jederzeit sicher befahren werden kann; Gefahr durch Seegang."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-A04a.gif"
 
   - id: q_96f80a5832fc
     number: 20
@@ -373,6 +383,8 @@ questions:
         text: "Verengung des Fahrwassers auf 40 m."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Einschraenkungszeichen-C5.gif"
 
   - id: q_8139ec75c2cd
     number: 21
@@ -391,6 +403,8 @@ questions:
         text: "Weiterfahrt für Sportfahrzeuge verboten."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-B05.gif"
 
   - id: q_ff1f8dc21702
     number: 22
@@ -409,6 +423,8 @@ questions:
         text: "Ankern und Festmachen verboten."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A06.gif"
 
   - id: q_881a0003d9ae
     number: 23
@@ -427,6 +443,8 @@ questions:
         text: "Festmache- und Liegeverbot für gewerbliche Schiffe."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A07.gif"
 
   - id: q_41e55f0da1aa
     number: 24
@@ -445,6 +463,8 @@ questions:
         text: "Abgabe eines kurzen und eines langen Tons."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Schild-10.gif"
 
   - id: q_eaa3654047e7
     number: 25
@@ -463,6 +483,8 @@ questions:
         text: "Genehmigungsfreie Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Hinweiszeichen-E17.gif"
 
   - id: q_5651e056fa9e
     number: 26
@@ -481,6 +503,8 @@ questions:
         text: "Wechseln der Fahrwasserseite ist gestattet."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Hinweiszeichen-E11.gif"
 
   - id: q_abe176b0eaf4
     number: 27
@@ -499,6 +523,8 @@ questions:
         text: "Verbot der Durchfahrt, jedoch für Kleinfahrzeuge ohne Antriebsmaschine befahrbar."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Verbotszeichen-A01-Tafeln.gif"
 
   - id: q_841226ff7bec
     number: 28
@@ -517,6 +543,8 @@ questions:
         text: "Außergewöhnliche Schifffahrtsbehinderung."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-A19aa.gif"
 
   - id: q_0cd8355a5d4b
     number: 29
@@ -535,6 +563,8 @@ questions:
         text: "Außergewöhnliche Schifffahrtsbehinderung."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-A19d.gif"
 
   - id: q_35af0ffa6cf6
     number: 30
@@ -553,6 +583,8 @@ questions:
         text: "Schleuse in Betrieb, auf Ausfahrtsignal gemäß Reihenfolge warten."
         isCorrect: false
     category: basisfragen
+    assets:
+      - "Gebotszeichen-A23bb.gif"
 
   - id: q_fd741ac1c706
     number: 31
@@ -1651,6 +1683,8 @@ questions:
         text: "Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser von 50 und mehr Meter Länge."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Lichter-Frage-91-gif.gif"
 
   - id: q_523c3cb725ce
     number: 164
@@ -2137,6 +2171,8 @@ questions:
         text: "Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Schallsignal-11.gif"
 
   - id: q_b71d387edf34
     number: 189
@@ -2155,6 +2191,8 @@ questions:
         text: "Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Schallsignal-122.gif"
 
   - id: q_5afc9038c7dc
     number: 190
@@ -3245,6 +3283,8 @@ questions:
         text: "Mindestabstand zu anderen Fahrzeugen in Metern, der im bekanntgemachten Streckenabschnitt nicht unterschritten werden darf."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Gebotszeichen-B06.gif"
 
   - id: q_3961bca012be
     number: 249
@@ -3263,6 +3303,8 @@ questions:
         text: "Außergewöhnliche Schifffahrtsbehinderung."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Gebotszeichen-A04b.gif"
 
   - id: q_0455c73c806a
     number: 250
@@ -3301,6 +3343,8 @@ questions:
         text: "Buhnenbauwerk, Gefahr durch Sog und Wellenschlag. Insbesondere auf Badebetrieb und Schwimmer achten."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Gebotszeichen-A05.gif"
 
   - id: q_43d95720c8c8
     number: 252
@@ -3319,6 +3363,8 @@ questions:
         text: "Kennzeichnung besonderer Gebiete und Stellen, z. B. Warngebiet."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Gebotszeichen-A17aa.gif"
 
   - id: q_600cf618d303
     number: 253
@@ -3393,6 +3439,8 @@ questions:
         text: "Schießgebiet."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Gebotszeichen-A17ba.gif"
 
   - id: q_56726e4720ca
     number: 257
@@ -3491,6 +3539,8 @@ questions:
         text: "Zeitweilige Sperrung der Seeschifffahrtsstraße."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Warnzeichen-B06-Tag.gif"
 
   - id: q_2b3796dcf3e1
     number: 262
@@ -3703,6 +3753,8 @@ questions:
         text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Warnzeichen-B15a.gif"
 
   - id: q_e22c6e4783f5
     number: 273
@@ -3721,6 +3773,8 @@ questions:
         text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Warnzeichen-B15b.gif"
 
   - id: q_886e3712460c
     number: 274
@@ -3739,6 +3793,8 @@ questions:
         text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Warnzeichen-B15c.gif"
 
   - id: q_62659b208996
     number: 275
@@ -3757,6 +3813,8 @@ questions:
         text: "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Warnzeichen-B15d.gif"
 
   - id: q_cce34be88e85
     number: 276
@@ -3855,6 +3913,8 @@ questions:
         text: "Den westlichen Quadranten einer allgemeinen Gefahrenstelle, die westlich passiert werden muss."
         isCorrect: false
     category: spezifische-see
+    assets:
+      - "Warnzeichen-B15e.gif"
 
   - id: q_06fef33676a4
     number: 281

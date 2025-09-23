@@ -27,17 +27,14 @@ scrape:
 	@echo "Running Dart scraper..."
 	@dart run tool/scrape_questions.dart
 
-# Copy all scraped data to app folder
+# Copy course data to app folder (catalogs not needed)
 copy-data:
-	@echo "Copying data to Flutter assets..."
-	@mkdir -p $(DATA_TARGET)/catalogs $(DATA_TARGET)/courses
-	@if [ -d "$(DATA_SOURCE)/catalogs" ]; then \
-		cp -r $(DATA_SOURCE)/catalogs/* $(DATA_TARGET)/catalogs/ 2>/dev/null || true; \
-	fi
+	@echo "Copying course data to Flutter assets..."
+	@mkdir -p $(DATA_TARGET)/courses
 	@if [ -d "$(DATA_SOURCE)/courses" ]; then \
 		cp -r $(DATA_SOURCE)/courses/* $(DATA_TARGET)/courses/ 2>/dev/null || true; \
 	fi
-	@echo "✓ Data copied to $(DATA_TARGET)"
+	@echo "✓ Course data copied to $(DATA_TARGET)"
 
 # Clean temporary files
 clean:
