@@ -236,29 +236,44 @@ class QuestionScraper {
       final questionNum = int.parse(questionMatch.group(1)!);
       final questionText = questionMatch.group(2)!;
 
-      // Look for the next <ol> element with answers
-      Element? answerList;
-      for (int j = i + 1; j < paragraphs.length && j < i + 5; j++) {
-        final nextElement = paragraphs[j].nextElementSibling;
-        if (nextElement != null && nextElement.localName == 'ol') {
-          if (nextElement.classes.contains('elwisOL-lowerLiteral')) {
-            answerList = nextElement;
-            break;
+      // Look for any associated images in the next paragraph
+      String? imageFile;
+      
+      // Check the next element - it might be a paragraph containing an image
+      var nextElement = p.nextElementSibling;
+      if (nextElement != null && nextElement.localName == 'p') {
+        // Look for img tags within this paragraph
+        final imgs = nextElement.querySelectorAll('img');
+        if (imgs.isNotEmpty) {
+          final src = imgs.first.attributes['src'];
+          if (src != null && src.contains('Frage')) {
+            // Extract just the filename from the path
+            final filename = src.split('/').last.split('?').first;
+            imageFile = filename;
           }
         }
       }
-
-      if (answerList == null) {
-        // Try finding ol directly after this paragraph
-        var sibling = p.nextElementSibling;
-        while (sibling != null &&
-            sibling.localName != 'ol' &&
-            sibling.localName != 'p') {
-          sibling = sibling.nextElementSibling;
+      
+      // Look for the <ol> element with answers after this question
+      Element? answerList;
+      
+      // Search through siblings to find the answer list
+      // Skip over any intervening paragraphs (including image containers)
+      var sibling = p.nextElementSibling;
+      while (sibling != null) {
+        if (sibling.localName == 'ol') {
+          // Check if it's the right type of list (with class or just any ol)
+          if (sibling.classes.contains('elwisOL-lowerLiteral') || 
+              sibling.querySelectorAll('li').length >= 3) {
+            answerList = sibling;
+            break;
+          }
         }
-        if (sibling != null && sibling.localName == 'ol') {
-          answerList = sibling;
+        // Stop if we hit another question paragraph
+        if (sibling.localName == 'p' && RegExp(r'^\d+\.').hasMatch(sibling.text.trim())) {
+          break;
         }
+        sibling = sibling.nextElementSibling;
       }
 
       if (answerList != null) {
@@ -294,6 +309,7 @@ class QuestionScraper {
               text: questionText,
               answers: answers,
               category: category,
+              image: imageFile,
             ),
           );
         }
@@ -333,7 +349,8 @@ class QuestionScraper {
         buffer.writeln('        isCorrect: ${answer.isCorrect}');
       }
       if (question.image != null) {
-        buffer.writeln('    image: "${question.image}"');
+        buffer.writeln('    assets:');
+        buffer.writeln('      - "${question.image}"');
       }
       buffer.writeln();
     }
@@ -414,7 +431,7 @@ class QuestionScraper {
             text: q['text'],
             answers: answers,
             category: catalogId,
-            image: q['image'],
+            image: q['assets'] != null ? (q['assets'] as List).first : null,
           ),
         );
       }
@@ -455,7 +472,8 @@ class QuestionScraper {
       }
       buffer.writeln('    category: ${question.category}');
       if (question.image != null) {
-        buffer.writeln('    image: "${question.image}"');
+        buffer.writeln('    assets:');
+        buffer.writeln('      - "${question.image}"');
       }
       buffer.writeln();
     }
