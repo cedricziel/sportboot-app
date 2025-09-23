@@ -2,11 +2,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
+import 'package:sportboot_app/repositories/question_repository.dart';
 import 'package:sportboot_app/services/storage_service.dart';
+import '../helpers/test_database_helper.dart';
 
 void main() {
   group('Quick Quiz Tests', () {
     late QuestionsProvider provider;
+    late QuestionRepository repository;
 
     setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +23,11 @@ void main() {
     setUp(() async {
       SharedPreferences.setMockInitialValues({});
       await StorageService().init();
+
+      // Initialize repository and populate test data
+      repository = QuestionRepository();
+      await TestDatabaseHelper.populateTestDatabase(repository);
+
       provider = QuestionsProvider();
       await provider.init();
     });

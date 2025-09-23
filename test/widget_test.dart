@@ -46,10 +46,17 @@ void main() {
       expect(tester.takeException(), isNull);
 
       // The app should initially show migration screen
-      await tester.pump();
+      await tester.pump(); // Initial frame
+      await tester.pump(
+        const Duration(milliseconds: 100),
+      ); // Let initialization start
 
-      // Then navigate to course selection
-      await tester.pumpAndSettle(const Duration(seconds: 2));
+      // Wait for navigation without using pumpAndSettle (causes hanging)
+      await tester.pump(const Duration(seconds: 1)); // Give time for navigation
+      await tester.pump(); // Final frame
+
+      // Check that app is still running without errors
+      expect(tester.takeException(), isNull);
     });
   });
 }

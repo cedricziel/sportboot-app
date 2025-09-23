@@ -1,6 +1,7 @@
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sportboot_app/models/question.dart';
 import 'package:sportboot_app/models/answer_option.dart';
+import 'package:sportboot_app/repositories/question_repository.dart';
 
 class TestDatabaseHelper {
   static Database? _testDatabase;
@@ -176,5 +177,54 @@ class TestDatabaseHelper {
     });
 
     return questions;
+  }
+
+  /// Populate database with comprehensive test data for all courses
+  static Future<void> populateTestDatabase(
+    QuestionRepository repository,
+  ) async {
+    // Define test courses that match the actual manifest
+    final courses = ['sbf-see', 'sbf-binnen', 'sbf-binnen-segeln'];
+
+    // Define categories that match actual data
+    final categories = [
+      'Basisfragen',
+      'Spezifische Fragen See',
+      'Spezifische Fragen Binnen',
+    ];
+
+    for (final course in courses) {
+      final allQuestions = <Question>[];
+
+      // Add questions for each category
+      for (int catIndex = 0; catIndex < categories.length; catIndex++) {
+        final category = categories[catIndex];
+        // Add 10 questions per category to ensure we have enough for random selection
+        final questions = generateTestQuestions(
+          count: 10,
+          courseId: course,
+          category: category,
+          idPrefix: '${course}_cat$catIndex',
+        );
+        allQuestions.addAll(questions);
+      }
+
+      // Insert all questions for this course
+      await repository.insertQuestions(allQuestions, course);
+    }
+  }
+
+  /// Generate questions for quick quiz testing (ensures at least 14 questions)
+  static Future<void> populateForQuickQuiz(
+    QuestionRepository repository,
+    String courseId,
+  ) async {
+    final questions = generateTestQuestions(
+      count: 20, // More than 14 to allow random selection
+      courseId: courseId,
+      category: 'Basisfragen',
+      idPrefix: 'quick_$courseId',
+    );
+    await repository.insertQuestions(questions, courseId);
   }
 }
