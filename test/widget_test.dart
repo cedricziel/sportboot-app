@@ -16,8 +16,10 @@ void main() {
       // Initialize test database
       await TestDatabaseHelper.initializeTestDatabase();
 
-      databaseHelper = DatabaseHelper.instance;
-      repository = QuestionRepository();
+      // Create test-specific instances
+      final uniqueName = 'widget_test_${DateTime.now().millisecondsSinceEpoch}';
+      databaseHelper = TestDatabaseHelper.createTestDatabaseHelper(uniqueName);
+      repository = TestDatabaseHelper.createTestRepository(uniqueName);
     });
 
     setUp(() async {

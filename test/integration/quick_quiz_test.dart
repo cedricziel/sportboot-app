@@ -25,10 +25,12 @@ void main() {
       await StorageService().init();
 
       // Initialize repository and populate test data
-      repository = QuestionRepository();
+      final uniqueName =
+          'quick_quiz_test_${DateTime.now().millisecondsSinceEpoch}';
+      repository = TestDatabaseHelper.createTestRepository(uniqueName);
       await TestDatabaseHelper.populateTestDatabase(repository);
 
-      provider = QuestionsProvider();
+      provider = TestDatabaseHelper.createTestProvider(uniqueName);
       await provider.init();
     });
 

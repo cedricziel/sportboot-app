@@ -2,6 +2,10 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sportboot_app/models/question.dart';
 import 'package:sportboot_app/models/answer_option.dart';
 import 'package:sportboot_app/repositories/question_repository.dart';
+import 'package:sportboot_app/services/database_helper.dart';
+import 'package:sportboot_app/services/cache_service.dart';
+import 'package:sportboot_app/services/migration_service.dart';
+import 'package:sportboot_app/providers/questions_provider.dart';
 
 class TestDatabaseHelper {
   static int _dbCounter = 0;
@@ -11,6 +15,51 @@ class TestDatabaseHelper {
     // Initialize FFI for desktop testing
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
+  }
+
+  // Create test-specific instances with dependency injection
+  static DatabaseHelper createTestDatabaseHelper(String testName) {
+    return DatabaseHelper.forTest(testName);
+  }
+
+  static QuestionRepository createTestRepository(String testName) {
+    final dbHelper = createTestDatabaseHelper(testName);
+    final cache = CacheService(); // Each test gets its own cache
+    return QuestionRepository(databaseHelper: dbHelper, cache: cache);
+  }
+
+  static MigrationService createTestMigrationService(String testName) {
+    // Use the same database helper instance that the repository uses
+    final dbHelper = createTestDatabaseHelper(testName);
+    final repository = QuestionRepository(
+      databaseHelper: dbHelper,
+      cache: CacheService(),
+    );
+    return MigrationService(
+      questionRepository: repository,
+      databaseHelper: dbHelper,
+    );
+  }
+
+  static QuestionsProvider createTestProvider(String testName) {
+    // Create a single database helper and share it across all services
+    final dbHelper = createTestDatabaseHelper(testName);
+    final cache = CacheService();
+
+    final repository = QuestionRepository(
+      databaseHelper: dbHelper,
+      cache: cache,
+    );
+
+    final migrationService = MigrationService(
+      questionRepository: repository,
+      databaseHelper: dbHelper,
+    );
+
+    return QuestionsProvider(
+      repository: repository,
+      migrationService: migrationService,
+    );
   }
 
   static Future<Database> getTestDatabase() async {

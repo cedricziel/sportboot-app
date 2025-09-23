@@ -14,8 +14,15 @@ class QuestionsProvider extends ChangeNotifier {
   int _currentQuestionIndex = 0;
   StudySession? _currentSession;
   final StorageService _storage = StorageService();
-  final QuestionRepository _repository = QuestionRepository();
-  final MigrationService _migrationService = MigrationService();
+  final QuestionRepository _repository;
+  final MigrationService _migrationService;
+
+  // Constructor with dependency injection
+  QuestionsProvider({
+    QuestionRepository? repository,
+    MigrationService? migrationService,
+  }) : _repository = repository ?? QuestionRepository(),
+       _migrationService = migrationService ?? MigrationService();
 
   // Course management
   String? _selectedCourseId;

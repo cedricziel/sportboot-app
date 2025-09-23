@@ -14,10 +14,28 @@ class DatabaseHelper {
   static const String tableBookmarks = 'bookmarks';
   static const String tableSettings = 'settings';
 
-  DatabaseHelper._privateConstructor();
+  // Instance management
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
+  static final Map<String, DatabaseHelper> _testInstances = {};
 
-  static Database? _database;
+  // Instance-specific fields
+  final String? _customDatabaseName;
+  Database? _database;
+
+  DatabaseHelper._privateConstructor({String? databaseName})
+    : _customDatabaseName = databaseName;
+
+  // Factory for test databases with unique names
+  factory DatabaseHelper.forTest(String testName) {
+    final dbName =
+        'test_${testName}_${DateTime.now().millisecondsSinceEpoch}.db';
+    if (!_testInstances.containsKey(dbName)) {
+      _testInstances[dbName] = DatabaseHelper._privateConstructor(
+        databaseName: dbName,
+      );
+    }
+    return _testInstances[dbName]!;
+  }
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -27,7 +45,8 @@ class DatabaseHelper {
 
   Future<Database> _initDatabase() async {
     try {
-      final String path = join(await getDatabasesPath(), _databaseName);
+      final String dbName = _customDatabaseName ?? _databaseName;
+      final String path = join(await getDatabasesPath(), dbName);
       return await openDatabase(
         path,
         version: _databaseVersion,
@@ -230,5 +249,17 @@ class DatabaseHelper {
       debugPrint('Error checking if database is populated: $e');
       return false;
     }
+  }
+
+  // Clean up all test instances
+  static Future<void> cleanupTestInstances() async {
+    for (final instance in _testInstances.values) {
+      try {
+        await instance.close();
+      } catch (e) {
+        debugPrint('Error closing test database: $e');
+      }
+    }
+    _testInstances.clear();
   }
 }

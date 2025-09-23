@@ -17,7 +17,10 @@ void main() {
       // Initialize test database
       await TestDatabaseHelper.initializeTestDatabase();
 
-      databaseHelper = DatabaseHelper.instance;
+      // Use a shared test database for migration screen tests
+      databaseHelper = TestDatabaseHelper.createTestDatabaseHelper(
+        'migration_screen_test',
+      );
     });
 
     setUp(() async {

@@ -18,9 +18,14 @@ void main() {
     });
 
     setUp(() async {
-      databaseHelper = DatabaseHelper.instance;
-      migrationService = MigrationService();
-      repository = QuestionRepository();
+      // Create test-specific instances
+      final uniqueName =
+          'migration_test_${DateTime.now().millisecondsSinceEpoch}';
+      databaseHelper = TestDatabaseHelper.createTestDatabaseHelper(uniqueName);
+      repository = TestDatabaseHelper.createTestRepository(uniqueName);
+      migrationService = TestDatabaseHelper.createTestMigrationService(
+        uniqueName,
+      );
       await databaseHelper.clearDatabase();
     });
 
