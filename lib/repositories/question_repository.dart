@@ -227,28 +227,25 @@ class QuestionRepository {
 
   Future<int> getQuestionCount() async {
     final db = await _databaseHelper.database;
-    final count = Sqflite.firstIntValue(
-      await db.rawQuery('SELECT COUNT(*) FROM ${DatabaseHelper.tableQuestions}'),
-    );
+    final result = await db.rawQuery('SELECT COUNT(*) FROM ${DatabaseHelper.tableQuestions}');
+    final count = result.first.values.first as int?;
     return count ?? 0;
   }
 
   Future<int> getBookmarkCount() async {
     final db = await _databaseHelper.database;
-    final count = Sqflite.firstIntValue(
-      await db.rawQuery('SELECT COUNT(*) FROM ${DatabaseHelper.tableBookmarks}'),
-    );
+    final result = await db.rawQuery('SELECT COUNT(*) FROM ${DatabaseHelper.tableBookmarks}');
+    final count = result.first.values.first as int?;
     return count ?? 0;
   }
 
   Future<int> getIncorrectCount() async {
     final db = await _databaseHelper.database;
-    final count = Sqflite.firstIntValue(
-      await db.rawQuery('''
-        SELECT COUNT(*) FROM ${DatabaseHelper.tableProgress}
-        WHERE last_answer_correct = 0
-      '''),
-    );
+    final result = await db.rawQuery('''
+      SELECT COUNT(*) FROM ${DatabaseHelper.tableProgress}
+      WHERE last_answer_correct = 0
+    ''');
+    final count = result.first.values.first as int?;
     return count ?? 0;
   }
 

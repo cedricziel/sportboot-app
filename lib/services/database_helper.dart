@@ -110,10 +110,14 @@ class DatabaseHelper {
   }
 
   Future<bool> isDatabasePopulated() async {
-    final db = await database;
-    final count = Sqflite.firstIntValue(
-      await db.rawQuery('SELECT COUNT(*) FROM $tableQuestions'),
-    );
-    return count != null && count > 0;
+    try {
+      final db = await database;
+      final result = await db.rawQuery('SELECT COUNT(*) FROM $tableQuestions');
+      final count = result.first.values.first as int?;
+      return count != null && count > 0;
+    } catch (e) {
+      print('Error checking if database is populated: $e');
+      return false;
+    }
   }
 }
