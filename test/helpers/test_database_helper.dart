@@ -119,9 +119,12 @@ class TestDatabaseHelper {
     int count = 10,
     String courseId = 'test-course',
     String category = 'Test Category',
+    String? idPrefix,
   }) {
     return List.generate(count, (index) {
-      final questionId = 'q_test_$index';
+      final prefix = idPrefix ?? 'test';
+      final questionId =
+          'q_${prefix}_${category.replaceAll(' ', '_').toLowerCase()}_$index';
       return Question(
         id: questionId,
         number: index + 1,
@@ -152,5 +155,26 @@ class TestDatabaseHelper {
         assets: [],
       );
     });
+  }
+
+  /// Generate test questions with multiple categories
+  static List<Question> generateMixedCategoryQuestions({
+    required Map<String, int> categoryQuestionCounts,
+    String courseId = 'test-course',
+  }) {
+    final questions = <Question>[];
+
+    categoryQuestionCounts.forEach((category, count) {
+      questions.addAll(
+        generateTestQuestions(
+          count: count,
+          courseId: courseId,
+          category: category,
+          idPrefix: courseId,
+        ),
+      );
+    });
+
+    return questions;
   }
 }

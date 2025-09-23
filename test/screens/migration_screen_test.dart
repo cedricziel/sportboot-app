@@ -38,11 +38,12 @@ void main() {
     testWidgets('MigrationScreen shows progress indicator', (
       WidgetTester tester,
     ) async {
+      // Create provider without initializing to avoid async issues
+      final provider = QuestionsProvider();
+
       await tester.pumpWidget(
         MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (_) => QuestionsProvider()),
-          ],
+          providers: [ChangeNotifierProvider.value(value: provider)],
           child: const MaterialApp(home: MigrationScreen()),
         ),
       );
@@ -60,11 +61,11 @@ void main() {
     testWidgets('MigrationScreen shows migration status', (
       WidgetTester tester,
     ) async {
+      final provider = QuestionsProvider();
+
       await tester.pumpWidget(
         MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (_) => QuestionsProvider()),
-          ],
+          providers: [ChangeNotifierProvider.value(value: provider)],
           child: const MaterialApp(home: MigrationScreen()),
         ),
       );
@@ -86,11 +87,13 @@ void main() {
         );
         await repository.insertQuestions(testQuestions, 'test-course');
 
+        // Create and pre-initialize provider
+        final provider = QuestionsProvider();
+        // Don't call init() here to avoid async issues in the widget test
+
         await tester.pumpWidget(
           MultiProvider(
-            providers: [
-              ChangeNotifierProvider(create: (_) => QuestionsProvider()),
-            ],
+            providers: [ChangeNotifierProvider.value(value: provider)],
             child: const MaterialApp(home: MigrationScreen()),
           ),
         );

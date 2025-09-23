@@ -73,10 +73,12 @@ void main() {
       final category1Questions = TestDatabaseHelper.generateTestQuestions(
         count: 3,
         category: 'Category 1',
+        idPrefix: 'cat1',
       );
       final category2Questions = TestDatabaseHelper.generateTestQuestions(
         count: 2,
         category: 'Category 2',
+        idPrefix: 'cat2',
       );
 
       await repository.insertQuestions(category1Questions, 'test-course');
@@ -264,7 +266,7 @@ void main() {
     });
 
     test('Question deserialization should preserve all fields', () async {
-      final question = Question(
+      const question = Question(
         id: 'test_id',
         number: 42,
         question: 'What is the answer?',

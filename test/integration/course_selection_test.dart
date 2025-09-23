@@ -89,8 +89,8 @@ void main() {
       final provider = QuestionsProvider();
       await provider.init();
 
-      // Should not crash, selectedCourseId will be the invalid one but manifest will be null
-      expect(provider.selectedCourseId, 'non-existent-course');
+      // Should not crash, selectedCourseId should be null for invalid course
+      expect(provider.selectedCourseId, isNull);
       expect(provider.selectedCourseManifest, isNull);
     });
 
