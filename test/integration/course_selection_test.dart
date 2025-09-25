@@ -10,7 +10,7 @@ void main() {
     late StorageService storage;
     late DatabaseHelper databaseHelper;
     late QuestionRepository repository;
-    final testName = 'course_selection_test';
+    late String testName;
 
     setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
@@ -21,13 +21,16 @@ void main() {
 
       storage = StorageService();
       await storage.init();
+    });
+
+    setUp(() async {
+      // Create unique test name for each test to ensure isolation
+      testName =
+          'course_selection_test_${DateTime.now().microsecondsSinceEpoch}';
 
       // Use test-specific database and repository
       databaseHelper = TestDatabaseHelper.createTestDatabaseHelper(testName);
       repository = TestDatabaseHelper.createTestRepository(testName);
-    });
-
-    setUp(() async {
       // Reset mock values for each test
       SharedPreferences.setMockInitialValues({});
       storage = StorageService();
@@ -63,9 +66,7 @@ void main() {
     });
 
     test('Course selection is persisted to storage', () async {
-      final provider = TestDatabaseHelper.createTestProvider(
-        '${testName}_persist',
-      );
+      final provider = TestDatabaseHelper.createTestProvider(testName);
       await provider.init();
 
       // Select a course
@@ -90,9 +91,7 @@ void main() {
       storage.setSetting('selectedCourseId', 'sbf-see');
 
       // Create new provider (simulating app restart)
-      final provider = TestDatabaseHelper.createTestProvider(
-        '${testName}_${DateTime.now().millisecondsSinceEpoch}',
-      );
+      final provider = TestDatabaseHelper.createTestProvider(testName);
       await provider.init();
 
       // The selection should be restored
@@ -106,9 +105,7 @@ void main() {
       storage.setSetting('selectedCourseId', 'non-existent-course');
 
       // Create new provider
-      final provider = TestDatabaseHelper.createTestProvider(
-        '${testName}_${DateTime.now().millisecondsSinceEpoch}',
-      );
+      final provider = TestDatabaseHelper.createTestProvider(testName);
       await provider.init();
 
       // Should not crash, selectedCourseId should be null for invalid course
@@ -117,9 +114,7 @@ void main() {
     });
 
     test('Course switch updates both provider and storage', () async {
-      final provider = TestDatabaseHelper.createTestProvider(
-        '${testName}_${DateTime.now().millisecondsSinceEpoch}',
-      );
+      final provider = TestDatabaseHelper.createTestProvider(testName);
       await provider.init();
 
       if (provider.manifest != null && provider.manifest!.courses.length >= 2) {
@@ -138,9 +133,7 @@ void main() {
     });
 
     test('Course manifest has required fields for all courses', () async {
-      final provider = TestDatabaseHelper.createTestProvider(
-        '${testName}_${DateTime.now().millisecondsSinceEpoch}',
-      );
+      final provider = TestDatabaseHelper.createTestProvider(testName);
       await provider.init();
 
       expect(provider.manifest, isNotNull);
@@ -164,9 +157,7 @@ void main() {
     });
 
     test('loadAllQuestions uses selected course', () async {
-      final provider = TestDatabaseHelper.createTestProvider(
-        '${testName}_${DateTime.now().millisecondsSinceEpoch}',
-      );
+      final provider = TestDatabaseHelper.createTestProvider(testName);
       await provider.init();
 
       // Test with SBF-See
