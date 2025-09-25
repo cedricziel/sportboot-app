@@ -25,6 +25,10 @@ void main() {
       await databaseHelper.close();
     });
 
+    tearDownAll(() async {
+      await DatabaseHelper.cleanupTestInstances();
+    });
+
     test('Database should be initialized with correct version', () async {
       final db = await databaseHelper.database;
       final version = await db.getVersion();

@@ -29,7 +29,7 @@ class DatabaseHelper {
   }) : _customDatabaseName = databaseName,
        _isTestDatabase = isTestDatabase;
 
-  // Factory for test databases with unique names
+  // Factory for test databases with deterministic naming per testName
   factory DatabaseHelper.forTest(String testName) {
     // Check if we already have an instance for this test name
     // This allows sharing the same database within a test
@@ -38,9 +38,10 @@ class DatabaseHelper {
     }
 
     // Create a new instance for this test name
-    // Use timestamp to ensure uniqueness across test runs
-    final dbName =
-        'test_${testName}_${DateTime.now().microsecondsSinceEpoch}.db';
+    // Sanitize the test name to ensure it's a valid filename
+    final safeName = testName.replaceAll(RegExp(r'[^A-Za-z0-9_\-]'), '_');
+    final dbName = 'test_$safeName.db';
+
     _testInstances[testName] = DatabaseHelper._privateConstructor(
       databaseName: dbName,
       isTestDatabase: true,
@@ -259,8 +260,10 @@ class DatabaseHelper {
   }
 
   Future<void> close() async {
-    final db = await database;
-    await db.close();
+    final db = _database;
+    if (db != null && db.isOpen) {
+      await db.close();
+    }
     _database = null;
   }
 
@@ -295,9 +298,7 @@ class DatabaseHelper {
   static Future<void> cleanupTestInstances() async {
     for (final instance in _testInstances.values) {
       try {
-        if (instance._database != null) {
-          await instance.close();
-        }
+        await instance.close();
       } catch (e) {
         debugPrint('Error closing test database: $e');
       }

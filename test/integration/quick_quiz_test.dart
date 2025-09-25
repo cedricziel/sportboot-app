@@ -4,6 +4,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
 import 'package:sportboot_app/repositories/question_repository.dart';
 import 'package:sportboot_app/services/storage_service.dart';
+import 'package:sportboot_app/services/database_helper.dart';
 import '../helpers/test_database_helper.dart';
 
 void main() {
@@ -32,6 +33,10 @@ void main() {
 
       provider = TestDatabaseHelper.createTestProvider(uniqueName);
       await provider.init();
+    });
+
+    tearDownAll(() async {
+      await DatabaseHelper.cleanupTestInstances();
     });
 
     test('Quick Quiz loads 14 random questions for SBF-See', () async {

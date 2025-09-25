@@ -58,6 +58,10 @@ void main() {
       await databaseHelper.close();
     });
 
+    tearDownAll(() async {
+      await DatabaseHelper.cleanupTestInstances();
+    });
+
     test('Course selection is persisted to storage', () async {
       final provider = TestDatabaseHelper.createTestProvider(
         '${testName}_persist',

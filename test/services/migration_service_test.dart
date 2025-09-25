@@ -43,6 +43,10 @@ void main() {
       await databaseHelper.close();
     });
 
+    tearDownAll(() async {
+      await DatabaseHelper.cleanupTestInstances();
+    });
+
     test(
       'migrateDataIfNeeded should skip migration when database is populated',
       () async {

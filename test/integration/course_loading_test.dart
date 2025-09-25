@@ -4,6 +4,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sportboot_app/models/course.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
 import 'package:sportboot_app/services/storage_service.dart';
+import 'package:sportboot_app/services/database_helper.dart';
 import '../helpers/test_database_helper.dart';
 
 void main() {
@@ -31,6 +32,10 @@ void main() {
       // Initialize storage
       await StorageService().init();
       await provider.init();
+    });
+
+    tearDownAll(() async {
+      await DatabaseHelper.cleanupTestInstances();
     });
 
     test('Course model handles both YAML formats correctly', () {
@@ -129,7 +134,6 @@ void main() {
 
         // All questions should have valid IDs
         for (final question in provider.currentQuestions) {
-          expect(question.id, isNotEmpty);
           expect(question.id, isNotEmpty);
 
           // All answers should have IDs

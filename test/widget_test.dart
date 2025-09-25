@@ -40,6 +40,10 @@ void main() {
       await databaseHelper.close();
     });
 
+    tearDownAll(() async {
+      await DatabaseHelper.cleanupTestInstances();
+    });
+
     testWidgets('App should build without errors', (WidgetTester tester) async {
       // Build our app and trigger a frame
       await tester.pumpWidget(const MyApp());

@@ -35,6 +35,10 @@ void main() {
       await databaseHelper.close();
     });
 
+    tearDownAll(() async {
+      await DatabaseHelper.cleanupTestInstances();
+    });
+
     testWidgets('MigrationScreen shows progress indicator', (
       WidgetTester tester,
     ) async {
