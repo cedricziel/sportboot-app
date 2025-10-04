@@ -135,34 +135,38 @@ void main() {
       }
     });
 
-    test(
-      'Quick Quiz falls back to legacy format when no course selected',
-      () async {
-        // Create a new provider instance to simulate fresh install
-        // This needs its own test database with data
-        final uniqueName =
-            'quick_quiz_no_course_${DateTime.now().millisecondsSinceEpoch}';
-        final testRepo = TestDatabaseHelper.createTestRepository(uniqueName);
-        await TestDatabaseHelper.populateTestDatabase(testRepo);
+    test('Quick Quiz shows error when no course selected', () async {
+      // Create a new provider instance to simulate fresh install
+      // This needs its own test database with data
+      final uniqueName =
+          'quick_quiz_no_course_${DateTime.now().millisecondsSinceEpoch}';
+      final testRepo = TestDatabaseHelper.createTestRepository(uniqueName);
+      await TestDatabaseHelper.populateTestDatabase(testRepo);
 
-        final freshProvider = TestDatabaseHelper.createTestProvider(uniqueName);
-        await freshProvider.init();
+      final freshProvider = TestDatabaseHelper.createTestProvider(uniqueName);
 
-        // Clear any stored course ID to simulate no course selected
-        StorageService().setSetting('selectedCourseId', null);
+      // Clear any stored course ID BEFORE init to simulate no course selected
+      StorageService().setSetting('selectedCourseId', null);
 
-        // Try to load random questions - should fallback to legacy
-        await freshProvider.loadRandomQuestions(14);
+      await freshProvider.init();
 
-        // Should either have questions (if fallback works) or an error
-        if (freshProvider.error == null) {
-          expect(freshProvider.currentQuestions.length, 14);
-        }
+      // Verify no course is selected
+      expect(freshProvider.selectedCourseId, isNull);
 
-        // Cleanup
-        await DatabaseHelper.cleanupTestInstance(uniqueName);
-      },
-    );
+      // Try to load random questions - should show error
+      await freshProvider.loadRandomQuestions(14);
+
+      // Should have an error message requiring course selection
+      expect(freshProvider.error, isNotNull);
+      expect(
+        freshProvider.error,
+        contains('Bitte wähle zuerst einen Kurs aus'),
+      );
+      expect(freshProvider.currentQuestions.length, 0);
+
+      // Cleanup
+      await DatabaseHelper.cleanupTestInstance(uniqueName);
+    });
 
     test('Session is properly started after loading quick quiz', () async {
       if (provider.manifest != null &&

@@ -234,10 +234,24 @@ class QuestionsProvider extends ChangeNotifier {
   }
 
   Future<void> loadRandomQuestions(int count) async {
-    await loadAllQuestions();
-    if (_currentQuestions.isNotEmpty && count < _currentQuestions.length) {
+    // Require a selected course - no more legacy fallback
+    if (_selectedCourseId == null) {
+      _error = 'Bitte wähle zuerst einen Kurs aus';
+      notifyListeners();
+      return;
+    }
+
+    // Load questions from the selected course only
+    await loadCourseById(_selectedCourseId!);
+
+    if (_currentQuestions.isNotEmpty && count <= _currentQuestions.length) {
       _currentQuestions.shuffle();
       _currentQuestions = _currentQuestions.take(count).toList();
+      notifyListeners();
+    } else if (_currentQuestions.length < count) {
+      // Not enough questions in the selected course
+      _error =
+          'Nicht genügend Fragen im ausgewählten Kurs (${_currentQuestions.length} verfügbar)';
       notifyListeners();
     }
   }
