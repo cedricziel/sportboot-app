@@ -35,6 +35,9 @@ dependencies:
   # State management
   provider: ^6.1.1
 
+  # Routing
+  go_router: ^16.2.4
+
   # Data parsing
   yaml: ^3.1.2
 

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
-import 'flashcard_screen.dart';
-import 'quiz_screen.dart';
-import 'progress_screen.dart';
-import 'settings_screen.dart';
-import 'course_selection_screen.dart';
+import '../router/app_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,9 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final storedCourseId = provider.getStoredCourseId();
       if (storedCourseId == null && mounted) {
         // No course selected, navigate to course selection
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => const CourseSelectionScreen()),
-        );
+        context.go(AppRoutes.courseSelection);
       }
     });
   }
@@ -49,30 +44,19 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.swap_horiz),
             tooltip: 'Kurs wechseln',
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const CourseSelectionScreen(),
-                ),
-              );
+              context.go(AppRoutes.courseSelection);
             },
           ),
           IconButton(
             icon: const Icon(Icons.bar_chart),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const ProgressScreen()),
-              );
+              context.push(AppRoutes.progress);
             },
           ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const SettingsScreen()),
-              );
+              context.push(AppRoutes.settings);
             },
           ),
         ],
@@ -221,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
             context,
             'quick_quiz',
             'quiz',
-            const QuizScreen(),
+            AppRoutes.quiz,
           );
         },
         borderRadius: BorderRadius.circular(12),
@@ -365,12 +349,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: const Text('Lernkarten'),
                 subtitle: const Text('Frage und Antwort umdrehen'),
                 onTap: () async {
-                  Navigator.pop(context);
+                  context.pop();
                   await _loadQuestionsAndNavigate(
                     context,
                     category,
                     'flashcard',
-                    const FlashcardScreen(),
+                    AppRoutes.flashcard,
                   );
                 },
               ),
@@ -379,12 +363,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: const Text('Quiz-Modus'),
                 subtitle: const Text('Multiple-Choice mit Bewertung'),
                 onTap: () async {
-                  Navigator.pop(context);
+                  context.pop();
                   await _loadQuestionsAndNavigate(
                     context,
                     category,
                     'quiz',
-                    const QuizScreen(),
+                    AppRoutes.quiz,
                   );
                 },
               ),
@@ -399,7 +383,7 @@ class _HomeScreenState extends State<HomeScreen> {
     BuildContext context,
     String category,
     String mode,
-    Widget screen,
+    String routePath,
   ) async {
     final provider = context.read<QuestionsProvider>();
 
@@ -437,12 +421,12 @@ class _HomeScreenState extends State<HomeScreen> {
       provider.startSession(mode, category);
 
       if (context.mounted) {
-        Navigator.pop(context); // Close loading dialog
-        Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
+        context.pop(); // Close loading dialog
+        context.push(routePath);
       }
     } catch (e) {
       if (context.mounted) {
-        Navigator.pop(context); // Close loading dialog
+        context.pop(); // Close loading dialog
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text('Fehler beim Laden: $e')));

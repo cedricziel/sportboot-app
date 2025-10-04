@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../services/storage_service.dart';
 
@@ -203,13 +204,13 @@ class _ProgressScreenState extends State<ProgressScreen> {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => context.pop(),
               child: const Text('Abbrechen'),
             ),
             TextButton(
               onPressed: () {
                 _storage.clearProgress();
-                Navigator.pop(context);
+                context.pop();
                 _loadStats();
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(

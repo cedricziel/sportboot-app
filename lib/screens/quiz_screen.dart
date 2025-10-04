@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
+import '../router/app_router.dart';
 import '../widgets/answer_option_widget.dart';
 import '../widgets/zoomable_image.dart';
 
@@ -96,8 +98,8 @@ class _QuizScreenState extends State<QuizScreen> {
           actions: [
             TextButton(
               onPressed: () async {
-                Navigator.of(dialogContext).pop();
-                Navigator.of(context).pop();
+                dialogContext.pop();
+                context.pop();
 
                 // Start a new quick quiz
                 final newProvider = context.read<QuestionsProvider>();
@@ -105,18 +107,15 @@ class _QuizScreenState extends State<QuizScreen> {
                 newProvider.startSession('quiz', 'quick_quiz');
 
                 if (context.mounted) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const QuizScreen()),
-                  );
+                  context.push(AppRoutes.quiz);
                 }
               },
               child: const Text('Neues Quiz'),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(dialogContext).pop();
-                Navigator.of(context).pop();
+                dialogContext.pop();
+                context.pop();
               },
               child: const Text('Zurück zum Menü'),
             ),

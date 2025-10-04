@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../services/storage_service.dart';
 import '../services/notification_service.dart';
 
@@ -178,7 +179,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     onSelected: (selected) {
                       if (selected) {
                         _updateSetting('dailyGoal', goal);
-                        Navigator.pop(context);
+                        context.pop();
                       }
                     },
                   );
@@ -188,7 +189,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => context.pop(),
               child: const Text('Abbrechen'),
             ),
           ],
