@@ -61,6 +61,11 @@ dart run tool/scrape_questions.dart   # Scrape questions from ELWIS website
 dart run tool/verify_data.dart        # Validate question data integrity
 ./tool/bump_build.sh                  # Increment build number in pubspec.yaml
 python tool/generate_logo.py          # Generate logo images (requires venv)
+
+# Screenshots
+./tool/take_screenshots.sh            # Interactive screenshot capture (semi-automated)
+flutter screenshot --out=screenshots/name.png -d macos  # Manual single screenshot
+flutter test integration_test/screenshot_test.dart -d <device>  # Full automation (iOS/Android)
 ```
 
 ## Architecture

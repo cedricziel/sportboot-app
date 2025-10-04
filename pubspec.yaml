@@ -97,6 +97,11 @@ dev_dependencies:
   # Launcher icons
   flutter_launcher_icons: ^0.14.1
 
+  # Screenshot generation
+  integration_test:
+    sdk: flutter
+  screenshot: ^3.0.0
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
