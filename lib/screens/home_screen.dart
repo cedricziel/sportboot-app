@@ -259,9 +259,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Schnell-Quiz',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
@@ -335,9 +341,12 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
                   ),
                 ),
                 const SizedBox(height: 4),
