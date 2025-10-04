@@ -65,12 +65,23 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Lernserie', style: TextStyle(fontSize: 16)),
+                      Text(
+                        'Lernserie',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: isCupertino(context)
+                              ? CupertinoColors.label.resolveFrom(context)
+                              : null,
+                        ),
+                      ),
                       Text(
                         '$_studyStreak Tage',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
+                          color: isCupertino(context)
+                              ? CupertinoColors.label.resolveFrom(context)
+                              : null,
                         ),
                       ),
                     ],
@@ -85,9 +96,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
               padding: const EdgeInsets.all(24),
               child: Column(
                 children: [
-                  const Text(
+                  Text(
                     'Gesamtgenauigkeit',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: isCupertino(context)
+                          ? CupertinoColors.label.resolveFrom(context)
+                          : null,
+                    ),
                   ),
                   const SizedBox(height: 16),
                   CircularPercentIndicator(
@@ -96,9 +112,12 @@ class _ProgressScreenState extends State<ProgressScreen> {
                     percent: accuracy,
                     center: Text(
                       '${(accuracy * 100).toStringAsFixed(1)}%',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
+                        color: isCupertino(context)
+                            ? CupertinoColors.label.resolveFrom(context)
+                            : null,
                       ),
                     ),
                     progressColor: _getColorForAccuracy(accuracy),
@@ -216,7 +235,13 @@ class _ProgressScreenState extends State<ProgressScreen> {
           const SizedBox(height: 8),
           Text(
             value,
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: isCupertino(context)
+                  ? CupertinoColors.label.resolveFrom(context)
+                  : null,
+            ),
           ),
           Text(label, style: TextStyle(fontSize: 14, color: subtitleColor)),
         ],
