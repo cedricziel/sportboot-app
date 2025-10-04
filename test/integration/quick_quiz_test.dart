@@ -138,20 +138,29 @@ void main() {
     test(
       'Quick Quiz falls back to legacy format when no course selected',
       () async {
-        // Don't select any course (simulate fresh install)
-        provider = QuestionsProvider();
-        await StorageService().init();
+        // Create a new provider instance to simulate fresh install
+        // This needs its own test database with data
+        final uniqueName =
+            'quick_quiz_no_course_${DateTime.now().millisecondsSinceEpoch}';
+        final testRepo = TestDatabaseHelper.createTestRepository(uniqueName);
+        await TestDatabaseHelper.populateTestDatabase(testRepo);
 
-        // Clear any stored course ID
+        final freshProvider = TestDatabaseHelper.createTestProvider(uniqueName);
+        await freshProvider.init();
+
+        // Clear any stored course ID to simulate no course selected
         StorageService().setSetting('selectedCourseId', null);
 
         // Try to load random questions - should fallback to legacy
-        await provider.loadRandomQuestions(14);
+        await freshProvider.loadRandomQuestions(14);
 
         // Should either have questions (if fallback works) or an error
-        if (provider.error == null) {
-          expect(provider.currentQuestions.length, 14);
+        if (freshProvider.error == null) {
+          expect(freshProvider.currentQuestions.length, 14);
         }
+
+        // Cleanup
+        await DatabaseHelper.cleanupTestInstance(uniqueName);
       },
     );
 
