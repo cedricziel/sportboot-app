@@ -167,15 +167,19 @@ class QuestionsProvider extends ChangeNotifier {
     return _storage.getSetting('selectedCourseId') as String?;
   }
 
-  // Load all questions from database
+  // Load all questions from database for the selected course
   Future<void> loadAllQuestions() async {
-    await _loadQuestionsFromDatabase(() => _repository.getAllQuestions());
-  }
+    if (_selectedCourseManifest == null) {
+      _error = 'Kein Kurs ausgewählt';
+      notifyListeners();
+      return;
+    }
 
-  // Load questions by category from database
-  Future<void> loadCourseById(String courseId) async {
+    // Load all questions from the catalogs that belong to this course
     await _loadQuestionsFromDatabase(
-      () => _repository.getQuestionsByCourse(courseId),
+      () => _repository.getQuestionsByCatalogs(
+        _selectedCourseManifest!.catalogIds,
+      ),
     );
   }
 
@@ -244,15 +248,15 @@ class QuestionsProvider extends ChangeNotifier {
   }
 
   Future<void> loadRandomQuestions(int count) async {
-    // Require a selected course - no more legacy fallback
-    if (_selectedCourseId == null) {
+    // Require a selected course
+    if (_selectedCourseManifest == null) {
       _error = 'Bitte wähle zuerst einen Kurs aus';
       notifyListeners();
       return;
     }
 
-    // Load questions from the selected course only
-    await loadCourseById(_selectedCourseId!);
+    // Load all questions from the selected course
+    await loadAllQuestions();
 
     if (_currentQuestions.isEmpty) {
       _error = 'Keine Fragen im ausgewählten Kurs verfügbar';

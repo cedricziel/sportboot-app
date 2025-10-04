@@ -46,12 +46,7 @@ class _MyAppState extends State<MyApp> {
 
         // Load all questions if not already loaded
         if (provider.currentQuestions.isEmpty) {
-          await provider.loadCourseById(
-            StorageService().getSetting(
-              'selectedCourseId',
-              defaultValue: 'sbf-see',
-            ),
-          );
+          await provider.loadAllQuestions();
         }
 
         // Start a quiz session
