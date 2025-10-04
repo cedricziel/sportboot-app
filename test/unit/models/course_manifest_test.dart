@@ -111,7 +111,7 @@ void main() {
     });
 
     test('should convert to map', () {
-      final course = CourseManifest(
+      final course = const CourseManifest(
         id: 'test',
         name: 'Test Course',
         shortName: 'TC',
@@ -119,7 +119,7 @@ void main() {
         icon: '📖',
         catalogIds: ['catalog1', 'catalog2'],
         totalQuestions: 100,
-        categories: const [
+        categories: [
           CourseCategory(
             id: 'all',
             name: 'All',
@@ -225,9 +225,9 @@ void main() {
     });
 
     test('should convert to map', () {
-      final manifest = Manifest(
+      final manifest = const Manifest(
         catalogs: {
-          'test': const CatalogInfo(
+          'test': CatalogInfo(
             id: 'test',
             name: 'Test',
             description: 'Test catalog',
@@ -236,7 +236,7 @@ void main() {
           ),
         },
         courses: {
-          'course1': const CourseManifest(
+          'course1': CourseManifest(
             id: 'course1',
             name: 'Course 1',
             shortName: 'C1',
@@ -247,7 +247,7 @@ void main() {
             categories: [],
           ),
         },
-        metadata: const {'version': '1.0'},
+        metadata: {'version': '1.0'},
       );
 
       final map = manifest.toMap();

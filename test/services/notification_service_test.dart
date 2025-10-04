@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:sportboot_app/services/notification_service.dart';
 import 'package:sportboot_app/services/storage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -89,10 +88,8 @@ void main() {
     });
 
     test('should set notification tap callback', () {
-      var callbackCalled = false;
-
       notificationService.setNotificationTapCallback(() {
-        callbackCalled = true;
+        // Callback implementation
       });
 
       // The callback should be set without errors
