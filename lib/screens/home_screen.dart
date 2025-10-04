@@ -417,7 +417,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
       if (context.mounted) {
         context.pop(); // Close loading dialog
-        context.push(routePath);
+        // Wait for dialog animation to complete before navigating
+        // This prevents iOS navigation issues with rapid context changes
+        await Future.delayed(const Duration(milliseconds: 300));
+        if (context.mounted) {
+          context.push(routePath);
+        }
       }
     } catch (e) {
       if (context.mounted) {
