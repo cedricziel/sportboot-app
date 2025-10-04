@@ -129,6 +129,9 @@ class AnswerOptionWidget extends StatelessWidget {
                     fontWeight: (showResult && option.isCorrect)
                         ? FontWeight.bold
                         : FontWeight.normal,
+                    color: PlatformHelper.useIOSStyle
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
                   ),
                 ),
               ),

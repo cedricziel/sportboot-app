@@ -248,7 +248,12 @@ class _QuizScreenState extends State<QuizScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   'Frage ${provider.currentQuestionIndex + 1} von ${provider.currentQuestions.length}',
-                  style: const TextStyle(fontSize: 16),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
                 ),
               ),
               Expanded(
@@ -262,10 +267,13 @@ class _QuizScreenState extends State<QuizScreen> {
                           children: [
                             SelectableText(
                               _removeSquareBrackets(question.question),
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                                 decoration: TextDecoration.none,
+                                color: isCupertino(context)
+                                    ? CupertinoColors.label.resolveFrom(context)
+                                    : null,
                               ),
                             ),
                             if (question.assets.isNotEmpty) ...[
