@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../utils/platform_helper.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 /// Platform-adaptive list section that uses CupertinoListSection on iOS
 /// and Column with material styling on other platforms
@@ -29,7 +29,7 @@ class AdaptiveListSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (PlatformHelper.useIOSStyle) {
+    if (isCupertino(context)) {
       return CupertinoListSection.insetGrouped(
         header: header,
         footer: footer,

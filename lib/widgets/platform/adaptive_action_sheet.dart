@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../utils/platform_helper.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 /// Shows a platform-adaptive action sheet / bottom sheet
 Future<T?> showAdaptiveActionSheet<T>({
@@ -10,7 +10,7 @@ Future<T?> showAdaptiveActionSheet<T>({
   required List<AdaptiveActionSheetAction> actions,
   AdaptiveActionSheetAction? cancelAction,
 }) {
-  if (PlatformHelper.useIOSStyle) {
+  if (isCupertino(context)) {
     return showCupertinoModalPopup<T>(
       context: context,
       builder: (context) => CupertinoActionSheet(

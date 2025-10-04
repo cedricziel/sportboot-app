@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'providers/questions_provider.dart';
 import 'router/app_router.dart';
 import 'services/storage_service.dart';
 import 'services/notification_service.dart';
-import 'utils/platform_helper.dart';
 
 /// iOS Preview entrypoint - forces iOS UI on macOS for preview/testing
 void main() async {
-  // Enable iOS preview mode
-  PlatformHelper.enableIOSPreview();
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize storage service
@@ -66,17 +64,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => QuestionsProvider())],
-      child: MaterialApp.router(
-        routerConfig: _router,
-        title: 'SBF-See Lernkarten (iOS Preview)',
-        debugShowCheckedModeBanner: false,
-        theme: _buildMaterialTheme(),
-        // Force Cupertino theme even on macOS
-        builder: (context, child) {
-          return CupertinoTheme(data: _buildCupertinoTheme(), child: child!);
-        },
+    return PlatformProvider(
+      initialPlatform: TargetPlatform.iOS,
+      builder: (context) => MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => QuestionsProvider())],
+        child: PlatformApp.router(
+          routerConfig: _router,
+          title: 'SBF-See Lernkarten (iOS Preview)',
+          debugShowCheckedModeBanner: false,
+          material: (context, platform) =>
+              MaterialAppRouterData(theme: _buildMaterialTheme()),
+          cupertino: (context, platform) =>
+              CupertinoAppRouterData(theme: _buildCupertinoTheme()),
+        ),
       ),
     );
   }

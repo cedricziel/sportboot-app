@@ -1,15 +1,12 @@
-import 'package:flutter/material.dart' hide showAdaptiveDialog;
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../services/storage_service.dart';
 import '../services/notification_service.dart';
-import '../widgets/platform/adaptive_scaffold.dart';
 import '../widgets/platform/adaptive_switch.dart';
-import '../widgets/platform/adaptive_dialog.dart';
 import '../widgets/platform/adaptive_list_tile.dart';
 import '../widgets/platform/adaptive_list_section.dart';
-import '../widgets/platform/adaptive_button.dart';
-import '../utils/platform_helper.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -59,8 +56,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveScaffold(
-      title: const Text('Einstellungen'),
+    return PlatformScaffold(
+      appBar: const PlatformAppBar(title: Text('Einstellungen')),
       body: ListView(
         children: [
           AdaptiveListSection.insetGrouped(
@@ -118,7 +115,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: const Text('Test-Benachrichtigung'),
                   subtitle: const Text('Sende eine Test-Benachrichtigung'),
                   trailing: Icon(
-                    PlatformHelper.useIOSStyle
+                    isCupertino(context)
                         ? CupertinoIcons.bell_fill
                         : Icons.notifications_active,
                   ),
@@ -144,13 +141,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: AdaptiveButton(
+            child: PlatformElevatedButton(
               onPressed: () => _showAboutDialog(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    PlatformHelper.useIOSStyle
+                    isCupertino(context)
                         ? CupertinoIcons.info_circle
                         : Icons.info_outline,
                     size: 20,
@@ -168,37 +165,39 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   void _showDailyGoalDialog() {
     int currentGoal = _settings['dailyGoal'] ?? 20;
-    showAdaptiveDialog(
+    showPlatformDialog(
       context: context,
-      title: 'Tägliches Lernziel',
-      contentWidget: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text('Wie viele Fragen möchtest du täglich lernen?'),
-          const SizedBox(height: 16),
-          Wrap(
-            spacing: 8,
-            children: [10, 20, 30, 50, 100].map((goal) {
-              return ChoiceChip(
-                label: Text('$goal'),
-                selected: currentGoal == goal,
-                onSelected: (selected) {
-                  if (selected) {
-                    _updateSetting('dailyGoal', goal);
-                    context.pop();
-                  }
-                },
-              );
-            }).toList(),
+      builder: (context) => PlatformAlertDialog(
+        title: const Text('Tägliches Lernziel'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Wie viele Fragen möchtest du täglich lernen?'),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 8,
+              children: [10, 20, 30, 50, 100].map((goal) {
+                return ChoiceChip(
+                  label: Text('$goal'),
+                  selected: currentGoal == goal,
+                  onSelected: (selected) {
+                    if (selected) {
+                      _updateSetting('dailyGoal', goal);
+                      context.pop();
+                    }
+                  },
+                );
+              }).toList(),
+            ),
+          ],
+        ),
+        actions: [
+          PlatformDialogAction(
+            onPressed: () => context.pop(),
+            child: const Text('Abbrechen'),
           ),
         ],
       ),
-      actions: [
-        AdaptiveDialogAction(
-          onPressed: () => context.pop(),
-          child: const Text('Abbrechen'),
-        ),
-      ],
     );
   }
 
@@ -248,7 +247,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<void> _selectNotificationTime() async {
     TimeOfDay? newTime;
 
-    if (PlatformHelper.useIOSStyle) {
+    if (isCupertino(context)) {
       // Use Cupertino picker for iOS
       await showCupertinoModalPopup(
         context: context,

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
 import '../router/app_router.dart';
-import '../widgets/platform/adaptive_scaffold.dart';
 import '../widgets/platform/adaptive_action_sheet.dart';
-import '../widgets/platform/adaptive_loading.dart';
 import '../widgets/platform/adaptive_card.dart';
-import '../utils/platform_helper.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -41,41 +39,43 @@ class _HomeScreenState extends State<HomeScreen> {
     final courseManifest = provider.selectedCourseManifest;
     final courseTitle = courseManifest?.shortName ?? 'Lernkarten';
 
-    return AdaptiveScaffold(
-      title: Text(courseTitle),
-      actions: [
-        if (PlatformHelper.useIOSStyle) ...[
-          CupertinoButton(
-            padding: EdgeInsets.zero,
-            child: const Icon(CupertinoIcons.arrow_2_squarepath),
-            onPressed: () => context.go(AppRoutes.courseSelection),
-          ),
-          CupertinoButton(
-            padding: EdgeInsets.zero,
-            child: const Icon(CupertinoIcons.chart_bar),
-            onPressed: () => context.push(AppRoutes.progress),
-          ),
-          CupertinoButton(
-            padding: EdgeInsets.zero,
-            child: const Icon(CupertinoIcons.settings),
-            onPressed: () => context.push(AppRoutes.settings),
-          ),
-        ] else ...[
-          IconButton(
-            icon: const Icon(Icons.swap_horiz),
-            tooltip: 'Kurs wechseln',
-            onPressed: () => context.go(AppRoutes.courseSelection),
-          ),
-          IconButton(
-            icon: const Icon(Icons.bar_chart),
-            onPressed: () => context.push(AppRoutes.progress),
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () => context.push(AppRoutes.settings),
-          ),
+    return PlatformScaffold(
+      appBar: PlatformAppBar(
+        title: Text(courseTitle),
+        trailingActions: [
+          if (isCupertino(context)) ...[
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: const Icon(CupertinoIcons.arrow_2_squarepath),
+              onPressed: () => context.go(AppRoutes.courseSelection),
+            ),
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: const Icon(CupertinoIcons.chart_bar),
+              onPressed: () => context.push(AppRoutes.progress),
+            ),
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: const Icon(CupertinoIcons.settings),
+              onPressed: () => context.push(AppRoutes.settings),
+            ),
+          ] else ...[
+            IconButton(
+              icon: const Icon(Icons.swap_horiz),
+              tooltip: 'Kurs wechseln',
+              onPressed: () => context.go(AppRoutes.courseSelection),
+            ),
+            IconButton(
+              icon: const Icon(Icons.bar_chart),
+              onPressed: () => context.push(AppRoutes.progress),
+            ),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () => context.push(AppRoutes.settings),
+            ),
+          ],
         ],
-      ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   // Get total question count from manifest if available
                   final questionCount = courseManifest?.totalQuestions ?? 0;
-                  final subtitleColor = PlatformHelper.useIOSStyle
+                  final subtitleColor = isCupertino(context)
                       ? CupertinoColors.secondaryLabel
                       : Colors.grey;
 
@@ -211,13 +211,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildQuickQuizCard(BuildContext context) {
-    final blueColor = PlatformHelper.useIOSStyle
+    final blueColor = isCupertino(context)
         ? CupertinoColors.systemBlue
         : Colors.blue;
-    final bgColor = PlatformHelper.useIOSStyle
+    final bgColor = isCupertino(context)
         ? CupertinoColors.systemBlue.withOpacity(0.1)
         : Colors.blue.shade50;
-    final subtitleColor = PlatformHelper.useIOSStyle
+    final subtitleColor = isCupertino(context)
         ? CupertinoColors.secondaryLabel.resolveFrom(context)
         : Colors.grey[600];
 
@@ -240,7 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
-              PlatformHelper.useIOSStyle ? CupertinoIcons.bolt : Icons.bolt,
+              isCupertino(context) ? CupertinoIcons.bolt : Icons.bolt,
               color: blueColor,
               size: 32,
             ),
@@ -299,10 +299,10 @@ class _HomeScreenState extends State<HomeScreen> {
     Color color,
     String category,
   ) {
-    final subtitleColor = PlatformHelper.useIOSStyle
+    final subtitleColor = isCupertino(context)
         ? CupertinoColors.secondaryLabel.resolveFrom(context)
         : Colors.grey[600];
-    final chevronColor = PlatformHelper.useIOSStyle
+    final chevronColor = isCupertino(context)
         ? CupertinoColors.separator.resolveFrom(context)
         : Colors.grey;
 
@@ -340,10 +340,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Icon(
-            PlatformHelper.useIOSStyle
+            isCupertino(context)
                 ? CupertinoIcons.chevron_forward
                 : Icons.arrow_forward_ios,
-            size: PlatformHelper.useIOSStyle ? 20 : 16,
+            size: isCupertino(context) ? 20 : 16,
             color: chevronColor,
           ),
         ],
@@ -358,7 +358,7 @@ class _HomeScreenState extends State<HomeScreen> {
       message: 'Wähle einen Modus',
       actions: [
         AdaptiveActionSheetAction(
-          icon: PlatformHelper.useIOSStyle
+          icon: isCupertino(context)
               ? CupertinoIcons.square_on_square
               : Icons.style,
           child: const Text('Lernkarten'),
@@ -373,7 +373,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
         AdaptiveActionSheetAction(
-          icon: PlatformHelper.useIOSStyle
+          icon: isCupertino(context)
               ? CupertinoIcons.question_circle
               : Icons.quiz,
           child: const Text('Quiz-Modus'),
@@ -404,7 +404,11 @@ class _HomeScreenState extends State<HomeScreen> {
     final provider = context.read<QuestionsProvider>();
 
     // Show loading dialog
-    showAdaptiveLoadingDialog(context);
+    showPlatformDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => const Center(child: PlatformCircularProgressIndicator()),
+    );
 
     try {
       debugPrint(

@@ -1,16 +1,13 @@
-import 'package:flutter/material.dart' hide showAdaptiveDialog;
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../providers/questions_provider.dart';
 import '../router/app_router.dart';
 import '../widgets/answer_option_widget.dart';
 import '../widgets/zoomable_image.dart';
-import '../widgets/platform/adaptive_scaffold.dart';
-import '../widgets/platform/adaptive_dialog.dart';
-import '../widgets/platform/adaptive_button.dart';
 import '../widgets/platform/adaptive_card.dart';
-import '../utils/platform_helper.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -37,108 +34,107 @@ class _QuizScreenState extends State<QuizScreen> {
 
     provider.endSession();
 
-    showAdaptiveDialog(
+    showPlatformDialog(
       context: context,
       barrierDismissible: false,
-      title: 'Quiz beendet!',
-      contentWidget: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Deine Ergebnisse:',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildStatItem(
-                'Richtig',
-                correctAnswers.toString(),
-                PlatformHelper.useIOSStyle
-                    ? CupertinoColors.systemGreen
-                    : Colors.green,
-              ),
-              _buildStatItem(
-                'Falsch',
-                incorrectAnswers.toString(),
-                PlatformHelper.useIOSStyle
-                    ? CupertinoColors.systemRed
-                    : Colors.red,
-              ),
-              _buildStatItem(
-                'Prozent',
-                '$percentage%',
-                PlatformHelper.useIOSStyle
-                    ? CupertinoColors.systemBlue
-                    : Colors.blue,
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          LinearProgressIndicator(
-            value: correctAnswers / totalQuestions,
-            backgroundColor: PlatformHelper.useIOSStyle
-                ? CupertinoColors.systemGrey5.resolveFrom(context)
-                : Colors.grey[300],
-            valueColor: AlwaysStoppedAnimation<Color>(
-              percentage >= 80
-                  ? (PlatformHelper.useIOSStyle
-                        ? CupertinoColors.systemGreen
-                        : Colors.green)
-                  : percentage >= 60
-                  ? (PlatformHelper.useIOSStyle
-                        ? CupertinoColors.systemOrange
-                        : Colors.orange)
-                  : (PlatformHelper.useIOSStyle
-                        ? CupertinoColors.systemRed
-                        : Colors.red),
+      builder: (context) => PlatformAlertDialog(
+        title: const Text('Quiz beendet!'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Deine Ergebnisse:',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildStatItem(
+                  'Richtig',
+                  correctAnswers.toString(),
+                  isCupertino(context)
+                      ? CupertinoColors.systemGreen
+                      : Colors.green,
+                ),
+                _buildStatItem(
+                  'Falsch',
+                  incorrectAnswers.toString(),
+                  isCupertino(context) ? CupertinoColors.systemRed : Colors.red,
+                ),
+                _buildStatItem(
+                  'Prozent',
+                  '$percentage%',
+                  isCupertino(context)
+                      ? CupertinoColors.systemBlue
+                      : Colors.blue,
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            LinearProgressIndicator(
+              value: correctAnswers / totalQuestions,
+              backgroundColor: isCupertino(context)
+                  ? CupertinoColors.systemGrey5.resolveFrom(context)
+                  : Colors.grey[300],
+              valueColor: AlwaysStoppedAnimation<Color>(
+                percentage >= 80
+                    ? (isCupertino(context)
+                          ? CupertinoColors.systemGreen
+                          : Colors.green)
+                    : percentage >= 60
+                    ? (isCupertino(context)
+                          ? CupertinoColors.systemOrange
+                          : Colors.orange)
+                    : (isCupertino(context)
+                          ? CupertinoColors.systemRed
+                          : Colors.red),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              percentage >= 80
+                  ? 'Ausgezeichnet! 🎉'
+                  : percentage >= 60
+                  ? 'Gut gemacht! 👍'
+                  : 'Weiter üben! 💪',
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        actions: [
+          PlatformDialogAction(
+            onPressed: () async {
+              context.pop(); // Close dialog
+              context.pop(); // Go back to home
+
+              // Start a new quick quiz
+              final newProvider = context.read<QuestionsProvider>();
+              await newProvider.loadRandomQuestions(14);
+              newProvider.startSession('quiz', 'quick_quiz');
+
+              if (context.mounted) {
+                context.push(AppRoutes.quiz);
+              }
+            },
+            child: const Text('Neues Quiz'),
           ),
-          const SizedBox(height: 8),
-          Text(
-            percentage >= 80
-                ? 'Ausgezeichnet! 🎉'
-                : percentage >= 60
-                ? 'Gut gemacht! 👍'
-                : 'Weiter üben! 💪',
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-            textAlign: TextAlign.center,
+          PlatformDialogAction(
+            onPressed: () {
+              context.pop(); // Close dialog
+              context.pop(); // Go back to home
+            },
+            child: const Text('Zurück zum Menü'),
           ),
         ],
       ),
-      actions: [
-        AdaptiveDialogAction(
-          onPressed: () async {
-            context.pop(); // Close dialog
-            context.pop(); // Go back to home
-
-            // Start a new quick quiz
-            final newProvider = context.read<QuestionsProvider>();
-            await newProvider.loadRandomQuestions(14);
-            newProvider.startSession('quiz', 'quick_quiz');
-
-            if (context.mounted) {
-              context.push(AppRoutes.quiz);
-            }
-          },
-          child: const Text('Neues Quiz'),
-        ),
-        AdaptiveDialogAction(
-          onPressed: () {
-            context.pop(); // Close dialog
-            context.pop(); // Go back to home
-          },
-          isDefault: true,
-          child: const Text('Zurück zum Menü'),
-        ),
-      ],
     );
   }
 
   Widget _buildStatItem(String label, String value, Color color) {
-    final subtitleColor = PlatformHelper.useIOSStyle
+    final subtitleColor = isCupertino(context)
         ? CupertinoColors.secondaryLabel
         : Colors.grey[600];
 
@@ -160,16 +156,12 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveScaffold(
-      title: const Text('Quiz-Modus'),
+    return PlatformScaffold(
+      appBar: const PlatformAppBar(title: Text('Quiz-Modus')),
       body: Consumer<QuestionsProvider>(
         builder: (context, provider, _) {
           if (provider.isLoading) {
-            return Center(
-              child: PlatformHelper.useIOSStyle
-                  ? const CupertinoActivityIndicator()
-                  : const CircularProgressIndicator(),
-            );
+            return const Center(child: PlatformCircularProgressIndicator());
           }
 
           // Show error if present
@@ -192,7 +184,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 24),
-                    AdaptiveButton(
+                    PlatformElevatedButton(
                       onPressed: () => context.pop(),
                       child: const Text('Zurück'),
                     ),
@@ -233,7 +225,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       ),
                     ],
                     const SizedBox(height: 24),
-                    AdaptiveButton(
+                    PlatformElevatedButton(
                       onPressed: () => context.pop(),
                       child: const Text('Zurück'),
                     ),
@@ -333,7 +325,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   children: [
                     if (!showResult && selectedAnswer != null)
                       Expanded(
-                        child: AdaptiveButton(
+                        child: PlatformElevatedButton(
                           onPressed: () {
                             provider.answerQuestion(selectedAnswer!);
                             setState(() {
@@ -346,7 +338,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     if (showResult) ...[
                       if (provider.hasPrevious)
                         Expanded(
-                          child: AdaptiveButton(
+                          child: PlatformElevatedButton(
                             onPressed: () {
                               provider.previousQuestion();
                               setState(() {
@@ -360,7 +352,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       const SizedBox(width: 8),
                       if (provider.hasNext)
                         Expanded(
-                          child: AdaptiveButton(
+                          child: PlatformElevatedButton(
                             onPressed: () {
                               provider.nextQuestion();
                               setState(() {
@@ -374,11 +366,16 @@ class _QuizScreenState extends State<QuizScreen> {
                       if (!provider.hasNext &&
                           provider.currentSession?.category == 'quick_quiz')
                         Expanded(
-                          child: AdaptiveButton(
+                          child: PlatformElevatedButton(
                             onPressed: () {
                               _showQuizCompletionDialog(context, provider);
                             },
-                            color: Colors.green,
+                            material: (context, platform) =>
+                                MaterialElevatedButtonData(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.green,
+                                  ),
+                                ),
                             child: const Text('Quiz beenden'),
                           ),
                         ),

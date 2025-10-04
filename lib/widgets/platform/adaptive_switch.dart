@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../utils/platform_helper.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 /// Platform-adaptive switch widget
 class AdaptiveSwitch extends StatelessWidget {
@@ -17,7 +17,7 @@ class AdaptiveSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (PlatformHelper.useIOSStyle) {
+    if (isCupertino(context)) {
       // CupertinoSwitch doesn't have a simple way to set active color
       // The switch is already styled appropriately by default
       return CupertinoSwitch(value: value, onChanged: onChanged);
@@ -48,7 +48,7 @@ class AdaptiveSwitchListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (PlatformHelper.useIOSStyle) {
+    if (isCupertino(context)) {
       return CupertinoListTile(
         title: title,
         subtitle: subtitle,

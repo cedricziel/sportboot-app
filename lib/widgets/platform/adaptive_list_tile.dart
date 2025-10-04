@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../utils/platform_helper.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 /// Platform-adaptive list tile that uses CupertinoListTile on iOS
 /// and Material ListTile on other platforms
@@ -24,7 +24,7 @@ class AdaptiveListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (PlatformHelper.useIOSStyle) {
+    if (isCupertino(context)) {
       return CupertinoListTile(
         leading: leading,
         title: title,

@@ -1,60 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../providers/questions_provider.dart';
 import '../widgets/flashcard_widget.dart';
-import '../widgets/platform/adaptive_scaffold.dart';
-import '../widgets/platform/adaptive_button.dart';
-import '../utils/platform_helper.dart';
 
 class FlashcardScreen extends StatelessWidget {
   const FlashcardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveScaffold(
-      title: const Text('Lernkarten'),
-      actions: [
-        Consumer<QuestionsProvider>(
-          builder: (context, provider, _) {
-            return FutureBuilder<bool>(
-              future: provider.isCurrentQuestionBookmarked(),
-              builder: (context, snapshot) {
-                final isBookmarked = snapshot.data ?? false;
-                if (PlatformHelper.useIOSStyle) {
-                  return CupertinoButton(
-                    padding: EdgeInsets.zero,
-                    child: Icon(
+    return PlatformScaffold(
+      appBar: PlatformAppBar(
+        title: const Text('Lernkarten'),
+        trailingActions: [
+          Consumer<QuestionsProvider>(
+            builder: (context, provider, _) {
+              return FutureBuilder<bool>(
+                future: provider.isCurrentQuestionBookmarked(),
+                builder: (context, snapshot) {
+                  final isBookmarked = snapshot.data ?? false;
+                  return PlatformIconButton(
+                    icon: Icon(
                       isBookmarked
-                          ? CupertinoIcons.bookmark_fill
-                          : CupertinoIcons.bookmark,
+                          ? (isCupertino(context)
+                                ? CupertinoIcons.bookmark_fill
+                                : Icons.bookmark)
+                          : (isCupertino(context)
+                                ? CupertinoIcons.bookmark
+                                : Icons.bookmark_border),
                     ),
                     onPressed: () {
                       provider.toggleBookmark();
                     },
+                    cupertino: (context, platform) =>
+                        CupertinoIconButtonData(padding: EdgeInsets.zero),
                   );
-                }
-                return IconButton(
-                  icon: Icon(
-                    isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                  ),
-                  onPressed: () {
-                    provider.toggleBookmark();
-                  },
-                );
-              },
-            );
-          },
-        ),
-      ],
+                },
+              );
+            },
+          ),
+        ],
+      ),
       body: Consumer<QuestionsProvider>(
         builder: (context, provider, _) {
           if (provider.isLoading) {
-            return Center(
-              child: PlatformHelper.useIOSStyle
-                  ? const CupertinoActivityIndicator()
-                  : const CircularProgressIndicator(),
-            );
+            return const Center(child: PlatformCircularProgressIndicator());
           }
 
           if (provider.error != null) {
@@ -106,7 +97,7 @@ class FlashcardScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Expanded(
-                      child: AdaptiveButton(
+                      child: PlatformElevatedButton(
                         onPressed: provider.hasPrevious
                             ? () => provider.previousQuestion()
                             : null,
@@ -114,7 +105,7 @@ class FlashcardScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
-                              PlatformHelper.useIOSStyle
+                              isCupertino(context)
                                   ? CupertinoIcons.back
                                   : Icons.arrow_back,
                               size: 20,
@@ -127,7 +118,7 @@ class FlashcardScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 16),
                     Expanded(
-                      child: AdaptiveButton(
+                      child: PlatformElevatedButton(
                         onPressed: provider.hasNext
                             ? () => provider.nextQuestion()
                             : null,
@@ -137,7 +128,7 @@ class FlashcardScreen extends StatelessWidget {
                             const Text('Weiter'),
                             const SizedBox(width: 8),
                             Icon(
-                              PlatformHelper.useIOSStyle
+                              isCupertino(context)
                                   ? CupertinoIcons.forward
                                   : Icons.arrow_forward,
                               size: 20,
@@ -153,12 +144,12 @@ class FlashcardScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
-                  color: PlatformHelper.useIOSStyle
+                  color: isCupertino(context)
                       ? CupertinoColors.systemGroupedBackground.resolveFrom(
                           context,
                         )
                       : Colors.grey[100],
-                  border: PlatformHelper.useIOSStyle
+                  border: isCupertino(context)
                       ? Border(
                           top: BorderSide(
                             color: CupertinoColors.separator.resolveFrom(
@@ -176,7 +167,7 @@ class FlashcardScreen extends StatelessWidget {
                       context,
                       'Richtig',
                       provider.getSessionStats()['correct'].toString(),
-                      PlatformHelper.useIOSStyle
+                      isCupertino(context)
                           ? CupertinoColors.systemGreen
                           : Colors.green,
                     ),
@@ -184,7 +175,7 @@ class FlashcardScreen extends StatelessWidget {
                       context,
                       'Falsch',
                       provider.getSessionStats()['incorrect'].toString(),
-                      PlatformHelper.useIOSStyle
+                      isCupertino(context)
                           ? CupertinoColors.systemRed
                           : Colors.red,
                     ),
@@ -192,7 +183,7 @@ class FlashcardScreen extends StatelessWidget {
                       context,
                       'Offen',
                       provider.getSessionStats()['unanswered'].toString(),
-                      PlatformHelper.useIOSStyle
+                      isCupertino(context)
                           ? CupertinoColors.systemOrange
                           : Colors.orange,
                     ),

@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../models/course_manifest.dart';
 import '../providers/questions_provider.dart';
 import '../router/app_router.dart';
 import '../services/data_loader.dart';
-import '../widgets/platform/adaptive_scaffold.dart';
 import '../widgets/platform/adaptive_card.dart';
-import '../widgets/platform/adaptive_button.dart';
-import '../utils/platform_helper.dart';
 
 class CourseSelectionScreen extends StatefulWidget {
   const CourseSelectionScreen({super.key});
@@ -46,19 +44,15 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveScaffold(
-      title: const Text('Wähle deinen Kurs'),
+    return PlatformScaffold(
+      appBar: const PlatformAppBar(title: Text('Wähle deinen Kurs')),
       body: _buildBody(),
     );
   }
 
   Widget _buildBody() {
     if (_isLoading) {
-      return Center(
-        child: PlatformHelper.useIOSStyle
-            ? const CupertinoActivityIndicator()
-            : const CircularProgressIndicator(),
-      );
+      return const Center(child: PlatformCircularProgressIndicator());
     }
 
     if (_error != null) {
@@ -67,11 +61,11 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              PlatformHelper.useIOSStyle
+              isCupertino(context)
                   ? CupertinoIcons.exclamationmark_circle
                   : Icons.error_outline,
               size: 64,
-              color: PlatformHelper.useIOSStyle
+              color: isCupertino(context)
                   ? CupertinoColors.systemRed
                   : Colors.red,
             ),
@@ -83,7 +77,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
             const SizedBox(height: 8),
             Text(_error!, textAlign: TextAlign.center),
             const SizedBox(height: 16),
-            AdaptiveButton(
+            PlatformElevatedButton(
               onPressed: () {
                 setState(() {
                   _isLoading = true;
@@ -142,10 +136,10 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
     CourseManifest course,
   ) {
     final color = _getColorForCourse(courseId);
-    final badgeColor = PlatformHelper.useIOSStyle
+    final badgeColor = isCupertino(context)
         ? CupertinoColors.systemBlue
         : Colors.blue;
-    final textColor = PlatformHelper.useIOSStyle
+    final textColor = isCupertino(context)
         ? CupertinoColors.secondaryLabel.resolveFrom(context)
         : Colors.grey[600];
 
@@ -227,14 +221,14 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
           Row(
             children: [
               _buildInfoChip(
-                PlatformHelper.useIOSStyle
+                isCupertino(context)
                     ? CupertinoIcons.folder
                     : Icons.folder_outlined,
                 '${course.catalogIds.length} Kataloge',
               ),
               const SizedBox(width: 12),
               _buildInfoChip(
-                PlatformHelper.useIOSStyle
+                isCupertino(context)
                     ? CupertinoIcons.square_grid_2x2
                     : Icons.category_outlined,
                 '${course.categories.length} Kategorien',
@@ -242,7 +236,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
               if (course.examConfig != null) ...[
                 const SizedBox(width: 12),
                 _buildInfoChip(
-                  PlatformHelper.useIOSStyle
+                  isCupertino(context)
                       ? CupertinoIcons.question_circle
                       : Icons.quiz_outlined,
                   'Prüfung verfügbar',
@@ -256,7 +250,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
   }
 
   Widget _buildInfoChip(IconData icon, String label) {
-    final chipColor = PlatformHelper.useIOSStyle
+    final chipColor = isCupertino(context)
         ? CupertinoColors.secondaryLabel
         : Colors.grey[600];
 

@@ -1,13 +1,10 @@
-import 'package:flutter/material.dart' hide showAdaptiveDialog;
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../services/storage_service.dart';
-import '../widgets/platform/adaptive_scaffold.dart';
-import '../widgets/platform/adaptive_dialog.dart';
 import '../widgets/platform/adaptive_card.dart';
-import '../widgets/platform/adaptive_button.dart';
-import '../utils/platform_helper.dart';
 
 class ProgressScreen extends StatefulWidget {
   const ProgressScreen({super.key});
@@ -40,8 +37,8 @@ class _ProgressScreenState extends State<ProgressScreen> {
     final correct = _stats['correctAnswers'] ?? 0;
     final accuracy = total > 0 ? (correct / total) : 0.0;
 
-    return AdaptiveScaffold(
-      title: const Text('Fortschritt'),
+    return PlatformScaffold(
+      appBar: const PlatformAppBar(title: Text('Fortschritt')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -52,15 +49,15 @@ class _ProgressScreenState extends State<ProgressScreen> {
               child: Row(
                 children: [
                   Icon(
-                    PlatformHelper.useIOSStyle
+                    isCupertino(context)
                         ? CupertinoIcons.flame
                         : Icons.local_fire_department,
                     size: 48,
                     color: _studyStreak > 0
-                        ? (PlatformHelper.useIOSStyle
+                        ? (isCupertino(context)
                               ? CupertinoColors.systemOrange
                               : Colors.orange)
-                        : (PlatformHelper.useIOSStyle
+                        : (isCupertino(context)
                               ? CupertinoColors.systemGrey
                               : Colors.grey),
                   ),
@@ -105,7 +102,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                       ),
                     ),
                     progressColor: _getColorForAccuracy(accuracy),
-                    backgroundColor: PlatformHelper.useIOSStyle
+                    backgroundColor: isCupertino(context)
                         ? CupertinoColors.systemGrey5.resolveFrom(context)
                         : Colors.grey.shade200,
                   ),
@@ -127,10 +124,10 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   context,
                   'Beantwortet',
                   _stats['totalQuestions']?.toString() ?? '0',
-                  PlatformHelper.useIOSStyle
+                  isCupertino(context)
                       ? CupertinoIcons.chat_bubble_2
                       : Icons.question_answer,
-                  PlatformHelper.useIOSStyle
+                  isCupertino(context)
                       ? CupertinoColors.systemBlue
                       : Colors.blue,
                 ),
@@ -138,10 +135,10 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   context,
                   'Richtig',
                   _stats['correctAnswers']?.toString() ?? '0',
-                  PlatformHelper.useIOSStyle
+                  isCupertino(context)
                       ? CupertinoIcons.check_mark_circled
                       : Icons.check_circle,
-                  PlatformHelper.useIOSStyle
+                  isCupertino(context)
                       ? CupertinoColors.systemGreen
                       : Colors.green,
                 ),
@@ -149,21 +146,17 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   context,
                   'Falsch',
                   _stats['incorrectAnswers']?.toString() ?? '0',
-                  PlatformHelper.useIOSStyle
+                  isCupertino(context)
                       ? CupertinoIcons.xmark_circle
                       : Icons.cancel,
-                  PlatformHelper.useIOSStyle
-                      ? CupertinoColors.systemRed
-                      : Colors.red,
+                  isCupertino(context) ? CupertinoColors.systemRed : Colors.red,
                 ),
                 _buildStatCard(
                   context,
                   'Sitzungen',
                   _stats['studySessions']?.toString() ?? '0',
-                  PlatformHelper.useIOSStyle
-                      ? CupertinoIcons.book
-                      : Icons.school,
-                  PlatformHelper.useIOSStyle
+                  isCupertino(context) ? CupertinoIcons.book : Icons.school,
+                  isCupertino(context)
                       ? CupertinoColors.systemPurple
                       : Colors.purple,
                 ),
@@ -172,14 +165,22 @@ class _ProgressScreenState extends State<ProgressScreen> {
             const SizedBox(height: 24),
 
             // Reset Button
-            AdaptiveButton(
+            PlatformElevatedButton(
               onPressed: () => _showResetDialog(context),
-              isDestructive: true,
+              material: (context, platform) => MaterialElevatedButtonData(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                ),
+              ),
+              cupertino: (context, platform) => CupertinoElevatedButtonData(
+                color: CupertinoColors.destructiveRed,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    PlatformHelper.useIOSStyle
+                    isCupertino(context)
                         ? CupertinoIcons.refresh
                         : Icons.refresh,
                     size: 20,
@@ -202,7 +203,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
     IconData icon,
     Color color,
   ) {
-    final subtitleColor = PlatformHelper.useIOSStyle
+    final subtitleColor = isCupertino(context)
         ? CupertinoColors.secondaryLabel.resolveFrom(context)
         : Colors.grey[600];
 
@@ -224,7 +225,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
   }
 
   Color _getColorForAccuracy(double accuracy) {
-    if (PlatformHelper.useIOSStyle) {
+    if (isCupertino(context)) {
       if (accuracy >= 0.8) return CupertinoColors.systemGreen;
       if (accuracy >= 0.6) return CupertinoColors.systemOrange;
       return CupertinoColors.systemRed;
@@ -235,29 +236,38 @@ class _ProgressScreenState extends State<ProgressScreen> {
   }
 
   void _showResetDialog(BuildContext context) {
-    showAdaptiveDialog(
+    showPlatformDialog(
       context: context,
-      title: 'Fortschritt zurücksetzen?',
-      content:
+      builder: (context) => PlatformAlertDialog(
+        title: const Text('Fortschritt zurücksetzen?'),
+        content: const Text(
           'Dies wird alle deine Lernstatistiken löschen. Diese Aktion kann nicht rückgängig gemacht werden.',
-      actions: [
-        AdaptiveDialogAction(
-          onPressed: () => context.pop(),
-          child: const Text('Abbrechen'),
         ),
-        AdaptiveDialogAction(
-          onPressed: () {
-            _storage.clearProgress();
-            context.pop();
-            _loadStats();
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Fortschritt wurde zurückgesetzt')),
-            );
-          },
-          isDestructive: true,
-          child: const Text('Zurücksetzen'),
-        ),
-      ],
+        actions: [
+          PlatformDialogAction(
+            onPressed: () => context.pop(),
+            child: const Text('Abbrechen'),
+          ),
+          PlatformDialogAction(
+            onPressed: () {
+              _storage.clearProgress();
+              context.pop();
+              _loadStats();
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Fortschritt wurde zurückgesetzt'),
+                ),
+              );
+            },
+            material: (context, platform) => MaterialDialogActionData(
+              style: TextButton.styleFrom(foregroundColor: Colors.red),
+            ),
+            cupertino: (context, platform) =>
+                CupertinoDialogActionData(isDestructiveAction: true),
+            child: const Text('Zurücksetzen'),
+          ),
+        ],
+      ),
     );
   }
 }

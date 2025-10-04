@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
@@ -10,7 +11,6 @@ import '../screens/quiz_screen.dart';
 import '../screens/flashcard_screen.dart';
 import '../screens/progress_screen.dart';
 import '../screens/settings_screen.dart';
-import '../utils/platform_helper.dart';
 
 /// Route paths as constants for type-safe navigation
 class AppRoutes {
@@ -129,7 +129,7 @@ Page _buildPage(
   Widget child, {
   bool fullscreenDialog = false,
 }) {
-  if (PlatformHelper.useIOSStyle) {
+  if (isCupertino(context)) {
     return CupertinoPage(
       key: state.pageKey,
       child: child,

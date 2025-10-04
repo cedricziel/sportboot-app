@@ -47,6 +47,7 @@ dependencies:
   # UI components
   flip_card: ^0.7.0
   percent_indicator: ^4.2.3
+  flutter_platform_widgets: ^9.0.0
 
   # Image handling
   cached_network_image: ^3.3.0

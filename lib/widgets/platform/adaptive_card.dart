@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../utils/platform_helper.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 /// Platform-adaptive card that uses iOS-style container on iOS
 /// and Material Card on other platforms
@@ -26,7 +26,7 @@ class AdaptiveCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final defaultBorderRadius = borderRadius ?? BorderRadius.circular(12);
 
-    if (PlatformHelper.useIOSStyle) {
+    if (isCupertino(context)) {
       // iOS-style card: subtle background with minimal border
       Widget cardContent = Container(
         margin: margin ?? const EdgeInsets.symmetric(vertical: 4),
