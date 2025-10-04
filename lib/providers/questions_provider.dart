@@ -267,7 +267,23 @@ class QuestionsProvider extends ChangeNotifier {
   }
 
   Future<void> loadCategory(String category) async {
-    await loadQuestionsByCategory(category);
+    // Find the category in the selected course manifest
+    if (_selectedCourseManifest == null) {
+      _error = 'Kein Kurs ausgewählt';
+      notifyListeners();
+      return;
+    }
+
+    final categoryInfo = _selectedCourseManifest!.categories.firstWhere(
+      (c) => c.id == category,
+      orElse: () =>
+          throw Exception('Category $category not found in course manifest'),
+    );
+
+    // Load questions from all catalogs referenced by this category
+    await _loadQuestionsFromDatabase(
+      () => _repository.getQuestionsByCatalogs(categoryInfo.catalogRefs),
+    );
   }
 
   // Filter questions by bookmarks (now loads from database)
