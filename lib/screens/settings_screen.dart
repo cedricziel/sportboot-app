@@ -61,7 +61,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ListView(
         children: [
           AdaptiveListSection.insetGrouped(
-            header: const Text('Lerneinstellungen'),
+            header: Text(
+              'Lerneinstellungen',
+              style: TextStyle(
+                color: isCupertino(context)
+                    ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                    : null,
+              ),
+            ),
             children: [
               AdaptiveSwitchListTile(
                 title: const Text('Fragen mischen'),
@@ -84,7 +91,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ],
           ),
           AdaptiveListSection.insetGrouped(
-            header: const Text('Lernziele'),
+            header: Text(
+              'Lernziele',
+              style: TextStyle(
+                color: isCupertino(context)
+                    ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                    : null,
+              ),
+            ),
             children: [
               AdaptiveListTile(
                 title: const Text('Tägliches Ziel'),
@@ -96,7 +110,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ],
           ),
           AdaptiveListSection.insetGrouped(
-            header: const Text('Benachrichtigungen'),
+            header: Text(
+              'Benachrichtigungen',
+              style: TextStyle(
+                color: isCupertino(context)
+                    ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                    : null,
+              ),
+            ),
             children: [
               AdaptiveSwitchListTile(
                 title: const Text('Tägliche Erinnerung'),
@@ -123,9 +144,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
             ],
           ),
-          const AdaptiveListSection.insetGrouped(
-            header: Text('App-Info'),
-            children: [
+          AdaptiveListSection.insetGrouped(
+            header: Text(
+              'App-Info',
+              style: TextStyle(
+                color: isCupertino(context)
+                    ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                    : null,
+              ),
+            ),
+            children: const [
               AdaptiveListTile(title: Text('Version'), subtitle: Text('1.0.0')),
               AdaptiveListTile(
                 title: Text('Fragen'),

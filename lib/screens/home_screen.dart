@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   // Get total question count from manifest if available
                   final questionCount = courseManifest?.totalQuestions ?? 0;
                   final subtitleColor = isCupertino(context)
-                      ? CupertinoColors.secondaryLabel
+                      ? CupertinoColors.secondaryLabel.resolveFrom(context)
                       : Colors.grey;
 
                   return Column(

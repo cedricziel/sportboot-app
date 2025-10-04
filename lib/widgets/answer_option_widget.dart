@@ -103,14 +103,18 @@ class AnswerOptionWidget extends StatelessWidget {
                   color:
                       borderColor ??
                       (PlatformHelper.useIOSStyle
-                          ? CupertinoColors.systemGrey
+                          ? CupertinoColors.systemGrey2.resolveFrom(context)
                           : Colors.grey.shade400),
                 ),
                 child: Center(
                   child: Text(
                     letter.toUpperCase(),
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: borderColor != null
+                          ? Colors.white
+                          : (PlatformHelper.useIOSStyle
+                                ? CupertinoColors.label.resolveFrom(context)
+                                : Colors.black87),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
