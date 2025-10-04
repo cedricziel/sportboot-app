@@ -447,14 +447,6 @@ class _HomeScreenState extends State<HomeScreen> {
         context.pop(); // Close loading dialog
         debugPrint('[Navigation] Dialog closed');
 
-        // Wait for dialog animation to complete before navigating
-        // This prevents iOS navigation issues with rapid context changes
-        await Future.delayed(const Duration(milliseconds: 300));
-
-        debugPrint(
-          '[Navigation] After delay - questions: ${provider.currentQuestions.length}, index: ${provider.currentQuestionIndex}',
-        );
-
         if (context.mounted) {
           debugPrint('[Navigation] About to navigate to: $routePath');
           context.push(routePath);
