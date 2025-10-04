@@ -7,6 +7,7 @@ import '../router/app_router.dart';
 import '../widgets/platform/adaptive_scaffold.dart';
 import '../widgets/platform/adaptive_action_sheet.dart';
 import '../widgets/platform/adaptive_loading.dart';
+import '../widgets/platform/adaptive_card.dart';
 import '../utils/platform_helper.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -80,40 +81,40 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Consumer<QuestionsProvider>(
-                  builder: (context, provider, _) {
-                    final courseManifest = provider.selectedCourseManifest;
-                    final courseName =
-                        courseManifest?.name ?? 'Kein Kurs ausgewählt';
-                    final courseIcon = courseManifest?.icon ?? '📚';
+            AdaptiveCard(
+              child: Consumer<QuestionsProvider>(
+                builder: (context, provider, _) {
+                  final courseManifest = provider.selectedCourseManifest;
+                  final courseName =
+                      courseManifest?.name ?? 'Kein Kurs ausgewählt';
+                  final courseIcon = courseManifest?.icon ?? '📚';
 
-                    // Get total question count from manifest if available
-                    final questionCount = courseManifest?.totalQuestions ?? 0;
+                  // Get total question count from manifest if available
+                  final questionCount = courseManifest?.totalQuestions ?? 0;
+                  final subtitleColor = PlatformHelper.useIOSStyle
+                      ? CupertinoColors.secondaryLabel
+                      : Colors.grey;
 
-                    return Column(
-                      children: [
-                        Text(courseIcon, style: const TextStyle(fontSize: 48)),
-                        const SizedBox(height: 8),
-                        Text(
-                          courseName,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
+                  return Column(
+                    children: [
+                      Text(courseIcon, style: const TextStyle(fontSize: 48)),
+                      const SizedBox(height: 8),
+                      Text(
+                        courseName,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          '$questionCount Fragen',
-                          style: const TextStyle(color: Colors.grey),
-                        ),
-                      ],
-                    );
-                  },
-                ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '$questionCount Fragen',
+                        style: TextStyle(color: subtitleColor),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
             const SizedBox(height: 24),
@@ -210,81 +211,82 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildQuickQuizCard(BuildContext context) {
-    return Card(
-      elevation: 4,
-      color: Colors.blue.shade50,
-      child: InkWell(
-        onTap: () async {
-          await _loadQuestionsAndNavigate(
-            context,
-            'quick_quiz',
-            'quiz',
-            AppRoutes.quiz,
-          );
-        },
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.blue.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(12),
+    final blueColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.systemBlue
+        : Colors.blue;
+    final bgColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.systemBlue.withOpacity(0.1)
+        : Colors.blue.shade50;
+    final subtitleColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+        : Colors.grey[600];
+
+    return AdaptiveCard(
+      color: bgColor,
+      onTap: () async {
+        await _loadQuestionsAndNavigate(
+          context,
+          'quick_quiz',
+          'quiz',
+          AppRoutes.quiz,
+        );
+      },
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: blueColor.withValues(alpha: 0.2),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(
+              PlatformHelper.useIOSStyle ? CupertinoIcons.bolt : Icons.bolt,
+              color: blueColor,
+              size: 32,
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Schnell-Quiz',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                child: const Icon(Icons.bolt, color: Colors.blue, size: 32),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Schnell-Quiz',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '14 zufällige Fragen',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 14),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      'Teste dein Wissen in 5 Minuten',
-                      style: TextStyle(
-                        color: Colors.blue[700],
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
+                const SizedBox(height: 4),
+                Text(
+                  '14 zufällige Fragen',
+                  style: TextStyle(color: subtitleColor, fontSize: 14),
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Text(
-                  'NEU',
+                const SizedBox(height: 2),
+                Text(
+                  'Teste dein Wissen in 5 Minuten',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: blueColor,
                     fontSize: 12,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: blueColor,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Text(
+              'NEU',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -297,46 +299,54 @@ class _HomeScreenState extends State<HomeScreen> {
     Color color,
     String category,
   ) {
-    return Card(
-      child: InkWell(
-        onTap: () => _showModeSelection(context, category, title),
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Icon(icon, color: color, size: 32),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      subtitle,
-                      style: TextStyle(color: Colors.grey[600], fontSize: 14),
-                    ),
-                  ],
-                ),
-              ),
-              const Icon(Icons.arrow_forward_ios, size: 16),
-            ],
+    final subtitleColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+        : Colors.grey[600];
+    final chevronColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.separator.resolveFrom(context)
+        : Colors.grey;
+
+    return AdaptiveCard(
+      margin: const EdgeInsets.only(bottom: 12),
+      onTap: () => _showModeSelection(context, category, title),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: color, size: 32),
           ),
-        ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  subtitle,
+                  style: TextStyle(color: subtitleColor, fontSize: 14),
+                ),
+              ],
+            ),
+          ),
+          Icon(
+            PlatformHelper.useIOSStyle
+                ? CupertinoIcons.chevron_forward
+                : Icons.arrow_forward_ios,
+            size: PlatformHelper.useIOSStyle ? 20 : 16,
+            color: chevronColor,
+          ),
+        ],
       ),
     );
   }

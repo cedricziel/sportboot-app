@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../models/course_manifest.dart';
 import '../providers/questions_provider.dart';
 import '../router/app_router.dart';
 import '../services/data_loader.dart';
+import '../widgets/platform/adaptive_scaffold.dart';
+import '../widgets/platform/adaptive_card.dart';
+import '../widgets/platform/adaptive_button.dart';
+import '../utils/platform_helper.dart';
 
 class CourseSelectionScreen extends StatefulWidget {
   const CourseSelectionScreen({super.key});
@@ -41,18 +46,19 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Wähle deinen Kurs'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
+    return AdaptiveScaffold(
+      title: const Text('Wähle deinen Kurs'),
       body: _buildBody(),
     );
   }
 
   Widget _buildBody() {
     if (_isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(
+        child: PlatformHelper.useIOSStyle
+            ? const CupertinoActivityIndicator()
+            : const CircularProgressIndicator(),
+      );
     }
 
     if (_error != null) {
@@ -60,7 +66,15 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 64, color: Colors.red),
+            Icon(
+              PlatformHelper.useIOSStyle
+                  ? CupertinoIcons.exclamationmark_circle
+                  : Icons.error_outline,
+              size: 64,
+              color: PlatformHelper.useIOSStyle
+                  ? CupertinoColors.systemRed
+                  : Colors.red,
+            ),
             const SizedBox(height: 16),
             Text(
               'Fehler beim Laden der Kurse',
@@ -69,7 +83,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
             const SizedBox(height: 8),
             Text(_error!, textAlign: TextAlign.center),
             const SizedBox(height: 16),
-            ElevatedButton(
+            AdaptiveButton(
               onPressed: () {
                 setState(() {
                   _isLoading = true;
@@ -127,118 +141,131 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
     String courseId,
     CourseManifest course,
   ) {
-    return Card(
+    final color = _getColorForCourse(courseId);
+    final badgeColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.systemBlue
+        : Colors.blue;
+    final textColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+        : Colors.grey[600];
+
+    return AdaptiveCard(
       margin: const EdgeInsets.only(bottom: 16),
-      elevation: 2,
-      child: InkWell(
-        onTap: () => _selectCourse(context, courseId, course),
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsets.all(16),
+      onTap: () => _selectCourse(context, courseId, course),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  Container(
-                    width: 64,
-                    height: 64,
-                    decoration: BoxDecoration(
-                      color: _getColorForCourse(
-                        courseId,
-                      ).withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        course.icon,
-                        style: const TextStyle(fontSize: 32),
-                      ),
-                    ),
+              Container(
+                width: 64,
+                height: 64,
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Center(
+                  child: Text(
+                    course.icon,
+                    style: const TextStyle(fontSize: 32),
                   ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          course.name,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          course.shortName,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: _getColorForCourse(courseId),
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      '${course.totalQuestions} Fragen',
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      course.name,
                       style: const TextStyle(
-                        color: Colors.blue,
-                        fontSize: 12,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 12),
-              Text(
-                course.description,
-                style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: 12),
-              Row(
-                children: [
-                  _buildInfoChip(
-                    Icons.folder_outlined,
-                    '${course.catalogIds.length} Kataloge',
-                  ),
-                  const SizedBox(width: 12),
-                  _buildInfoChip(
-                    Icons.category_outlined,
-                    '${course.categories.length} Kategorien',
-                  ),
-                  if (course.examConfig != null) ...[
-                    const SizedBox(width: 12),
-                    _buildInfoChip(Icons.quiz_outlined, 'Prüfung verfügbar'),
+                    const SizedBox(height: 4),
+                    Text(
+                      course.shortName,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: color,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ],
-                ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: badgeColor.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  '${course.totalQuestions} Fragen',
+                  style: TextStyle(
+                    color: badgeColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
-        ),
+          const SizedBox(height: 12),
+          Text(
+            course.description,
+            style: TextStyle(fontSize: 14, color: textColor),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              _buildInfoChip(
+                PlatformHelper.useIOSStyle
+                    ? CupertinoIcons.folder
+                    : Icons.folder_outlined,
+                '${course.catalogIds.length} Kataloge',
+              ),
+              const SizedBox(width: 12),
+              _buildInfoChip(
+                PlatformHelper.useIOSStyle
+                    ? CupertinoIcons.square_grid_2x2
+                    : Icons.category_outlined,
+                '${course.categories.length} Kategorien',
+              ),
+              if (course.examConfig != null) ...[
+                const SizedBox(width: 12),
+                _buildInfoChip(
+                  PlatformHelper.useIOSStyle
+                      ? CupertinoIcons.question_circle
+                      : Icons.quiz_outlined,
+                  'Prüfung verfügbar',
+                ),
+              ],
+            ],
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildInfoChip(IconData icon, String label) {
+    final chipColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.secondaryLabel
+        : Colors.grey[600];
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 16, color: Colors.grey[600]),
+        Icon(icon, size: 16, color: chipColor),
         const SizedBox(width: 4),
-        Text(label, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+        Text(label, style: TextStyle(fontSize: 12, color: chipColor)),
       ],
     );
   }

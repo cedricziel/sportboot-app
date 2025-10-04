@@ -9,6 +9,7 @@ import '../widgets/zoomable_image.dart';
 import '../widgets/platform/adaptive_scaffold.dart';
 import '../widgets/platform/adaptive_dialog.dart';
 import '../widgets/platform/adaptive_button.dart';
+import '../widgets/platform/adaptive_card.dart';
 import '../utils/platform_helper.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -55,22 +56,44 @@ class _QuizScreenState extends State<QuizScreen> {
               _buildStatItem(
                 'Richtig',
                 correctAnswers.toString(),
-                Colors.green,
+                PlatformHelper.useIOSStyle
+                    ? CupertinoColors.systemGreen
+                    : Colors.green,
               ),
-              _buildStatItem('Falsch', incorrectAnswers.toString(), Colors.red),
-              _buildStatItem('Prozent', '$percentage%', Colors.blue),
+              _buildStatItem(
+                'Falsch',
+                incorrectAnswers.toString(),
+                PlatformHelper.useIOSStyle
+                    ? CupertinoColors.systemRed
+                    : Colors.red,
+              ),
+              _buildStatItem(
+                'Prozent',
+                '$percentage%',
+                PlatformHelper.useIOSStyle
+                    ? CupertinoColors.systemBlue
+                    : Colors.blue,
+              ),
             ],
           ),
           const SizedBox(height: 20),
           LinearProgressIndicator(
             value: correctAnswers / totalQuestions,
-            backgroundColor: Colors.grey[300],
+            backgroundColor: PlatformHelper.useIOSStyle
+                ? CupertinoColors.systemGrey5.resolveFrom(context)
+                : Colors.grey[300],
             valueColor: AlwaysStoppedAnimation<Color>(
               percentage >= 80
-                  ? Colors.green
+                  ? (PlatformHelper.useIOSStyle
+                        ? CupertinoColors.systemGreen
+                        : Colors.green)
                   : percentage >= 60
-                  ? Colors.orange
-                  : Colors.red,
+                  ? (PlatformHelper.useIOSStyle
+                        ? CupertinoColors.systemOrange
+                        : Colors.orange)
+                  : (PlatformHelper.useIOSStyle
+                        ? CupertinoColors.systemRed
+                        : Colors.red),
             ),
           ),
           const SizedBox(height: 8),
@@ -115,6 +138,10 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Widget _buildStatItem(String label, String value, Color color) {
+    final subtitleColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.secondaryLabel
+        : Colors.grey[600];
+
     return Column(
       children: [
         Text(
@@ -126,7 +153,7 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         ),
         const SizedBox(height: 4),
-        Text(label, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+        Text(label, style: TextStyle(fontSize: 12, color: subtitleColor)),
       ],
     );
   }
@@ -238,45 +265,43 @@ class _QuizScreenState extends State<QuizScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            children: [
-                              SelectableText(
-                                _removeSquareBrackets(question.question),
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                      AdaptiveCard(
+                        child: Column(
+                          children: [
+                            SelectableText(
+                              _removeSquareBrackets(question.question),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                decoration: TextDecoration.none,
                               ),
-                              if (question.assets.isNotEmpty) ...[
-                                const SizedBox(height: 16),
-                                ...question.assets.map(
-                                  (asset) => Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0,
+                            ),
+                            if (question.assets.isNotEmpty) ...[
+                              const SizedBox(height: 16),
+                              ...question.assets.map(
+                                (asset) => Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 8.0,
+                                  ),
+                                  child: ConstrainedBox(
+                                    constraints: BoxConstraints(
+                                      maxHeight:
+                                          MediaQuery.of(context).size.height *
+                                          0.25,
+                                      maxWidth:
+                                          MediaQuery.of(context).size.width -
+                                          48,
                                     ),
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        maxHeight:
-                                            MediaQuery.of(context).size.height *
-                                            0.25,
-                                        maxWidth:
-                                            MediaQuery.of(context).size.width -
-                                            48,
-                                      ),
-                                      child: ZoomableImage(
-                                        assetPath:
-                                            'assets/images/${asset.split('/').last}',
-                                        height: 150,
-                                      ),
+                                    child: ZoomableImage(
+                                      assetPath:
+                                          'assets/images/${asset.split('/').last}',
+                                      height: 150,
                                     ),
                                   ),
                                 ),
-                              ],
+                              ),
                             ],
-                          ),
+                          ],
                         ),
                       ),
                       const SizedBox(height: 16),

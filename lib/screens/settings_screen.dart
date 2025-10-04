@@ -6,6 +6,9 @@ import '../services/notification_service.dart';
 import '../widgets/platform/adaptive_scaffold.dart';
 import '../widgets/platform/adaptive_switch.dart';
 import '../widgets/platform/adaptive_dialog.dart';
+import '../widgets/platform/adaptive_list_tile.dart';
+import '../widgets/platform/adaptive_list_section.dart';
+import '../widgets/platform/adaptive_button.dart';
 import '../utils/platform_helper.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -60,99 +63,102 @@ class _SettingsScreenState extends State<SettingsScreen> {
       title: const Text('Einstellungen'),
       body: ListView(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Lerneinstellungen',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+          AdaptiveListSection.insetGrouped(
+            header: const Text('Lerneinstellungen'),
+            children: [
+              AdaptiveSwitchListTile(
+                title: const Text('Fragen mischen'),
+                subtitle: const Text('Zufällige Reihenfolge der Fragen'),
+                value: _settings['shuffleQuestions'] ?? false,
+                onChanged: (value) => _updateSetting('shuffleQuestions', value),
+              ),
+              AdaptiveSwitchListTile(
+                title: const Text('Timer anzeigen'),
+                subtitle: const Text('Zeit pro Frage anzeigen'),
+                value: _settings['showTimer'] ?? true,
+                onChanged: (value) => _updateSetting('showTimer', value),
+              ),
+              AdaptiveSwitchListTile(
+                title: const Text('Töne aktiviert'),
+                subtitle: const Text('Soundeffekte bei Antworten'),
+                value: _settings['soundEnabled'] ?? true,
+                onChanged: (value) => _updateSetting('soundEnabled', value),
+              ),
+            ],
           ),
-          AdaptiveSwitchListTile(
-            title: const Text('Fragen mischen'),
-            subtitle: const Text('Zufällige Reihenfolge der Fragen'),
-            value: _settings['shuffleQuestions'] ?? false,
-            onChanged: (value) => _updateSetting('shuffleQuestions', value),
+          AdaptiveListSection.insetGrouped(
+            header: const Text('Lernziele'),
+            children: [
+              AdaptiveListTile(
+                title: const Text('Tägliches Ziel'),
+                subtitle: Text(
+                  '${_settings['dailyGoal'] ?? 20} Fragen pro Tag',
+                ),
+                onTap: () => _showDailyGoalDialog(),
+              ),
+            ],
           ),
-          AdaptiveSwitchListTile(
-            title: const Text('Timer anzeigen'),
-            subtitle: const Text('Zeit pro Frage anzeigen'),
-            value: _settings['showTimer'] ?? true,
-            onChanged: (value) => _updateSetting('showTimer', value),
+          AdaptiveListSection.insetGrouped(
+            header: const Text('Benachrichtigungen'),
+            children: [
+              AdaptiveSwitchListTile(
+                title: const Text('Tägliche Erinnerung'),
+                subtitle: const Text('Erinnere mich ans tägliche Quiz'),
+                value: _notificationsEnabled,
+                onChanged: (value) => _toggleNotifications(value),
+              ),
+              if (_notificationsEnabled)
+                AdaptiveListTile(
+                  title: const Text('Erinnerungszeit'),
+                  subtitle: Text(_notificationTime.format(context)),
+                  onTap: () => _selectNotificationTime(),
+                ),
+              if (_notificationsEnabled)
+                AdaptiveListTile(
+                  title: const Text('Test-Benachrichtigung'),
+                  subtitle: const Text('Sende eine Test-Benachrichtigung'),
+                  trailing: Icon(
+                    PlatformHelper.useIOSStyle
+                        ? CupertinoIcons.bell_fill
+                        : Icons.notifications_active,
+                  ),
+                  onTap: () => _sendTestNotification(),
+                ),
+            ],
           ),
-          AdaptiveSwitchListTile(
-            title: const Text('Töne aktiviert'),
-            subtitle: const Text('Soundeffekte bei Antworten'),
-            value: _settings['soundEnabled'] ?? true,
-            onChanged: (value) => _updateSetting('soundEnabled', value),
+          const AdaptiveListSection.insetGrouped(
+            header: Text('App-Info'),
+            children: [
+              AdaptiveListTile(title: Text('Version'), subtitle: Text('1.0.0')),
+              AdaptiveListTile(
+                title: Text('Fragen'),
+                subtitle: Text('287 Fragen (SBF-See 2024)'),
+              ),
+              AdaptiveListTile(
+                title: Text('Quelle'),
+                subtitle: Text(
+                  'ELWIS - Elektronisches Wasserstraßen-Informationssystem',
+                ),
+              ),
+            ],
           ),
-          const Divider(),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Lernziele',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
-          ListTile(
-            title: const Text('Tägliches Ziel'),
-            subtitle: Text('${_settings['dailyGoal'] ?? 20} Fragen pro Tag'),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-            onTap: () => _showDailyGoalDialog(),
-          ),
-          const Divider(),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Benachrichtigungen',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
-          AdaptiveSwitchListTile(
-            title: const Text('Tägliche Erinnerung'),
-            subtitle: const Text('Erinnere mich ans tägliche Quiz'),
-            value: _notificationsEnabled,
-            onChanged: (value) => _toggleNotifications(value),
-          ),
-          if (_notificationsEnabled)
-            ListTile(
-              title: const Text('Erinnerungszeit'),
-              subtitle: Text(_notificationTime.format(context)),
-              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-              onTap: () => _selectNotificationTime(),
-            ),
-          if (_notificationsEnabled)
-            ListTile(
-              title: const Text('Test-Benachrichtigung'),
-              subtitle: const Text('Sende eine Test-Benachrichtigung'),
-              trailing: const Icon(Icons.notifications_active),
-              onTap: () => _sendTestNotification(),
-            ),
-          const Divider(),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'App-Info',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
-          const ListTile(title: Text('Version'), subtitle: Text('1.0.0')),
-          const ListTile(
-            title: Text('Fragen'),
-            subtitle: Text('287 Fragen (SBF-See 2024)'),
-          ),
-          const ListTile(
-            title: Text('Quelle'),
-            subtitle: Text(
-              'ELWIS - Elektronisches Wasserstraßen-Informationssystem',
-            ),
-          ),
-          const Divider(),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: OutlinedButton.icon(
+            child: AdaptiveButton(
               onPressed: () => _showAboutDialog(),
-              icon: const Icon(Icons.info_outline),
-              label: const Text('Über diese App'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    PlatformHelper.useIOSStyle
+                        ? CupertinoIcons.info_circle
+                        : Icons.info_outline,
+                    size: 20,
+                  ),
+                  const SizedBox(width: 8),
+                  const Text('Über diese App'),
+                ],
+              ),
             ),
           ),
         ],

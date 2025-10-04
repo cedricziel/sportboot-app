@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import '../models/answer_option.dart';
 import '../utils/platform_helper.dart';
@@ -29,17 +30,33 @@ class AnswerOptionWidget extends StatelessWidget {
 
     if (showResult) {
       if (option.isCorrect) {
-        backgroundColor = Colors.green.shade50;
-        borderColor = Colors.green;
-        icon = Icons.check_circle;
+        backgroundColor = PlatformHelper.useIOSStyle
+            ? CupertinoColors.systemGreen.withOpacity(0.1)
+            : Colors.green.shade50;
+        borderColor = PlatformHelper.useIOSStyle
+            ? CupertinoColors.systemGreen
+            : Colors.green;
+        icon = PlatformHelper.useIOSStyle
+            ? CupertinoIcons.check_mark_circled_solid
+            : Icons.check_circle;
       } else if (isSelected) {
-        backgroundColor = Colors.red.shade50;
-        borderColor = Colors.red;
-        icon = Icons.cancel;
+        backgroundColor = PlatformHelper.useIOSStyle
+            ? CupertinoColors.systemRed.withOpacity(0.1)
+            : Colors.red.shade50;
+        borderColor = PlatformHelper.useIOSStyle
+            ? CupertinoColors.systemRed
+            : Colors.red;
+        icon = PlatformHelper.useIOSStyle
+            ? CupertinoIcons.xmark_circle_fill
+            : Icons.cancel;
       }
     } else if (isSelected) {
-      backgroundColor = Colors.blue.shade50;
-      borderColor = Colors.blue;
+      backgroundColor = PlatformHelper.useIOSStyle
+          ? CupertinoColors.systemBlue.withOpacity(0.1)
+          : Colors.blue.shade50;
+      borderColor = PlatformHelper.useIOSStyle
+          ? CupertinoColors.systemBlue
+          : Colors.blue;
     }
 
     // iOS HIG recommends 44pt minimum tap target
@@ -61,11 +78,19 @@ class AnswerOptionWidget extends StatelessWidget {
           constraints: BoxConstraints(minHeight: minHeight),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: backgroundColor ?? Colors.white,
+            color:
+                backgroundColor ??
+                (PlatformHelper.useIOSStyle
+                    ? CupertinoColors.systemBackground.resolveFrom(context)
+                    : Colors.white),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: borderColor ?? Colors.grey.shade300,
-              width: borderColor != null ? 2 : 1,
+              color:
+                  borderColor ??
+                  (PlatformHelper.useIOSStyle
+                      ? CupertinoColors.separator.resolveFrom(context)
+                      : Colors.grey.shade300),
+              width: borderColor != null ? 2 : 0.5,
             ),
           ),
           child: Row(
@@ -75,7 +100,11 @@ class AnswerOptionWidget extends StatelessWidget {
                 height: 32,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: borderColor ?? Colors.grey.shade400,
+                  color:
+                      borderColor ??
+                      (PlatformHelper.useIOSStyle
+                          ? CupertinoColors.systemGrey
+                          : Colors.grey.shade400),
                 ),
                 child: Center(
                   child: Text(

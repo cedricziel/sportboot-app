@@ -1,42 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
 import '../widgets/flashcard_widget.dart';
+import '../widgets/platform/adaptive_scaffold.dart';
+import '../widgets/platform/adaptive_button.dart';
+import '../utils/platform_helper.dart';
 
 class FlashcardScreen extends StatelessWidget {
   const FlashcardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Lernkarten'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        actions: [
-          Consumer<QuestionsProvider>(
-            builder: (context, provider, _) {
-              return FutureBuilder<bool>(
-                future: provider.isCurrentQuestionBookmarked(),
-                builder: (context, snapshot) {
-                  final isBookmarked = snapshot.data ?? false;
-                  return IconButton(
-                    icon: Icon(
-                      isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+    return AdaptiveScaffold(
+      title: const Text('Lernkarten'),
+      actions: [
+        Consumer<QuestionsProvider>(
+          builder: (context, provider, _) {
+            return FutureBuilder<bool>(
+              future: provider.isCurrentQuestionBookmarked(),
+              builder: (context, snapshot) {
+                final isBookmarked = snapshot.data ?? false;
+                if (PlatformHelper.useIOSStyle) {
+                  return CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    child: Icon(
+                      isBookmarked
+                          ? CupertinoIcons.bookmark_fill
+                          : CupertinoIcons.bookmark,
                     ),
                     onPressed: () {
                       provider.toggleBookmark();
                     },
                   );
-                },
-              );
-            },
-          ),
-        ],
-      ),
+                }
+                return IconButton(
+                  icon: Icon(
+                    isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                  ),
+                  onPressed: () {
+                    provider.toggleBookmark();
+                  },
+                );
+              },
+            );
+          },
+        ),
+      ],
       body: Consumer<QuestionsProvider>(
         builder: (context, provider, _) {
           if (provider.isLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(
+              child: PlatformHelper.useIOSStyle
+                  ? const CupertinoActivityIndicator()
+                  : const CircularProgressIndicator(),
+            );
           }
 
           if (provider.error != null) {
@@ -87,19 +105,46 @@ class FlashcardScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ElevatedButton.icon(
-                      onPressed: provider.hasPrevious
-                          ? () => provider.previousQuestion()
-                          : null,
-                      icon: const Icon(Icons.arrow_back),
-                      label: const Text('Zurück'),
+                    Expanded(
+                      child: AdaptiveButton(
+                        onPressed: provider.hasPrevious
+                            ? () => provider.previousQuestion()
+                            : null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              PlatformHelper.useIOSStyle
+                                  ? CupertinoIcons.back
+                                  : Icons.arrow_back,
+                              size: 20,
+                            ),
+                            const SizedBox(width: 8),
+                            const Text('Zurück'),
+                          ],
+                        ),
+                      ),
                     ),
-                    ElevatedButton.icon(
-                      onPressed: provider.hasNext
-                          ? () => provider.nextQuestion()
-                          : null,
-                      icon: const Icon(Icons.arrow_forward),
-                      label: const Text('Weiter'),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: AdaptiveButton(
+                        onPressed: provider.hasNext
+                            ? () => provider.nextQuestion()
+                            : null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Weiter'),
+                            const SizedBox(width: 8),
+                            Icon(
+                              PlatformHelper.useIOSStyle
+                                  ? CupertinoIcons.forward
+                                  : Icons.arrow_forward,
+                              size: 20,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -107,24 +152,49 @@ class FlashcardScreen extends StatelessWidget {
               // Session stats
               Container(
                 padding: const EdgeInsets.all(16.0),
-                color: Colors.grey[100],
+                decoration: BoxDecoration(
+                  color: PlatformHelper.useIOSStyle
+                      ? CupertinoColors.systemGroupedBackground.resolveFrom(
+                          context,
+                        )
+                      : Colors.grey[100],
+                  border: PlatformHelper.useIOSStyle
+                      ? Border(
+                          top: BorderSide(
+                            color: CupertinoColors.separator.resolveFrom(
+                              context,
+                            ),
+                            width: 0.5,
+                          ),
+                        )
+                      : null,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buildStatItem(
+                      context,
                       'Richtig',
                       provider.getSessionStats()['correct'].toString(),
-                      Colors.green,
+                      PlatformHelper.useIOSStyle
+                          ? CupertinoColors.systemGreen
+                          : Colors.green,
                     ),
                     _buildStatItem(
+                      context,
                       'Falsch',
                       provider.getSessionStats()['incorrect'].toString(),
-                      Colors.red,
+                      PlatformHelper.useIOSStyle
+                          ? CupertinoColors.systemRed
+                          : Colors.red,
                     ),
                     _buildStatItem(
+                      context,
                       'Offen',
                       provider.getSessionStats()['unanswered'].toString(),
-                      Colors.orange,
+                      PlatformHelper.useIOSStyle
+                          ? CupertinoColors.systemOrange
+                          : Colors.orange,
                     ),
                   ],
                 ),
@@ -136,7 +206,12 @@ class FlashcardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStatItem(String label, String value, Color color) {
+  Widget _buildStatItem(
+    BuildContext context,
+    String label,
+    String value,
+    Color color,
+  ) {
     return Column(
       children: [
         Text(
