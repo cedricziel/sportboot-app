@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide showAdaptiveDialog;
 import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../services/storage_service.dart';
+import '../widgets/platform/adaptive_scaffold.dart';
+import '../widgets/platform/adaptive_dialog.dart';
 
 class ProgressScreen extends StatefulWidget {
   const ProgressScreen({super.key});
@@ -34,11 +36,8 @@ class _ProgressScreenState extends State<ProgressScreen> {
     final correct = _stats['correctAnswers'] ?? 0;
     final accuracy = total > 0 ? (correct / total) : 0.0;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fortschritt'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
+    return AdaptiveScaffold(
+      title: const Text('Fortschritt'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -194,36 +193,29 @@ class _ProgressScreenState extends State<ProgressScreen> {
   }
 
   void _showResetDialog(BuildContext context) {
-    showDialog(
+    showAdaptiveDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Fortschritt zurücksetzen?'),
-          content: const Text(
-            'Dies wird alle deine Lernstatistiken löschen. Diese Aktion kann nicht rückgängig gemacht werden.',
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => context.pop(),
-              child: const Text('Abbrechen'),
-            ),
-            TextButton(
-              onPressed: () {
-                _storage.clearProgress();
-                context.pop();
-                _loadStats();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Fortschritt wurde zurückgesetzt'),
-                  ),
-                );
-              },
-              style: TextButton.styleFrom(foregroundColor: Colors.red),
-              child: const Text('Zurücksetzen'),
-            ),
-          ],
-        );
-      },
+      title: 'Fortschritt zurücksetzen?',
+      content:
+          'Dies wird alle deine Lernstatistiken löschen. Diese Aktion kann nicht rückgängig gemacht werden.',
+      actions: [
+        AdaptiveDialogAction(
+          onPressed: () => context.pop(),
+          child: const Text('Abbrechen'),
+        ),
+        AdaptiveDialogAction(
+          onPressed: () {
+            _storage.clearProgress();
+            context.pop();
+            _loadStats();
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Fortschritt wurde zurückgesetzt')),
+            );
+          },
+          isDestructive: true,
+          child: const Text('Zurücksetzen'),
+        ),
+      ],
     );
   }
 }

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
 import '../router/app_router.dart';
+import '../widgets/platform/adaptive_scaffold.dart';
+import '../widgets/platform/adaptive_action_sheet.dart';
+import '../widgets/platform/adaptive_loading.dart';
+import '../utils/platform_helper.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,32 +40,41 @@ class _HomeScreenState extends State<HomeScreen> {
     final courseManifest = provider.selectedCourseManifest;
     final courseTitle = courseManifest?.shortName ?? 'Lernkarten';
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(courseTitle),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        actions: [
+    return AdaptiveScaffold(
+      title: Text(courseTitle),
+      actions: [
+        if (PlatformHelper.useIOSStyle) ...[
+          CupertinoButton(
+            padding: EdgeInsets.zero,
+            child: const Icon(CupertinoIcons.arrow_2_squarepath),
+            onPressed: () => context.go(AppRoutes.courseSelection),
+          ),
+          CupertinoButton(
+            padding: EdgeInsets.zero,
+            child: const Icon(CupertinoIcons.chart_bar),
+            onPressed: () => context.push(AppRoutes.progress),
+          ),
+          CupertinoButton(
+            padding: EdgeInsets.zero,
+            child: const Icon(CupertinoIcons.settings),
+            onPressed: () => context.push(AppRoutes.settings),
+          ),
+        ] else ...[
           IconButton(
             icon: const Icon(Icons.swap_horiz),
             tooltip: 'Kurs wechseln',
-            onPressed: () {
-              context.go(AppRoutes.courseSelection);
-            },
+            onPressed: () => context.go(AppRoutes.courseSelection),
           ),
           IconButton(
             icon: const Icon(Icons.bar_chart),
-            onPressed: () {
-              context.push(AppRoutes.progress);
-            },
+            onPressed: () => context.push(AppRoutes.progress),
           ),
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () {
-              context.push(AppRoutes.settings);
-            },
+            onPressed: () => context.push(AppRoutes.settings),
           ),
         ],
-      ),
+      ],
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -328,54 +342,46 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _showModeSelection(BuildContext context, String category, String title) {
-    showModalBottomSheet(
+    showAdaptiveActionSheet(
       context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 24),
-              ListTile(
-                leading: const Icon(Icons.style, color: Colors.blue),
-                title: const Text('Lernkarten'),
-                subtitle: const Text('Frage und Antwort umdrehen'),
-                onTap: () async {
-                  context.pop();
-                  await _loadQuestionsAndNavigate(
-                    context,
-                    category,
-                    'flashcard',
-                    AppRoutes.flashcard,
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.quiz, color: Colors.green),
-                title: const Text('Quiz-Modus'),
-                subtitle: const Text('Multiple-Choice mit Bewertung'),
-                onTap: () async {
-                  context.pop();
-                  await _loadQuestionsAndNavigate(
-                    context,
-                    category,
-                    'quiz',
-                    AppRoutes.quiz,
-                  );
-                },
-              ),
-            ],
-          ),
-        );
-      },
+      title: title,
+      message: 'Wähle einen Modus',
+      actions: [
+        AdaptiveActionSheetAction(
+          icon: PlatformHelper.useIOSStyle
+              ? CupertinoIcons.square_on_square
+              : Icons.style,
+          child: const Text('Lernkarten'),
+          onPressed: () async {
+            context.pop();
+            await _loadQuestionsAndNavigate(
+              context,
+              category,
+              'flashcard',
+              AppRoutes.flashcard,
+            );
+          },
+        ),
+        AdaptiveActionSheetAction(
+          icon: PlatformHelper.useIOSStyle
+              ? CupertinoIcons.question_circle
+              : Icons.quiz,
+          child: const Text('Quiz-Modus'),
+          onPressed: () async {
+            context.pop();
+            await _loadQuestionsAndNavigate(
+              context,
+              category,
+              'quiz',
+              AppRoutes.quiz,
+            );
+          },
+        ),
+      ],
+      cancelAction: AdaptiveActionSheetAction(
+        child: const Text('Abbrechen'),
+        onPressed: () => context.pop(),
+      ),
     );
   }
 
@@ -388,18 +394,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final provider = context.read<QuestionsProvider>();
 
     // Show loading dialog
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (_) => const Center(
-        child: Card(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: CircularProgressIndicator(),
-          ),
-        ),
-      ),
-    );
+    showAdaptiveLoadingDialog(context);
 
     try {
       // Load questions based on category

@@ -1,7 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide showAdaptiveDialog;
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import '../services/storage_service.dart';
 import '../services/notification_service.dart';
+import '../widgets/platform/adaptive_scaffold.dart';
+import '../widgets/platform/adaptive_switch.dart';
+import '../widgets/platform/adaptive_dialog.dart';
+import '../utils/platform_helper.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -51,11 +56,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Einstellungen'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
+    return AdaptiveScaffold(
+      title: const Text('Einstellungen'),
       body: ListView(
         children: [
           const Padding(
@@ -65,19 +67,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
-          SwitchListTile(
+          AdaptiveSwitchListTile(
             title: const Text('Fragen mischen'),
             subtitle: const Text('Zufällige Reihenfolge der Fragen'),
             value: _settings['shuffleQuestions'] ?? false,
             onChanged: (value) => _updateSetting('shuffleQuestions', value),
           ),
-          SwitchListTile(
+          AdaptiveSwitchListTile(
             title: const Text('Timer anzeigen'),
             subtitle: const Text('Zeit pro Frage anzeigen'),
             value: _settings['showTimer'] ?? true,
             onChanged: (value) => _updateSetting('showTimer', value),
           ),
-          SwitchListTile(
+          AdaptiveSwitchListTile(
             title: const Text('Töne aktiviert'),
             subtitle: const Text('Soundeffekte bei Antworten'),
             value: _settings['soundEnabled'] ?? true,
@@ -105,7 +107,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
-          SwitchListTile(
+          AdaptiveSwitchListTile(
             title: const Text('Tägliche Erinnerung'),
             subtitle: const Text('Erinnere mich ans tägliche Quiz'),
             value: _notificationsEnabled,
@@ -160,41 +162,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   void _showDailyGoalDialog() {
     int currentGoal = _settings['dailyGoal'] ?? 20;
-    showDialog(
+    showAdaptiveDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Tägliches Lernziel'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Wie viele Fragen möchtest du täglich lernen?'),
-              const SizedBox(height: 16),
-              Wrap(
-                spacing: 8,
-                children: [10, 20, 30, 50, 100].map((goal) {
-                  return ChoiceChip(
-                    label: Text('$goal'),
-                    selected: currentGoal == goal,
-                    onSelected: (selected) {
-                      if (selected) {
-                        _updateSetting('dailyGoal', goal);
-                        context.pop();
-                      }
-                    },
-                  );
-                }).toList(),
-              ),
-            ],
+      title: 'Tägliches Lernziel',
+      contentWidget: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text('Wie viele Fragen möchtest du täglich lernen?'),
+          const SizedBox(height: 16),
+          Wrap(
+            spacing: 8,
+            children: [10, 20, 30, 50, 100].map((goal) {
+              return ChoiceChip(
+                label: Text('$goal'),
+                selected: currentGoal == goal,
+                onSelected: (selected) {
+                  if (selected) {
+                    _updateSetting('dailyGoal', goal);
+                    context.pop();
+                  }
+                },
+              );
+            }).toList(),
           ),
-          actions: [
-            TextButton(
-              onPressed: () => context.pop(),
-              child: const Text('Abbrechen'),
-            ),
-          ],
-        );
-      },
+        ],
+      ),
+      actions: [
+        AdaptiveDialogAction(
+          onPressed: () => context.pop(),
+          child: const Text('Abbrechen'),
+        ),
+      ],
     );
   }
 
@@ -242,28 +240,83 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _selectNotificationTime() async {
-    final TimeOfDay? newTime = await showTimePicker(
-      context: context,
-      initialTime: _notificationTime,
-      helpText: 'Wähle Erinnerungszeit',
-      builder: (context, child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
-          child: child!,
-        );
-      },
-    );
+    TimeOfDay? newTime;
+
+    if (PlatformHelper.useIOSStyle) {
+      // Use Cupertino picker for iOS
+      await showCupertinoModalPopup(
+        context: context,
+        builder: (context) {
+          DateTime tempTime = DateTime(
+            2024,
+            1,
+            1,
+            _notificationTime.hour,
+            _notificationTime.minute,
+          );
+          return Container(
+            height: 216,
+            color: CupertinoColors.systemBackground.resolveFrom(context),
+            child: SafeArea(
+              top: false,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CupertinoButton(
+                        child: const Text('Abbrechen'),
+                        onPressed: () => context.pop(),
+                      ),
+                      CupertinoButton(
+                        child: const Text('Fertig'),
+                        onPressed: () {
+                          newTime = TimeOfDay.fromDateTime(tempTime);
+                          context.pop();
+                        },
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: CupertinoDatePicker(
+                      mode: CupertinoDatePickerMode.time,
+                      use24hFormat: true,
+                      initialDateTime: tempTime,
+                      onDateTimeChanged: (DateTime value) {
+                        tempTime = value;
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      newTime = await showTimePicker(
+        context: context,
+        initialTime: _notificationTime,
+        helpText: 'Wähle Erinnerungszeit',
+        builder: (context, child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+            child: child!,
+          );
+        },
+      );
+    }
 
     if (newTime != null && newTime != _notificationTime) {
       setState(() {
-        _notificationTime = newTime;
+        _notificationTime = newTime!;
       });
       await _storage.setSetting(
         'notificationTime',
-        '${newTime.hour}:${newTime.minute}',
+        '${newTime!.hour}:${newTime!.minute}',
       );
       if (_notificationsEnabled) {
-        await _notifications.scheduleDailyNotification(newTime);
+        await _notifications.scheduleDailyNotification(newTime!);
       }
     }
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../models/answer_option.dart';
+import '../utils/platform_helper.dart';
 
 class AnswerOptionWidget extends StatelessWidget {
   final AnswerOption option;
@@ -40,12 +42,24 @@ class AnswerOptionWidget extends StatelessWidget {
       borderColor = Colors.blue;
     }
 
+    // iOS HIG recommends 44pt minimum tap target
+    final minHeight = PlatformHelper.useIOSStyle ? 44.0 : 48.0;
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: InkWell(
-        onTap: onTap,
+        onTap: onTap != null
+            ? () {
+                // Provide haptic feedback on tap (iOS style)
+                if (PlatformHelper.useIOSStyle) {
+                  HapticFeedback.selectionClick();
+                }
+                onTap!();
+              }
+            : null,
         borderRadius: BorderRadius.circular(12),
         child: Container(
+          constraints: BoxConstraints(minHeight: minHeight),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: backgroundColor ?? Colors.white,

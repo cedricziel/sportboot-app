@@ -8,7 +8,10 @@ import 'services/storage_service.dart';
 import 'services/notification_service.dart';
 import 'utils/platform_helper.dart';
 
+/// iOS Preview entrypoint - forces iOS UI on macOS for preview/testing
 void main() async {
+  // Enable iOS preview mode
+  PlatformHelper.enableIOSPreview();
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize storage service
@@ -72,15 +75,12 @@ class _MyAppState extends State<MyApp> {
       providers: [ChangeNotifierProvider(create: (_) => QuestionsProvider())],
       child: MaterialApp.router(
         routerConfig: _router,
-        title: 'SBF-See Lernkarten',
+        title: 'SBF-See Lernkarten (iOS Preview)',
         debugShowCheckedModeBanner: false,
         theme: _buildMaterialTheme(),
-        // Configure Cupertino theme for iOS
+        // Force Cupertino theme even on macOS
         builder: (context, child) {
-          if (PlatformHelper.useIOSStyle) {
-            return CupertinoTheme(data: _buildCupertinoTheme(), child: child!);
-          }
-          return child!;
+          return CupertinoTheme(data: _buildCupertinoTheme(), child: child!);
         },
       ),
     );

@@ -1,10 +1,15 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide showAdaptiveDialog;
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
 import '../router/app_router.dart';
 import '../widgets/answer_option_widget.dart';
 import '../widgets/zoomable_image.dart';
+import '../widgets/platform/adaptive_scaffold.dart';
+import '../widgets/platform/adaptive_dialog.dart';
+import '../widgets/platform/adaptive_button.dart';
+import '../utils/platform_helper.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -31,97 +36,81 @@ class _QuizScreenState extends State<QuizScreen> {
 
     provider.endSession();
 
-    showDialog(
+    showAdaptiveDialog(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext dialogContext) {
-        return AlertDialog(
-          title: const Row(
+      title: 'Quiz beendet!',
+      contentWidget: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Deine Ergebnisse:',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Icon(Icons.emoji_events, color: Colors.amber, size: 32),
-              SizedBox(width: 8),
-              Text('Quiz beendet!'),
+              _buildStatItem(
+                'Richtig',
+                correctAnswers.toString(),
+                Colors.green,
+              ),
+              _buildStatItem('Falsch', incorrectAnswers.toString(), Colors.red),
+              _buildStatItem('Prozent', '$percentage%', Colors.blue),
             ],
           ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Deine Ergebnisse:',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildStatItem(
-                    'Richtig',
-                    correctAnswers.toString(),
-                    Colors.green,
-                  ),
-                  _buildStatItem(
-                    'Falsch',
-                    incorrectAnswers.toString(),
-                    Colors.red,
-                  ),
-                  _buildStatItem('Prozent', '$percentage%', Colors.blue),
-                ],
-              ),
-              const SizedBox(height: 20),
-              LinearProgressIndicator(
-                value: correctAnswers / totalQuestions,
-                backgroundColor: Colors.grey[300],
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  percentage >= 80
-                      ? Colors.green
-                      : percentage >= 60
-                      ? Colors.orange
-                      : Colors.red,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                percentage >= 80
-                    ? 'Ausgezeichnet! 🎉'
-                    : percentage >= 60
-                    ? 'Gut gemacht! 👍'
-                    : 'Weiter üben! 💪',
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+          const SizedBox(height: 20),
+          LinearProgressIndicator(
+            value: correctAnswers / totalQuestions,
+            backgroundColor: Colors.grey[300],
+            valueColor: AlwaysStoppedAnimation<Color>(
+              percentage >= 80
+                  ? Colors.green
+                  : percentage >= 60
+                  ? Colors.orange
+                  : Colors.red,
+            ),
           ),
-          actions: [
-            TextButton(
-              onPressed: () async {
-                dialogContext.pop();
-                context.pop();
+          const SizedBox(height: 8),
+          Text(
+            percentage >= 80
+                ? 'Ausgezeichnet! 🎉'
+                : percentage >= 60
+                ? 'Gut gemacht! 👍'
+                : 'Weiter üben! 💪',
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+      actions: [
+        AdaptiveDialogAction(
+          onPressed: () async {
+            context.pop(); // Close dialog
+            context.pop(); // Go back to home
 
-                // Start a new quick quiz
-                final newProvider = context.read<QuestionsProvider>();
-                await newProvider.loadRandomQuestions(14);
-                newProvider.startSession('quiz', 'quick_quiz');
+            // Start a new quick quiz
+            final newProvider = context.read<QuestionsProvider>();
+            await newProvider.loadRandomQuestions(14);
+            newProvider.startSession('quiz', 'quick_quiz');
 
-                if (context.mounted) {
-                  context.push(AppRoutes.quiz);
-                }
-              },
-              child: const Text('Neues Quiz'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                dialogContext.pop();
-                context.pop();
-              },
-              child: const Text('Zurück zum Menü'),
-            ),
-          ],
-        );
-      },
+            if (context.mounted) {
+              context.push(AppRoutes.quiz);
+            }
+          },
+          child: const Text('Neues Quiz'),
+        ),
+        AdaptiveDialogAction(
+          onPressed: () {
+            context.pop(); // Close dialog
+            context.pop(); // Go back to home
+          },
+          isDefault: true,
+          child: const Text('Zurück zum Menü'),
+        ),
+      ],
     );
   }
 
@@ -144,15 +133,16 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Quiz-Modus'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
+    return AdaptiveScaffold(
+      title: const Text('Quiz-Modus'),
       body: Consumer<QuestionsProvider>(
         builder: (context, provider, _) {
           if (provider.isLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(
+              child: PlatformHelper.useIOSStyle
+                  ? const CupertinoActivityIndicator()
+                  : const CircularProgressIndicator(),
+            );
           }
 
           final question = provider.currentQuestion;
@@ -252,7 +242,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   children: [
                     if (!showResult && selectedAnswer != null)
                       Expanded(
-                        child: ElevatedButton(
+                        child: AdaptiveButton(
                           onPressed: () {
                             provider.answerQuestion(selectedAnswer!);
                             setState(() {
@@ -265,7 +255,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     if (showResult) ...[
                       if (provider.hasPrevious)
                         Expanded(
-                          child: ElevatedButton(
+                          child: AdaptiveButton(
                             onPressed: () {
                               provider.previousQuestion();
                               setState(() {
@@ -279,7 +269,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       const SizedBox(width: 8),
                       if (provider.hasNext)
                         Expanded(
-                          child: ElevatedButton(
+                          child: AdaptiveButton(
                             onPressed: () {
                               provider.nextQuestion();
                               setState(() {
@@ -293,13 +283,11 @@ class _QuizScreenState extends State<QuizScreen> {
                       if (!provider.hasNext &&
                           provider.currentSession?.category == 'quick_quiz')
                         Expanded(
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
-                            ),
+                          child: AdaptiveButton(
                             onPressed: () {
                               _showQuizCompletionDialog(context, provider);
                             },
+                            color: Colors.green,
                             child: const Text('Quiz beenden'),
                           ),
                         ),
