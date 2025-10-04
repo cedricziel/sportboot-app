@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../models/answer_option.dart';
-import '../utils/platform_helper.dart';
 
 class AnswerOptionWidget extends StatelessWidget {
   final AnswerOption option;
@@ -28,39 +28,33 @@ class AnswerOptionWidget extends StatelessWidget {
     Color? borderColor;
     IconData? icon;
 
+    final useIOSStyle = isCupertino(context);
+
     if (showResult) {
       if (option.isCorrect) {
-        backgroundColor = PlatformHelper.useIOSStyle
+        backgroundColor = useIOSStyle
             ? CupertinoColors.systemGreen.withOpacity(0.1)
             : Colors.green.shade50;
-        borderColor = PlatformHelper.useIOSStyle
-            ? CupertinoColors.systemGreen
-            : Colors.green;
-        icon = PlatformHelper.useIOSStyle
+        borderColor = useIOSStyle ? CupertinoColors.systemGreen : Colors.green;
+        icon = useIOSStyle
             ? CupertinoIcons.check_mark_circled_solid
             : Icons.check_circle;
       } else if (isSelected) {
-        backgroundColor = PlatformHelper.useIOSStyle
+        backgroundColor = useIOSStyle
             ? CupertinoColors.systemRed.withOpacity(0.1)
             : Colors.red.shade50;
-        borderColor = PlatformHelper.useIOSStyle
-            ? CupertinoColors.systemRed
-            : Colors.red;
-        icon = PlatformHelper.useIOSStyle
-            ? CupertinoIcons.xmark_circle_fill
-            : Icons.cancel;
+        borderColor = useIOSStyle ? CupertinoColors.systemRed : Colors.red;
+        icon = useIOSStyle ? CupertinoIcons.xmark_circle_fill : Icons.cancel;
       }
     } else if (isSelected) {
-      backgroundColor = PlatformHelper.useIOSStyle
+      backgroundColor = useIOSStyle
           ? CupertinoColors.systemBlue.withOpacity(0.1)
           : Colors.blue.shade50;
-      borderColor = PlatformHelper.useIOSStyle
-          ? CupertinoColors.systemBlue
-          : Colors.blue;
+      borderColor = useIOSStyle ? CupertinoColors.systemBlue : Colors.blue;
     }
 
     // iOS HIG recommends 44pt minimum tap target
-    final minHeight = PlatformHelper.useIOSStyle ? 44.0 : 48.0;
+    final minHeight = useIOSStyle ? 44.0 : 48.0;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -68,7 +62,7 @@ class AnswerOptionWidget extends StatelessWidget {
         onTap: onTap != null
             ? () {
                 // Provide haptic feedback on tap (iOS style)
-                if (PlatformHelper.useIOSStyle) {
+                if (useIOSStyle) {
                   HapticFeedback.selectionClick();
                 }
                 onTap!();
@@ -80,14 +74,14 @@ class AnswerOptionWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color:
                 backgroundColor ??
-                (PlatformHelper.useIOSStyle
+                (useIOSStyle
                     ? CupertinoColors.systemBackground.resolveFrom(context)
                     : Colors.white),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color:
                   borderColor ??
-                  (PlatformHelper.useIOSStyle
+                  (useIOSStyle
                       ? CupertinoColors.separator.resolveFrom(context)
                       : Colors.grey.shade300),
               width: borderColor != null ? 2 : 0.5,
@@ -102,7 +96,7 @@ class AnswerOptionWidget extends StatelessWidget {
                   shape: BoxShape.circle,
                   color:
                       borderColor ??
-                      (PlatformHelper.useIOSStyle
+                      (useIOSStyle
                           ? CupertinoColors.systemGrey2.resolveFrom(context)
                           : Colors.grey.shade400),
                 ),
@@ -112,7 +106,7 @@ class AnswerOptionWidget extends StatelessWidget {
                     style: TextStyle(
                       color: borderColor != null
                           ? Colors.white
-                          : (PlatformHelper.useIOSStyle
+                          : (useIOSStyle
                                 ? CupertinoColors.label.resolveFrom(context)
                                 : Colors.black87),
                       fontWeight: FontWeight.bold,
@@ -129,7 +123,7 @@ class AnswerOptionWidget extends StatelessWidget {
                     fontWeight: (showResult && option.isCorrect)
                         ? FontWeight.bold
                         : FontWeight.normal,
-                    color: PlatformHelper.useIOSStyle
+                    color: isCupertino(context)
                         ? CupertinoColors.label.resolveFrom(context)
                         : null,
                   ),
