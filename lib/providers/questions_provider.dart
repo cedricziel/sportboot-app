@@ -16,6 +16,7 @@ class QuestionsProvider extends ChangeNotifier {
   final StorageService _storage = StorageService();
   final QuestionRepository _repository;
   final MigrationService _migrationService;
+  bool _isInitialized = false;
 
   // Constructor with dependency injection
   QuestionsProvider({
@@ -75,6 +76,12 @@ class QuestionsProvider extends ChangeNotifier {
 
   // Initialize storage and load manifest
   Future<void> init() async {
+    // Skip if already initialized
+    if (_isInitialized) {
+      debugPrint('[QuestionsProvider] Already initialized, skipping...');
+      return;
+    }
+
     _isLoading = true;
     // Defer the notification to avoid calling it during build
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -122,6 +129,9 @@ class QuestionsProvider extends ChangeNotifier {
           _selectedCourseManifest = courseManifest;
         }
       }
+
+      _isInitialized = true;
+      debugPrint('[QuestionsProvider] Initialization complete');
     } catch (e) {
       _error = 'Initialization failed: $e';
     } finally {
