@@ -48,11 +48,11 @@ dependencies:
   # Image handling
   cached_network_image: ^3.3.0
   photo_view: ^0.15.0
-  
+
   # Database
   sqflite: ^2.3.0
   path: ^1.9.0
-  
+
   # Animation for smooth transitions
   flutter_animate: ^4.5.0
 
