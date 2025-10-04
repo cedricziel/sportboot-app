@@ -113,6 +113,67 @@ void main() {
       expect(result.length, 3);
     });
 
+    test('getQuestionsByCatalogs should filter by multiple catalogs', () async {
+      // Insert questions with different categories (catalogs)
+      final basisfragen = TestDatabaseHelper.generateTestQuestions(
+        count: 3,
+        category: 'basisfragen',
+        idPrefix: 'basis',
+      );
+      final spezifischeSee = TestDatabaseHelper.generateTestQuestions(
+        count: 2,
+        category: 'spezifische-see',
+        idPrefix: 'see',
+      );
+      final spezifischeBinnen = TestDatabaseHelper.generateTestQuestions(
+        count: 2,
+        category: 'spezifische-binnen',
+        idPrefix: 'binnen',
+      );
+
+      await repository.insertQuestions(basisfragen, 'sbf-see');
+      await repository.insertQuestions(spezifischeSee, 'sbf-see');
+      await repository.insertQuestions(spezifischeBinnen, 'sbf-binnen');
+
+      // Query multiple catalogs at once
+      final result = await repository.getQuestionsByCatalogs([
+        'basisfragen',
+        'spezifische-see',
+      ]);
+
+      expect(result.length, 5);
+      expect(
+        result.every(
+          (q) => q.category == 'basisfragen' || q.category == 'spezifische-see',
+        ),
+        true,
+      );
+    });
+
+    test(
+      'getQuestionsByCatalogs should return empty list for empty input',
+      () async {
+        final result = await repository.getQuestionsByCatalogs([]);
+
+        expect(result, isEmpty);
+      },
+    );
+
+    test('getQuestionsByCatalogs should handle single catalog', () async {
+      final basisfragen = TestDatabaseHelper.generateTestQuestions(
+        count: 3,
+        category: 'basisfragen',
+        idPrefix: 'basis',
+      );
+
+      await repository.insertQuestions(basisfragen, 'sbf-see');
+
+      final result = await repository.getQuestionsByCatalogs(['basisfragen']);
+
+      expect(result.length, 3);
+      expect(result.every((q) => q.category == 'basisfragen'), true);
+    });
+
     test('addBookmark and removeBookmark should manage bookmarks', () async {
       await repository.insertQuestions(testQuestions, 'test-course');
       final questionId = testQuestions.first.id;

@@ -116,6 +116,23 @@ class QuestionRepository {
     return _mapToQuestions(maps);
   }
 
+  Future<List<Question>> getQuestionsByCatalogs(List<String> catalogIds) async {
+    if (catalogIds.isEmpty) {
+      return [];
+    }
+
+    final db = await _databaseHelper.database;
+    final placeholders = catalogIds.map((_) => '?').join(', ');
+    final maps = await db.query(
+      DatabaseHelper.tableQuestions,
+      where: 'category IN ($placeholders)',
+      whereArgs: catalogIds,
+      orderBy: 'number ASC',
+    );
+
+    return _mapToQuestions(maps);
+  }
+
   Future<List<Question>> getQuestionsByCourse(String courseId) async {
     final db = await _databaseHelper.database;
     final maps = await db.query(
