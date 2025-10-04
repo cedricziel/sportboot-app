@@ -3,6 +3,7 @@ import 'package:sportboot_app/repositories/question_repository.dart';
 import 'package:sportboot_app/models/question.dart';
 import 'package:sportboot_app/models/answer_option.dart';
 import 'package:sportboot_app/services/database_helper.dart';
+import 'package:sportboot_app/services/cache_service.dart';
 import '../helpers/test_database_helper.dart';
 
 void main() {
@@ -10,6 +11,7 @@ void main() {
     late QuestionRepository repository;
     late DatabaseHelper databaseHelper;
     late List<Question> testQuestions;
+    final testName = 'question_repository_test';
 
     setUpAll(() async {
       // Initialize FFI for desktop testing
@@ -17,8 +19,14 @@ void main() {
     });
 
     setUp(() async {
-      databaseHelper = DatabaseHelper.instance;
-      repository = QuestionRepository();
+      // Create test-specific instances for each test
+      final uniqueName = '${testName}_${DateTime.now().millisecondsSinceEpoch}';
+      databaseHelper = TestDatabaseHelper.createTestDatabaseHelper(uniqueName);
+      // Use the same database helper instance for the repository
+      repository = QuestionRepository(
+        databaseHelper: databaseHelper,
+        cache: CacheService(),
+      );
       await databaseHelper.clearDatabase();
 
       // Generate test questions
@@ -27,6 +35,11 @@ void main() {
 
     tearDown(() async {
       await databaseHelper.close();
+    });
+
+    tearDownAll(() async {
+      // Clean up all test database instances
+      await DatabaseHelper.cleanupTestInstances();
     });
 
     test('insertQuestion should add a single question to database', () async {

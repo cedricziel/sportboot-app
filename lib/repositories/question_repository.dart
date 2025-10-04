@@ -7,8 +7,13 @@ import '../services/cache_service.dart';
 import '../exceptions/database_exceptions.dart';
 
 class QuestionRepository {
-  final DatabaseHelper _databaseHelper = DatabaseHelper.instance;
-  final CacheService _cache = CacheService();
+  final DatabaseHelper _databaseHelper;
+  final CacheService _cache;
+
+  // Constructor with dependency injection
+  QuestionRepository({DatabaseHelper? databaseHelper, CacheService? cache})
+    : _databaseHelper = databaseHelper ?? DatabaseHelper.instance,
+      _cache = cache ?? CacheService();
 
   Future<int> insertQuestion(Question question, String courseId) async {
     final db = await _databaseHelper.database;

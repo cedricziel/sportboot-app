@@ -2,9 +2,14 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sportboot_app/models/question.dart';
 import 'package:sportboot_app/models/answer_option.dart';
 import 'package:sportboot_app/repositories/question_repository.dart';
+import 'package:sportboot_app/services/database_helper.dart';
+import 'package:sportboot_app/services/cache_service.dart';
+import 'package:sportboot_app/services/migration_service.dart';
+import 'package:sportboot_app/providers/questions_provider.dart';
 
 class TestDatabaseHelper {
-  static Database? _testDatabase;
+  static int _dbCounter = 0;
+  static final Map<String, Database> _databases = {};
 
   static Future<void> initializeTestDatabase() async {
     // Initialize FFI for desktop testing
@@ -12,13 +17,61 @@ class TestDatabaseHelper {
     databaseFactory = databaseFactoryFfi;
   }
 
+  // Create test-specific instances with dependency injection
+  static DatabaseHelper createTestDatabaseHelper(String testName) {
+    return DatabaseHelper.forTest(testName);
+  }
+
+  static QuestionRepository createTestRepository(String testName) {
+    final dbHelper = createTestDatabaseHelper(testName);
+    final cache = CacheService(); // Each test gets its own cache
+    return QuestionRepository(databaseHelper: dbHelper, cache: cache);
+  }
+
+  static MigrationService createTestMigrationService(
+    String testName, {
+    DatabaseHelper? dbHelper,
+  }) {
+    // Use provided database helper or create a new one
+    final db = dbHelper ?? createTestDatabaseHelper(testName);
+    final repository = QuestionRepository(
+      databaseHelper: db,
+      cache: CacheService(),
+    );
+    return MigrationService(questionRepository: repository, databaseHelper: db);
+  }
+
+  static QuestionsProvider createTestProvider(String testName) {
+    // Create a single database helper and share it across all services
+    final dbHelper = createTestDatabaseHelper(testName);
+    final cache = CacheService();
+
+    final repository = QuestionRepository(
+      databaseHelper: dbHelper,
+      cache: cache,
+    );
+
+    final migrationService = MigrationService(
+      questionRepository: repository,
+      databaseHelper: dbHelper,
+    );
+
+    return QuestionsProvider(
+      repository: repository,
+      migrationService: migrationService,
+    );
+  }
+
   static Future<Database> getTestDatabase() async {
-    if (_testDatabase != null && _testDatabase!.isOpen) {
-      return _testDatabase!;
+    // Create a unique database for each test to avoid locking issues
+    final dbName = 'test_db_${++_dbCounter}.db';
+
+    if (_databases.containsKey(dbName) && _databases[dbName]!.isOpen) {
+      return _databases[dbName]!;
     }
 
-    _testDatabase = await openDatabase(
-      inMemoryDatabasePath,
+    _databases[dbName] = await openDatabase(
+      dbName,
       version: 2, // Match production database version
       onConfigure: (db) async {
         // Enable foreign keys to match production
@@ -98,14 +151,17 @@ class TestDatabaseHelper {
       },
     );
 
-    return _testDatabase!;
+    return _databases[dbName]!;
   }
 
   static Future<void> closeTestDatabase() async {
-    if (_testDatabase != null && _testDatabase!.isOpen) {
-      await _testDatabase!.close();
+    // Close all test databases
+    for (final db in _databases.values) {
+      if (db.isOpen) {
+        await db.close();
+      }
     }
-    _testDatabase = null;
+    _databases.clear();
   }
 
   static Future<void> clearTestDatabase() async {
@@ -186,12 +242,8 @@ class TestDatabaseHelper {
     // Define test courses that match the actual manifest
     final courses = ['sbf-see', 'sbf-binnen', 'sbf-binnen-segeln'];
 
-    // Define categories that match actual data
-    final categories = [
-      'Basisfragen',
-      'Spezifische Fragen See',
-      'Spezifische Fragen Binnen',
-    ];
+    // Define categories that match actual data (lowercase as in YAML files)
+    final categories = ['basisfragen', 'spezifische-see', 'spezifische-binnen'];
 
     for (final course in courses) {
       final allQuestions = <Question>[];

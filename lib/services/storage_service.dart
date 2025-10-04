@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/study_session.dart';
 
 class StorageService {
   static const String _progressKey = 'study_progress';
-  static const String _sessionsKey = 'study_sessions';
   static const String _bookmarksKey = 'bookmarked_questions';
   static const String _settingsKey = 'app_settings';
 

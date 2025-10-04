@@ -49,7 +49,7 @@ void main() {
     });
 
     test('AnswerOption model includes ID', () {
-      final answer = AnswerOption(
+      final answer = const AnswerOption(
         id: 'a_test456',
         text: 'Test answer',
         isCorrect: true,

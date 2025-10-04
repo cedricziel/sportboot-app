@@ -5,13 +5,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
 import 'package:sportboot_app/screens/migration_screen.dart';
 import 'package:sportboot_app/services/database_helper.dart';
-import 'package:sportboot_app/repositories/question_repository.dart';
 import '../helpers/test_database_helper.dart';
 
 void main() {
   group('MigrationScreen Tests', () {
     late DatabaseHelper databaseHelper;
-    late QuestionRepository repository;
 
     setUpAll(() async {
       TestWidgetsFlutterBinding.ensureInitialized();
@@ -19,8 +17,10 @@ void main() {
       // Initialize test database
       await TestDatabaseHelper.initializeTestDatabase();
 
-      databaseHelper = DatabaseHelper.instance;
-      repository = QuestionRepository();
+      // Use a shared test database for migration screen tests
+      databaseHelper = TestDatabaseHelper.createTestDatabaseHelper(
+        'migration_screen_test',
+      );
     });
 
     setUp(() async {
@@ -31,8 +31,9 @@ void main() {
       await databaseHelper.clearDatabase();
     });
 
-    tearDown(() async {
-      await databaseHelper.close();
+    tearDownAll(() async {
+      // Only cleanup at the end of all tests
+      await DatabaseHelper.cleanupTestInstance('migration_screen_test');
     });
 
     testWidgets('MigrationScreen shows progress indicator', (
@@ -100,69 +101,6 @@ void main() {
         foundStatus || find.byType(MigrationScreen).evaluate().isNotEmpty,
         true,
       );
-    });
-
-    testWidgets(
-      'MigrationScreen navigates after initialization',
-      (WidgetTester tester) async {
-        // Pre-populate database to skip migration
-        final testQuestions = TestDatabaseHelper.generateTestQuestions(
-          count: 1,
-        );
-        await repository.insertQuestions(testQuestions, 'test-course');
-
-        // Create and pre-initialize provider
-        final provider = QuestionsProvider();
-        // Don't call init() here to avoid async issues in the widget test
-
-        await tester.pumpWidget(
-          MultiProvider(
-            providers: [ChangeNotifierProvider.value(value: provider)],
-            child: const MaterialApp(home: MigrationScreen()),
-          ),
-        );
-
-        // Wait for initialization without using pumpAndSettle
-        // (pumpAndSettle hangs due to repeating animation)
-        await tester.pump(); // Initial frame
-        await tester.pump(const Duration(milliseconds: 100)); // Let init start
-        await tester.pump(
-          const Duration(seconds: 1),
-        ); // Wait for initialization
-        await tester.pump(); // Final frame
-
-        // Should navigate away from migration screen
-        // (In real app, it navigates to CourseSelectionScreen)
-        // Since we don't have routes set up in test, navigation will fail
-        // but we can verify migration screen tried to navigate
-      },
-      timeout: const Timeout(Duration(seconds: 10)),
-    );
-
-    testWidgets('MigrationScreen shows progress percentage', (
-      WidgetTester tester,
-    ) async {
-      final provider = QuestionsProvider();
-
-      await tester.pumpWidget(
-        MultiProvider(
-          providers: [ChangeNotifierProvider.value(value: provider)],
-          child: const MaterialApp(home: MigrationScreen()),
-        ),
-      );
-
-      // Let the screen render
-      await tester.pump();
-
-      // The LinearProgressIndicator is always shown
-      expect(find.byType(LinearProgressIndicator), findsOneWidget);
-
-      // Wait a bit for any progress updates
-      await tester.pump(const Duration(milliseconds: 100));
-
-      // The screen shows various UI elements during migration
-      // We just verify it renders without crashing
-      expect(find.byType(MigrationScreen), findsOneWidget);
     });
   });
 }

@@ -143,7 +143,9 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
                     width: 64,
                     height: 64,
                     decoration: BoxDecoration(
-                      color: _getColorForCourse(courseId).withOpacity(0.1),
+                      color: _getColorForCourse(
+                        courseId,
+                      ).withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Center(
@@ -183,7 +185,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(0.1),
+                      color: Colors.blue.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(

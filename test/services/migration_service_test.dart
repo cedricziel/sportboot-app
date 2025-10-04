@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sportboot_app/services/migration_service.dart';
 import 'package:sportboot_app/services/database_helper.dart';
+import 'package:sportboot_app/services/cache_service.dart';
 import 'package:sportboot_app/repositories/question_repository.dart';
 import '../helpers/test_database_helper.dart';
 
@@ -18,14 +19,32 @@ void main() {
     });
 
     setUp(() async {
-      databaseHelper = DatabaseHelper.instance;
-      migrationService = MigrationService();
-      repository = QuestionRepository();
+      // Create test-specific instances with shared database
+      final uniqueName =
+          'migration_test_${DateTime.now().millisecondsSinceEpoch}';
+      databaseHelper = TestDatabaseHelper.createTestDatabaseHelper(uniqueName);
+
+      // Create repository with the same database helper
+      repository = QuestionRepository(
+        databaseHelper: databaseHelper,
+        cache: CacheService(),
+      );
+
+      // Create migration service with the same database helper and repository
+      migrationService = MigrationService(
+        questionRepository: repository,
+        databaseHelper: databaseHelper,
+      );
+
       await databaseHelper.clearDatabase();
     });
 
     tearDown(() async {
       await databaseHelper.close();
+    });
+
+    tearDownAll(() async {
+      await DatabaseHelper.cleanupTestInstances();
     });
 
     test(

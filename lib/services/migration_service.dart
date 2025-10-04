@@ -8,8 +8,15 @@ import '../repositories/question_repository.dart';
 import 'database_helper.dart';
 
 class MigrationService {
-  final QuestionRepository _questionRepository = QuestionRepository();
-  final DatabaseHelper _databaseHelper = DatabaseHelper.instance;
+  final QuestionRepository _questionRepository;
+  final DatabaseHelper _databaseHelper;
+
+  // Constructor with dependency injection
+  MigrationService({
+    QuestionRepository? questionRepository,
+    DatabaseHelper? databaseHelper,
+  }) : _questionRepository = questionRepository ?? QuestionRepository(),
+       _databaseHelper = databaseHelper ?? DatabaseHelper.instance;
 
   static const String _basePath = 'assets/data/courses/';
 

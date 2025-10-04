@@ -13,13 +13,20 @@ void main() {
     });
 
     setUp(() async {
-      databaseHelper = DatabaseHelper.instance;
+      // Create test-specific database instance
+      final uniqueName =
+          'db_helper_test_${DateTime.now().millisecondsSinceEpoch}';
+      databaseHelper = DatabaseHelper.forTest(uniqueName);
       // Clear any existing test database
       await databaseHelper.clearDatabase();
     });
 
     tearDown(() async {
       await databaseHelper.close();
+    });
+
+    tearDownAll(() async {
+      await DatabaseHelper.cleanupTestInstances();
     });
 
     test('Database should be initialized with correct version', () async {
