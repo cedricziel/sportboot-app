@@ -101,9 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 8),
                       Text(
                         courseName,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: isCupertino(context)
+                              ? CupertinoColors.label.resolveFrom(context)
+                              : null,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -118,9 +121,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 24),
-            const Text(
+            Text(
               'Wähle eine Kategorie:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: isCupertino(context)
+                    ? CupertinoColors.label.resolveFrom(context)
+                    : null,
+              ),
             ),
             const SizedBox(height: 16),
             Expanded(

@@ -103,16 +103,21 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
         children: [
           Text(
             'Verfügbare Kurse',
-            style: Theme.of(
-              context,
-            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: isCupertino(context)
+                  ? CupertinoColors.label.resolveFrom(context)
+                  : null,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
             'Wähle einen Kurs aus, um mit dem Lernen zu beginnen',
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: isCupertino(context)
+                  ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                  : Colors.grey[600],
+            ),
           ),
           const SizedBox(height: 24),
           Expanded(
@@ -173,9 +178,12 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
                   children: [
                     Text(
                       course.name,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
+                        color: isCupertino(context)
+                            ? CupertinoColors.label.resolveFrom(context)
+                            : null,
                       ),
                     ),
                     const SizedBox(height: 4),
