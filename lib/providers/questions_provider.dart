@@ -416,13 +416,14 @@ class QuestionsProvider extends ChangeNotifier {
   // Get session stats
   Map<String, dynamic> getSessionStats() {
     if (_currentSession == null) {
-      return {'correct': 0, 'incorrect': 0, 'total': 0};
+      return {'correct': 0, 'incorrect': 0, 'total': 0, 'unanswered': 0};
     }
 
     return {
       'correct': _currentSession!.correctAnswers,
       'incorrect': _currentSession!.incorrectAnswers,
       'total': _currentSession!.totalQuestions,
+      'unanswered': _currentSession!.unanswered,
     };
   }
 
