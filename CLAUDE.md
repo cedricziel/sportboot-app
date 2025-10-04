@@ -51,6 +51,15 @@ flutter build ios --release
 flutter build macos --release
 ```
 
+### Utility Scripts
+```bash
+# Data management (in tool/ directory)
+dart run tool/scrape_questions.dart   # Scrape questions from ELWIS website
+dart run tool/verify_data.dart        # Validate question data integrity
+./tool/bump_build.sh                  # Increment build number in pubspec.yaml
+python tool/generate_logo.py          # Generate logo images (requires venv)
+```
+
 ## Architecture
 
 ### Data Layer
@@ -64,9 +73,10 @@ flutter build macos --release
 ### State Management
 - **Provider Pattern**: Single `QuestionsProvider` manages all app state
   - Course selection and manifest management
-  - Question loading and shuffling (cached per question ID)
+  - Question loading and shuffling (cached per question ID for consistency)
   - Study session tracking
   - Progress and bookmark synchronization
+- **Navigation**: GoRouter for declarative routing and deep linking
 
 ### Data Flow
 1. **Manifest Loading**: `assets/data/manifest.yaml` defines course structure and catalog relationships
@@ -83,7 +93,12 @@ flutter build macos --release
 
 ### Testing Strategy
 - **Test Database Isolation**: Each test gets its own SQLite database via `DatabaseHelper.forTest(testName)`
+  - Uses in-memory databases for fast, isolated tests
+  - Requires `sqflite_common_ffi` for desktop testing
+  - Initialize tests with `TestDatabaseHelper.initializeTestDatabase()`
 - **Fixture Data**: Test data in `test/fixtures/` for consistent testing
+- **Dependency Injection**: All services accept optional dependencies for testability
+  - `DatabaseHelper`, `CacheService`, `QuestionRepository`, `MigrationService`
 - **Repository Testing**: Uses dependency injection for mock database/cache
 - **Provider Testing**: Injects test repositories for controlled state testing
 
