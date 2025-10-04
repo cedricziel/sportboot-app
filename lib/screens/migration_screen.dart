@@ -2,9 +2,10 @@ import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
-import 'course_selection_screen.dart';
+import '../router/app_router.dart';
 
 class MigrationScreen extends StatefulWidget {
   const MigrationScreen({super.key});
@@ -28,9 +29,7 @@ class _MigrationScreenState extends State<MigrationScreen> {
     await provider.init();
 
     if (mounted) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const CourseSelectionScreen()),
-      );
+      context.go(AppRoutes.courseSelection);
     }
   }
 

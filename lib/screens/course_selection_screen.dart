@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../models/course_manifest.dart';
 import '../providers/questions_provider.dart';
+import '../router/app_router.dart';
 import '../services/data_loader.dart';
-import 'home_screen.dart';
 
 class CourseSelectionScreen extends StatefulWidget {
   const CourseSelectionScreen({super.key});
@@ -266,9 +267,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
 
     // Navigate to home screen
     if (context.mounted) {
-      Navigator.of(
-        context,
-      ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
+      context.go(AppRoutes.home);
     }
   }
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'providers/questions_provider.dart';
-import 'screens/migration_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/quiz_screen.dart';
+import 'router/app_router.dart';
 import 'services/storage_service.dart';
 import 'services/notification_service.dart';
 
@@ -27,18 +26,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  late final GoRouter _router;
 
   @override
   void initState() {
     super.initState();
+    _router = createAppRouter();
     _setupNotificationHandler();
   }
 
   void _setupNotificationHandler() {
     NotificationService().setNotificationTapCallback(() async {
       // Navigate to quiz screen when notification is tapped
-      final context = navigatorKey.currentContext;
+      final context = _router.routerDelegate.navigatorKey.currentContext;
       if (context != null) {
         final provider = Provider.of<QuestionsProvider>(context, listen: false);
 
@@ -57,13 +57,8 @@ class _MyAppState extends State<MyApp> {
 
         // Navigate to home screen first, then to quiz
         if (context.mounted) {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (_) => const HomeScreen()),
-            (route) => false,
-          );
-          Navigator.of(
-            context,
-          ).push(MaterialPageRoute(builder: (_) => const QuizScreen()));
+          context.go(AppRoutes.home);
+          context.push(AppRoutes.quiz);
         }
       }
     });
@@ -73,8 +68,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => QuestionsProvider())],
-      child: MaterialApp(
-        navigatorKey: navigatorKey,
+      child: MaterialApp.router(
+        routerConfig: _router,
         title: 'SBF-See Lernkarten',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -96,7 +91,6 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-        home: const MigrationScreen(),
       ),
     );
   }
