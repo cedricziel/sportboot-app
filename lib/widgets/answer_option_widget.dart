@@ -47,7 +47,7 @@ class AnswerOptionWidget extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: InkWell(
+      child: GestureDetector(
         onTap: onTap != null
             ? () {
                 // Provide haptic feedback on tap (iOS style)
@@ -57,7 +57,6 @@ class AnswerOptionWidget extends StatelessWidget {
                 onTap!();
               }
             : null,
-        borderRadius: BorderRadius.circular(12),
         child: Container(
           constraints: BoxConstraints(minHeight: minHeight),
           padding: const EdgeInsets.all(16),
