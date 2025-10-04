@@ -31,12 +31,9 @@ void main() {
       await databaseHelper.clearDatabase();
     });
 
-    tearDown(() async {
-      await databaseHelper.close();
-    });
-
     tearDownAll(() async {
-      await DatabaseHelper.cleanupTestInstances();
+      // Only cleanup at the end of all tests
+      await DatabaseHelper.cleanupTestInstance('migration_screen_test');
     });
 
     testWidgets('MigrationScreen shows progress indicator', (
