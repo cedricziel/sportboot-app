@@ -397,31 +397,68 @@ class _HomeScreenState extends State<HomeScreen> {
     showAdaptiveLoadingDialog(context);
 
     try {
+      debugPrint(
+        '[Navigation] Loading questions for category: $category, mode: $mode',
+      );
+
       // Load questions based on category
       if (category == 'quick_quiz') {
         await provider.loadRandomQuestions(14);
+        debugPrint(
+          '[Navigation] Quick quiz loaded: ${provider.currentQuestions.length} questions',
+        );
       } else if (category == 'bookmarks') {
         await provider.loadAllQuestions();
         provider.filterByBookmarks();
+        debugPrint(
+          '[Navigation] Bookmarks loaded: ${provider.currentQuestions.length} questions',
+        );
       } else if (category == 'incorrect') {
         await provider.loadAllQuestions();
         provider.filterByIncorrect();
+        debugPrint(
+          '[Navigation] Incorrect loaded: ${provider.currentQuestions.length} questions',
+        );
       } else if (category == 'all' || category == 'all_questions') {
         await provider.loadAllQuestions();
+        debugPrint(
+          '[Navigation] All questions loaded: ${provider.currentQuestions.length} questions',
+        );
       } else {
         // Load category from course manifest
         await provider.loadCategory(category);
+        debugPrint(
+          '[Navigation] Category loaded: ${provider.currentQuestions.length} questions',
+        );
       }
 
+      debugPrint(
+        '[Navigation] Current index: ${provider.currentQuestionIndex}',
+      );
+      debugPrint(
+        '[Navigation] Current question ID: ${provider.currentQuestion?.id}',
+      );
+      debugPrint('[Navigation] Provider error: ${provider.error}');
+
       provider.startSession(mode, category);
+      debugPrint('[Navigation] Session started');
 
       if (context.mounted) {
         context.pop(); // Close loading dialog
+        debugPrint('[Navigation] Dialog closed');
+
         // Wait for dialog animation to complete before navigating
         // This prevents iOS navigation issues with rapid context changes
         await Future.delayed(const Duration(milliseconds: 300));
+
+        debugPrint(
+          '[Navigation] After delay - questions: ${provider.currentQuestions.length}, index: ${provider.currentQuestionIndex}',
+        );
+
         if (context.mounted) {
+          debugPrint('[Navigation] About to navigate to: $routePath');
           context.push(routePath);
+          debugPrint('[Navigation] Navigation completed');
         }
       }
     } catch (e) {

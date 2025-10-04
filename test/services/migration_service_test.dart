@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sportboot_app/services/migration_service.dart';
 import 'package:sportboot_app/services/database_helper.dart';
-import 'package:sportboot_app/services/cache_service.dart';
 import 'package:sportboot_app/repositories/question_repository.dart';
 import '../helpers/test_database_helper.dart';
 
@@ -25,10 +24,7 @@ void main() {
       databaseHelper = TestDatabaseHelper.createTestDatabaseHelper(uniqueName);
 
       // Create repository with the same database helper
-      repository = QuestionRepository(
-        databaseHelper: databaseHelper,
-        cache: CacheService(),
-      );
+      repository = QuestionRepository(databaseHelper: databaseHelper);
 
       // Create migration service with the same database helper and repository
       migrationService = MigrationService(

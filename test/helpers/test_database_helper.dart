@@ -3,7 +3,6 @@ import 'package:sportboot_app/models/question.dart';
 import 'package:sportboot_app/models/answer_option.dart';
 import 'package:sportboot_app/repositories/question_repository.dart';
 import 'package:sportboot_app/services/database_helper.dart';
-import 'package:sportboot_app/services/cache_service.dart';
 import 'package:sportboot_app/services/migration_service.dart';
 import 'package:sportboot_app/providers/questions_provider.dart';
 
@@ -24,8 +23,7 @@ class TestDatabaseHelper {
 
   static QuestionRepository createTestRepository(String testName) {
     final dbHelper = createTestDatabaseHelper(testName);
-    final cache = CacheService(); // Each test gets its own cache
-    return QuestionRepository(databaseHelper: dbHelper, cache: cache);
+    return QuestionRepository(databaseHelper: dbHelper);
   }
 
   static MigrationService createTestMigrationService(
@@ -34,22 +32,15 @@ class TestDatabaseHelper {
   }) {
     // Use provided database helper or create a new one
     final db = dbHelper ?? createTestDatabaseHelper(testName);
-    final repository = QuestionRepository(
-      databaseHelper: db,
-      cache: CacheService(),
-    );
+    final repository = QuestionRepository(databaseHelper: db);
     return MigrationService(questionRepository: repository, databaseHelper: db);
   }
 
   static QuestionsProvider createTestProvider(String testName) {
     // Create a single database helper and share it across all services
     final dbHelper = createTestDatabaseHelper(testName);
-    final cache = CacheService();
 
-    final repository = QuestionRepository(
-      databaseHelper: dbHelper,
-      cache: cache,
-    );
+    final repository = QuestionRepository(databaseHelper: dbHelper);
 
     final migrationService = MigrationService(
       questionRepository: repository,

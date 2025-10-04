@@ -145,9 +145,75 @@ class _QuizScreenState extends State<QuizScreen> {
             );
           }
 
+          // Show error if present
+          if (provider.error != null) {
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.error_outline,
+                      size: 64,
+                      color: Colors.red,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      provider.error!,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    const SizedBox(height: 24),
+                    AdaptiveButton(
+                      onPressed: () => context.pop(),
+                      child: const Text('Zurück'),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+
           final question = provider.currentQuestion;
           if (question == null) {
-            return const Center(child: Text('Keine Fragen verfügbar'));
+            // Show debug info to understand why questions are not available
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Keine Fragen verfügbar',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Geladene Fragen: ${provider.currentQuestions.length}',
+                    ),
+                    Text('Aktueller Index: ${provider.currentQuestionIndex}'),
+                    Text('Session aktiv: ${provider.currentSession != null}'),
+                    if (provider.currentSession != null) ...[
+                      Text(
+                        'Session Kategorie: ${provider.currentSession!.category}',
+                      ),
+                      Text(
+                        'Session Fragen: ${provider.currentSession!.questionIds.length}',
+                      ),
+                    ],
+                    const SizedBox(height: 24),
+                    AdaptiveButton(
+                      onPressed: () => context.pop(),
+                      child: const Text('Zurück'),
+                    ),
+                  ],
+                ),
+              ),
+            );
           }
 
           return Column(
