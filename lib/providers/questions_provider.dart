@@ -244,16 +244,26 @@ class QuestionsProvider extends ChangeNotifier {
     // Load questions from the selected course only
     await loadCourseById(_selectedCourseId!);
 
-    if (_currentQuestions.isNotEmpty && count <= _currentQuestions.length) {
-      _currentQuestions.shuffle();
-      _currentQuestions = _currentQuestions.take(count).toList();
+    if (_currentQuestions.isEmpty) {
+      _error = 'Keine Fragen im ausgewählten Kurs verfügbar';
       notifyListeners();
-    } else if (_currentQuestions.length < count) {
+      return;
+    }
+
+    if (count > _currentQuestions.length) {
       // Not enough questions in the selected course
       _error =
           'Nicht genügend Fragen im ausgewählten Kurs (${_currentQuestions.length} verfügbar)';
       notifyListeners();
+      return;
     }
+
+    // Shuffle and take the requested number of questions
+    _currentQuestions.shuffle();
+    if (count < _currentQuestions.length) {
+      _currentQuestions = _currentQuestions.take(count).toList();
+    }
+    notifyListeners();
   }
 
   Future<void> loadCategory(String category) async {
