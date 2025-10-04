@@ -449,4 +449,12 @@ class QuestionsProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  // Shuffle current questions (for flashcard mode)
+  void shuffleCurrentQuestions() {
+    _currentQuestions.shuffle();
+    _currentQuestionIndex = 0;
+    _shuffledQuestionsCache.clear();
+    notifyListeners();
+  }
 }

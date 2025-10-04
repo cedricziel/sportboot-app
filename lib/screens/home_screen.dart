@@ -440,6 +440,12 @@ class _HomeScreenState extends State<HomeScreen> {
       );
       debugPrint('[Navigation] Provider error: ${provider.error}');
 
+      // Always shuffle questions in flashcard mode for better learning
+      if (mode == 'flashcard') {
+        provider.shuffleCurrentQuestions();
+        debugPrint('[Navigation] Questions shuffled for flashcard mode');
+      }
+
       provider.startSession(mode, category);
       debugPrint('[Navigation] Session started');
 
