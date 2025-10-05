@@ -95,9 +95,8 @@ class NotificationService {
 
   // Request notification permissions
   Future<bool> requestPermissions() async {
-    // macOS handles notifications differently - permissions are managed at the system level
+    // macOS - use plugin directly
     if (Platform.isMacOS) {
-      // For macOS, request through the notification plugin directly
       final macOS = _notifications
           .resolvePlatformSpecificImplementation<
             MacOSFlutterLocalNotificationsPlugin
@@ -113,33 +112,39 @@ class NotificationService {
       return true; // Assume granted if we can't check
     }
 
-    // For iOS and Android, use permission_handler
-    final status = await Permission.notification.request();
-
-    if (status.isGranted) {
-      // For iOS, also request through the notification plugin
+    // iOS - use ONLY the plugin (not permission_handler)
+    if (Platform.isIOS) {
       final iOS = _notifications
           .resolvePlatformSpecificImplementation<
             IOSFlutterLocalNotificationsPlugin
           >();
       if (iOS != null) {
-        await iOS.requestPermissions(alert: true, badge: true, sound: true);
+        final granted = await iOS.requestPermissions(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+        return granted ?? false;
       }
-      return true;
+      return false;
     }
 
-    return false;
+    // Android - use permission_handler for Android 13+ POST_NOTIFICATIONS
+    final status = await Permission.notification.request();
+    return status.isGranted;
   }
 
   // Check if notifications are enabled
   Future<bool> areNotificationsEnabled() async {
-    // macOS doesn't use permission_handler for notifications
-    if (Platform.isMacOS) {
-      // For macOS, we can't easily check if notifications are enabled
+    // macOS and iOS don't provide a reliable way to check notification status
+    // via the plugin, so we use stored settings
+    if (Platform.isMacOS || Platform.isIOS) {
+      // For macOS/iOS, we can't easily check if notifications are enabled
       // Return the stored setting instead
       return _storage.getSetting('notificationsEnabled', defaultValue: false);
     }
 
+    // Android - check actual permission status
     final status = await Permission.notification.status;
     return status.isGranted;
   }
