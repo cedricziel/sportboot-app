@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sportboot_app/utils/platform_helper.dart';
 
@@ -9,41 +10,50 @@ void main() {
     });
 
     test('useIOSStyle returns false by default on non-iOS platforms', () {
-      // On macOS (test environment), without iOS preview mode
-      // This will be false unless we're actually on iOS
+      // Without iOS preview mode, this should be false on non-iOS platforms
       final result = PlatformHelper.useIOSStyle;
 
-      // On test environment (macOS), this should be false
-      expect(result, isFalse);
+      // Should be false on non-iOS platforms
+      expect(result, Platform.isIOS);
     });
 
     test('enableIOSPreview enables iOS style on macOS', () {
       // Enable iOS preview mode
       PlatformHelper.enableIOSPreview();
 
-      // Now useIOSStyle should return true
-      expect(PlatformHelper.useIOSStyle, isTrue);
-      expect(PlatformHelper.isIOSPreview, isTrue);
+      // useIOSStyle should return true only on macOS or iOS
+      if (Platform.isMacOS) {
+        expect(PlatformHelper.useIOSStyle, isTrue);
+        expect(PlatformHelper.isIOSPreview, isTrue);
+      } else {
+        // On other platforms (like Linux in CI), preview mode doesn't enable
+        expect(PlatformHelper.isIOSPreview, isFalse);
+      }
     });
 
-    test('isActuallyMacOS returns true on macOS test environment', () {
-      // In test environment, we're running on macOS
-      expect(PlatformHelper.isActuallyMacOS, isTrue);
+    test('isActuallyMacOS matches platform', () {
+      // Should match the actual platform
+      expect(PlatformHelper.isActuallyMacOS, Platform.isMacOS);
     });
 
-    test('isActuallyIOS returns false on macOS test environment', () {
-      // In test environment, we're not on actual iOS
-      expect(PlatformHelper.isActuallyIOS, isFalse);
+    test('isActuallyIOS matches platform', () {
+      // Should match the actual platform
+      expect(PlatformHelper.isActuallyIOS, Platform.isIOS);
     });
 
     test('iOS preview mode persists across checks', () {
       // Enable iOS preview
       PlatformHelper.enableIOSPreview();
 
-      // Check multiple times
-      expect(PlatformHelper.useIOSStyle, isTrue);
-      expect(PlatformHelper.useIOSStyle, isTrue);
-      expect(PlatformHelper.isIOSPreview, isTrue);
+      // On macOS, preview mode should persist
+      if (Platform.isMacOS) {
+        expect(PlatformHelper.useIOSStyle, isTrue);
+        expect(PlatformHelper.useIOSStyle, isTrue);
+        expect(PlatformHelper.isIOSPreview, isTrue);
+      } else {
+        // On other platforms, preview mode is not supported
+        expect(PlatformHelper.isIOSPreview, isFalse);
+      }
     });
   });
 }
