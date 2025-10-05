@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import '../services/storage_service.dart';
+import '../repositories/question_repository.dart';
+import '../services/database_helper.dart';
 import '../widgets/platform/adaptive_card.dart';
 
 class ProgressScreen extends StatefulWidget {
@@ -14,9 +15,12 @@ class ProgressScreen extends StatefulWidget {
 }
 
 class _ProgressScreenState extends State<ProgressScreen> {
-  final StorageService _storage = StorageService();
-  Map<String, int> _stats = {};
+  final QuestionRepository _repository = QuestionRepository();
+  int _totalQuestions = 0;
+  int _correctAnswers = 0;
+  int _incorrectAnswers = 0;
   int _studyStreak = 0;
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -24,19 +28,105 @@ class _ProgressScreenState extends State<ProgressScreen> {
     _loadStats();
   }
 
-  void _loadStats() {
-    setState(() {
-      _stats = _storage.getAllStatistics();
-      _studyStreak = _storage.getStudyStreak();
-    });
+  Future<void> _loadStats() async {
+    setState(() => _isLoading = true);
+
+    try {
+      final progress = await _repository.getProgress();
+      final overall = progress['overall'] as Map<String, dynamic>;
+
+      // Calculate study streak from database
+      final studyStreak = await _calculateStudyStreak();
+
+      setState(() {
+        _totalQuestions = (overall['total'] as int?) ?? 0;
+        _correctAnswers = (overall['correct'] as int?) ?? 0;
+        _incorrectAnswers = (overall['incorrect'] as int?) ?? 0;
+        _studyStreak = studyStreak;
+        _isLoading = false;
+      });
+    } catch (e) {
+      debugPrint('Error loading statistics: $e');
+      setState(() => _isLoading = false);
+    }
+  }
+
+  Future<int> _calculateStudyStreak() async {
+    try {
+      final db = await DatabaseHelper.instance.database;
+
+      // Get the last study date from progress table
+      final result = await db.rawQuery('''
+        SELECT MAX(last_answered_at) as last_study
+        FROM ${DatabaseHelper.tableProgress}
+      ''');
+
+      final lastStudyMillis = result.first['last_study'] as int?;
+      if (lastStudyMillis == null) return 0;
+
+      final lastStudyDate = DateTime.fromMillisecondsSinceEpoch(
+        lastStudyMillis,
+      );
+      final today = DateTime.now();
+      final difference = today.difference(lastStudyDate).inDays;
+
+      // If studied today or yesterday, consider it as maintaining streak
+      if (difference <= 1) {
+        // Count consecutive days with activity
+        int streak = 0;
+        DateTime checkDate = DateTime(today.year, today.month, today.day);
+
+        for (int i = 0; i < 365; i++) {
+          // Check up to 1 year
+          final dayStart = checkDate
+              .subtract(Duration(days: i))
+              .millisecondsSinceEpoch;
+          final dayEnd = dayStart + 86400000; // 24 hours in milliseconds
+
+          final dayResult = await db.rawQuery(
+            '''
+            SELECT COUNT(*) as count
+            FROM ${DatabaseHelper.tableProgress}
+            WHERE last_answered_at >= ? AND last_answered_at < ?
+          ''',
+            [dayStart, dayEnd],
+          );
+
+          final count = (dayResult.first['count'] as int?) ?? 0;
+          if (count > 0) {
+            streak++;
+          } else {
+            break; // Streak broken
+          }
+        }
+
+        return streak;
+      }
+
+      return 0; // Streak broken if more than 1 day ago
+    } catch (e) {
+      debugPrint('Error calculating study streak: $e');
+      return 0;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final total = _stats['totalQuestions'] ?? 0;
-    final correct = _stats['correctAnswers'] ?? 0;
-    final accuracy = total > 0 ? (correct / total) : 0.0;
+    final accuracy = _totalQuestions > 0
+        ? (_correctAnswers / _totalQuestions)
+        : 0.0;
     final isIOS = isCupertino(context);
+
+    if (_isLoading) {
+      return PlatformScaffold(
+        appBar: const PlatformAppBar(title: Text('Fortschritt')),
+        body: Center(
+          child: isIOS
+              ? const CupertinoActivityIndicator()
+              : const CircularProgressIndicator(),
+        ),
+      );
+    }
 
     return PlatformScaffold(
       appBar: const PlatformAppBar(title: Text('Fortschritt')),
@@ -137,14 +227,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
                 _buildStatCard(
                   context,
                   'Beantwortet',
-                  _stats['totalQuestions']?.toString() ?? '0',
+                  _totalQuestions.toString(),
                   isIOS ? CupertinoIcons.chat_bubble_2 : Icons.question_answer,
                   isIOS ? CupertinoColors.systemBlue : Colors.blue,
                 ),
                 _buildStatCard(
                   context,
                   'Richtig',
-                  _stats['correctAnswers']?.toString() ?? '0',
+                  _correctAnswers.toString(),
                   isIOS
                       ? CupertinoIcons.check_mark_circled
                       : Icons.check_circle,
@@ -153,15 +243,15 @@ class _ProgressScreenState extends State<ProgressScreen> {
                 _buildStatCard(
                   context,
                   'Falsch',
-                  _stats['incorrectAnswers']?.toString() ?? '0',
+                  _incorrectAnswers.toString(),
                   isIOS ? CupertinoIcons.xmark_circle : Icons.cancel,
                   isIOS ? CupertinoColors.systemRed : Colors.red,
                 ),
                 _buildStatCard(
                   context,
-                  'Sitzungen',
-                  _stats['studySessions']?.toString() ?? '0',
-                  isIOS ? CupertinoIcons.book : Icons.school,
+                  'Lerntage',
+                  _studyStreak.toString(),
+                  isIOS ? CupertinoIcons.calendar : Icons.calendar_today,
                   isIOS ? CupertinoColors.systemPurple : Colors.purple,
                 ),
               ],
@@ -256,15 +346,30 @@ class _ProgressScreenState extends State<ProgressScreen> {
             child: const Text('Abbrechen'),
           ),
           PlatformDialogAction(
-            onPressed: () {
-              _storage.clearProgress();
-              context.pop();
-              _loadStats();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Fortschritt wurde zurückgesetzt'),
-                ),
-              );
+            onPressed: () async {
+              final navigator = Navigator.of(context);
+              final messenger = ScaffoldMessenger.of(context);
+
+              try {
+                // Clear progress from database
+                final db = await DatabaseHelper.instance.database;
+                await db.delete(DatabaseHelper.tableProgress);
+                await db.delete(DatabaseHelper.tableBookmarks);
+
+                navigator.pop();
+                await _loadStats();
+                messenger.showSnackBar(
+                  const SnackBar(
+                    content: Text('Fortschritt wurde zurückgesetzt'),
+                  ),
+                );
+              } catch (e) {
+                debugPrint('Error resetting progress: $e');
+                navigator.pop();
+                messenger.showSnackBar(
+                  const SnackBar(content: Text('Fehler beim Zurücksetzen')),
+                );
+              }
             },
             material: (context, platform) => MaterialDialogActionData(
               style: TextButton.styleFrom(foregroundColor: Colors.red),
