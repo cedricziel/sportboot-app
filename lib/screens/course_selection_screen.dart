@@ -259,7 +259,7 @@ class _CourseSelectionScreenState extends State<CourseSelectionScreen> {
 
   Widget _buildInfoChip(IconData icon, String label) {
     final chipColor = isCupertino(context)
-        ? CupertinoColors.secondaryLabel
+        ? CupertinoColors.secondaryLabel.resolveFrom(context)
         : Colors.grey[600];
 
     return Row(

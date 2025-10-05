@@ -71,20 +71,62 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             children: [
               AdaptiveSwitchListTile(
-                title: const Text('Fragen mischen'),
-                subtitle: const Text('Zufällige Reihenfolge der Fragen'),
+                title: Text(
+                  'Fragen mischen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  'Zufällige Reihenfolge der Fragen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
                 value: _settings['shuffleQuestions'] ?? false,
                 onChanged: (value) => _updateSetting('shuffleQuestions', value),
               ),
               AdaptiveSwitchListTile(
-                title: const Text('Timer anzeigen'),
-                subtitle: const Text('Zeit pro Frage anzeigen'),
+                title: Text(
+                  'Timer anzeigen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  'Zeit pro Frage anzeigen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
                 value: _settings['showTimer'] ?? true,
                 onChanged: (value) => _updateSetting('showTimer', value),
               ),
               AdaptiveSwitchListTile(
-                title: const Text('Töne aktiviert'),
-                subtitle: const Text('Soundeffekte bei Antworten'),
+                title: Text(
+                  'Töne aktiviert',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  'Soundeffekte bei Antworten',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
                 value: _settings['soundEnabled'] ?? true,
                 onChanged: (value) => _updateSetting('soundEnabled', value),
               ),
@@ -101,9 +143,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             children: [
               AdaptiveListTile(
-                title: const Text('Tägliches Ziel'),
+                title: Text(
+                  'Tägliches Ziel',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
                 subtitle: Text(
                   '${_settings['dailyGoal'] ?? 20} Fragen pro Tag',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
                 ),
                 onTap: () => _showDailyGoalDialog(),
               ),
@@ -120,21 +174,63 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             children: [
               AdaptiveSwitchListTile(
-                title: const Text('Tägliche Erinnerung'),
-                subtitle: const Text('Erinnere mich ans tägliche Quiz'),
+                title: Text(
+                  'Tägliche Erinnerung',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  'Erinnere mich ans tägliche Quiz',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
                 value: _notificationsEnabled,
                 onChanged: (value) => _toggleNotifications(value),
               ),
               if (_notificationsEnabled)
                 AdaptiveListTile(
-                  title: const Text('Erinnerungszeit'),
-                  subtitle: Text(_notificationTime.format(context)),
+                  title: Text(
+                    'Erinnerungszeit',
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.label.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
+                  subtitle: Text(
+                    _notificationTime.format(context),
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
                   onTap: () => _selectNotificationTime(),
                 ),
               if (_notificationsEnabled)
                 AdaptiveListTile(
-                  title: const Text('Test-Benachrichtigung'),
-                  subtitle: const Text('Sende eine Test-Benachrichtigung'),
+                  title: Text(
+                    'Test-Benachrichtigung',
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.label.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
+                  subtitle: Text(
+                    'Sende eine Test-Benachrichtigung',
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
                   trailing: Icon(
                     isCupertino(context)
                         ? CupertinoIcons.bell_fill
@@ -153,16 +249,59 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     : null,
               ),
             ),
-            children: const [
-              AdaptiveListTile(title: Text('Version'), subtitle: Text('1.0.0')),
+            children: [
               AdaptiveListTile(
-                title: Text('Fragen'),
-                subtitle: Text('287 Fragen (SBF-See 2024)'),
+                title: Text(
+                  'Version',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  '1.0.0',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
               ),
               AdaptiveListTile(
-                title: Text('Quelle'),
+                title: Text(
+                  'Fragen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  '287 Fragen (SBF-See 2024)',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+              ),
+              AdaptiveListTile(
+                title: Text(
+                  'Quelle',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
                 subtitle: Text(
                   'ELWIS - Elektronisches Wasserstraßen-Informationssystem',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
                 ),
               ),
             ],
