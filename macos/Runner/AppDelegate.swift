@@ -3,6 +3,13 @@ import FlutterMacOS
 
 @main
 class AppDelegate: FlutterAppDelegate {
+  override func applicationDidFinishLaunching(_ notification: Notification) {
+    // Set notification delegate for macOS 10.14+
+    if #available(macOS 10.14, *) {
+      UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+    }
+  }
+
   override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
     return true
   }
