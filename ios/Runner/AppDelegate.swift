@@ -9,7 +9,7 @@ import UIKit
   ) -> Bool {
     // Set notification delegate for iOS 10+
     if #available(iOS 10.0, *) {
-      UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+      UNUserNotificationCenter.current().delegate = self
     }
 
     GeneratedPluginRegistrant.register(with: self)
