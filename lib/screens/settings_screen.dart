@@ -388,27 +388,49 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _toggleNotifications(bool enabled) async {
-    if (enabled) {
-      final hasPermission = await _notifications.requestPermissions();
-      if (!hasPermission) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Benachrichtigungen wurden nicht erlaubt'),
-            ),
-          );
-        }
-        return;
-      }
-      await _notifications.scheduleDailyNotification(_notificationTime);
-    } else {
-      await _notifications.cancelAllNotifications();
-    }
-
+    // Update state immediately for responsive UI
     setState(() {
       _notificationsEnabled = enabled;
     });
-    await _storage.setSetting('notificationsEnabled', enabled);
+
+    try {
+      if (enabled) {
+        final hasPermission = await _notifications.requestPermissions();
+        if (!hasPermission) {
+          // Permission denied - revert state
+          setState(() {
+            _notificationsEnabled = false;
+          });
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Benachrichtigungen wurden nicht erlaubt'),
+              ),
+            );
+          }
+          return;
+        }
+        await _notifications.scheduleDailyNotification(_notificationTime);
+      } else {
+        await _notifications.cancelAllNotifications();
+      }
+
+      await _storage.setSetting('notificationsEnabled', enabled);
+    } catch (e) {
+      // Error occurred - revert state
+      setState(() {
+        _notificationsEnabled = !enabled;
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Fehler beim ${enabled ? "Aktivieren" : "Deaktivieren"} der Benachrichtigungen',
+            ),
+          ),
+        );
+      }
+    }
   }
 
   Future<void> _selectNotificationTime() async {

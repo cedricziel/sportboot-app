@@ -232,6 +232,7 @@ class NotificationService {
       final notificationDetails = NotificationDetails(
         android: androidDetails,
         iOS: iosDetails,
+        macOS: iosDetails,
       );
 
       // Schedule the notification
@@ -302,6 +303,7 @@ class NotificationService {
       const notificationDetails = NotificationDetails(
         android: androidDetails,
         iOS: iosDetails,
+        macOS: iosDetails,
       );
 
       await _notifications.show(
