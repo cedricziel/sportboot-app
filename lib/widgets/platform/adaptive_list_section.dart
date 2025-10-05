@@ -59,9 +59,9 @@ class AdaptiveListSection extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 16, top: 8),
               child: DefaultTextStyle(
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall!.copyWith(color: Colors.grey[600]),
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
                 child: footer!,
               ),
             ),
