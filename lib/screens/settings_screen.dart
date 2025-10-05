@@ -426,12 +426,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               const SizedBox(height: 16),
               Text(
-                '© 2024 Sportbootführerschein Lern-App',
+                '© 2024 Cedric Ziel',
                 style: TextStyle(
                   fontSize: 12,
                   color: isCupertino(context)
                       ? CupertinoColors.secondaryLabel.resolveFrom(context)
                       : Colors.grey,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Lizenziert unter AGPL-3.0',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: isCupertino(context)
+                      ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                      : Colors.grey,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Quellcode verfügbar auf GitHub',
+                style: TextStyle(
+                  fontSize: 11,
+                  color: isCupertino(context)
+                      ? CupertinoColors.tertiaryLabel.resolveFrom(context)
+                      : Colors.grey[600],
                 ),
               ),
             ],

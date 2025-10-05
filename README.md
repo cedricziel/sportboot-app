@@ -89,4 +89,8 @@ flutter test
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+
+See the [LICENSE](LICENSE) file for details.
+
+**Important:** This license requires that if you modify this software and make it available over a network (e.g., as a web service), you must make the complete source code of your modified version available to users.
