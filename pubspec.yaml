@@ -71,6 +71,10 @@ dependencies:
   # Splash screen
   flutter_native_splash: ^2.4.3
 
+  # App info
+  package_info_plus: ^8.1.2
+  url_launcher: ^6.3.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

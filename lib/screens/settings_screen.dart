@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../services/storage_service.dart';
 import '../services/notification_service.dart';
 import '../widgets/platform/adaptive_switch.dart';
@@ -21,12 +23,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
   late Map<String, dynamic> _settings;
   bool _notificationsEnabled = false;
   TimeOfDay _notificationTime = const TimeOfDay(hour: 19, minute: 0);
+  String _appVersion = '';
 
   @override
   void initState() {
     super.initState();
     _settings = _storage.getSettings();
     _loadNotificationSettings();
+    _loadAppVersion();
+  }
+
+  Future<void> _loadAppVersion() async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      _appVersion = '${packageInfo.version}+${packageInfo.buildNumber}';
+    });
   }
 
   Future<void> _loadNotificationSettings() async {
@@ -375,22 +386,72 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _showAboutDialog() {
-    showAboutDialog(
+    showPlatformDialog(
       context: context,
-      applicationName: 'SBF-See Lernkarten',
-      applicationVersion: '1.0.0',
-      applicationLegalese: '© 2024 Sportbootführerschein Lern-App',
-      children: const [
-        SizedBox(height: 16),
-        Text(
-          'Diese App hilft dir bei der Vorbereitung auf die theoretische Prüfung zum Sportbootführerschein See (SBF-See).',
+      builder: (context) => PlatformAlertDialog(
+        title: const Text('SBF-See Lernkarten'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Version $_appVersion',
+                style: TextStyle(
+                  color: isCupertino(context)
+                      ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                      : null,
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Diese App hilft dir bei der Vorbereitung auf die theoretische Prüfung zum Sportbootführerschein See (SBF-See).',
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Die Fragen basieren auf dem offiziellen Fragenkatalog der ELWIS.',
+              ),
+              const SizedBox(height: 16),
+              GestureDetector(
+                onTap: () => _launchGitHub(),
+                child: Text(
+                  'github.com/cedricziel/sportboot-app',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.activeBlue
+                        : Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                '© 2024 Sportbootführerschein Lern-App',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: isCupertino(context)
+                      ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                      : Colors.grey,
+                ),
+              ),
+            ],
+          ),
         ),
-        SizedBox(height: 8),
-        Text(
-          'Die Fragen basieren auf dem offiziellen Fragenkatalog der ELWIS.',
-        ),
-      ],
+        actions: [
+          PlatformDialogAction(
+            onPressed: () => context.pop(),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
     );
+  }
+
+  Future<void> _launchGitHub() async {
+    final uri = Uri.parse('https://github.com/cedricziel/sportboot-app');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   Future<void> _toggleNotifications(bool enabled) async {
