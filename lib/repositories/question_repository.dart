@@ -3,17 +3,14 @@ import 'package:sqflite/sqflite.dart';
 import '../models/question.dart';
 import '../models/answer_option.dart';
 import '../services/database_helper.dart';
-import '../services/cache_service.dart';
 import '../exceptions/database_exceptions.dart';
 
 class QuestionRepository {
   final DatabaseHelper _databaseHelper;
-  final CacheService _cache;
 
   // Constructor with dependency injection
-  QuestionRepository({DatabaseHelper? databaseHelper, CacheService? cache})
-    : _databaseHelper = databaseHelper ?? DatabaseHelper.instance,
-      _cache = cache ?? CacheService();
+  QuestionRepository({DatabaseHelper? databaseHelper})
+    : _databaseHelper = databaseHelper ?? DatabaseHelper.instance;
 
   Future<int> insertQuestion(Question question, String courseId) async {
     final db = await _databaseHelper.database;
@@ -57,10 +54,6 @@ class QuestionRepository {
       }
     }
 
-    // Invalidate cache for this course
-    _cache.invalidatePattern('questions_course_$courseId.*');
-    _cache.invalidate('all_questions');
-
     await _databaseHelper.executeBatchNoResult((batch) {
       for (final question in questions) {
         final correctAnswerIndex = question.options.indexWhere(
@@ -94,14 +87,12 @@ class QuestionRepository {
   }
 
   Future<List<Question>> getAllQuestions() async {
-    return await _cache.getOrCompute<List<Question>>('all_questions', () async {
-      final db = await _databaseHelper.database;
-      final maps = await db.query(
-        DatabaseHelper.tableQuestions,
-        orderBy: 'number ASC',
-      );
-      return _mapToQuestions(maps);
-    }, duration: const Duration(minutes: 10));
+    final db = await _databaseHelper.database;
+    final maps = await db.query(
+      DatabaseHelper.tableQuestions,
+      orderBy: 'number ASC',
+    );
+    return _mapToQuestions(maps);
   }
 
   Future<List<Question>> getQuestionsByCategory(String category) async {
@@ -384,16 +375,6 @@ class QuestionRepository {
       totalCount: totalCount,
       totalPages: (totalCount / pageSize).ceil(),
     );
-  }
-
-  /// Clear all caches
-  void clearCache() {
-    _cache.clear();
-  }
-
-  /// Dispose resources
-  void dispose() {
-    _cache.dispose();
   }
 }
 

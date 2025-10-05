@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../providers/questions_provider.dart';
 import '../router/app_router.dart';
 import '../widgets/answer_option_widget.dart';
 import '../widgets/zoomable_image.dart';
+import '../widgets/platform/adaptive_card.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -31,101 +34,110 @@ class _QuizScreenState extends State<QuizScreen> {
 
     provider.endSession();
 
-    showDialog(
+    showPlatformDialog(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext dialogContext) {
-        return AlertDialog(
-          title: const Row(
-            children: [
-              Icon(Icons.emoji_events, color: Colors.amber, size: 32),
-              SizedBox(width: 8),
-              Text('Quiz beendet!'),
-            ],
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Deine Ergebnisse:',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildStatItem(
-                    'Richtig',
-                    correctAnswers.toString(),
-                    Colors.green,
-                  ),
-                  _buildStatItem(
-                    'Falsch',
-                    incorrectAnswers.toString(),
-                    Colors.red,
-                  ),
-                  _buildStatItem('Prozent', '$percentage%', Colors.blue),
-                ],
-              ),
-              const SizedBox(height: 20),
-              LinearProgressIndicator(
-                value: correctAnswers / totalQuestions,
-                backgroundColor: Colors.grey[300],
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  percentage >= 80
-                      ? Colors.green
-                      : percentage >= 60
-                      ? Colors.orange
-                      : Colors.red,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                percentage >= 80
-                    ? 'Ausgezeichnet! 🎉'
-                    : percentage >= 60
-                    ? 'Gut gemacht! 👍'
-                    : 'Weiter üben! 💪',
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () async {
-                dialogContext.pop();
-                context.pop();
-
-                // Start a new quick quiz
-                final newProvider = context.read<QuestionsProvider>();
-                await newProvider.loadRandomQuestions(14);
-                newProvider.startSession('quiz', 'quick_quiz');
-
-                if (context.mounted) {
-                  context.push(AppRoutes.quiz);
-                }
-              },
-              child: const Text('Neues Quiz'),
+      builder: (context) => PlatformAlertDialog(
+        title: const Text('Quiz beendet!'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Deine Ergebnisse:',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
-            ElevatedButton(
-              onPressed: () {
-                dialogContext.pop();
-                context.pop();
-              },
-              child: const Text('Zurück zum Menü'),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildStatItem(
+                  'Richtig',
+                  correctAnswers.toString(),
+                  isCupertino(context)
+                      ? CupertinoColors.systemGreen
+                      : Colors.green,
+                ),
+                _buildStatItem(
+                  'Falsch',
+                  incorrectAnswers.toString(),
+                  isCupertino(context) ? CupertinoColors.systemRed : Colors.red,
+                ),
+                _buildStatItem(
+                  'Prozent',
+                  '$percentage%',
+                  isCupertino(context)
+                      ? CupertinoColors.systemBlue
+                      : Colors.blue,
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            LinearProgressIndicator(
+              value: correctAnswers / totalQuestions,
+              backgroundColor: isCupertino(context)
+                  ? CupertinoColors.systemGrey5.resolveFrom(context)
+                  : Colors.grey[300],
+              valueColor: AlwaysStoppedAnimation<Color>(
+                percentage >= 80
+                    ? (isCupertino(context)
+                          ? CupertinoColors.systemGreen
+                          : Colors.green)
+                    : percentage >= 60
+                    ? (isCupertino(context)
+                          ? CupertinoColors.systemOrange
+                          : Colors.orange)
+                    : (isCupertino(context)
+                          ? CupertinoColors.systemRed
+                          : Colors.red),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              percentage >= 80
+                  ? 'Ausgezeichnet! 🎉'
+                  : percentage >= 60
+                  ? 'Gut gemacht! 👍'
+                  : 'Weiter üben! 💪',
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              textAlign: TextAlign.center,
             ),
           ],
-        );
-      },
+        ),
+        actions: [
+          PlatformDialogAction(
+            onPressed: () async {
+              context.pop(); // Close dialog
+              context.pop(); // Go back to home
+
+              // Start a new quick quiz
+              final newProvider = context.read<QuestionsProvider>();
+              await newProvider.loadRandomQuestions(14);
+              newProvider.startSession('quiz', 'quick_quiz');
+
+              if (context.mounted) {
+                context.push(AppRoutes.quiz);
+              }
+            },
+            child: const Text('Neues Quiz'),
+          ),
+          PlatformDialogAction(
+            onPressed: () {
+              context.pop(); // Close dialog
+              context.pop(); // Go back to home
+            },
+            child: const Text('Zurück zum Menü'),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildStatItem(String label, String value, Color color) {
+    final subtitleColor = isCupertino(context)
+        ? CupertinoColors.secondaryLabel
+        : Colors.grey[600];
+
     return Column(
       children: [
         Text(
@@ -137,27 +149,90 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         ),
         const SizedBox(height: 4),
-        Text(label, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+        Text(label, style: TextStyle(fontSize: 12, color: subtitleColor)),
       ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Quiz-Modus'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
+    return PlatformScaffold(
+      appBar: const PlatformAppBar(title: Text('Quiz-Modus')),
       body: Consumer<QuestionsProvider>(
         builder: (context, provider, _) {
           if (provider.isLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: PlatformCircularProgressIndicator());
+          }
+
+          // Show error if present
+          if (provider.error != null) {
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.error_outline,
+                      size: 64,
+                      color: Colors.red,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      provider.error!,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    const SizedBox(height: 24),
+                    PlatformElevatedButton(
+                      onPressed: () => context.pop(),
+                      child: const Text('Zurück'),
+                    ),
+                  ],
+                ),
+              ),
+            );
           }
 
           final question = provider.currentQuestion;
           if (question == null) {
-            return const Center(child: Text('Keine Fragen verfügbar'));
+            // Show debug info to understand why questions are not available
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Keine Fragen verfügbar',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Geladene Fragen: ${provider.currentQuestions.length}',
+                    ),
+                    Text('Aktueller Index: ${provider.currentQuestionIndex}'),
+                    Text('Session aktiv: ${provider.currentSession != null}'),
+                    if (provider.currentSession != null) ...[
+                      Text(
+                        'Session Kategorie: ${provider.currentSession!.category}',
+                      ),
+                      Text(
+                        'Session Fragen: ${provider.currentSession!.questionIds.length}',
+                      ),
+                    ],
+                    const SizedBox(height: 24),
+                    PlatformElevatedButton(
+                      onPressed: () => context.pop(),
+                      child: const Text('Zurück'),
+                    ),
+                  ],
+                ),
+              ),
+            );
           }
 
           return Column(
@@ -173,7 +248,12 @@ class _QuizScreenState extends State<QuizScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   'Frage ${provider.currentQuestionIndex + 1} von ${provider.currentQuestions.length}',
-                  style: const TextStyle(fontSize: 16),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
                 ),
               ),
               Expanded(
@@ -182,45 +262,46 @@ class _QuizScreenState extends State<QuizScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            children: [
-                              SelectableText(
-                                _removeSquareBrackets(question.question),
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                      AdaptiveCard(
+                        child: Column(
+                          children: [
+                            SelectableText(
+                              _removeSquareBrackets(question.question),
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                decoration: TextDecoration.none,
+                                color: isCupertino(context)
+                                    ? CupertinoColors.label.resolveFrom(context)
+                                    : null,
                               ),
-                              if (question.assets.isNotEmpty) ...[
-                                const SizedBox(height: 16),
-                                ...question.assets.map(
-                                  (asset) => Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0,
+                            ),
+                            if (question.assets.isNotEmpty) ...[
+                              const SizedBox(height: 16),
+                              ...question.assets.map(
+                                (asset) => Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 8.0,
+                                  ),
+                                  child: ConstrainedBox(
+                                    constraints: BoxConstraints(
+                                      maxHeight:
+                                          MediaQuery.of(context).size.height *
+                                          0.25,
+                                      maxWidth:
+                                          MediaQuery.of(context).size.width -
+                                          48,
                                     ),
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        maxHeight:
-                                            MediaQuery.of(context).size.height *
-                                            0.25,
-                                        maxWidth:
-                                            MediaQuery.of(context).size.width -
-                                            48,
-                                      ),
-                                      child: ZoomableImage(
-                                        assetPath:
-                                            'assets/images/${asset.split('/').last}',
-                                        height: 150,
-                                      ),
+                                    child: ZoomableImage(
+                                      assetPath:
+                                          'assets/images/${asset.split('/').last}',
+                                      height: 150,
                                     ),
                                   ),
                                 ),
-                              ],
+                              ),
                             ],
-                          ),
+                          ],
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -252,7 +333,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   children: [
                     if (!showResult && selectedAnswer != null)
                       Expanded(
-                        child: ElevatedButton(
+                        child: PlatformElevatedButton(
                           onPressed: () {
                             provider.answerQuestion(selectedAnswer!);
                             setState(() {
@@ -265,7 +346,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     if (showResult) ...[
                       if (provider.hasPrevious)
                         Expanded(
-                          child: ElevatedButton(
+                          child: PlatformElevatedButton(
                             onPressed: () {
                               provider.previousQuestion();
                               setState(() {
@@ -279,7 +360,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       const SizedBox(width: 8),
                       if (provider.hasNext)
                         Expanded(
-                          child: ElevatedButton(
+                          child: PlatformElevatedButton(
                             onPressed: () {
                               provider.nextQuestion();
                               setState(() {
@@ -293,13 +374,16 @@ class _QuizScreenState extends State<QuizScreen> {
                       if (!provider.hasNext &&
                           provider.currentSession?.category == 'quick_quiz')
                         Expanded(
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
-                            ),
+                          child: PlatformElevatedButton(
                             onPressed: () {
                               _showQuizCompletionDialog(context, provider);
                             },
+                            material: (context, platform) =>
+                                MaterialElevatedButtonData(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.green,
+                                  ),
+                                ),
                             child: const Text('Quiz beenden'),
                           ),
                         ),

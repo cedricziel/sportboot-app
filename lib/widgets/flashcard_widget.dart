@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flip_card/flip_card.dart';
 import '../models/question.dart';
 import 'zoomable_image.dart';
+import '../utils/platform_helper.dart';
 
 class FlashcardWidget extends StatelessWidget {
   final Question question;
@@ -27,13 +29,34 @@ class FlashcardWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildCard(BuildContext context, Widget content, Color color) {
+  Widget _buildCard(BuildContext context, Widget content, Color cardColor) {
+    if (PlatformHelper.useIOSStyle) {
+      return Container(
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: CupertinoColors.separator.resolveFrom(context),
+            width: 0.5,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: CupertinoColors.systemGrey.withOpacity(0.2),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: content,
+      );
+    }
+
     return Card(
       elevation: 8,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
         decoration: BoxDecoration(
-          color: color,
+          color: cardColor,
           borderRadius: BorderRadius.circular(16),
         ),
         child: content,
@@ -44,6 +67,9 @@ class FlashcardWidget extends StatelessWidget {
   Widget _buildQuestionSide(BuildContext context) {
     // Remove bracketed descriptions from question text
     final cleanedQuestion = _removeSquareBrackets(question.question);
+    final iconColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.systemBlue
+        : Colors.blue;
 
     return SingleChildScrollView(
       child: Padding(
@@ -51,11 +77,21 @@ class FlashcardWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.help_outline, size: 48, color: Colors.blue),
+            Icon(
+              PlatformHelper.useIOSStyle
+                  ? CupertinoIcons.question_circle
+                  : Icons.help_outline,
+              size: 48,
+              color: iconColor,
+            ),
             const SizedBox(height: 24),
             SelectableText(
               cleanedQuestion,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                decoration: TextDecoration.none,
+              ),
               textAlign: TextAlign.center,
             ),
             if (question.assets.isNotEmpty) ...[
@@ -77,9 +113,14 @@ class FlashcardWidget extends StatelessWidget {
               ),
             ],
             const SizedBox(height: 32),
-            const Text(
+            Text(
               'Tippe zum Umdrehen',
-              style: TextStyle(color: Colors.grey, fontSize: 14),
+              style: TextStyle(
+                color: PlatformHelper.useIOSStyle
+                    ? CupertinoColors.secondaryLabel
+                    : Colors.grey,
+                fontSize: 14,
+              ),
             ),
           ],
         ),
@@ -88,13 +129,23 @@ class FlashcardWidget extends StatelessWidget {
   }
 
   Widget _buildAnswerSide(BuildContext context) {
+    final iconColor = PlatformHelper.useIOSStyle
+        ? CupertinoColors.systemGreen
+        : Colors.green;
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.lightbulb_outline, size: 48, color: Colors.green),
+            Icon(
+              PlatformHelper.useIOSStyle
+                  ? CupertinoIcons.lightbulb
+                  : Icons.lightbulb_outline,
+              size: 48,
+              color: iconColor,
+            ),
             const SizedBox(height: 24),
             const Text(
               'Antwortmöglichkeiten:',
@@ -106,19 +157,28 @@ class FlashcardWidget extends StatelessWidget {
               final option = entry.value;
               final letter = String.fromCharCode(97 + index); // a, b, c, d
 
+              final correctColor = PlatformHelper.useIOSStyle
+                  ? CupertinoColors.systemGreen
+                  : Colors.green;
+              final correctBg = PlatformHelper.useIOSStyle
+                  ? CupertinoColors.systemGreen.withOpacity(0.1)
+                  : Colors.green.shade100;
+              final defaultBg = PlatformHelper.useIOSStyle
+                  ? CupertinoColors.systemBackground.resolveFrom(context)
+                  : Colors.white;
+              final defaultBorder = PlatformHelper.useIOSStyle
+                  ? CupertinoColors.separator.resolveFrom(context)
+                  : Colors.grey.shade300;
+
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 4),
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: option.isCorrect
-                      ? Colors.green.shade100
-                      : Colors.white,
+                  color: option.isCorrect ? correctBg : defaultBg,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: option.isCorrect
-                        ? Colors.green
-                        : Colors.grey.shade300,
-                    width: option.isCorrect ? 2 : 1,
+                    color: option.isCorrect ? correctColor : defaultBorder,
+                    width: option.isCorrect ? 2 : 0.5,
                   ),
                 ),
                 child: Row(
@@ -130,8 +190,10 @@ class FlashcardWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: option.isCorrect
-                            ? Colors.green
-                            : Colors.grey.shade400,
+                            ? correctColor
+                            : (PlatformHelper.useIOSStyle
+                                  ? CupertinoColors.systemGrey
+                                  : Colors.grey.shade400),
                       ),
                       child: Center(
                         child: Text(
@@ -156,22 +218,25 @@ class FlashcardWidget extends StatelessWidget {
                               fontWeight: option.isCorrect
                                   ? FontWeight.bold
                                   : FontWeight.normal,
+                              decoration: TextDecoration.none,
                             ),
                           ),
                           if (option.isCorrect) ...[
                             const SizedBox(height: 4),
-                            const Row(
+                            Row(
                               children: [
                                 Icon(
-                                  Icons.check_circle,
+                                  PlatformHelper.useIOSStyle
+                                      ? CupertinoIcons.check_mark_circled_solid
+                                      : Icons.check_circle,
                                   size: 16,
-                                  color: Colors.green,
+                                  color: correctColor,
                                 ),
-                                SizedBox(width: 4),
+                                const SizedBox(width: 4),
                                 Text(
                                   'Richtige Antwort',
                                   style: TextStyle(
-                                    color: Colors.green,
+                                    color: correctColor,
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -191,21 +256,33 @@ class FlashcardWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
+                  color: PlatformHelper.useIOSStyle
+                      ? CupertinoColors.systemBlue.withOpacity(0.1)
+                      : Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
+                    Row(
                       children: [
-                        Icon(Icons.info_outline, size: 20, color: Colors.blue),
-                        SizedBox(width: 8),
+                        Icon(
+                          PlatformHelper.useIOSStyle
+                              ? CupertinoIcons.info_circle
+                              : Icons.info_outline,
+                          size: 20,
+                          color: PlatformHelper.useIOSStyle
+                              ? CupertinoColors.systemBlue
+                              : Colors.blue,
+                        ),
+                        const SizedBox(width: 8),
                         Text(
                           'Erklärung:',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue,
+                            color: PlatformHelper.useIOSStyle
+                                ? CupertinoColors.systemBlue
+                                : Colors.blue,
                           ),
                         ),
                       ],
@@ -213,7 +290,10 @@ class FlashcardWidget extends StatelessWidget {
                     const SizedBox(height: 8),
                     SelectableText(
                       question.explanation!,
-                      style: const TextStyle(fontSize: 14),
+                      style: const TextStyle(
+                        fontSize: 14,
+                        decoration: TextDecoration.none,
+                      ),
                     ),
                   ],
                 ),

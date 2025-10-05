@@ -17,8 +17,11 @@ Platforms: iOS and macOS native apps
 ```bash
 # Run the app
 flutter run                # Default device
-flutter run -d macos       # macOS
-flutter run -d ios         # iOS simulator
+flutter run -d macos       # macOS (Material design)
+flutter run -d ios         # iOS simulator (Cupertino design)
+
+# Preview iOS UI on macOS (without simulator)
+flutter run -d macos -t lib/main_ios_preview.dart  # macOS with iOS-style UI
 
 # Testing
 flutter test                          # All tests
@@ -58,9 +61,29 @@ dart run tool/scrape_questions.dart   # Scrape questions from ELWIS website
 dart run tool/verify_data.dart        # Validate question data integrity
 ./tool/bump_build.sh                  # Increment build number in pubspec.yaml
 python tool/generate_logo.py          # Generate logo images (requires venv)
+
+# Screenshots
+./tool/take_screenshots.sh            # Interactive screenshot capture (semi-automated)
+flutter screenshot --out=screenshots/name.png -d macos  # Manual single screenshot
+flutter test integration_test/screenshot_test.dart -d <device>  # Full automation (iOS/Android)
 ```
 
 ## Architecture
+
+### Platform-Adaptive UI Layer
+- **PlatformHelper** (`utils/platform_helper.dart`): Centralized platform detection
+  - `useIOSStyle`: Returns true for iOS or iOS preview mode
+  - `enableIOSPreview()`: Enables iOS UI on macOS for testing
+- **Adaptive Widgets** (`widgets/platform/`): Platform-specific UI components
+  - `AdaptiveScaffold`: CupertinoPageScaffold on iOS, Scaffold on Android
+  - `AdaptiveButton/AdaptiveTextButton`: Platform-appropriate buttons
+  - `AdaptiveDialog`: CupertinoAlertDialog on iOS, AlertDialog on Android
+  - `AdaptiveActionSheet`: CupertinoActionSheet on iOS, ModalBottomSheet on Android
+  - `AdaptiveSwitch/AdaptiveSwitchListTile`: Platform-specific switches
+  - `AdaptiveLoadingIndicator`: CupertinoActivityIndicator on iOS, CircularProgressIndicator on Android
+- **Router** (`router/app_router.dart`): Platform-specific page transitions
+  - Uses `CupertinoPage` for iOS (swipe-back gestures)
+  - Uses `MaterialPage` for Android
 
 ### Data Layer
 - **SQLite Database** (`DatabaseHelper`): Primary storage for questions and progress

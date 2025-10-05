@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../providers/questions_provider.dart';
 import '../widgets/flashcard_widget.dart';
 
@@ -8,24 +10,31 @@ class FlashcardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return PlatformScaffold(
+      appBar: PlatformAppBar(
         title: const Text('Lernkarten'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        actions: [
+        trailingActions: [
           Consumer<QuestionsProvider>(
             builder: (context, provider, _) {
               return FutureBuilder<bool>(
                 future: provider.isCurrentQuestionBookmarked(),
                 builder: (context, snapshot) {
                   final isBookmarked = snapshot.data ?? false;
-                  return IconButton(
+                  return PlatformIconButton(
                     icon: Icon(
-                      isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                      isBookmarked
+                          ? (isCupertino(context)
+                                ? CupertinoIcons.bookmark_fill
+                                : Icons.bookmark)
+                          : (isCupertino(context)
+                                ? CupertinoIcons.bookmark
+                                : Icons.bookmark_border),
                     ),
                     onPressed: () {
                       provider.toggleBookmark();
                     },
+                    cupertino: (context, platform) =>
+                        CupertinoIconButtonData(padding: EdgeInsets.zero),
                   );
                 },
               );
@@ -36,7 +45,7 @@ class FlashcardScreen extends StatelessWidget {
       body: Consumer<QuestionsProvider>(
         builder: (context, provider, _) {
           if (provider.isLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: PlatformCircularProgressIndicator());
           }
 
           if (provider.error != null) {
@@ -87,19 +96,46 @@ class FlashcardScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ElevatedButton.icon(
-                      onPressed: provider.hasPrevious
-                          ? () => provider.previousQuestion()
-                          : null,
-                      icon: const Icon(Icons.arrow_back),
-                      label: const Text('Zurück'),
+                    Expanded(
+                      child: PlatformElevatedButton(
+                        onPressed: provider.hasPrevious
+                            ? () => provider.previousQuestion()
+                            : null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              isCupertino(context)
+                                  ? CupertinoIcons.back
+                                  : Icons.arrow_back,
+                              size: 20,
+                            ),
+                            const SizedBox(width: 8),
+                            const Text('Zurück'),
+                          ],
+                        ),
+                      ),
                     ),
-                    ElevatedButton.icon(
-                      onPressed: provider.hasNext
-                          ? () => provider.nextQuestion()
-                          : null,
-                      icon: const Icon(Icons.arrow_forward),
-                      label: const Text('Weiter'),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: PlatformElevatedButton(
+                        onPressed: provider.hasNext
+                            ? () => provider.nextQuestion()
+                            : null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Weiter'),
+                            const SizedBox(width: 8),
+                            Icon(
+                              isCupertino(context)
+                                  ? CupertinoIcons.forward
+                                  : Icons.arrow_forward,
+                              size: 20,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -107,24 +143,49 @@ class FlashcardScreen extends StatelessWidget {
               // Session stats
               Container(
                 padding: const EdgeInsets.all(16.0),
-                color: Colors.grey[100],
+                decoration: BoxDecoration(
+                  color: isCupertino(context)
+                      ? CupertinoColors.systemGroupedBackground.resolveFrom(
+                          context,
+                        )
+                      : Colors.grey[100],
+                  border: isCupertino(context)
+                      ? Border(
+                          top: BorderSide(
+                            color: CupertinoColors.separator.resolveFrom(
+                              context,
+                            ),
+                            width: 0.5,
+                          ),
+                        )
+                      : null,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buildStatItem(
+                      context,
                       'Richtig',
                       provider.getSessionStats()['correct'].toString(),
-                      Colors.green,
+                      isCupertino(context)
+                          ? CupertinoColors.systemGreen
+                          : Colors.green,
                     ),
                     _buildStatItem(
+                      context,
                       'Falsch',
                       provider.getSessionStats()['incorrect'].toString(),
-                      Colors.red,
+                      isCupertino(context)
+                          ? CupertinoColors.systemRed
+                          : Colors.red,
                     ),
                     _buildStatItem(
+                      context,
                       'Offen',
                       provider.getSessionStats()['unanswered'].toString(),
-                      Colors.orange,
+                      isCupertino(context)
+                          ? CupertinoColors.systemOrange
+                          : Colors.orange,
                     ),
                   ],
                 ),
@@ -136,7 +197,12 @@ class FlashcardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStatItem(String label, String value, Color color) {
+  Widget _buildStatItem(
+    BuildContext context,
+    String label,
+    String value,
+    Color color,
+  ) {
     return Column(
       children: [
         Text(

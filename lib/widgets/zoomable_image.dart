@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
+import 'platform/adaptive_loading_indicator.dart';
 
 class ZoomableImage extends StatelessWidget {
   final String assetPath;
@@ -46,6 +47,26 @@ class ZoomableImage extends StatelessWidget {
                 height: height,
                 width: width,
                 fit: BoxFit.contain,
+                frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                  // Show loading indicator while image loads
+                  if (frame == null) {
+                    return SizedBox(
+                      height: height,
+                      width: width,
+                      child: const Center(child: AdaptiveLoadingIndicator()),
+                    );
+                  }
+                  // Fade in when loaded (unless loaded synchronously from cache)
+                  if (wasSynchronouslyLoaded) {
+                    return child;
+                  }
+                  return AnimatedOpacity(
+                    opacity: 1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOut,
+                    child: child,
+                  );
+                },
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
                     height: height,
@@ -114,7 +135,7 @@ class ImageViewerScreen extends StatelessWidget {
           maxScale: PhotoViewComputedScale.covered * 4,
           backgroundDecoration: const BoxDecoration(color: Colors.black),
           loadingBuilder: (context, event) => Center(
-            child: CircularProgressIndicator(
+            child: AdaptiveLoadingIndicator(
               value: event == null
                   ? null
                   : event.cumulativeBytesLoaded /

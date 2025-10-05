@@ -8,6 +8,7 @@ import 'router/app_router.dart';
 import 'services/storage_service.dart';
 import 'services/notification_service.dart';
 
+/// iOS Preview entrypoint - forces iOS UI on macOS for preview/testing
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -64,11 +65,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return PlatformProvider(
+      initialPlatform: TargetPlatform.iOS,
       builder: (context) => MultiProvider(
         providers: [ChangeNotifierProvider(create: (_) => QuestionsProvider())],
         child: PlatformApp.router(
           routerConfig: _router,
-          title: 'SBF-See Lernkarten',
+          title: 'SBF-See Lernkarten (iOS Preview)',
           debugShowCheckedModeBanner: false,
           material: (context, platform) =>
               MaterialAppRouterData(theme: _buildMaterialTheme()),

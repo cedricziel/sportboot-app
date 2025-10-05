@@ -16,6 +16,7 @@ class QuestionsProvider extends ChangeNotifier {
   final StorageService _storage = StorageService();
   final QuestionRepository _repository;
   final MigrationService _migrationService;
+  bool _isInitialized = false;
 
   // Constructor with dependency injection
   QuestionsProvider({
@@ -75,6 +76,12 @@ class QuestionsProvider extends ChangeNotifier {
 
   // Initialize storage and load manifest
   Future<void> init() async {
+    // Skip if already initialized
+    if (_isInitialized) {
+      debugPrint('[QuestionsProvider] Already initialized, skipping...');
+      return;
+    }
+
     _isLoading = true;
     // Defer the notification to avoid calling it during build
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -122,6 +129,9 @@ class QuestionsProvider extends ChangeNotifier {
           _selectedCourseManifest = courseManifest;
         }
       }
+
+      _isInitialized = true;
+      debugPrint('[QuestionsProvider] Initialization complete');
     } catch (e) {
       _error = 'Initialization failed: $e';
     } finally {
@@ -157,15 +167,19 @@ class QuestionsProvider extends ChangeNotifier {
     return _storage.getSetting('selectedCourseId') as String?;
   }
 
-  // Load all questions from database
+  // Load all questions from database for the selected course
   Future<void> loadAllQuestions() async {
-    await _loadQuestionsFromDatabase(() => _repository.getAllQuestions());
-  }
+    if (_selectedCourseManifest == null) {
+      _error = 'Kein Kurs ausgewählt';
+      notifyListeners();
+      return;
+    }
 
-  // Load questions by category from database
-  Future<void> loadCourseById(String courseId) async {
+    // Load all questions from the catalogs that belong to this course
     await _loadQuestionsFromDatabase(
-      () => _repository.getQuestionsByCourse(courseId),
+      () => _repository.getQuestionsByCatalogs(
+        _selectedCourseManifest!.catalogIds,
+      ),
     );
   }
 
@@ -234,15 +248,15 @@ class QuestionsProvider extends ChangeNotifier {
   }
 
   Future<void> loadRandomQuestions(int count) async {
-    // Require a selected course - no more legacy fallback
-    if (_selectedCourseId == null) {
+    // Require a selected course
+    if (_selectedCourseManifest == null) {
       _error = 'Bitte wähle zuerst einen Kurs aus';
       notifyListeners();
       return;
     }
 
-    // Load questions from the selected course only
-    await loadCourseById(_selectedCourseId!);
+    // Load all questions from the selected course
+    await loadAllQuestions();
 
     if (_currentQuestions.isEmpty) {
       _error = 'Keine Fragen im ausgewählten Kurs verfügbar';
@@ -402,13 +416,14 @@ class QuestionsProvider extends ChangeNotifier {
   // Get session stats
   Map<String, dynamic> getSessionStats() {
     if (_currentSession == null) {
-      return {'correct': 0, 'incorrect': 0, 'total': 0};
+      return {'correct': 0, 'incorrect': 0, 'total': 0, 'unanswered': 0};
     }
 
     return {
       'correct': _currentSession!.correctAnswers,
       'incorrect': _currentSession!.incorrectAnswers,
       'total': _currentSession!.totalQuestions,
+      'unanswered': _currentSession!.unanswered,
     };
   }
 
@@ -432,6 +447,14 @@ class QuestionsProvider extends ChangeNotifier {
       _currentQuestions.shuffle();
     }
 
+    notifyListeners();
+  }
+
+  // Shuffle current questions (for flashcard mode)
+  void shuffleCurrentQuestions() {
+    _currentQuestions.shuffle();
+    _currentQuestionIndex = 0;
+    _shuffledQuestionsCache.clear();
     notifyListeners();
   }
 }

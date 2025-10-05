@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
@@ -28,37 +31,72 @@ GoRouter createAppRouter() {
       GoRoute(
         path: AppRoutes.migration,
         name: 'migration',
-        builder: (context, state) => const MigrationScreen(),
+        pageBuilder: (context, state) => _buildPage(
+          context,
+          state,
+          const MigrationScreen(),
+          fullscreenDialog: false,
+        ),
       ),
       GoRoute(
         path: AppRoutes.courseSelection,
         name: 'courseSelection',
-        builder: (context, state) => const CourseSelectionScreen(),
+        pageBuilder: (context, state) => _buildPage(
+          context,
+          state,
+          const CourseSelectionScreen(),
+          fullscreenDialog: false,
+        ),
       ),
       GoRoute(
         path: AppRoutes.home,
         name: 'home',
-        builder: (context, state) => const HomeScreen(),
+        pageBuilder: (context, state) => _buildPage(
+          context,
+          state,
+          const HomeScreen(),
+          fullscreenDialog: false,
+        ),
       ),
       GoRoute(
         path: AppRoutes.quiz,
         name: 'quiz',
-        builder: (context, state) => const QuizScreen(),
+        pageBuilder: (context, state) => _buildPage(
+          context,
+          state,
+          const QuizScreen(),
+          fullscreenDialog: true,
+        ),
       ),
       GoRoute(
         path: AppRoutes.flashcard,
         name: 'flashcard',
-        builder: (context, state) => const FlashcardScreen(),
+        pageBuilder: (context, state) => _buildPage(
+          context,
+          state,
+          const FlashcardScreen(),
+          fullscreenDialog: true,
+        ),
       ),
       GoRoute(
         path: AppRoutes.progress,
         name: 'progress',
-        builder: (context, state) => const ProgressScreen(),
+        pageBuilder: (context, state) => _buildPage(
+          context,
+          state,
+          const ProgressScreen(),
+          fullscreenDialog: true,
+        ),
       ),
       GoRoute(
         path: AppRoutes.settings,
         name: 'settings',
-        builder: (context, state) => const SettingsScreen(),
+        pageBuilder: (context, state) => _buildPage(
+          context,
+          state,
+          const SettingsScreen(),
+          fullscreenDialog: true,
+        ),
       ),
     ],
     redirect: (context, state) {
@@ -81,5 +119,27 @@ GoRouter createAppRouter() {
 
       return null; // No redirect needed
     },
+  );
+}
+
+/// Builds a platform-adaptive page with proper transitions
+Page _buildPage(
+  BuildContext context,
+  GoRouterState state,
+  Widget child, {
+  bool fullscreenDialog = false,
+}) {
+  if (isCupertino(context)) {
+    return CupertinoPage(
+      key: state.pageKey,
+      child: child,
+      fullscreenDialog: fullscreenDialog,
+    );
+  }
+
+  return MaterialPage(
+    key: state.pageKey,
+    child: child,
+    fullscreenDialog: fullscreenDialog,
   );
 }

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../services/storage_service.dart';
 import '../services/notification_service.dart';
+import '../widgets/platform/adaptive_switch.dart';
+import '../widgets/platform/adaptive_list_tile.dart';
+import '../widgets/platform/adaptive_list_section.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -51,106 +56,273 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Einstellungen'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
+    return PlatformScaffold(
+      appBar: const PlatformAppBar(title: Text('Einstellungen')),
       body: ListView(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
+          AdaptiveListSection.insetGrouped(
+            header: Text(
               'Lerneinstellungen',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: isCupertino(context)
+                    ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                    : null,
+              ),
             ),
+            children: [
+              AdaptiveSwitchListTile(
+                title: Text(
+                  'Fragen mischen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  'Zufällige Reihenfolge der Fragen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                value: _settings['shuffleQuestions'] ?? false,
+                onChanged: (value) => _updateSetting('shuffleQuestions', value),
+              ),
+              AdaptiveSwitchListTile(
+                title: Text(
+                  'Timer anzeigen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  'Zeit pro Frage anzeigen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                value: _settings['showTimer'] ?? true,
+                onChanged: (value) => _updateSetting('showTimer', value),
+              ),
+              AdaptiveSwitchListTile(
+                title: Text(
+                  'Töne aktiviert',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  'Soundeffekte bei Antworten',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                value: _settings['soundEnabled'] ?? true,
+                onChanged: (value) => _updateSetting('soundEnabled', value),
+              ),
+            ],
           ),
-          SwitchListTile(
-            title: const Text('Fragen mischen'),
-            subtitle: const Text('Zufällige Reihenfolge der Fragen'),
-            value: _settings['shuffleQuestions'] ?? false,
-            onChanged: (value) => _updateSetting('shuffleQuestions', value),
-          ),
-          SwitchListTile(
-            title: const Text('Timer anzeigen'),
-            subtitle: const Text('Zeit pro Frage anzeigen'),
-            value: _settings['showTimer'] ?? true,
-            onChanged: (value) => _updateSetting('showTimer', value),
-          ),
-          SwitchListTile(
-            title: const Text('Töne aktiviert'),
-            subtitle: const Text('Soundeffekte bei Antworten'),
-            value: _settings['soundEnabled'] ?? true,
-            onChanged: (value) => _updateSetting('soundEnabled', value),
-          ),
-          const Divider(),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
+          AdaptiveListSection.insetGrouped(
+            header: Text(
               'Lernziele',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: isCupertino(context)
+                    ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                    : null,
+              ),
             ),
+            children: [
+              AdaptiveListTile(
+                title: Text(
+                  'Tägliches Ziel',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  '${_settings['dailyGoal'] ?? 20} Fragen pro Tag',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                onTap: () => _showDailyGoalDialog(),
+              ),
+            ],
           ),
-          ListTile(
-            title: const Text('Tägliches Ziel'),
-            subtitle: Text('${_settings['dailyGoal'] ?? 20} Fragen pro Tag'),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-            onTap: () => _showDailyGoalDialog(),
-          ),
-          const Divider(),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
+          AdaptiveListSection.insetGrouped(
+            header: Text(
               'Benachrichtigungen',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: isCupertino(context)
+                    ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                    : null,
+              ),
             ),
+            children: [
+              AdaptiveSwitchListTile(
+                title: Text(
+                  'Tägliche Erinnerung',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  'Erinnere mich ans tägliche Quiz',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                value: _notificationsEnabled,
+                onChanged: (value) => _toggleNotifications(value),
+              ),
+              if (_notificationsEnabled)
+                AdaptiveListTile(
+                  title: Text(
+                    'Erinnerungszeit',
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.label.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
+                  subtitle: Text(
+                    _notificationTime.format(context),
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
+                  onTap: () => _selectNotificationTime(),
+                ),
+              if (_notificationsEnabled)
+                AdaptiveListTile(
+                  title: Text(
+                    'Test-Benachrichtigung',
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.label.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
+                  subtitle: Text(
+                    'Sende eine Test-Benachrichtigung',
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
+                  trailing: Icon(
+                    isCupertino(context)
+                        ? CupertinoIcons.bell_fill
+                        : Icons.notifications_active,
+                  ),
+                  onTap: () => _sendTestNotification(),
+                ),
+            ],
           ),
-          SwitchListTile(
-            title: const Text('Tägliche Erinnerung'),
-            subtitle: const Text('Erinnere mich ans tägliche Quiz'),
-            value: _notificationsEnabled,
-            onChanged: (value) => _toggleNotifications(value),
-          ),
-          if (_notificationsEnabled)
-            ListTile(
-              title: const Text('Erinnerungszeit'),
-              subtitle: Text(_notificationTime.format(context)),
-              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-              onTap: () => _selectNotificationTime(),
-            ),
-          if (_notificationsEnabled)
-            ListTile(
-              title: const Text('Test-Benachrichtigung'),
-              subtitle: const Text('Sende eine Test-Benachrichtigung'),
-              trailing: const Icon(Icons.notifications_active),
-              onTap: () => _sendTestNotification(),
-            ),
-          const Divider(),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
+          AdaptiveListSection.insetGrouped(
+            header: Text(
               'App-Info',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: isCupertino(context)
+                    ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                    : null,
+              ),
             ),
+            children: [
+              AdaptiveListTile(
+                title: Text(
+                  'Version',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  '1.0.0',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+              ),
+              AdaptiveListTile(
+                title: Text(
+                  'Fragen',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  '287 Fragen (SBF-See 2024)',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+              ),
+              AdaptiveListTile(
+                title: Text(
+                  'Quelle',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                subtitle: Text(
+                  'ELWIS - Elektronisches Wasserstraßen-Informationssystem',
+                  style: TextStyle(
+                    color: isCupertino(context)
+                        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+              ),
+            ],
           ),
-          const ListTile(title: Text('Version'), subtitle: Text('1.0.0')),
-          const ListTile(
-            title: Text('Fragen'),
-            subtitle: Text('287 Fragen (SBF-See 2024)'),
-          ),
-          const ListTile(
-            title: Text('Quelle'),
-            subtitle: Text(
-              'ELWIS - Elektronisches Wasserstraßen-Informationssystem',
-            ),
-          ),
-          const Divider(),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: OutlinedButton.icon(
+            child: PlatformElevatedButton(
               onPressed: () => _showAboutDialog(),
-              icon: const Icon(Icons.info_outline),
-              label: const Text('Über diese App'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    isCupertino(context)
+                        ? CupertinoIcons.info_circle
+                        : Icons.info_outline,
+                    size: 20,
+                  ),
+                  const SizedBox(width: 8),
+                  const Text('Über diese App'),
+                ],
+              ),
             ),
           ),
         ],
@@ -160,41 +332,39 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   void _showDailyGoalDialog() {
     int currentGoal = _settings['dailyGoal'] ?? 20;
-    showDialog(
+    showPlatformDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Tägliches Lernziel'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Wie viele Fragen möchtest du täglich lernen?'),
-              const SizedBox(height: 16),
-              Wrap(
-                spacing: 8,
-                children: [10, 20, 30, 50, 100].map((goal) {
-                  return ChoiceChip(
-                    label: Text('$goal'),
-                    selected: currentGoal == goal,
-                    onSelected: (selected) {
-                      if (selected) {
-                        _updateSetting('dailyGoal', goal);
-                        context.pop();
-                      }
-                    },
-                  );
-                }).toList(),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => context.pop(),
-              child: const Text('Abbrechen'),
+      builder: (context) => PlatformAlertDialog(
+        title: const Text('Tägliches Lernziel'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Wie viele Fragen möchtest du täglich lernen?'),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 8,
+              children: [10, 20, 30, 50, 100].map((goal) {
+                return ChoiceChip(
+                  label: Text('$goal'),
+                  selected: currentGoal == goal,
+                  onSelected: (selected) {
+                    if (selected) {
+                      _updateSetting('dailyGoal', goal);
+                      context.pop();
+                    }
+                  },
+                );
+              }).toList(),
             ),
           ],
-        );
-      },
+        ),
+        actions: [
+          PlatformDialogAction(
+            onPressed: () => context.pop(),
+            child: const Text('Abbrechen'),
+          ),
+        ],
+      ),
     );
   }
 
@@ -242,28 +412,83 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _selectNotificationTime() async {
-    final TimeOfDay? newTime = await showTimePicker(
-      context: context,
-      initialTime: _notificationTime,
-      helpText: 'Wähle Erinnerungszeit',
-      builder: (context, child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
-          child: child!,
-        );
-      },
-    );
+    TimeOfDay? newTime;
+
+    if (isCupertino(context)) {
+      // Use Cupertino picker for iOS
+      await showCupertinoModalPopup(
+        context: context,
+        builder: (context) {
+          DateTime tempTime = DateTime(
+            2024,
+            1,
+            1,
+            _notificationTime.hour,
+            _notificationTime.minute,
+          );
+          return Container(
+            height: 216,
+            color: CupertinoColors.systemBackground.resolveFrom(context),
+            child: SafeArea(
+              top: false,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CupertinoButton(
+                        child: const Text('Abbrechen'),
+                        onPressed: () => context.pop(),
+                      ),
+                      CupertinoButton(
+                        child: const Text('Fertig'),
+                        onPressed: () {
+                          newTime = TimeOfDay.fromDateTime(tempTime);
+                          context.pop();
+                        },
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: CupertinoDatePicker(
+                      mode: CupertinoDatePickerMode.time,
+                      use24hFormat: true,
+                      initialDateTime: tempTime,
+                      onDateTimeChanged: (DateTime value) {
+                        tempTime = value;
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      newTime = await showTimePicker(
+        context: context,
+        initialTime: _notificationTime,
+        helpText: 'Wähle Erinnerungszeit',
+        builder: (context, child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+            child: child!,
+          );
+        },
+      );
+    }
 
     if (newTime != null && newTime != _notificationTime) {
       setState(() {
-        _notificationTime = newTime;
+        _notificationTime = newTime!;
       });
       await _storage.setSetting(
         'notificationTime',
-        '${newTime.hour}:${newTime.minute}',
+        '${newTime!.hour}:${newTime!.minute}',
       );
       if (_notificationsEnabled) {
-        await _notifications.scheduleDailyNotification(newTime);
+        await _notifications.scheduleDailyNotification(newTime!);
       }
     }
   }

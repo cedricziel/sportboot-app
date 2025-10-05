@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../providers/questions_provider.dart';
 import '../router/app_router.dart';
+import '../widgets/platform/adaptive_action_sheet.dart';
+import '../widgets/platform/adaptive_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,30 +39,41 @@ class _HomeScreenState extends State<HomeScreen> {
     final courseManifest = provider.selectedCourseManifest;
     final courseTitle = courseManifest?.shortName ?? 'Lernkarten';
 
-    return Scaffold(
-      appBar: AppBar(
+    return PlatformScaffold(
+      appBar: PlatformAppBar(
         title: Text(courseTitle),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.swap_horiz),
-            tooltip: 'Kurs wechseln',
-            onPressed: () {
-              context.go(AppRoutes.courseSelection);
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.bar_chart),
-            onPressed: () {
-              context.push(AppRoutes.progress);
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              context.push(AppRoutes.settings);
-            },
-          ),
+        trailingActions: [
+          if (isCupertino(context)) ...[
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: const Icon(CupertinoIcons.arrow_2_squarepath),
+              onPressed: () => context.go(AppRoutes.courseSelection),
+            ),
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: const Icon(CupertinoIcons.chart_bar),
+              onPressed: () => context.push(AppRoutes.progress),
+            ),
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: const Icon(CupertinoIcons.settings),
+              onPressed: () => context.push(AppRoutes.settings),
+            ),
+          ] else ...[
+            IconButton(
+              icon: const Icon(Icons.swap_horiz),
+              tooltip: 'Kurs wechseln',
+              onPressed: () => context.go(AppRoutes.courseSelection),
+            ),
+            IconButton(
+              icon: const Icon(Icons.bar_chart),
+              onPressed: () => context.push(AppRoutes.progress),
+            ),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () => context.push(AppRoutes.settings),
+            ),
+          ],
         ],
       ),
       body: Padding(
@@ -66,46 +81,55 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Consumer<QuestionsProvider>(
-                  builder: (context, provider, _) {
-                    final courseManifest = provider.selectedCourseManifest;
-                    final courseName =
-                        courseManifest?.name ?? 'Kein Kurs ausgewählt';
-                    final courseIcon = courseManifest?.icon ?? '📚';
+            AdaptiveCard(
+              child: Consumer<QuestionsProvider>(
+                builder: (context, provider, _) {
+                  final courseManifest = provider.selectedCourseManifest;
+                  final courseName =
+                      courseManifest?.name ?? 'Kein Kurs ausgewählt';
+                  final courseIcon = courseManifest?.icon ?? '📚';
 
-                    // Get total question count from manifest if available
-                    final questionCount = courseManifest?.totalQuestions ?? 0;
+                  // Get total question count from manifest if available
+                  final questionCount = courseManifest?.totalQuestions ?? 0;
+                  final subtitleColor = isCupertino(context)
+                      ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                      : Colors.grey;
 
-                    return Column(
-                      children: [
-                        Text(courseIcon, style: const TextStyle(fontSize: 48)),
-                        const SizedBox(height: 8),
-                        Text(
-                          courseName,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
+                  return Column(
+                    children: [
+                      Text(courseIcon, style: const TextStyle(fontSize: 48)),
+                      const SizedBox(height: 8),
+                      Text(
+                        courseName,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: isCupertino(context)
+                              ? CupertinoColors.label.resolveFrom(context)
+                              : null,
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          '$questionCount Fragen',
-                          style: const TextStyle(color: Colors.grey),
-                        ),
-                      ],
-                    );
-                  },
-                ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '$questionCount Fragen',
+                        style: TextStyle(color: subtitleColor),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
             const SizedBox(height: 24),
-            const Text(
+            Text(
               'Wähle eine Kategorie:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: isCupertino(context)
+                    ? CupertinoColors.label.resolveFrom(context)
+                    : null,
+              ),
             ),
             const SizedBox(height: 16),
             Expanded(
@@ -196,81 +220,88 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildQuickQuizCard(BuildContext context) {
-    return Card(
-      elevation: 4,
-      color: Colors.blue.shade50,
-      child: InkWell(
-        onTap: () async {
-          await _loadQuestionsAndNavigate(
-            context,
-            'quick_quiz',
-            'quiz',
-            AppRoutes.quiz,
-          );
-        },
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.blue.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Icon(Icons.bolt, color: Colors.blue, size: 32),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Schnell-Quiz',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '14 zufällige Fragen',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 14),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      'Teste dein Wissen in 5 Minuten',
-                      style: TextStyle(
-                        color: Colors.blue[700],
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Text(
-                  'NEU',
+    final blueColor = isCupertino(context)
+        ? CupertinoColors.systemBlue
+        : Colors.blue;
+    final bgColor = isCupertino(context)
+        ? CupertinoColors.systemBlue.withOpacity(0.1)
+        : Colors.blue.shade50;
+    final subtitleColor = isCupertino(context)
+        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+        : Colors.grey[600];
+
+    return AdaptiveCard(
+      color: bgColor,
+      onTap: () async {
+        await _loadQuestionsAndNavigate(
+          context,
+          'quick_quiz',
+          'quiz',
+          AppRoutes.quiz,
+        );
+      },
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: blueColor.withValues(alpha: 0.2),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(
+              isCupertino(context) ? CupertinoIcons.bolt : Icons.bolt,
+              color: blueColor,
+              size: 32,
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Schnell-Quiz',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 4),
+                Text(
+                  '14 zufällige Fragen',
+                  style: TextStyle(color: subtitleColor, fontSize: 14),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  'Teste dein Wissen in 5 Minuten',
+                  style: TextStyle(
+                    color: blueColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: blueColor,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Text(
+              'NEU',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -283,99 +314,102 @@ class _HomeScreenState extends State<HomeScreen> {
     Color color,
     String category,
   ) {
-    return Card(
-      child: InkWell(
-        onTap: () => _showModeSelection(context, category, title),
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Icon(icon, color: color, size: 32),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      subtitle,
-                      style: TextStyle(color: Colors.grey[600], fontSize: 14),
-                    ),
-                  ],
-                ),
-              ),
-              const Icon(Icons.arrow_forward_ios, size: 16),
-            ],
+    final subtitleColor = isCupertino(context)
+        ? CupertinoColors.secondaryLabel.resolveFrom(context)
+        : Colors.grey[600];
+    final chevronColor = isCupertino(context)
+        ? CupertinoColors.separator.resolveFrom(context)
+        : Colors.grey;
+
+    return AdaptiveCard(
+      margin: const EdgeInsets.only(bottom: 12),
+      onTap: () => _showModeSelection(context, category, title),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: color, size: 32),
           ),
-        ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: isCupertino(context)
+                        ? CupertinoColors.label.resolveFrom(context)
+                        : null,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  subtitle,
+                  style: TextStyle(color: subtitleColor, fontSize: 14),
+                ),
+              ],
+            ),
+          ),
+          Icon(
+            isCupertino(context)
+                ? CupertinoIcons.chevron_forward
+                : Icons.arrow_forward_ios,
+            size: isCupertino(context) ? 20 : 16,
+            color: chevronColor,
+          ),
+        ],
       ),
     );
   }
 
   void _showModeSelection(BuildContext context, String category, String title) {
-    showModalBottomSheet(
+    showAdaptiveActionSheet(
       context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 24),
-              ListTile(
-                leading: const Icon(Icons.style, color: Colors.blue),
-                title: const Text('Lernkarten'),
-                subtitle: const Text('Frage und Antwort umdrehen'),
-                onTap: () async {
-                  context.pop();
-                  await _loadQuestionsAndNavigate(
-                    context,
-                    category,
-                    'flashcard',
-                    AppRoutes.flashcard,
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.quiz, color: Colors.green),
-                title: const Text('Quiz-Modus'),
-                subtitle: const Text('Multiple-Choice mit Bewertung'),
-                onTap: () async {
-                  context.pop();
-                  await _loadQuestionsAndNavigate(
-                    context,
-                    category,
-                    'quiz',
-                    AppRoutes.quiz,
-                  );
-                },
-              ),
-            ],
-          ),
-        );
-      },
+      title: title,
+      message: 'Wähle einen Modus',
+      actions: [
+        AdaptiveActionSheetAction(
+          icon: isCupertino(context)
+              ? CupertinoIcons.square_on_square
+              : Icons.style,
+          child: const Text('Lernkarten'),
+          onPressed: () async {
+            context.pop();
+            await _loadQuestionsAndNavigate(
+              context,
+              category,
+              'flashcard',
+              AppRoutes.flashcard,
+            );
+          },
+        ),
+        AdaptiveActionSheetAction(
+          icon: isCupertino(context)
+              ? CupertinoIcons.question_circle
+              : Icons.quiz,
+          child: const Text('Quiz-Modus'),
+          onPressed: () async {
+            context.pop();
+            await _loadQuestionsAndNavigate(
+              context,
+              category,
+              'quiz',
+              AppRoutes.quiz,
+            );
+          },
+        ),
+      ],
+      cancelAction: AdaptiveActionSheetAction(
+        child: const Text('Abbrechen'),
+        onPressed: () => context.pop(),
+      ),
     );
   }
 
@@ -388,41 +422,74 @@ class _HomeScreenState extends State<HomeScreen> {
     final provider = context.read<QuestionsProvider>();
 
     // Show loading dialog
-    showDialog(
+    showPlatformDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => const Center(
-        child: Card(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: CircularProgressIndicator(),
-          ),
-        ),
-      ),
+      builder: (_) => const Center(child: PlatformCircularProgressIndicator()),
     );
 
     try {
+      debugPrint(
+        '[Navigation] Loading questions for category: $category, mode: $mode',
+      );
+
       // Load questions based on category
       if (category == 'quick_quiz') {
         await provider.loadRandomQuestions(14);
+        debugPrint(
+          '[Navigation] Quick quiz loaded: ${provider.currentQuestions.length} questions',
+        );
       } else if (category == 'bookmarks') {
         await provider.loadAllQuestions();
         provider.filterByBookmarks();
+        debugPrint(
+          '[Navigation] Bookmarks loaded: ${provider.currentQuestions.length} questions',
+        );
       } else if (category == 'incorrect') {
         await provider.loadAllQuestions();
         provider.filterByIncorrect();
+        debugPrint(
+          '[Navigation] Incorrect loaded: ${provider.currentQuestions.length} questions',
+        );
       } else if (category == 'all' || category == 'all_questions') {
         await provider.loadAllQuestions();
+        debugPrint(
+          '[Navigation] All questions loaded: ${provider.currentQuestions.length} questions',
+        );
       } else {
         // Load category from course manifest
         await provider.loadCategory(category);
+        debugPrint(
+          '[Navigation] Category loaded: ${provider.currentQuestions.length} questions',
+        );
+      }
+
+      debugPrint(
+        '[Navigation] Current index: ${provider.currentQuestionIndex}',
+      );
+      debugPrint(
+        '[Navigation] Current question ID: ${provider.currentQuestion?.id}',
+      );
+      debugPrint('[Navigation] Provider error: ${provider.error}');
+
+      // Always shuffle questions in flashcard mode for better learning
+      if (mode == 'flashcard') {
+        provider.shuffleCurrentQuestions();
+        debugPrint('[Navigation] Questions shuffled for flashcard mode');
       }
 
       provider.startSession(mode, category);
+      debugPrint('[Navigation] Session started');
 
       if (context.mounted) {
         context.pop(); // Close loading dialog
-        context.push(routePath);
+        debugPrint('[Navigation] Dialog closed');
+
+        if (context.mounted) {
+          debugPrint('[Navigation] About to navigate to: $routePath');
+          context.push(routePath);
+          debugPrint('[Navigation] Navigation completed');
+        }
       }
     } catch (e) {
       if (context.mounted) {

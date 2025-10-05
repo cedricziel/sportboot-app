@@ -47,6 +47,7 @@ dependencies:
   # UI components
   flip_card: ^0.7.0
   percent_indicator: ^4.2.3
+  flutter_platform_widgets: ^9.0.0
 
   # Image handling
   cached_network_image: ^3.3.0
@@ -95,6 +96,11 @@ dev_dependencies:
 
   # Launcher icons
   flutter_launcher_icons: ^0.14.1
+
+  # Screenshot generation
+  integration_test:
+    sdk: flutter
+  screenshot: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -54,3 +54,7 @@ __pycache__/
 
 # Scraper cache
 .cache/
+
+# Screenshots
+screenshots/
+*.png.new
