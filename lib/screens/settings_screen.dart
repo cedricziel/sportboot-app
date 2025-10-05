@@ -47,6 +47,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
     });
   }
 
+  String _formatTime(TimeOfDay time) {
+    final hour = time.hour.toString().padLeft(2, '0');
+    final minute = time.minute.toString().padLeft(2, '0');
+    return '$hour:$minute';
+  }
+
   void _updateSetting(String key, dynamic value) {
     setState(() {
       _settings[key] = value;
@@ -204,7 +210,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ),
                   subtitle: Text(
-                    _notificationTime.format(context),
+                    _formatTime(_notificationTime),
                     style: TextStyle(
                       color: isCupertino(context)
                           ? CupertinoColors.secondaryLabel.resolveFrom(context)
