@@ -73,7 +73,7 @@ dependencies:
   flutter_native_splash: ^2.4.3
 
   # App info
-  package_info_plus: ^8.1.2
+  package_info_plus: ^9.0.0
   url_launcher: ^6.3.1
 
 dev_dependencies:
