@@ -478,7 +478,7 @@ class _HomeScreenState extends State<HomeScreen> {
         debugPrint('[Navigation] Questions shuffled for flashcard mode');
       }
 
-      provider.startSession(mode, category);
+      await provider.startSession(mode, category);
       debugPrint('[Navigation] Session started');
 
       if (context.mounted) {

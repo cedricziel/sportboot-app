@@ -11,6 +11,7 @@ import '../screens/quiz_screen.dart';
 import '../screens/flashcard_screen.dart';
 import '../screens/progress_screen.dart';
 import '../screens/settings_screen.dart';
+import '../screens/goal_achieved_screen.dart';
 
 /// Route paths as constants for type-safe navigation
 class AppRoutes {
@@ -21,6 +22,7 @@ class AppRoutes {
   static const String flashcard = '/flashcard';
   static const String progress = '/progress';
   static const String settings = '/settings';
+  static const String goalAchieved = '/goal-achieved';
 }
 
 /// Creates and configures the app's router
@@ -97,6 +99,23 @@ GoRouter createAppRouter() {
           const SettingsScreen(),
           fullscreenDialog: true,
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.goalAchieved,
+        name: 'goalAchieved',
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          return _buildPage(
+            context,
+            state,
+            GoalAchievedScreen(
+              streak: extra?['streak'] as int? ?? 0,
+              questionsCompleted: extra?['questionsCompleted'] as int? ?? 0,
+              message: extra?['message'] as String? ?? 'Glückwunsch!',
+            ),
+            fullscreenDialog: true,
+          );
+        },
       ),
     ],
     redirect: (context, state) {

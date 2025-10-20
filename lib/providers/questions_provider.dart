@@ -3,10 +3,13 @@ import '../models/course.dart';
 import '../models/course_manifest.dart';
 import '../models/question.dart';
 import '../models/study_session.dart';
+import '../models/daily_goal.dart';
 import '../repositories/question_repository.dart';
 import '../services/data_loader.dart';
 import '../services/migration_service.dart';
 import '../services/storage_service.dart';
+import '../services/daily_goal_service.dart';
+import '../services/live_activity_service.dart';
 
 class QuestionsProvider extends ChangeNotifier {
   Course? _currentCourse;
@@ -16,14 +19,24 @@ class QuestionsProvider extends ChangeNotifier {
   final StorageService _storage = StorageService();
   final QuestionRepository _repository;
   final MigrationService _migrationService;
+  final DailyGoalService _dailyGoalService;
+  final LiveActivityService _liveActivityService;
   bool _isInitialized = false;
+
+  // Daily goal tracking
+  DailyGoal? _todayGoal;
+  bool _hasShownCelebrationToday = false;
 
   // Constructor with dependency injection
   QuestionsProvider({
     QuestionRepository? repository,
     MigrationService? migrationService,
+    DailyGoalService? dailyGoalService,
+    LiveActivityService? liveActivityService,
   }) : _repository = repository ?? QuestionRepository(),
-       _migrationService = migrationService ?? MigrationService();
+       _migrationService = migrationService ?? MigrationService(),
+       _dailyGoalService = dailyGoalService ?? DailyGoalService(),
+       _liveActivityService = liveActivityService ?? LiveActivityService();
 
   // Course management
   String? _selectedCourseId;
@@ -68,6 +81,10 @@ class QuestionsProvider extends ChangeNotifier {
   bool get hasPrevious => _currentQuestionIndex > 0;
   double get migrationProgress => _migrationProgress;
   String get migrationStatus => _migrationStatus;
+
+  // Daily goal getters
+  DailyGoal? get todayGoal => _todayGoal;
+  bool get shouldShowCelebration => _hasShownCelebrationToday;
 
   // Course management getters
   String? get selectedCourseId => _selectedCourseId;
@@ -129,6 +146,9 @@ class QuestionsProvider extends ChangeNotifier {
           _selectedCourseManifest = courseManifest;
         }
       }
+
+      // Load today's goal
+      await _loadTodayGoal();
 
       _isInitialized = true;
       debugPrint('[QuestionsProvider] Initialization complete');
@@ -333,7 +353,7 @@ class QuestionsProvider extends ChangeNotifier {
   }
 
   // Start a new study session
-  void startSession(String mode, String category) {
+  Future<void> startSession(String mode, String category) async {
     _currentSession = StudySession(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       startTime: DateTime.now(),
@@ -343,6 +363,19 @@ class QuestionsProvider extends ChangeNotifier {
       category: category,
       mode: mode,
     );
+
+    // Start Live Activity if daily goals are enabled
+    if (_dailyGoalService.areGoalsEnabled() && _todayGoal != null) {
+      final streak = await _dailyGoalService.getStreak();
+      final courseName = _selectedCourseManifest?.name ?? 'Sportboot';
+
+      await _liveActivityService.startLiveActivity(
+        courseName: courseName,
+        targetQuestions: _todayGoal!.targetQuestions,
+        currentStreak: streak,
+      );
+    }
+
     notifyListeners();
   }
 
@@ -364,11 +397,29 @@ class QuestionsProvider extends ChangeNotifier {
       isCorrect: isCorrect,
     );
 
+    // Update daily goal progress
+    await _updateDailyGoalProgress();
+
     notifyListeners();
   }
 
   // End current session
-  void endSession() {
+  Future<void> endSession() async {
+    // End Live Activity if it's active
+    if (_liveActivityService.hasActiveActivity) {
+      if (_todayGoal != null) {
+        final streak = await _dailyGoalService.getStreak();
+        await _liveActivityService.endActivityWithFinalState(
+          questionsCompleted: _todayGoal!.completedQuestions,
+          targetQuestions: _todayGoal!.targetQuestions,
+          currentStreak: streak,
+          isGoalAchieved: _todayGoal!.isAchieved,
+        );
+      } else {
+        await _liveActivityService.endLiveActivity();
+      }
+    }
+
     _currentSession = null;
     notifyListeners();
   }
@@ -455,6 +506,67 @@ class QuestionsProvider extends ChangeNotifier {
     _currentQuestions.shuffle();
     _currentQuestionIndex = 0;
     _shuffledQuestionsCache.clear();
+    notifyListeners();
+  }
+
+  // Daily goal methods
+  Future<void> _loadTodayGoal() async {
+    try {
+      _todayGoal = await _dailyGoalService.getTodayGoal();
+      // Reset celebration flag for new day
+      final today = DailyGoal.getTodayString();
+      final lastCelebrationDate = _storage.getSetting('lastCelebrationDate');
+      if (lastCelebrationDate != today) {
+        _hasShownCelebrationToday = false;
+      }
+    } catch (e) {
+      debugPrint('[QuestionsProvider] Error loading today\'s goal: $e');
+    }
+  }
+
+  Future<void> _updateDailyGoalProgress() async {
+    if (!_dailyGoalService.areGoalsEnabled()) return;
+
+    try {
+      final oldGoal = _todayGoal;
+      final newGoal = await _dailyGoalService.incrementTodayProgress();
+      _todayGoal = newGoal;
+
+      // Update Live Activity with new progress
+      if (_liveActivityService.hasActiveActivity) {
+        final streak = await _dailyGoalService.getStreak();
+        await _liveActivityService.updateFromDailyGoal(
+          goal: newGoal,
+          currentStreak: streak,
+        );
+      }
+
+      // Check if goal was just achieved
+      if (oldGoal != null &&
+          await _dailyGoalService.wasGoalJustAchieved(oldGoal, newGoal)) {
+        _hasShownCelebrationToday = true;
+        // Store celebration date
+        await _storage.setSetting(
+          'lastCelebrationDate',
+          DailyGoal.getTodayString(),
+        );
+      }
+    } catch (e) {
+      debugPrint('[QuestionsProvider] Error updating daily goal: $e');
+    }
+  }
+
+  Future<int> getStreak() async {
+    return await _dailyGoalService.getStreak();
+  }
+
+  void markCelebrationShown() {
+    _hasShownCelebrationToday = false;
+    notifyListeners();
+  }
+
+  Future<void> refreshDailyGoal() async {
+    await _loadTodayGoal();
     notifyListeners();
   }
 }

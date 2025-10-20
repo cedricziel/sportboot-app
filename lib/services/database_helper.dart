@@ -6,13 +6,13 @@ import '../exceptions/database_exceptions.dart';
 
 class DatabaseHelper {
   static const String _databaseName = 'sportboot.db';
-  static const int _databaseVersion =
-      2; // Incremented for new indexes and foreign key constraints
+  static const int _databaseVersion = 3; // Incremented for daily goals table
 
   static const String tableQuestions = 'questions';
   static const String tableProgress = 'progress';
   static const String tableBookmarks = 'bookmarks';
   static const String tableSettings = 'settings';
+  static const String tableDailyGoals = 'daily_goals';
 
   // Instance management
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -166,6 +166,20 @@ class DatabaseHelper {
         updated_at INTEGER NOT NULL
       )
     ''');
+
+    await db.execute('''
+      CREATE TABLE $tableDailyGoals (
+        date TEXT PRIMARY KEY,
+        target_questions INTEGER NOT NULL,
+        completed_questions INTEGER DEFAULT 0,
+        achieved_at INTEGER
+      )
+    ''');
+
+    // Index for querying recent goals
+    await db.execute('''
+      CREATE INDEX idx_daily_goals_date ON $tableDailyGoals(date DESC)
+    ''');
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
@@ -249,6 +263,7 @@ class DatabaseHelper {
         await txn.delete(tableProgress);
         await txn.delete(tableBookmarks);
         await txn.delete(tableSettings);
+        await txn.delete(tableDailyGoals);
       });
     } catch (e, stackTrace) {
       throw QueryException(

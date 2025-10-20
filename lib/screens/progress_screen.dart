@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import '../repositories/question_repository.dart';
 import '../services/database_helper.dart';
+import '../services/daily_goal_service.dart';
+import '../models/daily_goal.dart';
 import '../widgets/platform/adaptive_card.dart';
 
 class ProgressScreen extends StatefulWidget {
@@ -16,11 +19,13 @@ class ProgressScreen extends StatefulWidget {
 
 class _ProgressScreenState extends State<ProgressScreen> {
   final QuestionRepository _repository = QuestionRepository();
+  final DailyGoalService _dailyGoalService = DailyGoalService();
   int _totalQuestions = 0;
   int _correctAnswers = 0;
   int _incorrectAnswers = 0;
   int _studyStreak = 0;
   bool _isLoading = true;
+  DailyGoal? _todayGoal;
 
   @override
   void initState() {
@@ -35,78 +40,23 @@ class _ProgressScreenState extends State<ProgressScreen> {
       final progress = await _repository.getProgress();
       final overall = progress['overall'] as Map<String, dynamic>;
 
-      // Calculate study streak from database
-      final studyStreak = await _calculateStudyStreak();
+      // Calculate study streak from daily goals service
+      final studyStreak = await _dailyGoalService.getStreak();
+
+      // Load today's goal
+      final todayGoal = await _dailyGoalService.getTodayGoal();
 
       setState(() {
         _totalQuestions = (overall['total'] as int?) ?? 0;
         _correctAnswers = (overall['correct'] as int?) ?? 0;
         _incorrectAnswers = (overall['incorrect'] as int?) ?? 0;
         _studyStreak = studyStreak;
+        _todayGoal = todayGoal;
         _isLoading = false;
       });
     } catch (e) {
       debugPrint('Error loading statistics: $e');
       setState(() => _isLoading = false);
-    }
-  }
-
-  Future<int> _calculateStudyStreak() async {
-    try {
-      final db = await DatabaseHelper.instance.database;
-
-      // Get the last study date from progress table
-      final result = await db.rawQuery('''
-        SELECT MAX(last_answered_at) as last_study
-        FROM ${DatabaseHelper.tableProgress}
-      ''');
-
-      final lastStudyMillis = result.first['last_study'] as int?;
-      if (lastStudyMillis == null) return 0;
-
-      final lastStudyDate = DateTime.fromMillisecondsSinceEpoch(
-        lastStudyMillis,
-      );
-      final today = DateTime.now();
-      final difference = today.difference(lastStudyDate).inDays;
-
-      // If studied today or yesterday, consider it as maintaining streak
-      if (difference <= 1) {
-        // Count consecutive days with activity
-        int streak = 0;
-        DateTime checkDate = DateTime(today.year, today.month, today.day);
-
-        for (int i = 0; i < 365; i++) {
-          // Check up to 1 year
-          final dayStart = checkDate
-              .subtract(Duration(days: i))
-              .millisecondsSinceEpoch;
-          final dayEnd = dayStart + 86400000; // 24 hours in milliseconds
-
-          final dayResult = await db.rawQuery(
-            '''
-            SELECT COUNT(*) as count
-            FROM ${DatabaseHelper.tableProgress}
-            WHERE last_answered_at >= ? AND last_answered_at < ?
-          ''',
-            [dayStart, dayEnd],
-          );
-
-          final count = (dayResult.first['count'] as int?) ?? 0;
-          if (count > 0) {
-            streak++;
-          } else {
-            break; // Streak broken
-          }
-        }
-
-        return streak;
-      }
-
-      return 0; // Streak broken if more than 1 day ago
-    } catch (e) {
-      debugPrint('Error calculating study streak: $e');
-      return 0;
     }
   }
 
@@ -135,6 +85,87 @@ class _ProgressScreenState extends State<ProgressScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // Daily Goal Progress Card
+            if (_dailyGoalService.areGoalsEnabled() && _todayGoal != null)
+              AdaptiveCard(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Heutiges Ziel',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: isIOS
+                                ? CupertinoColors.label.resolveFrom(context)
+                                : null,
+                          ),
+                        ),
+                        Icon(
+                          _todayGoal!.isAchieved
+                              ? (isIOS
+                                    ? CupertinoIcons.checkmark_circle_fill
+                                    : Icons.check_circle)
+                              : (isIOS
+                                    ? CupertinoIcons.circle
+                                    : Icons.circle_outlined),
+                          color: _todayGoal!.isAchieved
+                              ? (isIOS
+                                    ? CupertinoColors.systemGreen
+                                    : Colors.green)
+                              : (isIOS
+                                    ? CupertinoColors.systemGrey
+                                    : Colors.grey),
+                          size: 32,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      '${_todayGoal!.completedQuestions} / ${_todayGoal!.targetQuestions} Fragen',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: isIOS
+                            ? CupertinoColors.label.resolveFrom(context)
+                            : null,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    LinearPercentIndicator(
+                      padding: EdgeInsets.zero,
+                      lineHeight: 12,
+                      percent: _todayGoal!.progress.clamp(0.0, 1.0),
+                      backgroundColor: isIOS
+                          ? CupertinoColors.systemGrey5.resolveFrom(context)
+                          : Colors.grey.shade200,
+                      progressColor: _todayGoal!.isAchieved
+                          ? (isIOS ? CupertinoColors.systemGreen : Colors.green)
+                          : (isIOS ? CupertinoColors.activeBlue : Colors.blue),
+                      barRadius: const Radius.circular(6),
+                    ),
+                    if (_todayGoal!.isAchieved) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        '🎉 Ziel erreicht!',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: isIOS
+                              ? CupertinoColors.systemGreen.resolveFrom(context)
+                              : Colors.green,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            if (_dailyGoalService.areGoalsEnabled() && _todayGoal != null)
+              const SizedBox(height: 16),
+
             // Study Streak Card
             AdaptiveCard(
               child: Row(
