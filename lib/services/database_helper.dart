@@ -183,21 +183,23 @@ class DatabaseHelper {
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    if (oldVersion < newVersion) {
-      // Temporarily disable foreign keys to avoid constraint errors
-      await db.execute('PRAGMA foreign_keys = OFF');
+    // Incremental migrations to preserve user data
 
-      // Drop tables in reverse dependency order (child tables first)
-      await db.execute('DROP TABLE IF EXISTS $tableBookmarks');
-      await db.execute('DROP TABLE IF EXISTS $tableProgress');
-      await db.execute('DROP TABLE IF EXISTS $tableSettings');
-      await db.execute('DROP TABLE IF EXISTS $tableQuestions');
+    // Migration from version 1 or 2 to version 3: Add daily_goals table
+    if (oldVersion < 3 && newVersion >= 3) {
+      await db.execute('''
+        CREATE TABLE IF NOT EXISTS $tableDailyGoals (
+          date TEXT PRIMARY KEY,
+          target_questions INTEGER NOT NULL,
+          completed_questions INTEGER DEFAULT 0,
+          achieved_at INTEGER
+        )
+      ''');
 
-      // Recreate all tables with new schema
-      await _onCreate(db, newVersion);
-
-      // Re-enable foreign keys
-      await db.execute('PRAGMA foreign_keys = ON');
+      // Index for querying recent goals
+      await db.execute('''
+        CREATE INDEX IF NOT EXISTS idx_daily_goals_date ON $tableDailyGoals(date DESC)
+      ''');
     }
   }
 
