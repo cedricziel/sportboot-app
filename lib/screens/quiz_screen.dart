@@ -398,7 +398,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           ),
                         ),
                       if (!provider.hasNext &&
-                          provider.currentSession?.category == 'quick_quiz')
+                          provider.currentSession?.mode == 'quiz')
                         Expanded(
                           child: PlatformElevatedButton(
                             onPressed: () {
