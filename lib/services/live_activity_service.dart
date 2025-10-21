@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:live_activities/live_activities.dart';
+
 import '../models/daily_goal.dart';
 
 class LiveActivityService {
@@ -12,8 +15,8 @@ class LiveActivityService {
   Future<void> init() async {
     if (_isInitialized) return;
 
-    // Only available on iOS
-    if (!defaultTargetPlatform.toString().contains('iOS')) {
+    // Only available on iOS (check web first to avoid Platform access on web)
+    if (kIsWeb || !Platform.isIOS) {
       _isInitialized = true;
       return;
     }
@@ -36,8 +39,8 @@ class LiveActivityService {
     // Ensure initialized
     await init();
 
-    // Only available on iOS
-    if (!defaultTargetPlatform.toString().contains('iOS')) {
+    // Only available on iOS (check web first to avoid Platform access on web)
+    if (kIsWeb || !Platform.isIOS) {
       return;
     }
 
