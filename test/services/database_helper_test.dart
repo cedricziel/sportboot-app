@@ -34,8 +34,8 @@ void main() {
       final version = await db.getVersion();
       expect(
         version,
-        3,
-      ); // Updated to match current database version (v3 adds daily_goals table)
+        4,
+      ); // Updated to match current database version (v4 adds daily_goals constraints)
     });
 
     test('Database should have all required tables', () async {
@@ -50,7 +50,13 @@ void main() {
 
       expect(
         tableNames,
-        containsAll(['questions', 'progress', 'bookmarks', 'settings']),
+        containsAll([
+          'questions',
+          'progress',
+          'bookmarks',
+          'settings',
+          'daily_goals',
+        ]),
       );
     });
 
@@ -66,7 +72,11 @@ void main() {
 
       expect(
         indexNames,
-        containsAll(['idx_questions_category', 'idx_questions_course']),
+        containsAll([
+          'idx_questions_category',
+          'idx_questions_course',
+          'idx_daily_goals_date',
+        ]),
       );
     });
 
@@ -160,6 +170,89 @@ void main() {
 
       await databaseHelper.close();
       expect(db.isOpen, false);
+    });
+
+    group('Daily Goals Constraints', () {
+      test('Should allow valid daily goal', () async {
+        final db = await databaseHelper.database;
+
+        await db.insert('daily_goals', {
+          'date': '2025-10-21',
+          'target_questions': 10,
+          'completed_questions': 5,
+        });
+
+        final result = await db.query('daily_goals');
+        expect(result.length, 1);
+        expect(result[0]['completed_questions'], 5);
+      });
+
+      test(
+        'Should use default 0 for completed_questions when not provided',
+        () async {
+          final db = await databaseHelper.database;
+
+          await db.insert('daily_goals', {
+            'date': '2025-10-21',
+            'target_questions': 10,
+          });
+
+          final result = await db.query('daily_goals');
+          expect(result[0]['completed_questions'], 0);
+        },
+      );
+
+      test('Should reject negative target_questions', () async {
+        final db = await databaseHelper.database;
+
+        expect(
+          () async => await db.insert('daily_goals', {
+            'date': '2025-10-21',
+            'target_questions': -5,
+            'completed_questions': 0,
+          }),
+          throwsA(isA<DatabaseException>()),
+        );
+      });
+
+      test('Should reject negative completed_questions', () async {
+        final db = await databaseHelper.database;
+
+        expect(
+          () async => await db.insert('daily_goals', {
+            'date': '2025-10-21',
+            'target_questions': 10,
+            'completed_questions': -1,
+          }),
+          throwsA(isA<DatabaseException>()),
+        );
+      });
+
+      test('Should reject completed_questions > target_questions', () async {
+        final db = await databaseHelper.database;
+
+        expect(
+          () async => await db.insert('daily_goals', {
+            'date': '2025-10-21',
+            'target_questions': 10,
+            'completed_questions': 15,
+          }),
+          throwsA(isA<DatabaseException>()),
+        );
+      });
+
+      test('Should allow completed_questions == target_questions', () async {
+        final db = await databaseHelper.database;
+
+        await db.insert('daily_goals', {
+          'date': '2025-10-21',
+          'target_questions': 10,
+          'completed_questions': 10,
+        });
+
+        final result = await db.query('daily_goals');
+        expect(result[0]['completed_questions'], 10);
+      });
     });
   });
 }

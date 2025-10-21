@@ -6,7 +6,8 @@ import '../exceptions/database_exceptions.dart';
 
 class DatabaseHelper {
   static const String _databaseName = 'sportboot.db';
-  static const int _databaseVersion = 3; // Incremented for daily goals table
+  static const int _databaseVersion =
+      4; // Incremented for daily goals constraints
 
   static const String tableQuestions = 'questions';
   static const String tableProgress = 'progress';
@@ -170,8 +171,8 @@ class DatabaseHelper {
     await db.execute('''
       CREATE TABLE $tableDailyGoals (
         date TEXT PRIMARY KEY,
-        target_questions INTEGER NOT NULL,
-        completed_questions INTEGER DEFAULT 0,
+        target_questions INTEGER NOT NULL CHECK (target_questions >= 0),
+        completed_questions INTEGER NOT NULL DEFAULT 0 CHECK (completed_questions >= 0 AND completed_questions <= target_questions),
         achieved_at INTEGER
       )
     ''');
@@ -190,8 +191,8 @@ class DatabaseHelper {
       await db.execute('''
         CREATE TABLE IF NOT EXISTS $tableDailyGoals (
           date TEXT PRIMARY KEY,
-          target_questions INTEGER NOT NULL,
-          completed_questions INTEGER DEFAULT 0,
+          target_questions INTEGER NOT NULL CHECK (target_questions >= 0),
+          completed_questions INTEGER NOT NULL DEFAULT 0 CHECK (completed_questions >= 0 AND completed_questions <= target_questions),
           achieved_at INTEGER
         )
       ''');
@@ -199,6 +200,50 @@ class DatabaseHelper {
       // Index for querying recent goals
       await db.execute('''
         CREATE INDEX IF NOT EXISTS idx_daily_goals_date ON $tableDailyGoals(date DESC)
+      ''');
+    }
+
+    // Migration from version 3 to version 4: Add constraints to daily_goals table
+    if (oldVersion < 4 && newVersion >= 4) {
+      // SQLite doesn't support ALTER TABLE to add constraints,
+      // so we need to recreate the table
+      await db.execute('''
+        CREATE TABLE ${tableDailyGoals}_new (
+          date TEXT PRIMARY KEY,
+          target_questions INTEGER NOT NULL CHECK (target_questions >= 0),
+          completed_questions INTEGER NOT NULL DEFAULT 0 CHECK (completed_questions >= 0 AND completed_questions <= target_questions),
+          achieved_at INTEGER
+        )
+      ''');
+
+      // Copy existing data, ensuring constraints are met
+      // Set completed_questions to 0 if NULL, and clamp to target_questions if greater
+      await db.execute('''
+        INSERT INTO ${tableDailyGoals}_new (date, target_questions, completed_questions, achieved_at)
+        SELECT
+          date,
+          CASE WHEN target_questions < 0 THEN 0 ELSE target_questions END as target_questions,
+          CASE
+            WHEN completed_questions IS NULL THEN 0
+            WHEN completed_questions < 0 THEN 0
+            WHEN completed_questions > target_questions THEN target_questions
+            ELSE completed_questions
+          END as completed_questions,
+          achieved_at
+        FROM $tableDailyGoals
+      ''');
+
+      // Drop old table
+      await db.execute('DROP TABLE $tableDailyGoals');
+
+      // Rename new table to original name
+      await db.execute(
+        'ALTER TABLE ${tableDailyGoals}_new RENAME TO $tableDailyGoals',
+      );
+
+      // Recreate index
+      await db.execute('''
+        CREATE INDEX idx_daily_goals_date ON $tableDailyGoals(date DESC)
       ''');
     }
   }
