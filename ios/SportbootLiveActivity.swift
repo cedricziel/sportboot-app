@@ -12,7 +12,7 @@ import SwiftUI
 @main
 struct SportbootLiveActivityWidget: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: SportbootActivityAttributes.self) { context in
+        ActivityConfiguration(for: LiveActivitiesAppAttributes.self) { context in
             // Lock Screen and Banner UI
             LockScreenLiveActivityView(context: context)
         } dynamicIsland: { context in
@@ -135,7 +135,7 @@ struct SportbootLiveActivityWidget: Widget {
         }
     }
 
-    private func progressPercentage(_ state: SportbootActivityAttributes.ContentState) -> Double {
+    private func progressPercentage(_ state: LiveActivitiesAppAttributes.ContentState) -> Double {
         guard state.targetQuestions > 0 else { return 0 }
         return min(Double(state.questionsCompleted) / Double(state.targetQuestions), 1.0)
     }
@@ -143,7 +143,7 @@ struct SportbootLiveActivityWidget: Widget {
 
 // Lock Screen / Banner View
 struct LockScreenLiveActivityView: View {
-    let context: ActivityViewContext<SportbootActivityAttributes>
+    let context: ActivityViewContext<LiveActivitiesAppAttributes>
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -218,7 +218,7 @@ struct LockScreenLiveActivityView: View {
         .padding(16)
     }
 
-    private func progressPercentage(_ state: SportbootActivityAttributes.ContentState) -> Double {
+    private func progressPercentage(_ state: LiveActivitiesAppAttributes.ContentState) -> Double {
         guard state.targetQuestions > 0 else { return 0 }
         return min(Double(state.questionsCompleted) / Double(state.targetQuestions), 1.0)
     }
@@ -228,8 +228,8 @@ struct LockScreenLiveActivityView: View {
 #if DEBUG
 struct LiveActivityView_Previews: PreviewProvider {
     static var previews: some View {
-        let attributes = SportbootActivityAttributes(courseName: "SBF-See")
-        let state = SportbootActivityAttributes.ContentState(
+        let attributes = LiveActivitiesAppAttributes(courseName: "SBF-See")
+        let state = LiveActivitiesAppAttributes.ContentState(
             questionsCompleted: 7,
             targetQuestions: 10,
             currentStreak: 5,

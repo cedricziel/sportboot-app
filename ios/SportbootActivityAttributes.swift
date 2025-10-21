@@ -10,7 +10,8 @@ import ActivityKit
 
 /// Attributes for the Sportboot study session Live Activity
 /// These attributes remain constant throughout the Live Activity's lifetime
-struct SportbootActivityAttributes: ActivityAttributes {
+/// IMPORTANT: Must be named LiveActivitiesAppAttributes for the live_activities plugin
+struct LiveActivitiesAppAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic data that changes during the Live Activity
         var questionsCompleted: Int
