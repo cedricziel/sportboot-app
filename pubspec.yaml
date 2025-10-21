@@ -74,7 +74,7 @@ dependencies:
   live_activities: ^2.4.2
 
   # Splash screen
-  flutter_native_splash: ^2.4.3
+  flutter_native_splash: ^2.4.7
 
   # App info
   package_info_plus: ^8.1.2
