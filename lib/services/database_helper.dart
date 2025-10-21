@@ -7,12 +7,13 @@ import '../exceptions/database_exceptions.dart';
 class DatabaseHelper {
   static const String _databaseName = 'sportboot.db';
   static const int _databaseVersion =
-      2; // Incremented for new indexes and foreign key constraints
+      4; // Incremented for daily goals constraints
 
   static const String tableQuestions = 'questions';
   static const String tableProgress = 'progress';
   static const String tableBookmarks = 'bookmarks';
   static const String tableSettings = 'settings';
+  static const String tableDailyGoals = 'daily_goals';
 
   // Instance management
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -166,24 +167,84 @@ class DatabaseHelper {
         updated_at INTEGER NOT NULL
       )
     ''');
+
+    await db.execute('''
+      CREATE TABLE $tableDailyGoals (
+        date TEXT PRIMARY KEY,
+        target_questions INTEGER NOT NULL CHECK (target_questions >= 0),
+        completed_questions INTEGER NOT NULL DEFAULT 0 CHECK (completed_questions >= 0 AND completed_questions <= target_questions),
+        achieved_at INTEGER
+      )
+    ''');
+
+    // Index for querying recent goals
+    await db.execute('''
+      CREATE INDEX idx_daily_goals_date ON $tableDailyGoals(date DESC)
+    ''');
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    if (oldVersion < newVersion) {
-      // Temporarily disable foreign keys to avoid constraint errors
-      await db.execute('PRAGMA foreign_keys = OFF');
+    // Incremental migrations to preserve user data
 
-      // Drop tables in reverse dependency order (child tables first)
-      await db.execute('DROP TABLE IF EXISTS $tableBookmarks');
-      await db.execute('DROP TABLE IF EXISTS $tableProgress');
-      await db.execute('DROP TABLE IF EXISTS $tableSettings');
-      await db.execute('DROP TABLE IF EXISTS $tableQuestions');
+    // Migration from version 1 or 2 to version 3: Add daily_goals table
+    if (oldVersion < 3 && newVersion >= 3) {
+      await db.execute('''
+        CREATE TABLE IF NOT EXISTS $tableDailyGoals (
+          date TEXT PRIMARY KEY,
+          target_questions INTEGER NOT NULL CHECK (target_questions >= 0),
+          completed_questions INTEGER NOT NULL DEFAULT 0 CHECK (completed_questions >= 0 AND completed_questions <= target_questions),
+          achieved_at INTEGER
+        )
+      ''');
 
-      // Recreate all tables with new schema
-      await _onCreate(db, newVersion);
+      // Index for querying recent goals
+      await db.execute('''
+        CREATE INDEX IF NOT EXISTS idx_daily_goals_date ON $tableDailyGoals(date DESC)
+      ''');
+    }
 
-      // Re-enable foreign keys
-      await db.execute('PRAGMA foreign_keys = ON');
+    // Migration from version 3 to version 4: Add constraints to daily_goals table
+    if (oldVersion < 4 && newVersion >= 4) {
+      // SQLite doesn't support ALTER TABLE to add constraints,
+      // so we need to recreate the table
+      await db.execute('''
+        CREATE TABLE ${tableDailyGoals}_new (
+          date TEXT PRIMARY KEY,
+          target_questions INTEGER NOT NULL CHECK (target_questions >= 0),
+          completed_questions INTEGER NOT NULL DEFAULT 0 CHECK (completed_questions >= 0 AND completed_questions <= target_questions),
+          achieved_at INTEGER
+        )
+      ''');
+
+      // Copy existing data, ensuring constraints are met
+      // Set completed_questions to 0 if NULL, and clamp to target_questions if greater
+      await db.execute('''
+        INSERT INTO ${tableDailyGoals}_new (date, target_questions, completed_questions, achieved_at)
+        SELECT
+          date,
+          CASE WHEN target_questions < 0 THEN 0 ELSE target_questions END as target_questions,
+          CASE
+            WHEN completed_questions IS NULL THEN 0
+            WHEN completed_questions < 0 THEN 0
+            WHEN completed_questions > target_questions THEN target_questions
+            ELSE completed_questions
+          END as completed_questions,
+          achieved_at
+        FROM $tableDailyGoals
+      ''');
+
+      // Drop old table
+      await db.execute('DROP TABLE $tableDailyGoals');
+
+      // Rename new table to original name
+      await db.execute(
+        'ALTER TABLE ${tableDailyGoals}_new RENAME TO $tableDailyGoals',
+      );
+
+      // Recreate index
+      await db.execute('''
+        CREATE INDEX idx_daily_goals_date ON $tableDailyGoals(date DESC)
+      ''');
     }
   }
 
@@ -249,6 +310,7 @@ class DatabaseHelper {
         await txn.delete(tableProgress);
         await txn.delete(tableBookmarks);
         await txn.delete(tableSettings);
+        await txn.delete(tableDailyGoals);
       });
     } catch (e, stackTrace) {
       throw QueryException(

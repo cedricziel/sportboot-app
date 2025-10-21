@@ -69,6 +69,10 @@ dependencies:
   timezone: ^0.10.1
   permission_handler: ^12.0.1
 
+  # Gamification
+  confetti: ^0.7.0
+  live_activities: ^2.4.2
+
   # Splash screen
   flutter_native_splash: ^2.4.3
 

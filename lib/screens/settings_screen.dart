@@ -6,6 +6,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../services/storage_service.dart';
 import '../services/notification_service.dart';
+import '../services/daily_goal_service.dart';
 import '../widgets/platform/adaptive_switch.dart';
 import '../widgets/platform/adaptive_list_tile.dart';
 import '../widgets/platform/adaptive_list_section.dart';
@@ -20,10 +21,12 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   final StorageService _storage = StorageService();
   final NotificationService _notifications = NotificationService();
+  final DailyGoalService _dailyGoalService = DailyGoalService();
   late Map<String, dynamic> _settings;
   bool _notificationsEnabled = false;
   TimeOfDay _notificationTime = const TimeOfDay(hour: 19, minute: 0);
   String _appVersion = '';
+  int _dailyGoalTarget = 10;
 
   @override
   void initState() {
@@ -31,6 +34,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _settings = _storage.getSettings();
     _loadNotificationSettings();
     _loadAppVersion();
+    _loadDailyGoal();
+  }
+
+  void _loadDailyGoal() {
+    setState(() {
+      _dailyGoalTarget = _dailyGoalService.getDailyTarget();
+    });
   }
 
   Future<void> _loadAppVersion() async {
@@ -159,9 +169,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
             children: [
-              AdaptiveListTile(
+              AdaptiveSwitchListTile(
                 title: Text(
-                  'Tägliches Ziel',
+                  'Tägliche Lernziele',
                   style: TextStyle(
                     color: isCupertino(context)
                         ? CupertinoColors.label.resolveFrom(context)
@@ -169,15 +179,39 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
                 subtitle: Text(
-                  '${_settings['dailyGoal'] ?? 20} Fragen pro Tag',
+                  'Aktiviere tägliche Lernziele',
                   style: TextStyle(
                     color: isCupertino(context)
                         ? CupertinoColors.secondaryLabel.resolveFrom(context)
                         : null,
                   ),
                 ),
-                onTap: () => _showDailyGoalDialog(),
+                value: _dailyGoalService.areGoalsEnabled(),
+                onChanged: (value) async {
+                  await _dailyGoalService.setGoalsEnabled(value);
+                  setState(() {});
+                },
               ),
+              if (_dailyGoalService.areGoalsEnabled())
+                AdaptiveListTile(
+                  title: Text(
+                    'Tägliches Ziel',
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.label.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
+                  subtitle: Text(
+                    '$_dailyGoalTarget Fragen pro Tag',
+                    style: TextStyle(
+                      color: isCupertino(context)
+                          ? CupertinoColors.secondaryLabel.resolveFrom(context)
+                          : null,
+                    ),
+                  ),
+                  onTap: () => _showDailyGoalDialog(),
+                ),
             ],
           ),
           AdaptiveListSection.insetGrouped(
@@ -348,7 +382,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _showDailyGoalDialog() {
-    int currentGoal = _settings['dailyGoal'] ?? 20;
     showPlatformDialog(
       context: context,
       builder: (context) => PlatformAlertDialog(
@@ -360,14 +393,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 16),
             Wrap(
               spacing: 8,
-              children: [10, 20, 30, 50, 100].map((goal) {
+              children: [5, 10, 15, 20, 30].map((goal) {
                 return ChoiceChip(
                   label: Text('$goal'),
-                  selected: currentGoal == goal,
-                  onSelected: (selected) {
+                  selected: _dailyGoalTarget == goal,
+                  onSelected: (selected) async {
                     if (selected) {
-                      _updateSetting('dailyGoal', goal);
-                      context.pop();
+                      await _dailyGoalService.setDailyTarget(goal);
+
+                      if (!mounted) return;
+
+                      setState(() {
+                        _dailyGoalTarget = goal;
+                      });
+
+                      if (context.mounted) {
+                        context.pop();
+                      }
                     }
                   },
                 );

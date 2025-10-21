@@ -23,7 +23,7 @@ class _QuizScreenState extends State<QuizScreen> {
   void _showQuizCompletionDialog(
     BuildContext context,
     QuestionsProvider provider,
-  ) {
+  ) async {
     final stats = provider.getSessionStats();
     final totalQuestions = provider.currentQuestions.length;
     final correctAnswers = stats['correct'] ?? 0;
@@ -32,7 +32,9 @@ class _QuizScreenState extends State<QuizScreen> {
         ? (correctAnswers / totalQuestions * 100).round()
         : 0;
 
-    provider.endSession();
+    await provider.endSession();
+
+    if (!context.mounted) return;
 
     showPlatformDialog(
       context: context,
@@ -113,7 +115,7 @@ class _QuizScreenState extends State<QuizScreen> {
               // Start a new quick quiz
               final newProvider = context.read<QuestionsProvider>();
               await newProvider.loadRandomQuestions(14);
-              newProvider.startSession('quiz', 'quick_quiz');
+              await newProvider.startSession('quiz', 'quick_quiz');
 
               if (context.mounted) {
                 context.push(AppRoutes.quiz);
@@ -334,11 +336,35 @@ class _QuizScreenState extends State<QuizScreen> {
                     if (!showResult && selectedAnswer != null)
                       Expanded(
                         child: PlatformElevatedButton(
-                          onPressed: () {
-                            provider.answerQuestion(selectedAnswer!);
+                          onPressed: () async {
+                            await provider.answerQuestion(selectedAnswer!);
+
+                            if (!mounted) return;
+
                             setState(() {
                               showResult = true;
                             });
+
+                            // Check if daily goal was just achieved
+                            if (provider.shouldShowCelebration) {
+                              provider.markCelebrationShown();
+                              final streak = await provider.getStreak();
+
+                              if (!mounted) return;
+
+                              final todayGoal = provider.todayGoal;
+                              if (todayGoal != null && context.mounted) {
+                                context.push(
+                                  AppRoutes.goalAchieved,
+                                  extra: {
+                                    'streak': streak,
+                                    'questionsCompleted':
+                                        todayGoal.completedQuestions,
+                                    'message': 'Tagesziel erreicht! 🎉',
+                                  },
+                                );
+                              }
+                            }
                           },
                           child: const Text('Antwort prüfen'),
                         ),
@@ -372,7 +398,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           ),
                         ),
                       if (!provider.hasNext &&
-                          provider.currentSession?.category == 'quick_quiz')
+                          provider.currentSession?.mode == 'quiz')
                         Expanded(
                           child: PlatformElevatedButton(
                             onPressed: () {
