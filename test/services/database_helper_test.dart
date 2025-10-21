@@ -32,7 +32,10 @@ void main() {
     test('Database should be initialized with correct version', () async {
       final db = await databaseHelper.database;
       final version = await db.getVersion();
-      expect(version, 2); // Updated to match current database version
+      expect(
+        version,
+        3,
+      ); // Updated to match current database version (v3 adds daily_goals table)
     });
 
     test('Database should have all required tables', () async {
