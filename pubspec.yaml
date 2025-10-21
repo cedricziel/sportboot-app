@@ -71,7 +71,7 @@ dependencies:
 
   # Gamification
   confetti: ^0.7.0
-  live_activities: ^1.7.0
+  live_activities: ^2.4.2
 
   # Splash screen
   flutter_native_splash: ^2.4.3

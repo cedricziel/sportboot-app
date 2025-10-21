@@ -67,8 +67,15 @@ class LiveActivityService {
         'lastUpdated': DateTime.now().toIso8601String(),
       };
 
-      // Start the Live Activity
-      _currentActivityId = await _liveActivities.createActivity(activityData);
+      // Generate a unique activity ID
+      final activityId =
+          'sportboot_quiz_${DateTime.now().millisecondsSinceEpoch}';
+
+      // Start the Live Activity with explicit ID
+      _currentActivityId = await _liveActivities.createActivity(
+        activityId,
+        activityData,
+      );
 
       debugPrint('[LiveActivity] Started activity: $_currentActivityId');
     } catch (e) {

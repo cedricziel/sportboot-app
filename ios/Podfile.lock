@@ -1,10 +1,8 @@
 PODS:
-  - app_group_directory (1.0.0):
-    - Flutter
   - Flutter (1.0.0)
-  - flutter_local_notifications (0.0.1):
+  - flutter_app_group_directory (0.0.1):
     - Flutter
-  - flutter_native_image (0.0.1):
+  - flutter_local_notifications (0.0.1):
     - Flutter
   - flutter_native_splash (2.4.3):
     - Flutter
@@ -29,10 +27,9 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - app_group_directory (from `.symlinks/plugins/app_group_directory/ios`)
   - Flutter (from `Flutter`)
+  - flutter_app_group_directory (from `.symlinks/plugins/flutter_app_group_directory/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
-  - flutter_native_image (from `.symlinks/plugins/flutter_native_image/ios`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
   - live_activities (from `.symlinks/plugins/live_activities/ios`)
@@ -44,14 +41,12 @@ DEPENDENCIES:
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 EXTERNAL SOURCES:
-  app_group_directory:
-    :path: ".symlinks/plugins/app_group_directory/ios"
   Flutter:
     :path: Flutter
+  flutter_app_group_directory:
+    :path: ".symlinks/plugins/flutter_app_group_directory/ios"
   flutter_local_notifications:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
-  flutter_native_image:
-    :path: ".symlinks/plugins/flutter_native_image/ios"
   flutter_native_splash:
     :path: ".symlinks/plugins/flutter_native_splash/ios"
   integration_test:
@@ -72,13 +67,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
-  app_group_directory: a2613caae8f771366673bd6ec80412b76bbb4fb4
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  flutter_app_group_directory: 55b5362007d1c0cb45dc1dd1e94f67d615f45a6b
   flutter_local_notifications: a5a732f069baa862e728d839dd2ebb904737effb
-  flutter_native_image: c0f200e4bc5da392b15878df38654cc85a78b090
   flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf
   integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
-  live_activities: 771ebe091f68bc3dc0a5a3828f2747b01126ec28
+  live_activities: 4dfa736d0736e1c77866a2f9c056a76513cc9e7b
   package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
