@@ -97,7 +97,7 @@ dev_dependencies:
   sqflite_common_ffi: ^2.3.0
 
   # For build scripts
-  http: ^1.1.0
+  http: ^1.6.0
   html: ^0.15.4
 
   # Pre-commit hooks for code quality
