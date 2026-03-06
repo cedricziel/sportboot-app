@@ -65,7 +65,7 @@ dependencies:
   crypto: ^3.0.7
 
   # Notifications
-  flutter_local_notifications: ^19.4.2
+  flutter_local_notifications: ^20.1.0
   timezone: ^0.10.1
   permission_handler: ^12.0.1
 
