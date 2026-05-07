@@ -58,7 +58,7 @@ jobs:
         run: flutter build ios --release --no-codesign
       
       - name: Upload iOS build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ios-build
           path: build/ios/iphoneos/
@@ -85,7 +85,7 @@ jobs:
         run: flutter build macos --release
       
       - name: Upload macOS build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: macos-build
           path: build/macos/Build/Products/Release/
