@@ -523,10 +523,10 @@ packages:
     dependency: "direct main"
     description:
       name: live_activities
-      sha256: d1bbc466ddb0c9eea11d6e3e34673319b5b46bcad03a4997e55769261f643601
+      sha256: "060f4d8f57b399e5c8beb255fa8426b9b4789320414ae68c8510aec113269dbd"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.2"
+    version: "2.4.9"
   logging:
     dependency: transitive
     description:
